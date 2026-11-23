@@ -11,16 +11,24 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 # Panorama
 
 ## Progresso
-sem horizonte definido
+░░░░░░░░░░ 0% · 0/7 itens ✅
 
 ## Agora
-—
+- 🟡 · plan-01.01 · R01.1 · Gerar alertas determinísticos e fiéis aos dados
 
 ## Próximas
-—
+- 🔴 · plan-01.02 · R01.2 · Classificar eventos em 5 categorias e gerar relatório rastreável
+- 🔴 · plan-02.01 · R02.1 · Construir RAG com página, seção e estado operacional na busca
+- 🔴 · plan-02.02 · R02.2 · Construir o assistente de troubleshooting com citação, confiança calculada e abstenção
+- 🔴 · plan-02.03 · R02.3 · Avaliar o RAG com gabarito de página e juiz por afirmação
+- 🔴 · plan-02.04 · R02.4 · Demonstrar os três cenários em separado e documentar os limites observados
+- 🔴 · plan-02.05 · R02.5 · Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados
 
 ## Por família
-—
+| FF | Família | Itens ✅/total | Progresso | Plans abertas |
+|---|---|---|---|---|
+| 01 | Sprint 3 — Alertas e classificação | 0/2 | ░░░░░ | 2 |
+| 02 | Sprint 4 — RAG e assistente | 0/5 | ░░░░░ | 5 |
 
 ## Atenção
 —

@@ -33,7 +33,12 @@ preenchimento direto a pedido do usuário.
 > agentes) e **o que ele explicitamente NÃO é**. Sem marketing, sem histórico. Um agente lê isto e para de
 > supor. Proibido descrever a estrutura de pastas aqui — isso é da §3.
 
-<!-- PREENCHER -->
+Repositório da **segunda entrega do Challenge FIAP × Forzy (PLN)**: um assistente de troubleshooting para motores elétricos
+industriais (digital twin, motor WEG W22) que (1) transforma leituras de sensores em alertas e relatórios em português **sem
+afirmar nada além dos dados**, (2) classifica eventos em 5 categorias e (3) responde perguntas por RAG sobre o catálogo técnico
+do W22, citando página e seção. Consumidor: o professor avaliador (notebooks Colab já executados, documento final e vídeo).
+**Não é** um sistema em produção, nem um serviço modular: é código de pesquisa aplicada, versionado em repositório público.
+A entrega anterior (nota 85) está avaliada; o feedback dela é a fonte dos requisitos F1–F7 em `docs/feedback-professor.md`.
 
 ---
 
@@ -56,7 +61,18 @@ preenchimento direto a pedido do usuário.
 > **Regra de ouro: referencie, nunca duplique.** Se uma regra já está numa spec fixa ou numa skill, escreva
 > uma linha e o ponteiro. Conteúdo duplicado desatualiza e passa a mentir.
 
-<!-- PREENCHER -->
+- **Fluxo determinístico primeiro.** Todo fato (valor, limiar, severidade, horário, página, seção) nasce de código; o LLM só
+  **redige** texto sobre fatos já calculados, e todo texto de LLM passa por um verificador (números, referências, termos
+  proibidos). Falhou no verificador → usa-se o texto de template, nunca o do LLM.
+- **Nenhum diagnóstico, prognóstico ou limite inventado.** Limites citados = limiares de `data/active_assets.json`. Recomendação
+  só da tabela de ações padrão. Proibido causalidade e previsão não calculadas (F1).
+- **Juiz ≠ gerador.** Modelos de família diferente, ids fixos em `src/pln/config.py`, **sem fallback silencioso**; cada
+  resposta registra o modelo que a produziu. Conhecimento externo nunca conta como fiel (F6).
+- **Segredos só no Colab Secrets** (`OPENROUTER_API_KEY` via `google.colab.userdata`) ou `.env` local ignorado. Nunca em
+  código, saída de notebook ou commit — o repositório é **público**.
+- Universais: `AGENTS.md` e skills `padrao-escrita` + `padrao-python` (função ≤ 40 linhas, ≤ 4 parâmetros, zero hardcoded,
+  nenhuma exceção engolida). Constantes e ids de modelo só em `src/pln/config.py`.
+- Notebooks são **entregues já executados** (saídas visíveis, sem erro, sem chave). Antes do Colab, ficam **sem saídas**.
 
 ---
 
@@ -77,7 +93,25 @@ preenchimento direto a pedido do usuário.
 >
 > Cada item aponta para a spec fixa em `arquitetura/` que o detalha. Esta seção é o índice, não o tratado.
 
-<!-- PREENCHER -->
+- **Stack:** Python ≥ 3.10 (Colab), `pandas`, `rouge-score`, `scikit-learn`, `pymupdf`, `chromadb`, `sentence-transformers`,
+  `requests`; testes `pytest`. Dependências fixadas em `requirements.txt`. Camada de padrão: `padrao-python`.
+- **Mapa de pacotes** (`src/pln/`, nascem nas plans; ver `plan/`):
+
+| Arquivo | Papel | Plan |
+|---|---|---|
+| `config.py` | constantes, ids de modelo, caminhos | 01.01 |
+| `sensores.py` · `alertas.py` | mapeamento canônico, severidade, episódios, templates, verificador | 01.01 |
+| `llm.py` | cliente OpenRouter (cache, sem fallback), redação verificada | 01.01 |
+| `classificacao.py` · `relatorio.py` | classificador de eventos, relatório rastreável | 01.02 |
+| `estado.py` · `rag.py` | estado operacional, chunking, índice, retriever | 02.01 |
+| `assistente.py` | persona, citação, confiança, abstenção, memória | 02.02 |
+| `avaliacao.py` | métricas de recuperação, juiz por afirmação | 02.03 |
+
+- **Fronteira:** os notebooks (`notebooks/`) só orquestram e exibem; a lógica vive em `src/pln/` e é testada em `tests/`.
+- **Dados:** `data/dados-w22.csv` (43.123 leituras, 6 variáveis, 2026-05-05 a 2026-08-23), `data/active_assets.json`
+  (limiares), `data/data_variables.json`, PDF em `docs/` (52 páginas, português). Saídas das execuções em `data/saida/`.
+- **Comandos:** instalar `pip install -r requirements.txt` · testar `python -m pytest tests -q` · notebook sem executar
+  `python tools/nb_check.py notebooks/<nb>.ipynb` · notebook executado `python tools/nb_check.py notebooks/<nb>.ipynb --executado`.
 
 ---
 
@@ -105,7 +139,17 @@ preenchimento direto a pedido do usuário.
 > Mantenha entre 6 e 15 linhas. Se passar disso, o repositório precisa de specs melhores, não de mais linhas
 > aqui. **Ponteiro órfão é defeito**: toda spec citada tem de existir.
 
-<!-- PREENCHER -->
+| Tipo de tarefa | Leia antes | Capacidade |
+|---|---|---|
+| Mexer em severidade, episódios, templates ou verificador de alertas | `plan/plan-01.01-alertas-deterministicos-e-fieis.md` (até a síntese; depois `specs/01.01-*.md`) | [[00-knowledge]] |
+| Mexer em classificador de eventos ou relatório | `plan/plan-01.02-classificacao-e-relatorio-rastreavel.md` (depois `specs/01.02-*.md`) | [[00-knowledge]] |
+| Mexer em chunking, índice ou retriever | `plan/plan-02.01-rag-com-pagina-secao-e-estado.md` (depois `specs/02.01-*.md`) | [[00-knowledge]] |
+| Mexer em prompt, citação, confiança ou memória do assistente | `plan/plan-02.02-assistente-de-troubleshooting.md` (depois `specs/02.02-*.md`) | [[00-knowledge]] |
+| Mexer em métricas, gabarito ou juiz | `plan/plan-02.03-avaliacao-confiavel-do-rag-e-do-juiz.md` (depois `specs/02.03-*.md`) | [[00-knowledge]] |
+| Cenários, limites, documento final, vídeo | `plan/plan-02.04-*.md` e `plan-02.05-*.md` · `docs/feedback-professor.md` | [[00-knowledge]] |
+| Entender o que o professor exigiu | `docs/feedback-professor.md` · `enunciado-4.txt` | — |
+
+> Cada plan, ao ser sintetizada, troca a sua linha acima pelo caminho da spec fixa criada.
 
 ---
 
@@ -165,7 +209,11 @@ caminho.
 > **Nenhum agente adiciona co-autoria**: sem `Co-Authored-By` e sem qualquer outra marca de autoria de agente
 > na mensagem.
 
-<!-- PREENCHER: desvios específicos deste repositório, se houver -->
+- **Trabalho direto na `main`** (decisão do dono: sem `develop` nem `dev/<nome>`); sem PR.
+- **Execução em duas fases.** O executor entrega código, testes e notebook **sem saídas**. O revisor verifica a Fase A (local).
+  O usuário roda o notebook no Colab, volta com o `.ipynb` executado e os arquivos de `data/saida/`; o revisor verifica a
+  Fase B (saídas) antes do veredito. A plan fica `🟠` entre as fases.
+- **Antes de abrir o Colab, o usuário faz push da `main`:** a célula 1 dos notebooks clona o repositório público.
 
 ### O ciclo neste repositório
 
@@ -175,19 +223,19 @@ O prompt da base manda; esta seção acrescenta obrigações de execução e ver
 
 | Parâmetro | Padrão (sem declaração) | Este repositório declara |
 |---|---|---|
-| Git e ramificações | `main`, `master` e `develop` protegidas; a branch de trabalho é a `dev/<nome>`, e as vagas `plan/<arquivo>` saem dela só para trabalho paralelo; a `develop` só recebe PR da `dev/<nome>` e a `main` só o PR de versão; prefixos `dev/`, `plan/` e `sarak/`; nunca se trabalha nem se commita na `main` | <!-- PREENCHER --> |
-| Autorização permanente dos commits do fluxo | Não: panorama e autorização a cada escrita. | <!-- `sim` se o dono autorizou, de uma vez, os dois commits do fluxo (o do veredito e o da síntese); o push continua do usuário. --> |
-| Terminal padrão dos comandos para o usuário | O da sessão, dito a cada comando. | <!-- `powershell` ou `bash`. --> |
-| Verificação escopada | Testes e análise estática do escopo tocado, gate do módulo e gate do commit sobre o diff. | <!-- PREENCHER --> |
-| Verificação ampla | Escopo tocado, consumidores afetados e gate do repositório. | <!-- PREENCHER --> |
-| Verificação completa | Suíte inteira, build, ponta a ponta no navegador e container. | <!-- Comandos reais da suíte, build, navegador e container; vazio: a plan nomeia. --> |
-| Gate do commit | Checagem equivalente ao hook sobre o diff staged. | <!-- PREENCHER --> |
-| Navegador | Verificação visual no navegador, se houver superfície visual. | <!-- Comando real; sem superfície visual, declare — e o motivo. --> |
+| Git e ramificações | `main`, `master` e `develop` protegidas; a branch de trabalho é a `dev/<nome>`, e as vagas `plan/<arquivo>` saem dela só para trabalho paralelo; a `develop` só recebe PR da `dev/<nome>` e a `main` só o PR de versão; prefixos `dev/`, `plan/` e `sarak/`; nunca se trabalha nem se commita na `main` | `main` direta; sem `develop` nem `dev/<nome>`; sem PR. O push é do usuário. |
+| Autorização permanente dos commits do fluxo | Não: panorama e autorização a cada escrita. | Não: o revisor entrega os comandos de commit e o usuário os executa. |
+| Terminal padrão dos comandos para o usuário | O da sessão, dito a cada comando. | `bash` (Git Bash no Windows). |
+| Verificação escopada | Testes e análise estática do escopo tocado, gate do módulo e gate do commit sobre o diff. | `python -m pytest tests/<arquivo> -q` do escopo · `python tools/nb_check.py <notebook>` · skills `code-auditoria-padrao` e `padrao-python` nos arquivos tocados. |
+| Verificação ampla | Escopo tocado, consumidores afetados e gate do repositório. | `python -m pytest tests -q` · `python tools/nb_check.py` nos dois notebooks. Só com motivo escrito (mudança de `config.py`, de contrato entre `src/pln/` módulos ou de `requirements.txt`). |
+| Verificação completa | Suíte inteira, build, ponta a ponta no navegador e container. | `python -m pytest tests -q` + os dois notebooks executados no Colab (Fase B). Não há build, navegador nem container. |
+| Gate do commit | Checagem equivalente ao hook sobre o diff staged. | Hook `.githooks/pre-commit` (segredos). `.githooks/verify_commit.py` fica fora do Git (`.git/info/exclude`): casa com os próprios padrões de segredo. |
+| Navegador | Verificação visual no navegador, se houver superfície visual. | Não se aplica: sem superfície visual (só notebooks). |
 | Numeração das plans | `plan-NN`, contador único no `00-indice`. | `plan-FF.NN`, contador por família no `00-indice`. |
 | Panorama | Não adota. | Sim; este molde traz `panorama/` e o `00-indice` por família. |
-| Spec de regras e geradores `--check` | `arquitetura/04-regras.md` e os geradores do template de módulos: `node tools/sync-env.mjs --check`, `node tools/sync-deploy.mjs --check`, `node tools/generate-port-schemas.mjs --check` e `node tools/generate-lint-config.mjs --check`. | <!-- PREENCHER --> |
+| Spec de regras e geradores `--check` | `arquitetura/04-regras.md` e os geradores do template de módulos: `node tools/sync-env.mjs --check`, `node tools/sync-deploy.mjs --check`, `node tools/generate-port-schemas.mjs --check` e `node tools/generate-lint-config.mjs --check`. | Não se aplica (projeto sem template de módulos). |
 | Uso de ADR | Sim, somente com duas opções reais, custo da escolhida e alto custo de reversão. | Sim, sob esses critérios. |
-| Obrigações acrescentadas | Nenhuma. | Nenhuma. <!-- Exemplo: execução que cria migration entrega antes/depois/rollback. --> |
+| Obrigações acrescentadas | Nenhuma. | Plan que altera notebook declara a Fase A (local) e a Fase B (saídas do Colab) em "Como verificar". <!-- Exemplo: execução que cria migration entrega antes/depois/rollback. --> |
 | Medição do ambiente | Comandos da skill `code-limpeza-ambiente`. | subcomandos `snapshot` e `diff` da skill `code-limpeza-ambiente` (`environment.py`), com `--out <snapshot.json> --tmp-prefix <prefixo>` e `--from <snapshot.json>`; caminho da skill conforme a instalação do plugin. |
 
 Se uma declaração de comando ficar vazia, a plan nomeia os comandos, como no legado.
@@ -212,7 +260,13 @@ Antes de escolher **como** fazer algo, leia **[[00-knowledge]]** — é o rotead
 > tipo de item: diretórios gerados que não se editam à mão; arquivos que só o usuário altera; operações
 > irreversíveis que exigem confirmação; integrações que não podem ser chamadas em desenvolvimento.
 
-<!-- PREENCHER -->
+- **Não versionar chave** nem imprimir `OPENROUTER_API_KEY`: o repositório é público e a saída do notebook também é.
+- **Não editar à mão** `data/saida/*` nem o texto de notebook executado: são evidência da execução no Colab.
+- **Não alterar** `data/dados-w22.csv`, `data/active_assets.json` nem `data/data_variables.json`: dados de origem (a leitura
+  correta deles é feita em `src/pln/sensores.py`, sem reescrever os arquivos).
+- **Não usar fallback de modelo** nem trocar o modelo no meio de uma avaliação: mistura de modelos invalida as métricas.
+- **Não deixar o LLM produzir fato**: número, limiar, sensor, página e seção vêm de código; o LLM só reescreve.
+- **Não confiar no nome/unidade de `data_variables.json`**: contradizem a descrição e a magnitude dos dados (ver §8).
 
 ---
 
@@ -223,7 +277,15 @@ Antes de escolher **como** fazer algo, leia **[[00-knowledge]]** — é o rotead
 > (`2026-07-31`, nunca "semana passada"). Item resolvido sai daqui — esta seção não é histórico; o histórico
 > é o `git` e os `adr/`.
 
-<!-- PREENCHER -->
+- **`data_variables.json` está inconsistente** (2026-11-23): o nome/unidade de cada variável contradiz a descrição e a magnitude
+  dos valores (ex.: "Velocidade - Porta 1 [mm/s]" tem média 82,8 e limiares 75/90/110, descrita como "monitoramento térmico das
+  bobinas do estator"). A plan 01.01 fixa o mapeamento canônico pela descrição + magnitude; **o usuário deve confirmá-lo**.
+- Só 4 das 6 variáveis têm limiar em `active_assets.json`; as outras 2 não geram alerta.
+- O PDF é um catálogo comercial WEG: não traz procedimento de troubleshooting passo a passo, então parte das perguntas
+  práticas **não tem resposta no corpus** — a abstenção correta é parte do resultado, não falha.
+- Modelos OpenRouter gratuitos têm limite de taxa e podem sair do ar: por isso cache em `data/saida/cache_llm.jsonl`.
+- Entrega anterior (referência para comparar): faithfulness 4,75/5 e relevancy 3,50/5 por juiz único, sem context precision;
+  7 de 20 perguntas com relevancy ≤ 2 por falha de recuperação (modelos de embedding e reranker em inglês).
 
 ---
 

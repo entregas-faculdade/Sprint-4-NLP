@@ -44,6 +44,8 @@ o **horizonte**: a evolução de longo prazo, em itens por família — a base d
 | FF | Família | Escopo (uma linha) |
 |---|---|---|
 | 00 | Fundação | processo SDD, lei do template e fundação tecnológica — reservada |
+| 01 | Sprint 3 — Alertas e classificação | geração fiel de alertas, classificação de eventos em 5 categorias e relatório operacional rastreável |
+| 02 | Sprint 4 — RAG e assistente | pipeline RAG sobre o manual W22, assistente de troubleshooting, avaliação, cenários e entrega |
 
 ---
 
@@ -54,7 +56,7 @@ o **horizonte**: a evolução de longo prazo, em itens por família — a base d
 >
 > - **Um título por família**, com o número e o nome do catálogo: `## 02 · Base de dados`.
 > - **Um item por linha**, neste formato fixo, que a skill `spec-panorama` lê:
->   `- ⬜ **R02.3** Índices de busca — uma frase opcional`. Concluído pode levar a data no fim: `(✅ AAAA-MM-DD)`.
+>   `- 🔷 **R02.3** Índices de busca — uma frase opcional`. Concluído pode levar a data no fim: `(✅ AAAA-MM-DD)`.
 > - **ID** `R<FF>.<n>`: `FF` é a família do catálogo; `n` é sequencial dentro da família, sem zero à esquerda,
 >   e **nunca** reaproveitado.
 > - **Estado:** `⬜` planejado · `🔷` em andamento (ao menos uma plan aberta com `item:` apontando para ele) ·
@@ -66,9 +68,20 @@ o **horizonte**: a evolução de longo prazo, em itens por família — a base d
 > - **Não é backlog:** o [[00-backlog]] guarda *achados* (problemas notados); este horizonte guarda *evolução
 >   pretendida*. Um achado que o usuário promove a evolução de longo prazo pode virar item.
 
+## 01 · Sprint 3 — Alertas e classificação
+- 🔷 **R01.1** Alertas determinísticos e fiéis — severidade, templates e verificador sobre os dados reais (F1)
+- 🔷 **R01.2** Classificação em 5 categorias e relatório rastreável — 60 eventos rotulados, F1 por classe, ROUGE e checklist (F1, F2)
+
+## 02 · Sprint 4 — RAG e assistente
+- 🔷 **R02.1** Pipeline RAG com página, seção e estado — chunking por seção, embeddings multilíngues, estado na busca (F3, F4)
+- 🔷 **R02.2** Assistente de troubleshooting — persona, citação, confiança calculada, abstenção e memória
+- 🔷 **R02.3** Avaliação confiável do RAG e do juiz — 20 perguntas com gabarito de página, métricas de recuperação, juiz por afirmação (F5, F6)
+- 🔷 **R02.4** Cenários e limites — elétrica, mecânica e preventiva em separado, limites observados (F7)
+- 🔷 **R02.5** Entrega — documento final, README, roteiro do vídeo e notebooks executados
+
 <!-- Exemplo (comentado: não conta como item real)
 ## 02 · Base de dados
 - ✅ **R02.1** Schema inicial — tabelas do domínio de pedidos (✅ 2026-10-09)
 - 🔷 **R02.2** Índices de busca — há uma plan aberta com item: "R02.2"
-- ⬜ **R02.3** Particionamento por mês
+- 🔷 **R02.3** Particionamento por mês
 -->

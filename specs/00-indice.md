@@ -5,7 +5,7 @@ dominio: "Governança de Specs (SDD)"
 status: "🟢 Vigente"
 tags: ["processo", "indice", "sdd"]
 relacionados: ["[[00-contexto]]", "[[00-backlog]]", "[[00-prompt-revisor]]", "[[00-prompt-executor]]"]
-proximo_numero_plan: {} # Com famílias: mapa família → NN; simples: escalar NN único. Só sobe, nunca reaproveitado — ver §4.
+proximo_numero_plan: {"01": 3, "02": 6} # Com famílias: mapa família → NN; simples: escalar NN único. Só sobe, nunca reaproveitado — ver §4.
 ---
 
 # 0. O que é este arquivo
@@ -55,7 +55,13 @@ que cresce é índice quebrado.
 
 | # | Plan | Objetivo | Depende de | Status | Destino |
 |---|---|---|---|---|---|
-| — | _(vazio — o revisor preenche o [[00-contexto]] direto, a pedido do usuário, sem plan)_ | — | — | — | — |
+| 1 | [plan-01.01-alertas-deterministicos-e-fieis](plan/plan-01.01-alertas-deterministicos-e-fieis.md) | Gerar alertas determinísticos e fiéis aos dados (F1) | — | 🟡 Em execução | specs/01.01 + 00-contexto |
+| 2 | [plan-01.02-classificacao-e-relatorio-rastreavel](plan/plan-01.02-classificacao-e-relatorio-rastreavel.md) | Classificar eventos em 5 categorias e gerar relatório rastreável (F1, F2) | plan-01.01 | 🔴 A executar | specs/01.02 + 00-contexto |
+| 3 | [plan-02.01-rag-com-pagina-secao-e-estado](plan/plan-02.01-rag-com-pagina-secao-e-estado.md) | Construir RAG com página, seção e estado operacional na busca (F3, F4) | plan-01.02 | 🔴 A executar | specs/02.01 + 00-contexto |
+| 4 | [plan-02.02-assistente-de-troubleshooting](plan/plan-02.02-assistente-de-troubleshooting.md) | Construir o assistente com citação, confiança calculada e abstenção | plan-02.01 | 🔴 A executar | specs/02.02 + 00-contexto |
+| 5 | [plan-02.03-avaliacao-confiavel-do-rag-e-do-juiz](plan/plan-02.03-avaliacao-confiavel-do-rag-e-do-juiz.md) | Avaliar o RAG com gabarito de página e juiz por afirmação (F5, F6) | plan-02.02 | 🔴 A executar | specs/02.03 + 00-contexto |
+| 6 | [plan-02.04-cenarios-e-limites](plan/plan-02.04-cenarios-e-limites.md) | Demonstrar os três cenários em separado e documentar os limites (F7) | plan-02.03 | 🔴 A executar | specs/02.04 + 00-contexto |
+| 7 | [plan-02.05-entrega](plan/plan-02.05-entrega.md) | Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados | plan-02.04 | 🔴 A executar | — |
 
 ---
 
