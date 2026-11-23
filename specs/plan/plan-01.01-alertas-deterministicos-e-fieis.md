@@ -4,7 +4,7 @@ familia: "01"
 item: "R01.1"
 titulo: "Gerar alertas determinísticos e fiéis aos dados"
 dominio: "Sprint 3 — Alertas e classificação"
-status: "🟡 Em execução"
+status: "🟠 Em revisão"
 prioridade: "Alta"
 tags: ["plan", "sprint-3", "alertas", "F1"]
 relacionados: ["[[00-contexto]]", "[[plan-01.02-classificacao-e-relatorio-rastreavel]]"]
@@ -181,8 +181,170 @@ proibidos; o fluxo "template → LLM reescreve → verificador → fallback ao t
 
 <!-- Preenchido pelo EXECUTOR. Append-only: cada rodada acrescenta um bloco novo; nada é removido. -->
 
+## Resumo da execução — 2026-11-23
+
+**Resultado:** Concluído com pendências
+
+**O que foi feito**
+- Implementei o contrato `Alerta`, as fronteiras de severidade, agrupamento de episódios, descarte de episódios leves curtos, templates e verificador de fidelidade em `src/pln/alertas.py:31`.
+- Centralizei caminhos, parâmetros e modelos em `src/pln/config.py:10`; carreguei e validei o mapeamento canônico em `src/pln/sensores.py:22` e `data/sensores.json`.
+- Implementei cliente OpenRouter injetável, cache, timeout, retry no mesmo modelo e retorno ao template após reprovação em `src/pln/llm.py:68`.
+- Adicionei 9 casos de referência e 1 episódio leve descartável, 23 testes, verificador do notebook e notebook sem saídas com as seções 0–8.
+
+**Arquivos alterados**
+| Arquivo | Natureza | O que mudou |
+|---|---|---|
+| `requirements.txt` | criado | Dependências com versões fixas. |
+| `src/pln/__init__.py` | criado | Inicialização do pacote. |
+| `src/pln/config.py` | criado | Caminhos, parâmetros, ativo, modelos e termos proibidos. |
+| `src/pln/sensores.py` | criado | Contrato do sensor e validação do mapeamento/limiares. |
+| `src/pln/alertas.py` | criado | Severidade, episódios, contrato, templates e verificador. |
+| `src/pln/llm.py` | criado | Cliente, cache e redação sujeita à verificação. |
+| `data/sensores.json` | criado | Mapeamento canônico e ações padrão. |
+| `data/alertas_teste.json` | criado | Casos sintéticos e resumos de referência. |
+| `data/saida/.gitkeep` | criado | Mantém o diretório de exportação no repositório. |
+| `tests/conftest.py` | criado | Preparação do caminho de importação dos testes. |
+| `tests/test_alertas.py` | criado | Testes de classificação, episódios, rastreabilidade, templates e verificador. |
+| `tests/test_llm.py` | criado | Testes de fallback, cache, retry e proteção da chave. |
+| `tools/nb_check.py` | criado | Validação e execução isolada de células offline. |
+| `notebooks/sprint3_pln_alertas.ipynb` | alterado | Notebook com as seções 0–8, avaliação e exportação. |
+| `specs/plan/plan-01.01-alertas-deterministicos-e-fieis.md` | alterado | Status atualizado e este resumo append-only. |
+
+**Verificações executadas**
+- `pytest tests -q -p no:cacheprovider --basetemp <TEMP> --cov=src.pln.alertas --cov=src.pln.sensores --cov=src.pln.llm --cov-report=term-missing` → 23 passaram; cobertura total 84% (`alertas.py` 90%, `sensores.py` 82%, `llm.py` 71%).
+- `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb` → notebook válido, sem saídas e sem chave detectada.
+- `code-auditoria-padrao` em `src/pln/`, `tools/` e `tests/` → sem violações de alta confiança; um achado heurístico de baixa confiança para a URL pública fixa em `src/pln/config.py:33`.
+- `git diff --check` → sem erros de whitespace.
+
+**Estado inicial do worktree:** `main`; `git status --short` vazio. O Git avisou que não conseguiu ler `C:\Users\Igor/.config/git/ignore`.
+
+**Ambiente após a verificação:** O venv temporário de cobertura, diretório temporário do pytest, dados de cobertura, log de instalação e snapshot ambiental criado para comparação foram removidos. A comparação reportou `system_temp.appeared: []`; nenhum serviço foi iniciado. O worktree permaneceu sem commit.
+
+**Critérios de aceite**
+- [x] Mapeamento e limiares dos sensores validados contra `active_assets.json` pelos testes.
+- [x] Fronteiras de severidade, episódios e descarte de episódio leve cobertos pelos testes.
+- [x] Contrato e rastreabilidade dos IDs do CSV cobertos pelos testes.
+- [x] Três templates por severidade e verificações de tom cobertos pelos testes.
+- [x] Verificador rejeita os casos de número, limite, diagnóstico, causa e ação inventados e aceita os 9 textos de referência.
+- [x] Redação não aprovada pelo verificador retorna ao template; cache e retry no mesmo modelo cobertos pelos testes.
+- [x] Constantes centralizadas e famílias do gerador e juiz diferentes; notebook validado sem saída e sem chave.
+- [ ] Fase B: execução no Colab, métricas sobre os casos e exportação de `data/saida/alertas.json` — pendente de execução do notebook no Colab.
+- [x] Testes e auditoria estática executados; artefatos temporários removidos.
+
+**Decisões e suposições**
+- Adotei o mapeamento por descrição e magnitude indicado na plan, pois `data_variables.json` diverge nesses campos; a própria plan registra essa premissa para confirmação do usuário.
+- Mantive a branch `main` conforme a instrução explícita posterior do usuário. Isso diverge da restrição geral do executor (§7.1); nenhum commit foi criado.
+- A heurística de auditoria que sinaliza `src/pln/config.py:33` foi tratada como falso positivo: é o endpoint público fixo da API.
+
+**Achados fora do escopo (não corrigidos)**
+- `C:\Users\Igor/.config/git/ignore` — o Git não teve permissão para ler o arquivo global de exclusões; não alterei configuração externa ao repositório.
+
+**Pendências / riscos**
+- Executar o notebook no Colab e verificar as saídas reais, ROUGE/checklist e `data/saida/alertas.json`; a Fase B não foi declarada concluída.
+- Confirmar com o usuário o mapeamento canônico adotado para os sensores.
+
+## Resumo da execução (correção 1) — 2026-11-23
+
+**Resultado:** Concluído com pendências
+
+1. **Achado 1 — clareza:** encurtei os templates para até 60 palavras, mantendo ativo, grandeza, pico/unidade, desvio/nominal, janela, horários e ação. `verificar_clareza` fornece a mesma regra usada pelo checklist do notebook; teste cobre os 9 casos.
+2. **Achado 2 — segunda tentativa:** a nova mensagem inclui os códigos e trechos reprovados e instrui a corrigir usando o alerta original. Teste simula número inventado na primeira resposta e texto fiel na segunda, aceito com `origem_texto="llm"`.
+3. **Achado 3 — texto extra:** comparei o multiconjunto de palavras do candidato ao template canônico. A frase sobre rolamentos/lubrificação é reprovada; o teste de frases reordenadas com os mesmos fatos é aceito.
+4. **Achado 4 — referência:** corrigi `moderado-vibracao` para desvio `+1,70 mm/s` (113,33%) sobre nominal `1,50 mm/s`. Teste valida os números dos 9 resumos contra os valores permitidos de cada alerta.
+5. **Achado 5 — modelo:** alterei `MODELO_CLASSIFICADOR` para `mistralai/mistral-small-3.2-24b-instruct`; o ID e os demais três constam nas páginas atuais de modelos do [OpenRouter](https://openrouter.ai/api/v1/models), incluindo a [página do Mistral Small 3.2 24B](https://openrouter.ai/mistralai/mistral-small-3.2-24b-instruct).
+6. **Achado 6 — conversão de tempo:** criei `SEGUNDOS_POR_MINUTO` para converter deltas em minutos; `MINUTOS_POR_HORA` permanece somente na conversão de minutos em horas. Teste confirma duração de 60 minutos.
+7. **Achado 7 — texto e fuso:** normalizei a inicial da grandeza para minúscula, retirei “no instante registrado” para durações arredondadas abaixo de um minuto e marquei horários como UTC. Teste cobre intervalo de 30 segundos com os dois horários.
+8. **Achado 8 — falha da API:** `redigir_alerta_com_fallback_api` devolve o template validado e sinaliza a falha; a célula 12 soma e imprime `Falhas de API`. Teste usa cliente falso que lança `OpenRouterRequestError`.
+
+**Verificações da correção**
+- `python -m pytest tests -q -p no:cacheprovider --basetemp <TEMP>` → 30 passaram.
+- `MPLBACKEND=Agg MPLCONFIGDIR=<TEMP> python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb` → notebook válido; as células offline executaram.
+- Validador AST Sarak em `src/pln/`, `tests/` e `tools/nb_check.py` → exit 0; sem violações de alta confiança. Permanece apenas o achado heurístico de baixa confiança para a URL pública fixa em `src/pln/config.py:35`.
+- `git diff --check` nos arquivos de código, testes, dados e notebook → limpo. O diff completo ainda aponta uma linha em branco no EOF do veredito do revisor; preservei esse bloco append-only.
+
+**Estado inicial da correção:** branch `main`; worktree já continha as alterações da execução anterior e modificações em `specs/00-indice.md` e `specs/panorama/00-resumo.md`. Não alterei esses dois arquivos nem criei commit.
+
+**Ambiente após a correção:** venv, log de instalação, diretórios de teste, script diagnóstico e diretórios temporários do Matplotlib foram removidos. Nenhum serviço ou chamada OpenRouter foi iniciada nesta validação local.
+
+**Pendências preservadas:** Fase B no Colab, confirmação do mapeamento canônico e eventual reinício do runtime após instalar `numpy==2.5.5`, conforme o veredito.
+
+## Resumo da execução (correção 2) — 2026-11-23
+
+**Resultado:** Concluído com pendências
+
+1. **Achado único — paráfrase fiel:** removi a exigência de igualdade do multiconjunto inteiro de palavras. O verificador continua exigindo os fatos, a severidade, a duração em uma forma reconhecida, os horários, a unidade e a ação padrão; palavras novas precisam pertencer a `VOCABULARIO_PARAFRASE_PERMITIDO` e não podem exceder `MAX_PALAVRAS_PARAFRASE_ADICIONAIS` (14). O teste da construção “No ativo ... há um alerta leve ... chegou a pico ... o episódio durou uma hora” passa; a mesma frase com conteúdo sobre rolamentos/lubrificação e a versão com ação trocada falham.
+
+**Verificações da correção**
+- `python -m pytest tests -q -p no:cacheprovider --basetemp <TEMP>` → 34 passaram.
+- `MPLBACKEND=Agg MPLCONFIGDIR=<TEMP> python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb` → notebook válido; células offline executadas.
+- Validador AST Sarak em `src/pln/`, `tests/` e `tools/nb_check.py` → exit 0; sem violações de alta confiança. Permanece o achado heurístico de baixa confiança para a URL pública fixa em `src/pln/config.py:36`.
+- `rg -n '[ \t]+$' src/pln tests` → sem whitespace final. `git diff --check` → exit 0; apenas aviso de conversão LF/CRLF em `specs/panorama/00-resumo.md`.
+
+**Estado inicial da correção:** branch `main`; worktree já continha as alterações das rodadas anteriores e modificações em `specs/00-backlog.md`, `specs/00-indice.md` e `specs/panorama/00-resumo.md`. Não alterei esses arquivos nem criei commit.
+
+**Ambiente após a correção:** venv temporário, log de instalação, diretório de testes e configuração temporária do Matplotlib removidos. Nenhuma chamada OpenRouter ou serviço foi iniciado.
+
+**Pendências preservadas:** execução da Fase B no Colab, confirmação do mapeamento canônico e possível reinício do runtime após `numpy==2.5.5`. O achado sobre clareza dos alertas reais permanece como nota de backlog, fora do escopo numerado desta correção.
+
 ---
 
 # 10. Veredito
 
 <!-- Preenchido pelo REVISOR. Append-only: um bloco por rodada, com o que foi verificado e como. -->
+
+## Veredito — 2026-11-23 — 🔴 Reprovado
+
+**Escopo da rodada:** Fase A (local). A Fase B (execução no Colab) **não** foi iniciada: reprovada antes, para não gastar uma execução num código que será alterado.
+
+**O que foi verificado e como**
+- `git status` / `git diff --stat`: só arquivos de §3.1 (mais `data/saida/.gitkeep`); nada fora do escopo; sem commit do executor.
+- `python -m pytest tests -q` → 23 passaram. `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb` → verde.
+- Leitura integral de `src/pln/config.py`, `sensores.py`, `alertas.py`, `llm.py`, `tests/test_alertas.py`, `data/sensores.json`, `data/alertas_teste.json` e das 17 células do notebook.
+- Execução real sobre `data/dados-w22.csv`: 43.123 leituras → 4.477 alertas (leve 495, moderado 1.788, crítico 2.194) em 0,6 s; 200 templates, 0 reprovados pelo verificador; todos os `ids_leitura` existem no CSV (teste do executor).
+- `GET https://openrouter.ai/api/v1/models` (2026-11-23): 3 dos 4 ids de `config.py` existem; **1 não existe** (achado 5).
+- Varredura de chave: nenhum valor de `sk-or-` ou `OPENROUTER_API_KEY=` no repositório (só o padrão de busca no `nb_check.py`).
+- Resumo do executor × diff: coerente (nenhuma divergência).
+
+**Achados**
+
+1. **O próprio template reprova no checklist de clareza em 9/9 casos.** `notebooks/sprint3_pln_alertas.ipynb` célula 14 (`checklist_result`) exige ≤ 60 palavras; `gerar_template` (`src/pln/alertas.py:264-281`) produz 77–82 palavras. A seção 7 mostraria "clareza = False" para todo template e o critério §6 (ROUGE + checklist) falha. Critério violado: §5 passo 10 (seção 7) e §6. Resultado esperado: os 9 templates de `alertas_teste.json` passam em **clareza** (≤ 60 palavras pela mesma contagem do notebook) **mantendo** os campos exigidos pelo passo 4 da plan (ativo, grandeza, valor, desvio e nominal, janela, horário, ação padrão). O executor decide o que condensar; `verificar_texto` e `_missing_episode_facts` acompanham o template; testes atualizados, e um teste novo garante `clareza` nos 9 casos.
+2. **A segunda tentativa de redação é inútil.** `src/pln/llm.py:155-161`: as duas tentativas enviam as mesmas `messages` com temperatura 0 e seed fixa, e o cache (`llm.py:75-81`) devolve a mesma resposta; `MAX_TENTATIVAS_REDACAO = 2` nunca produz um candidato diferente. Critério violado: §5 passo 6 ("até 2 tentativas"). Resultado esperado: a 2ª tentativa inclui, nas mensagens, os **códigos e trechos das violações** da 1ª (sem fatos novos). Teste novo: LLM falso devolve número inventado na 1ª e texto fiel na 2ª, e `origem_texto == "llm"`.
+3. **O verificador deixa passar conteúdo livre sem número nem termo da lista.** `src/pln/alertas.py:366-383`: `verificar_texto(template + " Verifique também os rolamentos e a lubrificação.", alerta)` não é reprovado (sem número, sem termo de `TERMOS_PROIBIDOS`, ação padrão presente). É a falha exata que o professor apontou (F1: "acrescentam … diagnósticos … que não estão nos dados"). Critério violado: §1 e §6 ("`redigir_alerta` nunca devolve texto reprovado" / texto fiel). Resultado esperado: `verificar_texto` reprova **qualquer informação que não esteja no template** (decisão do executor sobre o mecanismo: por exemplo teto de comprimento e comparação de conteúdo com o template/campos do alerta), **sem** reprovar uma paráfrase que preserve todos os fatos e a ação. Testes novos: (a) template + frase extra sem número → reprovado; (b) reescrita com a ordem das frases alterada e os mesmos fatos → aceita.
+4. **Referência manual com fatos errados.** `data/alertas_teste.json`, caso `moderado-vibracao`: o resumo cita "nominal de 2,80 mm/s", "+0,40 mm/s" e "26,67%"; 2,80 é o limiar `warning`; o nominal da vibração é 1,50 mm/s (pico 3,20 → desvio +1,70 mm/s, 113,33%). Referência errada contamina o ROUGE. Critério violado: §5 passo 7 ("só fatos do caso"). **Correção exata (mecânica):**
+   - arquivo: `data/alertas_teste.json`
+   - antes: `desvio +0,40 mm/s (26,67%) acima do nominal de 2,80 mm/s`
+   - depois: `desvio +1,70 mm/s (113,33%) acima do nominal de 1,50 mm/s`
+   - verificação: `grep -c "nominal de 2,80 mm/s" data/alertas_teste.json` → `0`. Acrescentar um teste que confere que **todo número** de cada `resumo_referencia` pertence ao conjunto permitido do alerta do caso (formatado como em `_format_number`); os outros 8 casos já cumprem.
+5. **`MODELO_CLASSIFICADOR` não existe no OpenRouter.** `src/pln/config.py:38`: `mistralai/mistral-small-3.2-24b-instruct-2506` não consta em `GET /api/v1/models` (consta `mistralai/mistral-small-3.2-24b-instruct`). A plan 01.02 chamaria um modelo inexistente. Critério violado: §5 passo 2 (ids escolhidos da lista pública). **Correção exata (mecânica):**
+   - arquivo: `src/pln/config.py`
+   - antes: `MODELO_CLASSIFICADOR = "mistralai/mistral-small-3.2-24b-instruct-2506"`
+   - depois: `MODELO_CLASSIFICADOR = "mistralai/mistral-small-3.2-24b-instruct"`
+   - verificação: a lista de `curl -s https://openrouter.ai/api/v1/models` contém esse id e os outros três ids de `config.py`.
+6. **Constante com nome e uso trocados.** `src/pln/alertas.py:149` e `:178` dividem **segundos** por `MINUTOS_POR_HORA` (60) para obter minutos; só `:237` usa a constante pelo que ela diz. Dois significados sob o mesmo nome (padrao-escrita: nomes que dizem o que são, zero hardcoded). Resultado esperado: constante própria em `config.py` (segundos por minuto) usada nas duas conversões de `alertas.py`; `MINUTOS_POR_HORA` só onde converte minutos em horas.
+7. **Texto do alerta pouco natural e com uma afirmação inconsistente** (naturalidade vale 20 %): saída real do alerta `A-0003`: "A **Corrente** elétrica por fase atingiu…" (grandeza com maiúscula no meio da frase; o mesmo em "A Velocidade do eixo" e "A Temperatura do enrolamento (estator)") e "O episódio ocorreu **no instante registrado**, em 3 leituras, **entre 05/05/2026 às 01:22 e 05/05/2026 às 01:23**" (diz "instante" e informa dois horários distintos). Os horários do CSV são UTC (`+00`) e o texto não o diz, enquanto o ativo está em Sorocaba. Resultado esperado: grandeza com minúscula inicial dentro da frase; nenhuma frase afirma "instante" quando `inicio != fim`; horários marcados como UTC; `verificar_texto` acompanha. Testes: episódio de menos de 1 min não contém "instante registrado" junto de dois horários; o texto contém "UTC".
+8. **Uma falha de API derruba a célula do Colab.** `notebooks/sprint3_pln_alertas.ipynb` célula 12 chama `redigir_alerta` sem tratamento; `OpenRouterClient._request_with_retry` levanta `RuntimeError` após 3 tentativas (limite de taxa é esperado em modelos baratos) e a execução para no meio, sem notebook entregável. Critério violado: §6 Fase B ("sem nenhum erro"). Resultado esperado: falha de API numa redação mantém o **template** com `origem_texto="template"`, é **contada e impressa** (`falhas_api`) e nunca interrompe a célula; nunca troca de modelo. Teste novo com cliente falso que levanta.
+
+**Pendências que continuam para a Fase B (não são achados):** execução no Colab; confirmação pelo usuário do mapeamento canônico dos sensores; atenção ao `numpy==2.5.5` fixado em `requirements.txt` — se o Colab pedir *Restart runtime* após a célula 1, reinicie e rode de novo a partir da célula 1.
+
+**Ao reentregar:** acrescentar novo bloco na §9 com os 8 achados tratados; rodar `python -m pytest tests -q` e `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb`.
+
+## Veredito — 2026-11-23 — 🔴 Reprovado (rodada 2, correção 1)
+
+**Escopo da rodada:** Fase A (local). A Fase B continua não iniciada: ainda há um defeito que muda o comportamento do LLM, e rodar o Colab antes dele gastaria uma execução.
+
+**O que foi verificado e como**
+- `git status`: mesmos arquivos da §3.1 da rodada anterior; nada fora do escopo; sem commit do executor. Resumo da correção × diff: coerente, sem divergência.
+- `python -m pytest tests -q` → 30 passaram. `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb` → verde.
+- `GET https://openrouter.ai/api/v1/models`: os 4 ids de `config.py` existem (achado 5 resolvido). `grep -c "nominal de 2,80 mm/s" data/alertas_teste.json` → 0 (achado 4 resolvido). `SEGUNDOS_POR_MINUTO` em `config.py:24`, usada em `alertas.py:152` e `:181`; `MINUTOS_POR_HORA` só em `:242` (achado 6 resolvido).
+- Execução real sobre `data/dados-w22.csv` (4.477 alertas): 0 templates reprovados pelo verificador; no máximo 51 palavras por contagem simples; achado 7 resolvido no texto (grandeza em minúscula, horários com `UTC`, nenhum "instante registrado" junto de dois horários).
+- Achado 3 (frase extra): `template + " Verifique também os rolamentos e a lubrificação."`, `"... precisa de manutenção imediata."` e `"... parar a máquina."` → todas reprovadas; frases reordenadas → aceitas.
+- Achados 2 e 8: lidos em `llm.py:164-228` e nos testes `test_second_rewrite_includes_the_previous_violations` e `test_api_failure_returns_the_template_and_reports_failure`; coerentes com o resultado pedido.
+- Varredura de chave: nenhum valor de chave no repositório.
+
+**Achados desta rodada**
+
+1. **O verificador só aceita reordenação: toda reescrita real é reprovada, e o LLM nunca vira o texto final.** `src/pln/alertas.py:391-409` (`_unsupported_content_violations`) exige que o multiconjunto de palavras do candidato seja **idêntico** ao do template; o prompt de `src/pln/llm.py:203-204` pede "português fluido", ou seja, reescrever. Reproduzido: uma paráfrase fiel, com todos os números, unidades, horários e a ação padrão, só trocando conectivos ("No ativo Teste (Sorocaba) há um alerta leve: a corrente elétrica por fase chegou a pico 129,48 A, …") devolve `conteudo_nao_sustentado`. Qualquer palavra a mais ou a menos reprova, então na Fase B `origem_texto` será quase sempre `template` e a etapa de LLM do pipeline fica decorativa. Critério violado: veredito anterior, achado 3, resultado esperado ("**sem** reprovar uma paráfrase que preserve todos os fatos e a ação") e §1 da plan (o LLM só reescreve o que o código calculou). O exemplo (b) que o veredito anterior pedia, só "ordem das frases alterada", era estreito demais; o executor o cumpriu à risca, e a lacuna é da instrução. Resultado esperado agora: `verificar_texto` continua reprovando **informação nova** (frase sem número com conteúdo extra, afirmação de causa, diagnóstico ou prognóstico, outro ativo, outra grandeza, outra unidade, outra ação) **e passa a aceitar** uma reescrita que troque conectivos e a construção das frases mantendo todos os fatos e a ação padrão. O mecanismo é decisão do executor, dentro do padrão (por exemplo, exigir os fatos e a ação e limitar o vocabulário adicional por teto de palavras novas, ou por lista fechada de conectivos). Testes novos: (a) a paráfrase fiel acima → aceita; (b) a mesma paráfrase com uma frase extra sem número ("Verifique também os rolamentos e a lubrificação.") → reprovada; (c) uma paráfrase que troque a ação padrão por outra → reprovada; os testes existentes continuam verdes.
+
+**Registrado no backlog (não reprova):** com a régua `verificar_clareza` do notebook (≤ 60 palavras por `\w+`, que conta cada parte de uma data), 1.412 dos 4.477 templates reais a falham (vibração e velocidade críticas ou moderadas, de ação padrão longa); o notebook só aplica a régua aos 9 casos de teste, que passam.
+
+**Ao reentregar:** acrescentar bloco novo na §9 com o achado tratado; rodar `python -m pytest tests -q` e `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb`. Pendências da Fase B continuam: execução no Colab; confirmação do mapeamento canônico dos sensores; possível *Restart runtime* após a célula 1 por causa do `numpy==2.5.5`.

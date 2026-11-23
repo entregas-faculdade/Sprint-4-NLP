@@ -63,7 +63,7 @@ via normal.
 
 | # | Achado | Origem | Registrado em | Peso |
 |---|---|---|---|---|
-| — | _(vazio)_ | — | — | — |
+| 1 | `verificar_clareza` (≤ 60 palavras por `\w+`) reprova 1.412 dos 4.477 templates reais (vibração e velocidade, ação padrão longa); o notebook só a aplica aos 9 casos de teste | execução | 2026-11-23 | médio |
 
 ---
 

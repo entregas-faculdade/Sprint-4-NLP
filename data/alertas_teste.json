@@ -1,0 +1,259 @@
+{
+  "casos": [
+    {
+      "caso": "leve-temperatura",
+      "leituras": [
+        {
+          "id": "leve-temperatura-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 80.0,
+          "timestamp": "2026-06-01T10:00:00+00:00"
+        },
+        {
+          "id": "leve-temperatura-r1",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 82.0,
+          "timestamp": "2026-06-01T10:30:00+00:00"
+        },
+        {
+          "id": "leve-temperatura-r2",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 81.0,
+          "timestamp": "2026-06-01T11:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "leve",
+      "descartar": false,
+      "resumo_referencia": "Alerta leve para Teste (Sorocaba): Temperatura do enrolamento (estator) atingiu 82,00 °C, média 81,00 °C, desvio +7,00 °C (9,33%) acima do nominal de 75,00 °C, em três leituras na última hora."
+    },
+    {
+      "caso": "leve-corrente",
+      "leituras": [
+        {
+          "id": "leve-corrente-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 132.0,
+          "timestamp": "2026-06-02T10:00:00+00:00"
+        },
+        {
+          "id": "leve-corrente-r1",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 134.0,
+          "timestamp": "2026-06-02T10:30:00+00:00"
+        },
+        {
+          "id": "leve-corrente-r2",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 133.0,
+          "timestamp": "2026-06-02T11:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "leve",
+      "descartar": false,
+      "resumo_referencia": "Alerta leve para Teste (Sorocaba): Corrente elétrica por fase atingiu 134,00 A, média 133,00 A, desvio +9,00 A (7,20%) acima do nominal de 125,00 A, em três leituras na última hora."
+    },
+    {
+      "caso": "leve-vibracao",
+      "leituras": [
+        {
+          "id": "leve-vibracao-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "3f809255-7687-4d25-92da-b8e134dcd01d",
+          "value": 1.6,
+          "timestamp": "2026-06-03T10:00:00+00:00"
+        },
+        {
+          "id": "leve-vibracao-r1",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "3f809255-7687-4d25-92da-b8e134dcd01d",
+          "value": 1.7,
+          "timestamp": "2026-06-03T10:30:00+00:00"
+        },
+        {
+          "id": "leve-vibracao-r2",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "3f809255-7687-4d25-92da-b8e134dcd01d",
+          "value": 1.9,
+          "timestamp": "2026-06-03T11:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "leve",
+      "descartar": false,
+      "resumo_referencia": "Alerta leve para Teste (Sorocaba): Vibração no mancal lado acoplado atingiu 1,90 mm/s, média 1,73 mm/s, desvio +0,40 mm/s (26,67%) acima do nominal de 1,50 mm/s, em três leituras na última hora."
+    },
+    {
+      "caso": "moderado-limite-warning",
+      "leituras": [
+        {
+          "id": "moderado-limite-warning-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 90.0,
+          "timestamp": "2026-06-04T10:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "moderado",
+      "descartar": false,
+      "resumo_referencia": "Alerta moderado para Teste (Sorocaba): Temperatura do enrolamento (estator) atingiu 90,00 °C, média 90,00 °C, no limiar warning, com desvio de +15,00 °C (20,00%) acima do nominal de 75,00 °C."
+    },
+    {
+      "caso": "moderado-corrente",
+      "leituras": [
+        {
+          "id": "moderado-corrente-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 145.0,
+          "timestamp": "2026-06-05T10:00:00+00:00"
+        },
+        {
+          "id": "moderado-corrente-r1",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 148.0,
+          "timestamp": "2026-06-05T10:30:00+00:00"
+        },
+        {
+          "id": "moderado-corrente-r2",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 150.0,
+          "timestamp": "2026-06-05T11:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "moderado",
+      "descartar": false,
+      "resumo_referencia": "Alerta moderado para Teste (Sorocaba): Corrente elétrica por fase atingiu 150,00 A, média 147,67 A, desvio +25,00 A (20,00%) acima do nominal de 125,00 A, em três leituras na última hora."
+    },
+    {
+      "caso": "moderado-vibracao",
+      "leituras": [
+        {
+          "id": "moderado-vibracao-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "3f809255-7687-4d25-92da-b8e134dcd01d",
+          "value": 3.0,
+          "timestamp": "2026-06-06T10:00:00+00:00"
+        },
+        {
+          "id": "moderado-vibracao-r1",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "3f809255-7687-4d25-92da-b8e134dcd01d",
+          "value": 3.2,
+          "timestamp": "2026-06-06T10:30:00+00:00"
+        },
+        {
+          "id": "moderado-vibracao-r2",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "3f809255-7687-4d25-92da-b8e134dcd01d",
+          "value": 3.1,
+          "timestamp": "2026-06-06T11:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "moderado",
+      "descartar": false,
+      "resumo_referencia": "Alerta moderado para Teste (Sorocaba): Vibração no mancal lado acoplado atingiu 3,20 mm/s, média 3,10 mm/s, desvio +1,70 mm/s (113,33%) acima do nominal de 1,50 mm/s, em três leituras na última hora."
+    },
+    {
+      "caso": "critico-limite-critical",
+      "leituras": [
+        {
+          "id": "critico-limite-critical-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "156b96a1-8899-463f-9311-c0cf754066ae",
+          "value": 1850.0,
+          "timestamp": "2026-06-07T10:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "critico",
+      "descartar": false,
+      "resumo_referencia": "Alerta crítico para Teste (Sorocaba): Velocidade do eixo atingiu 1.850,00 rpm, média 1.850,00 rpm, no limiar crítico, com desvio de +100,00 rpm (5,71%) acima do nominal de 1.750,00 rpm."
+    },
+    {
+      "caso": "critico-temperatura",
+      "leituras": [
+        {
+          "id": "critico-temperatura-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 115.0,
+          "timestamp": "2026-06-08T10:00:00+00:00"
+        },
+        {
+          "id": "critico-temperatura-r1",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 120.0,
+          "timestamp": "2026-06-08T10:30:00+00:00"
+        },
+        {
+          "id": "critico-temperatura-r2",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 118.0,
+          "timestamp": "2026-06-08T11:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "critico",
+      "descartar": false,
+      "resumo_referencia": "Alerta crítico para Teste (Sorocaba): Temperatura do enrolamento (estator) atingiu 120,00 °C, média 117,67 °C, desvio +45,00 °C (60,00%) acima do nominal de 75,00 °C, em três leituras na última hora."
+    },
+    {
+      "caso": "critico-corrente",
+      "leituras": [
+        {
+          "id": "critico-corrente-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 170.0,
+          "timestamp": "2026-06-09T10:00:00+00:00"
+        },
+        {
+          "id": "critico-corrente-r1",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 175.0,
+          "timestamp": "2026-06-09T10:30:00+00:00"
+        },
+        {
+          "id": "critico-corrente-r2",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+          "value": 173.0,
+          "timestamp": "2026-06-09T11:00:00+00:00"
+        }
+      ],
+      "severidade_esperada": "critico",
+      "descartar": false,
+      "resumo_referencia": "Alerta crítico para Teste (Sorocaba): Corrente elétrica por fase atingiu 175,00 A, média 172,67 A, desvio +50,00 A (40,00%) acima do nominal de 125,00 A, em três leituras na última hora."
+    },
+    {
+      "caso": "leve-curto-descartado",
+      "leituras": [
+        {
+          "id": "leve-curto-r0",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 78.0,
+          "timestamp": "2026-06-10T10:00:00+00:00"
+        },
+        {
+          "id": "leve-curto-r1",
+          "asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+          "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+          "value": 79.0,
+          "timestamp": "2026-06-10T10:30:00+00:00"
+        }
+      ],
+      "severidade_esperada": "descartado",
+      "descartar": true,
+      "resumo_referencia": "Episódio leve com duas leituras; não gera alerta."
+    }
+  ]
+}

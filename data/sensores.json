@@ -1,0 +1,93 @@
+{
+  "active_asset_id": "a4a102ae-f10f-4ae7-b029-5e5f1b789fe8",
+  "sensors": [
+    {
+      "variable_id": "156b96a1-8899-463f-9311-c0cf754066ae",
+      "grandeza": "Velocidade do eixo",
+      "unidade": "rpm",
+      "descricao_origem": "Rotação por minuto do eixo",
+      "limiares": {
+        "nominal": 1750,
+        "warning": 1800,
+        "critical": 1850
+      },
+      "acoes_padrao": {
+        "leve": "Monitore a velocidade do eixo nas próximas leituras.",
+        "moderado": "Verifique a velocidade do eixo e programe inspeção.",
+        "critico": "Interrompa a operação e solicite inspeção do eixo imediatamente."
+      }
+    },
+    {
+      "variable_id": "3f809255-7687-4d25-92da-b8e134dcd01d",
+      "grandeza": "Vibração no mancal lado acoplado",
+      "unidade": "mm/s",
+      "descricao_origem": "Velocidade de vibração no mancal lado acoplado",
+      "limiares": {
+        "nominal": 1.5,
+        "warning": 2.8,
+        "critical": 4.5
+      },
+      "acoes_padrao": {
+        "leve": "Monitore a vibração no mancal nas próximas leituras.",
+        "moderado": "Inspecione o mancal e programe verificação.",
+        "critico": "Interrompa a operação e solicite inspeção do mancal imediatamente."
+      }
+    },
+    {
+      "variable_id": "472e04da-4863-4f49-9cb8-1c9e164a4fa4",
+      "grandeza": "Vibração global",
+      "unidade": "mm/s",
+      "descricao_origem": "Velocidade de vibração global",
+      "limiares": null,
+      "acoes_padrao": {
+        "leve": "Monitore a vibração global nas próximas leituras.",
+        "moderado": "Verifique a vibração global e programe inspeção.",
+        "critico": "Interrompa a operação e solicite inspeção imediatamente."
+      }
+    },
+    {
+      "variable_id": "8addd89b-70a5-4727-b2c0-bcea6b5c2d78",
+      "grandeza": "Corrente elétrica por fase",
+      "unidade": "A",
+      "descricao_origem": "Consumo elétrico por fase",
+      "limiares": {
+        "nominal": 125,
+        "warning": 140,
+        "critical": 160
+      },
+      "acoes_padrao": {
+        "leve": "Monitore a corrente elétrica por fase nas próximas leituras.",
+        "moderado": "Verifique as conexões elétricas e programe inspeção.",
+        "critico": "Interrompa a operação e solicite inspeção elétrica imediata."
+      }
+    },
+    {
+      "variable_id": "9c611f84-fb81-4db0-969e-7507d35e6761",
+      "grandeza": "Temperatura do enrolamento (estator)",
+      "unidade": "°C",
+      "descricao_origem": "Monitoramento térmico das bobinas do estator",
+      "limiares": {
+        "nominal": 75,
+        "warning": 90,
+        "critical": 110
+      },
+      "acoes_padrao": {
+        "leve": "Monitore a temperatura do enrolamento nas próximas leituras.",
+        "moderado": "Verifique o sistema de refrigeração e programe inspeção.",
+        "critico": "Interrompa a operação e solicite inspeção imediata."
+      }
+    },
+    {
+      "variable_id": "aa09b4cd-3b6b-4f56-8991-402ec305d26d",
+      "grandeza": "Temperatura interna das bobinas",
+      "unidade": "°C",
+      "descricao_origem": "Temperatura interna das bobinas",
+      "limiares": null,
+      "acoes_padrao": {
+        "leve": "Monitore a temperatura interna das bobinas nas próximas leituras.",
+        "moderado": "Verifique a temperatura interna das bobinas e programe inspeção.",
+        "critico": "Interrompa a operação e solicite inspeção das bobinas imediatamente."
+      }
+    }
+  ]
+}
