@@ -7,16 +7,17 @@ import json
 import logging
 import os
 import time
-from dataclasses import replace
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Any, Protocol
 
 import requests
 
-from src.pln.alertas import Alerta, gerar_template, verificar_texto
+from src.pln.alertas import Alerta, Violacao, gerar_template, verificar_clareza, verificar_texto
 from src.pln.config import (
     BACKOFF_REQUISICAO_SEGUNDOS,
     LLM_CACHE_FILE,
+    MAX_PALAVRAS_ALERTA,
     MAX_TENTATIVAS_REDACAO,
     MAX_TENTATIVAS_REQUISICAO,
     MODELO_REDATOR,
@@ -38,6 +39,28 @@ class CompletionClient(Protocol):
 
 class OpenRouterRequestError(RuntimeError):
     """A completed retry cycle could not obtain a response from OpenRouter."""
+
+
+@dataclass(frozen=True)
+class RejectedDraft:
+    """A model response rejected by the alert verifiers."""
+
+    texto: str
+    violacoes: tuple[Violacao, ...]
+
+
+@dataclass(frozen=True)
+class RedactionResult:
+    """Final text and rejected drafts from one verified rewriting run."""
+
+    texto: str
+    alerta: Alerta
+    rascunhos_rejeitados: tuple[RejectedDraft, ...]
+    falha_api: bool = False
+
+    @property
+    def origem_texto(self) -> str:
+        return self.alerta.origem_texto
 
 
 def _environment_api_key() -> str | None:
@@ -163,35 +186,66 @@ def create_openrouter_client() -> OpenRouterClient:
 
 def redigir_alerta(alerta: Alerta, cliente: CompletionClient) -> tuple[str, Alerta]:
     """Rewrite a template twice at most, returning only verified text."""
+    result = redigir_alerta_detalhado(alerta, cliente)
+    if result.falha_api:
+        raise OpenRouterRequestError("A chamada OpenRouter falhou durante a redação do alerta.")
+    return result.texto, result.alerta
+
+
+def redigir_alerta_detalhado(alerta: Alerta, cliente: CompletionClient) -> RedactionResult:
+    """Return the selected text and rejected drafts without extra model calls."""
     template = gerar_template(alerta)
     if verificar_texto(template, alerta):
         raise RuntimeError("O template determinístico não passou pelo verificador.")
-    rejected_candidate = None
-    previous_violations = ()
-    for attempt in range(MAX_TENTATIVAS_REDACAO):
+    rejected_drafts: list[RejectedDraft] = []
+    for _ in range(MAX_TENTATIVAS_REDACAO):
         messages = _rewriting_messages(template)
-        if attempt and rejected_candidate is not None:
-            messages = _rewriting_messages(template, rejected_candidate, previous_violations)
-        candidate = cliente.complete(MODELO_REDATOR, messages)
-        previous_violations = tuple(verificar_texto(candidate, alerta))
-        if not previous_violations:
-            return candidate, replace(alerta, origem_texto="llm")
-        rejected_candidate = candidate
-    return template, replace(alerta, origem_texto="template")
+        if rejected_drafts:
+            previous_draft = rejected_drafts[-1]
+            messages = _rewriting_messages(template, previous_draft.texto, previous_draft.violacoes)
+        try:
+            candidate = cliente.complete(MODELO_REDATOR, messages)
+        except OpenRouterRequestError:
+            return _template_result(alerta, template, rejected_drafts, api_failed=True)
+        violations = _candidate_violations(candidate, alerta)
+        if not violations:
+            return RedactionResult(
+                candidate,
+                replace(alerta, origem_texto="llm"),
+                tuple(rejected_drafts),
+            )
+        rejected_drafts.append(RejectedDraft(candidate, violations))
+    return _template_result(alerta, template, rejected_drafts)
+
+
+def _candidate_violations(candidate: str, alerta: Alerta) -> tuple[Violacao, ...]:
+    violations = list(verificar_texto(candidate, alerta))
+    if not verificar_clareza(candidate, alerta):
+        message = f"O texto não atende ao limite de clareza de {MAX_PALAVRAS_ALERTA} palavras."
+        violations.append(Violacao("clareza_reprovada", message))
+    return tuple(violations)
+
+
+def _template_result(
+    alerta: Alerta,
+    template: str,
+    rejected_drafts: list[RejectedDraft],
+    api_failed: bool = False,
+) -> RedactionResult:
+    return RedactionResult(
+        template,
+        replace(alerta, origem_texto="template"),
+        tuple(rejected_drafts),
+        api_failed,
+    )
 
 
 def redigir_alerta_com_fallback_api(
     alerta: Alerta, cliente: CompletionClient
 ) -> tuple[str, Alerta, bool]:
     """Use the verified template when the provider exhausts its request retries."""
-    try:
-        text, result = redigir_alerta(alerta, cliente)
-    except OpenRouterRequestError:
-        template = gerar_template(alerta)
-        if verificar_texto(template, alerta):
-            raise RuntimeError("O template determinístico não passou pelo verificador.")
-        return template, replace(alerta, origem_texto="template"), True
-    return text, result, False
+    result = redigir_alerta_detalhado(alerta, cliente)
+    return result.texto, result.alerta, result.falha_api
 
 
 def _rewriting_messages(

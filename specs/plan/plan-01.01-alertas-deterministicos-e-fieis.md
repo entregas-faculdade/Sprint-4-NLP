@@ -286,6 +286,48 @@ proibidos; o fluxo "template → LLM reescreve → verificador → fallback ao t
 
 **Pendências preservadas:** execução da Fase B no Colab, confirmação do mapeamento canônico e possível reinício do runtime após `numpy==2.5.5`. O achado sobre clareza dos alertas reais permanece como nota de backlog, fora do escopo numerado desta correção.
 
+## Resumo da execução (correção 3) — 2026-11-23
+
+**Resultado:** Concluído com pendências
+
+1. **Achado 1 — decisão consistente de clareza:** `src/pln/alertas.py` agora compartilha uma normalização que converte espaços comuns, U+00A0 e U+202F para a mesma forma nos dois verificadores. `src/pln/llm.py` só registra origem `llm` se o candidato também passar por `verificar_clareza`; uma falha de clareza segue para a segunda tentativa com o código informado e, persistindo, retorna o template. Testes cobrem U+202F, candidato fiel acima de 60 palavras e os 9 casos sintéticos.
+2. **Achado 2 — rascunho rejeitado visível:** `redigir_alerta_detalhado` retorna os candidatos rejeitados e suas violações junto com o texto escolhido. A célula 12 usa esse retorno da mesma execução para mostrar o rascunho reprovado, códigos/trechos e o texto final; identifica fallback somente quando a origem final é `template`, sem solicitar outra chamada ao LLM. Teste confirma os dados do rascunho após as duas tentativas configuradas.
+
+**Arquivos alterados**
+| Arquivo | Natureza | O que mudou |
+|---|---|---|
+| `src/pln/alertas.py` | alterado | Normalização compartilhada e aplicada aos dois verificadores. |
+| `src/pln/llm.py` | alterado | Validação de clareza, registro dos rascunhos rejeitados e retorno detalhado. |
+| `tests/test_alertas.py` | alterado | Regressão de equivalência com U+202F. |
+| `tests/test_llm.py` | alterado | Regressões de candidato longo, metadados de rejeição e nove casos sintéticos. |
+| `notebooks/sprint3_pln_alertas.ipynb` | alterado | Célula 12 separa candidato rejeitado, violações e texto final, identificando fallback com exatidão; outputs locais preservados. |
+| `specs/plan/plan-01.01-alertas-deterministicos-e-fieis.md` | alterado | Status e resumo append-only da correção 3. |
+
+**Verificações da correção**
+- `& "$env:TEMP\pln-alertas-corr3-venv\Scripts\python.exe" -m pytest tests -q -p no:cacheprovider --basetemp "$env:TEMP\pln-alertas-corr3-pytest-final"` → 38 passaram.
+- `$env:MPLBACKEND='Agg'; $env:MPLCONFIGDIR="$env:TEMP\pln-alertas-corr3-mpl"; & "$env:TEMP\pln-alertas-corr3-venv\Scripts\python.exe" tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb --executado` → notebook válido; células offline executadas, sem chamada OpenRouter.
+- Validador AST Sarak em `src/pln/`, `tests/` e `tools/nb_check.py` → exit 0 nos três alvos; sem violações em código/testes. Permanece apenas o achado heurístico de baixa confiança para a URL pública em `src/pln/config.py:36`.
+- `git diff --check` → exit 0; avisos de conversão LF/CRLF, sem erro de whitespace.
+
+**Estado inicial da correção:** branch `main`; worktree já continha `M notebooks/sprint3_pln_alertas.ipynb`, `M specs/plan/plan-01.01-alertas-deterministicos-e-fieis.md` e `?? notebooks/Sprint-4-NLP/` (clone aninhado do ensaio local). Preservei os outputs locais já existentes do notebook e o clone; não criei commit.
+
+**Ambiente após a correção:** venv, diretório de testes e configuração do Matplotlib criados em `%TEMP%`; removidos após as verificações. Nenhuma chamada OpenRouter foi feita.
+
+**Critérios de aceite desta correção**
+- [x] U+202F produz a mesma decisão nos verificadores — evidência: teste em `tests/test_alertas.py`.
+- [x] Candidato fiel acima de 60 palavras não recebe `origem_texto="llm"` — evidência: teste em `tests/test_llm.py`.
+- [x] Candidato rejeitado e violações ficam acessíveis sem chamada adicional para exibição — evidência: teste confirma os dados retornados e exatamente duas chamadas configuradas.
+- [ ] Fase B no Colab — pendente; os outputs atuais do notebook são do ensaio local anterior e não foram reexecutados nesta correção.
+
+**Decisões e suposições**
+- Mantive `redigir_alerta` e `redigir_alerta_com_fallback_api` com seus retornos anteriores; a célula 12 usa `redigir_alerta_detalhado` para exibir os dados já capturados pelo fluxo.
+- Não chamei o OpenRouter nesta correção. A clareza dos textos aceitos é garantida antes do retorno e exercitada com clientes falsos; os exemplos reais serão reavaliados na execução Colab pendente.
+
+**Achados fora do escopo (não corrigidos)**
+- Os outputs do ensaio local, incluindo o erro de instalação e o caminho local registrados na plan, e o clone `notebooks/Sprint-4-NLP/` já estavam no worktree inicial; mantive-os conforme o escopo exclusivo dos dois achados numerados.
+
+**Pendências preservadas:** executar o notebook corrigido no Colab, confirmar o mapeamento canônico dos sensores e atender ao pedido do veredito sobre o clone/outputs antes de qualquer commit. O backlog sobre templates reais extensos permanece fora do escopo numerado desta correção.
+
 ---
 
 # 10. Veredito
@@ -348,3 +390,26 @@ proibidos; o fluxo "template → LLM reescreve → verificador → fallback ao t
 **Registrado no backlog (não reprova):** com a régua `verificar_clareza` do notebook (≤ 60 palavras por `\w+`, que conta cada parte de uma data), 1.412 dos 4.477 templates reais a falham (vibração e velocidade críticas ou moderadas, de ação padrão longa); o notebook só aplica a régua aos 9 casos de teste, que passam.
 
 **Ao reentregar:** acrescentar bloco novo na §9 com o achado tratado; rodar `python -m pytest tests -q` e `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb`. Pendências da Fase B continuam: execução no Colab; confirmação do mapeamento canônico dos sensores; possível *Restart runtime* após a célula 1 por causa do `numpy==2.5.5`.
+
+## Veredito — 2026-11-23 — 🔴 Reprovado (rodada 3, correção 2 + execução local de ensaio)
+
+**Escopo da rodada:** Fase A da correção 2 (código aprovado em leitura e comportamento) e **leitura da execução do notebook feita localmente pelo usuário**, tratada como **ensaio**: o critério da Fase B exige execução no Colab, e esta rodou em Python 3.11 local (clone de `8bdd29d` dentro de `notebooks/Sprint-4-NLP/`). O ensaio revelou dois defeitos de comportamento/apresentação, descritos abaixo.
+
+**O que foi verificado e como**
+- `python -m pytest tests -q` → 34 passaram. `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb --executado` → "Notebook válido".
+- Código executado = código commitado: `git -C notebooks/Sprint-4-NLP log` → `8bdd29d`; `diff -rq --strip-trailing-cr src notebooks/Sprint-4-NLP/src` → vazio.
+- Saídas lidas célula a célula (8 células de código, `execution_count` 1 a 8, nenhum `output_type: error`): 43.123 leituras; leituras por faixa normal 9.918 / leve 12.055 / moderado 3.961 / crítico 2.818; **4.477 alertas** (495 / 1.788 / 2.194, idêntico ao pipeline que o revisor rodou à parte); 3 exemplos reais com `ids_leitura`; fidelidade dos templates **100 %** (9/9); taxa de aceitação do LLM 88,9 % (8/9); **0 falhas de API**; ROUGE template 0,586 / 0,396 / 0,543 e ROUGE LLM 0,584 / 0,406 / 0,491 (1 / 2 / L); checklist sobre 18 linhas (9 de template + 9 de LLM); `data/saida/alertas.json` com 4.477 registros (4.476 `template`, 1 `llm`: só os 3 exemplos reais passam pelo LLM, e um deles caiu no template).
+- Chave: 0 ocorrências de `sk-or` ou `Bearer` no notebook executado e em `cache_llm.jsonl` (21 registros: modelo e resposta, sem chave).
+- Reprodução dos achados abaixo contra as respostas reais gravadas em `cache_llm.jsonl`.
+
+**Achados**
+
+1. **O texto que o pipeline entrega com `origem_texto="llm"` reprova na própria clareza em 4 de 8 casos.** Tabela do checklist (célula 14): `leve-temperatura`, `leve-vibracao`, `moderado-limite-warning` e `critico-temperatura` com `origem=llm` têm `clareza=False`. Reproduzido com as respostas do cache: (a) em 3 casos o modelo escreveu o valor com **espaço fino não separável (U+202F)** entre número e unidade (`82,00\u202f°C`, `90,00\u202f°C`, `120,00\u202f°C`); `_mentions_unit` (`src/pln/alertas.py`, `\s*`) aceita, mas `verificar_clareza` compara o texto literal `82,00 °C` e reprova; (b) em `leve-vibracao` o texto tem 62 palavras (> `MAX_PALAVRAS_ALERTA` = 60), porque o verificador aceita até `MAX_PALAVRAS_PARAFRASE_ADICIONAIS` = 14 palavras novas sobre um template que já chega perto do teto. Critério violado: §5 passo 10 (seção 7: checklist de clareza) e a coerência dos dois verificadores (o que `redigir_alerta` aceita deve passar no checklist que o notebook aplica). Resultado esperado: (i) os dois verificadores usam **uma só normalização** de espaços equivalentes (comuns, não separáveis, finos); (ii) `redigir_alerta` só devolve `origem_texto="llm"` para texto que **também** passa em `verificar_clareza` (texto fiel mas longo demais vira nova tentativa com a violação informada, ou template); (iii) com isso, nos 9 casos de teste e nos exemplos reais, todo texto `llm` passa na clareza. Testes novos: texto fiel com U+202F entre valor e unidade → decisão idêntica nos dois verificadores; texto fiel com mais de 60 palavras → não vira `llm`.
+2. **Rótulo enganoso na célula 12.** `notebooks/sprint3_pln_alertas.ipynb` célula 12 imprime `"Exemplo rejeitado pelo verificador:"` seguido do **template** do caso `moderado-corrente` (o texto que ficou depois da rejeição), não do candidato que o LLM escreveu e foi reprovado; o leitor conclui que o texto mostrado violou o verificador, e ele é o texto aprovado. Critério violado: §5 passo 10 (seção 6: exemplos aceito/**rejeitado**) e a honestidade do que o notebook declara (o problema que o professor apontou em F4). Resultado esperado: o exemplo rejeitado mostra o **candidato rejeitado** e os **códigos das violações** (o executor decide como expor isso a partir de `redigir_alerta`), e o texto final que ficou é rotulado como tal (fallback para o template). Teste: o candidato rejeitado e as violações ficam acessíveis sem chamada extra ao LLM.
+
+**Pendências da Fase B (não são achados; o Colab continua obrigatório)**
+- Reexecutar no **Colab**, com o segredo `OPENROUTER_API_KEY`, depois da correção. A execução local deixou na saída da célula 1 um **erro visível do `pip`** (`numpy==2.5.5` exige Python ≥ 3.12; o ensaio usou 3.11) e um **caminho absoluto local** impresso na célula 16 (`C:\Users\Igor\...`); no Colab nenhum dos dois deve aparecer.
+- Antes de qualquer commit: remover `notebooks/Sprint-4-NLP/` (clone aninhado, contém `.git`) e não commitar o `notebooks/sprint3_pln_alertas.ipynb` desta execução local.
+- Confirmação do mapeamento canônico dos sensores pelo usuário.
+
+**Ao reentregar:** bloco novo na §9 com os 2 achados tratados; `python -m pytest tests -q` e `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb`.

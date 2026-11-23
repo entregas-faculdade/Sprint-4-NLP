@@ -2,20 +2,32 @@
 
 from __future__ import annotations
 
+import json
 import logging
+import re
 from pathlib import Path
 from typing import Any
 
 import pytest
 import requests
 
-from src.pln.alertas import detectar_episodios, gerar_template
-from src.pln.config import MODELO_REDATOR
+from src.pln.alertas import (
+    detectar_episodios,
+    gerar_template,
+    verificar_clareza,
+    verificar_texto,
+)
+from src.pln.config import (
+    ALERT_TESTS_FILE,
+    MAX_PALAVRAS_ALERTA,
+    MODELO_REDATOR,
+)
 from src.pln.llm import (
     OpenRouterClient,
     OpenRouterRequestError,
     redigir_alerta,
     redigir_alerta_com_fallback_api,
+    redigir_alerta_detalhado,
 )
 from src.pln.sensores import carregar_sensores
 
@@ -86,6 +98,58 @@ def test_verified_rewrite_records_llm_origin() -> None:
     assert text == gerar_template(alert)
     assert result.origem_texto == "llm"
     assert client.calls[0][0] == MODELO_REDATOR
+
+
+def test_faithful_rewrite_over_the_clarity_limit_falls_back() -> None:
+    alert = _sample_alert()
+    template = gerar_template(alert)
+    long_candidate = template.replace(
+        "entre ", "durante o período, no intervalo do episódio, entre ", 1
+    )
+    assert len(re.findall(r"\w+", long_candidate, flags=re.UNICODE)) > MAX_PALAVRAS_ALERTA
+    assert verificar_texto(long_candidate, alert) == []
+    assert not verificar_clareza(long_candidate, alert)
+    client = FakeCompletionClient([long_candidate, long_candidate])
+
+    result = redigir_alerta_detalhado(alert, client)
+
+    assert result.origem_texto == "template"
+    assert result.texto == template
+    assert len(client.calls) == 2
+    assert len(result.rascunhos_rejeitados) == 2
+    assert all(
+        any(violation.codigo == "clareza_reprovada" for violation in draft.violacoes)
+        for draft in result.rascunhos_rejeitados
+    )
+    assert "clareza_reprovada" in "\n".join(message["content"] for message in client.calls[1][1])
+
+
+def test_rejected_draft_and_violations_are_returned_without_an_extra_call() -> None:
+    alert = _sample_alert()
+    rejected_candidate = gerar_template(alert) + " Verifique também os rolamentos e a lubrificação."
+    client = FakeCompletionClient([rejected_candidate, gerar_template(alert)])
+
+    result = redigir_alerta_detalhado(alert, client)
+
+    assert result.origem_texto == "llm"
+    assert result.rascunhos_rejeitados[0].texto == rejected_candidate
+    assert any(
+        violation.codigo == "conteudo_nao_sustentado"
+        for violation in result.rascunhos_rejeitados[0].violacoes
+    )
+    assert len(client.calls) == 2
+
+
+def test_all_nine_reference_rewrites_return_clear_llm_text() -> None:
+    cases = json.loads(ALERT_TESTS_FILE.read_text(encoding="utf-8"))["casos"]
+    valid_cases = [case for case in cases if not case["descartar"]]
+    assert len(valid_cases) == 9
+
+    for case in valid_cases:
+        alert = detectar_episodios(case["leituras"], carregar_sensores())[0]
+        text, result = redigir_alerta(alert, FakeCompletionClient([gerar_template(alert)]))
+        assert result.origem_texto == "llm", case["caso"]
+        assert verificar_clareza(text, alert), case["caso"]
 
 
 def test_second_rewrite_includes_the_previous_violations() -> None:

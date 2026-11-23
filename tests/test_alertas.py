@@ -157,6 +157,18 @@ def test_all_nine_reference_templates_meet_the_notebook_clarity_check() -> None:
         assert verificar_clareza(gerar_template(alert), alert), case["caso"]
 
 
+def test_verifiers_normalize_narrow_no_break_space_the_same_way() -> None:
+    alert = _sample_alert()
+    template = gerar_template(alert)
+    regular_measurement = f"{_format_number(alert.valor_max)} {alert.unidade}"
+    narrow_measurement = f"{_format_number(alert.valor_max)}\u202f{alert.unidade}"
+    text = template.replace(regular_measurement, narrow_measurement)
+
+    assert narrow_measurement in text
+    assert verificar_clareza(text, alert) is verificar_clareza(template, alert) is True
+    assert verificar_texto(text, alert) == verificar_texto(template, alert) == []
+
+
 @pytest.mark.parametrize(
     "untrusted_text",
     (

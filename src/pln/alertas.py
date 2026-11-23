@@ -288,9 +288,15 @@ def gerar_template(alerta: Alerta) -> str:
     return _render_template(alerta, carregar_sensores()[alerta.sensor_id])
 
 
+def _normalizar_texto_alerta(texto: str) -> str:
+    """Unify ordinary, non-breaking, and narrow non-breaking whitespace."""
+    equivalent_spaces = texto.replace("\u00a0", " ").replace("\u202f", " ")
+    return re.sub(r"\s+", " ", equivalent_spaces).strip().casefold()
+
+
 def verificar_clareza(texto: str, alerta: Alerta) -> bool:
     """Check that a short alert names the asset, quantity, peak, and UTC start."""
-    normalized_text = texto.casefold()
+    normalized_text = _normalizar_texto_alerta(texto)
     required_facts = (
         alerta.ativo,
         alerta.grandeza,
@@ -299,7 +305,7 @@ def verificar_clareza(texto: str, alerta: Alerta) -> bool:
     )
     word_count = len(re.findall(r"\w+", texto, flags=re.UNICODE))
     return word_count <= MAX_PALAVRAS_ALERTA and all(
-        fact.casefold() in normalized_text for fact in required_facts
+        _normalizar_texto_alerta(fact) in normalized_text for fact in required_facts
     )
 
 
@@ -332,11 +338,11 @@ def _allowed_number_tokens(alerta: Alerta) -> set[str]:
 def _mentions_unit(text: str, unit: str) -> bool:
     numeric_value = r"(?<!\w)[+-]?\d+(?:[.,]\d+)*"
     unit_pattern = rf"{numeric_value}\s*{re.escape(unit)}(?!\w)"
-    return re.search(unit_pattern, text, flags=re.IGNORECASE) is not None
+    return re.search(unit_pattern, _normalizar_texto_alerta(text), flags=re.IGNORECASE) is not None
 
 
 def _unsupported_references(text: str, alerta: Alerta) -> list[Violacao]:
-    normalized = text.casefold()
+    normalized = _normalizar_texto_alerta(text)
     violations: list[Violacao] = []
     sensors = carregar_sensores()
     if alerta.ativo.casefold() not in normalized:
@@ -362,7 +368,7 @@ def _missing_episode_facts(text: str, alerta: Alerta) -> list[Violacao]:
         (_format_timestamp(alerta.inicio), "inicio"),
         (_format_timestamp(alerta.fim), "fim"),
     )
-    normalized = text.casefold()
+    normalized = _normalizar_texto_alerta(text)
     violations = [
         Violacao("fato_ausente", f"O texto omite o campo {field_name}.", fact)
         for fact, field_name in required_facts
@@ -420,7 +426,7 @@ def _mentions_severity(normalized_text: str, severity: str) -> bool:
 def _mentions_measurement(text: str, value: float, unit: str) -> bool:
     number = re.escape(_format_number(value))
     measurement_pattern = rf"(?<!\w){number}\s*{re.escape(unit)}(?!\w)"
-    return re.search(measurement_pattern, text, flags=re.IGNORECASE) is not None
+    return re.search(measurement_pattern, _normalizar_texto_alerta(text), flags=re.IGNORECASE) is not None
 
 
 def _number_violations(text: str, alerta: Alerta) -> list[Violacao]:
@@ -435,16 +441,19 @@ def _number_violations(text: str, alerta: Alerta) -> list[Violacao]:
 def _prohibited_term_violations(text: str) -> list[Violacao]:
     from src.pln.config import TERMOS_PROIBIDOS
 
+    normalized_text = _normalizar_texto_alerta(text)
     violations = []
     for term in TERMOS_PROIBIDOS:
-        if re.search(rf"\b{re.escape(term)}\b", text, flags=re.IGNORECASE):
+        if re.search(rf"\b{re.escape(term)}\b", normalized_text, flags=re.IGNORECASE):
             violations.append(Violacao("termo_proibido", "O texto contém diagnóstico, causa ou prognóstico.", term))
     return violations
 
 
 def _unsupported_content_violations(text: str, alerta: Alerta, sensor: Sensor) -> list[Violacao]:
-    template_tokens = Counter(re.findall(r"\w+", _render_template(alerta, sensor).casefold(), flags=re.UNICODE))
-    text_tokens = Counter(re.findall(r"\w+", text.casefold(), flags=re.UNICODE))
+    template_tokens = Counter(
+        re.findall(r"\w+", _normalizar_texto_alerta(_render_template(alerta, sensor)), flags=re.UNICODE)
+    )
+    text_tokens = Counter(re.findall(r"\w+", _normalizar_texto_alerta(text), flags=re.UNICODE))
     additional_tokens = text_tokens - template_tokens
     allowed_vocabulary = set(VOCABULARIO_PARAFRASE_PERMITIDO)
     unsupported_tokens = sorted(
@@ -479,8 +488,8 @@ def verificar_texto(texto: str, alerta: Alerta) -> list[Violacao]:
     if sensor is None:
         return [Violacao("sensor_desconhecido", "O sensor do alerta não existe no catálogo.", alerta.sensor_id)]
     expected_action = sensor.acoes_padrao.get(alerta.severidade)
-    normalized_text = re.sub(r"\s+", " ", texto.casefold())
-    normalized_action = re.sub(r"\s+", " ", (expected_action or "").casefold())
+    normalized_text = _normalizar_texto_alerta(texto)
+    normalized_action = _normalizar_texto_alerta(expected_action or "")
     violations = _unsupported_references(texto, alerta)
     if not _mentions_severity(normalized_text, alerta.severidade):
         violations.append(Violacao("severidade_ausente", "O texto omite a severidade do alerta."))
