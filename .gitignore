@@ -1,0 +1,21 @@
+# Segredos — repositório PÚBLICO: nunca versionar
+.env
+.env.*
+!.env.example
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Bancos vetoriais e caches locais
+chroma_db/
+.chroma/
+*.faiss
+
+# SO / IDE
+.DS_Store
+Thumbs.db
+.vscode/
