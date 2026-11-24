@@ -141,7 +141,7 @@ A entrega anterior (nota 85) está avaliada; o feedback dela é a fonte dos requ
 
 | Tipo de tarefa | Leia antes | Capacidade |
 |---|---|---|
-| Mexer em severidade, episódios, templates ou verificador de alertas | `plan/plan-01.01-alertas-deterministicos-e-fieis.md` (até a síntese; depois `specs/01.01-*.md`) | [[00-knowledge]] |
+| Mexer em severidade, episódios, templates ou verificador de alertas | `specs/01.01-alertas-deterministicos.md` | [[00-knowledge]] |
 | Mexer em classificador de eventos ou relatório | `plan/plan-01.02-classificacao-e-relatorio-rastreavel.md` (depois `specs/01.02-*.md`) | [[00-knowledge]] |
 | Mexer em chunking, índice ou retriever | `plan/plan-02.01-rag-com-pagina-secao-e-estado.md` (depois `specs/02.01-*.md`) | [[00-knowledge]] |
 | Mexer em prompt, citação, confiança ou memória do assistente | `plan/plan-02.02-assistente-de-troubleshooting.md` (depois `specs/02.02-*.md`) | [[00-knowledge]] |
@@ -279,7 +279,7 @@ Antes de escolher **como** fazer algo, leia **[[00-knowledge]]** — é o rotead
 
 - **`data_variables.json` está inconsistente** (2026-11-23): o nome/unidade de cada variável contradiz a descrição e a magnitude
   dos valores (ex.: "Velocidade - Porta 1 [mm/s]" tem média 82,8 e limiares 75/90/110, descrita como "monitoramento térmico das
-  bobinas do estator"). A plan 01.01 fixa o mapeamento canônico pela descrição + magnitude; **o usuário deve confirmá-lo**.
+  bobinas do estator"). O mapeamento canônico (`specs/01.01-alertas-deterministicos.md` §2.1) usa descrição + magnitude; **o usuário deve confirmá-lo**.
 - Só 4 das 6 variáveis têm limiar em `active_assets.json`; as outras 2 não geram alerta.
 - O PDF é um catálogo comercial WEG: não traz procedimento de troubleshooting passo a passo, então parte das perguntas
   práticas **não tem resposta no corpus** — a abstenção correta é parte do resultado, não falha.

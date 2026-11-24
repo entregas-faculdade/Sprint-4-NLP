@@ -27,9 +27,9 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 ## Por família
 | FF | Família | Itens ✅/total | Progresso | Plans abertas |
 |---|---|---|---|---|
-| 01 | Sprint 3 — Alertas e classificação | 0/2 | ░░░░░ | 2 |
+| 01 | Sprint 3 — Alertas e classificação | 0/2 | ░░░░░ | 1 |
 | 02 | Sprint 4 — RAG e assistente | 0/5 | ░░░░░ | 5 |
 
 ## Atenção
-- 🟢 plan-01.01 · Gerar alertas determinísticos e fiéis aos dados — aguardando síntese
 - 📋 1 achado(s) no `00-backlog`
+- ⚠️ 1 problema(s) de família/item — rode `generate_summary.py --check`

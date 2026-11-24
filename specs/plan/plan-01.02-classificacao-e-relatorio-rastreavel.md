@@ -7,8 +7,8 @@ dominio: "Sprint 3 — Alertas e classificação"
 status: "🔴 A executar"
 prioridade: "Alta"
 tags: ["plan", "sprint-3", "classificacao", "relatorio", "F1", "F2"]
-relacionados: ["[[00-contexto]]", "[[plan-01.01-alertas-deterministicos-e-fieis]]"]
-depende_de: "plan-01.01-alertas-deterministicos-e-fieis"
+relacionados: ["[[00-contexto]]", "[[01.01-alertas-deterministicos]]"]
+depende_de: ""
 destino_sintese: "specs/01.02-classificacao-e-relatorio.md + 00-contexto.md"
 ---
 
