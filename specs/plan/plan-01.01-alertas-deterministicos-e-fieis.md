@@ -4,7 +4,7 @@ familia: "01"
 item: "R01.1"
 titulo: "Gerar alertas determinísticos e fiéis aos dados"
 dominio: "Sprint 3 — Alertas e classificação"
-status: "🟠 Em revisão"
+status: "🟢 Aprovada"
 prioridade: "Alta"
 tags: ["plan", "sprint-3", "alertas", "F1"]
 relacionados: ["[[00-contexto]]", "[[plan-01.02-classificacao-e-relatorio-rastreavel]]"]
@@ -149,7 +149,7 @@ verificador que rejeita qualquer número, limite, diagnóstico ou prognóstico f
 - [ ] `redigir_alerta` nunca devolve texto reprovado pelo verificador (teste com LLM falso adversarial).
 - [ ] Nenhuma constante de modelo, limiar ou caminho fora de `config.py`/`sensores.json`; `MODELO_JUIZ` e `MODELO_GERADOR` de famílias diferentes.
 - [ ] Notebook sem saídas passa em `nb_check`; contém as seções 0–8; nenhuma chave no repositório.
-- [ ] **Fase B:** notebook executado no Colab: todas as células com saída, nenhum erro, ROUGE e checklist calculados sobre ≥ 9 casos,
+- [ ] **Fase B:** notebook executado (localmente, por decisão do usuário em 2026-11-23; o Colab fica para a conferência final da entrega), com a instalação de `requirements.txt` sem erro na saída: todas as células com saída, nenhum erro, ROUGE e checklist calculados sobre ≥ 9 casos,
       taxa de fidelidade do texto de template = 100 %, `data/saida/alertas.json` presente.
 - [ ] Ambiente e worktree limpos; testes do escopo verdes; `code-auditoria-padrao` sem violação nova.
 
@@ -328,6 +328,42 @@ proibidos; o fluxo "template → LLM reescreve → verificador → fallback ao t
 
 **Pendências preservadas:** executar o notebook corrigido no Colab, confirmar o mapeamento canônico dos sensores e atender ao pedido do veredito sobre o clone/outputs antes de qualquer commit. O backlog sobre templates reais extensos permanece fora do escopo numerado desta correção.
 
+## Resumo da execução (correção 4) — 2026-11-23
+
+**Resultado:** Concluído com pendências
+
+1. **Achado 1 — descoberta da raiz:** a célula `alerts-02` reconhece um checkout pelos arquivos `src/pln/config.py` e `requirements.txt`, procurando no diretório atual e em seus ancestrais. Só clona em `Sprint-4-NLP` quando não encontra uma raiz válida; depois coloca a raiz no início de `sys.path`, muda o diretório de trabalho para ela e confirma a descoberta também a partir de `notebooks/`.
+
+**Arquivos alterados**
+| Arquivo | Natureza | O que mudou |
+|---|---|---|
+| `notebooks/sprint3_pln_alertas.ipynb` | alterado | Fonte da célula 1 localiza a raiz antes da instalação; as saídas salvas que já estavam no worktree foram preservadas. |
+| `specs/plan/plan-01.01-alertas-deterministicos-e-fieis.md` | alterado | Status atualizado e este resumo append-only da correção 4. |
+
+**Verificações executadas**
+- Harness isolado da configuração da célula `alerts-02`, em Python 3.14, com clone simulado → passou para raiz do repositório, `notebooks/` e diretório sem checkout que clona um fixture; nenhum clone real foi iniciado.
+- `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb --executado` → `Notebook válido`; conferiu o notebook salvo, sem reexecutar a célula 1.
+- `git diff --check` → exit 0.
+
+**Estado inicial do worktree:** branch `main`; `M notebooks/sprint3_pln_alertas.ipynb` e `M specs/plan/plan-01.01-alertas-deterministicos-e-fieis.md`. As saídas locais já existentes do notebook foram preservadas. Nenhum commit criado.
+
+**Ambiente após a verificação:** removidos `%TEMP%\alertas-r4-venv`, `%TEMP%\alertas-r4-pytest-base`, `%TEMP%\alertas-r4-pytest-cache` e `%TEMP%\alertas-r4-mpl`; o fixture de clone foi removido com seu diretório temporário. O clone local preexistente não foi alterado.
+
+**Critérios de aceite desta correção**
+- [x] A partir da raiz, a célula usa o checkout atual, coloca-o em `sys.path` e define-o como diretório de trabalho — harness passou sem chamar `git clone`.
+- [x] A partir de `notebooks/`, a célula encontra a mesma raiz e não clona — harness passou sem chamar `git clone`.
+- [x] Sem checkout, a célula reconhece o clone após a criação — harness passou com fixture simulado.
+
+**Decisões e suposições**
+- A raiz é identificada pela presença conjunta de `src/pln/config.py` e `requirements.txt`, que distinguem este repositório de diretórios que tenham apenas uma pasta `src`.
+- O teste do caminho de clone usou um `git clone` simulado para verificar o fluxo sem acesso de rede ou criação de checkout real.
+
+**Achados fora do escopo (não corrigidos)**
+- Nenhum nesta correção.
+
+**Pendências / riscos**
+- A execução completa da Fase B no Colab continua pendente. Os outputs salvos refletem a execução local anterior; `nb_check --executado` não reexecuta a célula 1 nem substitui essa validação.
+
 ---
 
 # 10. Veredito
@@ -413,3 +449,39 @@ proibidos; o fluxo "template → LLM reescreve → verificador → fallback ao t
 - Confirmação do mapeamento canônico dos sensores pelo usuário.
 
 **Ao reentregar:** bloco novo na §9 com os 2 achados tratados; `python -m pytest tests -q` e `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb`.
+
+## Veredito — 2026-11-23 — 🔴 Reprovado (rodada 4, Fase B local)
+
+**Escopo da rodada:** Fase B por execução local (critério ajustado pelo usuário em 2026-11-23), `nbconvert` com Python 3.11.9 sobre `notebooks/sprint3_pln_alertas.ipynb`.
+
+**O que foi verificado e como**
+- A célula 1 clonou o repositório em `notebooks/Sprint-4-NLP/` (HEAD `a8b77d6`, igual ao local; `diff -rq --strip-trailing-cr src` e `requirements.txt` vazios): a execução rodou sobre o código commitado e as saídas foram gravadas dentro do clone.
+- 8 células de código, `execution_count` 1 a 8, nenhum `output_type: error`. 43.123 leituras; 4.477 alertas (495 / 1.788 / 2.194); 3 exemplos reais com `ids_leitura`; fidelidade dos templates 100 % (9/9); `alertas.json` com 4.477 registros no clone.
+- **Todas as 12 chamadas ao LLM falharam:** `Taxa de aceitação: 0.0%`, `Falhas de API: 12`, sem `cache_llm.jsonl`; o checklist mostra 18 linhas com `origem=template` e o "ROUGE LLM" é idêntico ao ROUGE do template (0,586 / 0,396 / 0,543). A etapa de LLM não foi exercitada; o fallback (achado 8 da 1ª rodada) funcionou.
+- Saída da célula 1 contém uma linha de erro do `pip` (conflito `sklearn-compat` × `scikit-learn 1.9.1`, pacote do ambiente global do usuário) e a célula 16 imprime caminho absoluto local.
+
+**Achado**
+
+1. **A célula 1 não reconhece que já está no repositório quando o kernel inicia em `notebooks/`.** `notebooks/sprint3_pln_alertas.ipynb` célula 1 testa `Path("src").exists()` no diretório do kernel; o `nbconvert` (e o Jupyter aberto em `notebooks/`) inicia ali, o teste falha, e a célula clona o repositório do GitHub dentro de `notebooks/`, executa sobre o clone e deixa uma pasta com `.git` aninhado. Reproduzido em duas execuções locais (execuções do ensaio e desta rodada). Critério violado: §5 passo 10 (célula 1 prepara o ambiente do repositório) e §6 Fase B (ambiente e worktree limpos; evidência de execução sobre o código do worktree). Resultado esperado: a célula 1 funciona igual no Colab (clona), na raiz do repositório e dentro de `notebooks/` (usa a raiz já existente, sem clonar, e coloca-a em `sys.path`/diretório de trabalho), de modo que `data/saida/` e o `.ipynb` executado fiquem no próprio worktree. Teste ou verificação do `nb_check` para a lógica de localização da raiz, a critério do executor.
+
+**Pendências da Fase B (não são achados)**
+- Descobrir por que as 12 chamadas à API falharam (o notebook imprime só a contagem). Diagnóstico a cargo do usuário com uma chamada de teste que imprima o status HTTP. Sem LLM funcionando, não há taxa de aceitação nem ROUGE de LLM para avaliar, e a Fase B não pode ser aprovada.
+- Reexecutar em ambiente limpo (venv novo só com `requirements.txt` + Jupyter) para a saída da célula 1 não trazer o conflito do ambiente global, e sem o caminho absoluto na célula 16 depois do achado 1 (o caminho passa a ser o do worktree; avaliar no veredito se aceito).
+- Confirmação do mapeamento canônico dos sensores pelo usuário.
+- Remover `notebooks/Sprint-4-NLP/` e não commitar o notebook desta execução.
+
+## Veredito — 2026-11-24 — 🟢 Aprovado (rodada 5, Fase B local em ambiente limpo)
+
+**Escopo da rodada:** Fase B por execução local (critério ajustado pelo usuário em 2026-11-23), `nbconvert` em venv novo de Python 3.11 com só `requirements.txt` + Jupyter, chave `OPENROUTER_API_KEY` apenas no ambiente da sessão, sobre o HEAD `a8b77d6`.
+
+**O que foi verificado e como**
+- `python -m pytest tests -q` → 38 passaram. `python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb --executado` → "Notebook válido". `git status`: só o notebook, a plan, `data/saida/alertas.json` e `data/saida/cache_llm.jsonl`; sem `notebooks/Sprint-4-NLP/`.
+- Saídas lidas célula a célula (8 células de código, `execution_count` 1 a 8, nenhum `output_type: error`): célula 1 sem erro de `pip` e sem clone aninhado (só o aviso informativo de versão do `pip`); 43.123 leituras; leituras por faixa 9.918 / 12.055 / 3.961 / 2.818; 4.477 alertas (495 / 1.788 / 2.194) com `ids_leitura`; **0 falhas de API**; taxa de aceitação do LLM 88,9 %; exemplo aceito, candidato rejeitado com violações (`fato_ausente`, `conteudo_nao_sustentado`) e texto final após nova tentativa com `origem_texto` `llm`; fidelidade dos templates 100 % (9/9); checklist de 18 linhas com **precisão, clareza e utilidade `True` em todas, inclusive as 8 linhas `origem=llm`**; ROUGE template 0,586 / 0,396 / 0,543 e ROUGE LLM 0,587 / 0,401 / 0,497 (1 / 2 / L).
+- `data/saida/alertas.json` com 4.477 registros; `cache_llm.jsonl` com 21 registros (modelo e resposta, sem chave). 0 ocorrências de `sk-or` ou `Bearer` no notebook, no cache e no JSON.
+
+**Observações que não reprovam**
+- A célula 16 imprime o caminho absoluto do worktree local; o notebook entregue é reexecutado no Colab na plan 02.05, que substitui essa saída.
+- Todos os 4.477 alertas exportados têm `origem_texto="template"`: o LLM só redige os 9 casos de teste, e o ROUGE do LLM não supera o do template. A conclusão do relatório deve dizer isso sem maquiar.
+- A clareza dos templates reais (1.412 acima de 60 palavras) segue no backlog.
+
+**Pendência fora do veredito:** o usuário confirma o mapeamento canônico dos sensores (célula 4 do notebook) antes da síntese.
