@@ -21,10 +21,12 @@ from src.pln.config import (
     ALERT_TESTS_FILE,
     MAX_PALAVRAS_ALERTA,
     MODELO_REDATOR,
+    NOMES_VARIAVEL_CHAVE,
 )
 from src.pln.llm import (
     OpenRouterClient,
     OpenRouterRequestError,
+    load_openrouter_api_key,
     redigir_alerta,
     redigir_alerta_com_fallback_api,
     redigir_alerta_detalhado,
@@ -67,6 +69,126 @@ class FakeSession:
         if isinstance(result, Exception):
             raise result
         return result
+
+
+def _environment_entry(variable_name: str, value: str, quotation_mark: str) -> str:
+    return f"{variable_name}={quotation_mark}{value}{quotation_mark}"
+
+
+@pytest.fixture
+def clean_openrouter_environment(monkeypatch: pytest.MonkeyPatch) -> None:
+    for variable_name in NOMES_VARIAVEL_CHAVE:
+        monkeypatch.delenv(variable_name, raising=False)
+
+
+def test_environment_api_key_precedes_env_file(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    clean_openrouter_environment: None,
+) -> None:
+    env_file = tmp_path / ".env"
+    primary_name, legacy_name = NOMES_VARIAVEL_CHAVE
+    env_file.write_text(
+        "\n".join(
+            (
+                _environment_entry(primary_name, "file-primary", ""),
+                _environment_entry(legacy_name, "file-alias", ""),
+            )
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv(primary_name, " environment-primary ")
+    monkeypatch.setenv(legacy_name, "environment-alias")
+
+    assert load_openrouter_api_key(env_file) == "environment-primary"
+
+
+def test_legacy_environment_api_key_name_is_supported(
+    monkeypatch: pytest.MonkeyPatch,
+    clean_openrouter_environment: None,
+    tmp_path: Path,
+) -> None:
+    monkeypatch.setenv(NOMES_VARIAVEL_CHAVE[1], " environment-alias ")
+
+    assert load_openrouter_api_key(tmp_path / ".env") == "environment-alias"
+
+
+def test_env_file_supports_export_quotes_and_comments(
+    tmp_path: Path,
+    clean_openrouter_environment: None,
+) -> None:
+    env_file = tmp_path / ".env"
+    env_file.write_text(
+        "# OpenRouter key\n\nexport "
+        + _environment_entry(NOMES_VARIAVEL_CHAVE[1], " file-alias ", "'")
+        + "\n",
+        encoding="utf-8",
+    )
+
+    assert load_openrouter_api_key(env_file) == "file-alias"
+
+
+def test_env_file_accepts_underscored_api_key_name(
+    tmp_path: Path,
+    clean_openrouter_environment: None,
+) -> None:
+    env_file = tmp_path / ".env"
+    env_file.write_text(
+        _environment_entry(NOMES_VARIAVEL_CHAVE[0], "file-primary", '"') + "\n",
+        encoding="utf-8",
+    )
+
+    assert load_openrouter_api_key(env_file) == "file-primary"
+
+
+def test_empty_api_key_values_are_skipped(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    clean_openrouter_environment: None,
+) -> None:
+    env_file = tmp_path / ".env"
+    env_file.write_text(
+        "\n".join(
+            (
+                _environment_entry(NOMES_VARIAVEL_CHAVE[0], "", ""),
+                _environment_entry(NOMES_VARIAVEL_CHAVE[1], " file-alias ", '"'),
+            )
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv(NOMES_VARIAVEL_CHAVE[0], "  ")
+    monkeypatch.setenv(NOMES_VARIAVEL_CHAVE[1], "")
+
+    assert load_openrouter_api_key(env_file) == "file-alias"
+
+
+def test_missing_api_key_error_names_sources_without_values(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    clean_openrouter_environment: None,
+) -> None:
+    env_file = tmp_path / "missing-key.env"
+    env_file.write_text(
+        "\n".join(
+            (
+                _environment_entry(NOMES_VARIAVEL_CHAVE[0], "", ""),
+                _environment_entry(NOMES_VARIAVEL_CHAVE[1], "", '"'),
+                _environment_entry("GROQ-API-KEY", "unrelated-secret", ""),
+            )
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(RuntimeError) as error:
+        load_openrouter_api_key(env_file)
+
+    message = str(error.value)
+    assert all(variable_name in message for variable_name in NOMES_VARIAVEL_CHAVE)
+    assert str(env_file) in message
+    assert "unrelated-secret" not in message
 
 
 def _sample_alert():
@@ -194,16 +316,26 @@ def test_retries_keep_the_same_model(monkeypatch: pytest.MonkeyPatch, tmp_path: 
     assert all(call["json"]["model"] == MODELO_REDATOR for call in session.calls)
 
 
-def test_api_key_is_not_logged_or_written_to_cache(
-    caplog: pytest.LogCaptureFixture, capsys: pytest.CaptureFixture[str], tmp_path: Path
+def test_loaded_api_key_is_not_logged_printed_cached_or_represented(
+    caplog: pytest.LogCaptureFixture,
+    capsys: pytest.CaptureFixture[str],
+    tmp_path: Path,
+    clean_openrouter_environment: None,
 ) -> None:
     test_value = "private-test-key"
-    session = FakeSession([requests.Timeout("timeout") for _ in range(3)])
-    client = OpenRouterClient(test_value, session, tmp_path / "cache.jsonl")
-    with caplog.at_level(logging.DEBUG), pytest.raises(RuntimeError):
-        client.complete(MODELO_REDATOR, [{"role": "user", "content": "Reescreva"}])
+    env_file = tmp_path / ".env"
+    env_file.write_text(
+        _environment_entry(NOMES_VARIAVEL_CHAVE[0], test_value, "") + "\n",
+        encoding="utf-8",
+    )
+    cache_file = tmp_path / "cache.jsonl"
+    session = FakeSession([FakeResponse("Cached response")])
+    with caplog.at_level(logging.DEBUG):
+        client = OpenRouterClient(load_openrouter_api_key(env_file), session, cache_file)
+        client.complete(MODELO_REDATOR, [{"role": "user", "content": "Rewrite"}])
     output = capsys.readouterr()
-    cache_text = (tmp_path / "cache.jsonl").read_text(encoding="utf-8") if (tmp_path / "cache.jsonl").exists() else ""
+    cache_text = cache_file.read_text(encoding="utf-8")
     assert test_value not in caplog.text
     assert test_value not in output.out + output.err
     assert test_value not in cache_text
+    assert test_value not in repr(client)

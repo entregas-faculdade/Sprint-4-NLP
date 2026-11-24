@@ -8,6 +8,8 @@ from types import MappingProxyType
 from typing import Any
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
+ENV_FILE = ROOT_DIR / ".env"
+NOMES_VARIAVEL_CHAVE = ("OPENROUTER_API_KEY", "OPEN-ROUTER-API-KEY")
 DATA_DIR = ROOT_DIR / "data"
 OUTPUT_DIR = DATA_DIR / "saida"
 CSV_FILE = DATA_DIR / "dados-w22.csv"

@@ -16,11 +16,13 @@ import requests
 from src.pln.alertas import Alerta, Violacao, gerar_template, verificar_clareza, verificar_texto
 from src.pln.config import (
     BACKOFF_REQUISICAO_SEGUNDOS,
+    ENV_FILE,
     LLM_CACHE_FILE,
     MAX_PALAVRAS_ALERTA,
     MAX_TENTATIVAS_REDACAO,
     MAX_TENTATIVAS_REQUISICAO,
     MODELO_REDATOR,
+    NOMES_VARIAVEL_CHAVE,
     SEMENTE_LLM,
     TEMPERATURA_LLM,
     TIMEOUT_REQUISICAO_SEGUNDOS,
@@ -63,33 +65,51 @@ class RedactionResult:
         return self.alerta.origem_texto
 
 
-def _environment_api_key() -> str | None:
-    value = os.environ.get("OPENROUTER_API_KEY")
-    return value.strip() if value and value.strip() else None
+def _read_env_file(path: Path) -> dict[str, str]:
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except FileNotFoundError:
+        return {}
+    except OSError as error:
+        raise RuntimeError(f"Não foi possível ler o arquivo de ambiente em {path}.") from error
+
+    values: dict[str, str] = {}
+    for line in lines:
+        stripped_line = line.strip()
+        if not stripped_line or stripped_line.startswith("#"):
+            continue
+        if stripped_line.startswith("export "):
+            stripped_line = stripped_line[len("export ") :].strip()
+        name, separator, value = stripped_line.partition("=")
+        if not separator or not name.strip():
+            continue
+        normalized_value = value.strip()
+        if (
+            len(normalized_value) >= 2
+            and normalized_value[0] == normalized_value[-1]
+            and normalized_value[0] in {"'", '"'}
+        ):
+            normalized_value = normalized_value[1:-1]
+        values[name.strip()] = normalized_value
+    return values
 
 
-def load_openrouter_api_key() -> str:
-    """Read the Colab secret first, then the environment, without displaying it."""
-    try:
-        from google.colab import userdata
-    except ImportError as import_error:
-        environment_key = _environment_api_key()
-        if environment_key:
-            return environment_key
-        raise RuntimeError("Defina OPENROUTER_API_KEY nos Secrets do Colab ou no ambiente.") from import_error
-    try:
-        colab_key = userdata.get("OPENROUTER_API_KEY")
-    except Exception as userdata_error:
-        environment_key = _environment_api_key()
-        if environment_key:
-            return environment_key
-        raise RuntimeError("Não foi possível carregar OPENROUTER_API_KEY dos Secrets do Colab.") from userdata_error
-    if colab_key and str(colab_key).strip():
-        return str(colab_key).strip()
-    environment_key = _environment_api_key()
-    if environment_key:
-        return environment_key
-    raise RuntimeError("Defina OPENROUTER_API_KEY nos Secrets do Colab ou no ambiente.")
+def load_openrouter_api_key(env_file: Path = ENV_FILE) -> str:
+    for variable_name in NOMES_VARIAVEL_CHAVE:
+        environment_value = os.environ.get(variable_name, "").strip()
+        if environment_value:
+            return environment_value
+
+    env_values = _read_env_file(env_file)
+    for variable_name in NOMES_VARIAVEL_CHAVE:
+        file_value = env_values.get(variable_name, "").strip()
+        if file_value:
+            return file_value
+
+    variable_names = " ou ".join(NOMES_VARIAVEL_CHAVE)
+    raise RuntimeError(
+        f"Defina {variable_names} no ambiente ou no arquivo {env_file}."
+    )
 
 
 class OpenRouterClient:
