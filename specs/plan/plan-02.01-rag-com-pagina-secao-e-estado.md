@@ -7,8 +7,8 @@ dominio: "Sprint 4 — RAG e assistente"
 status: "🔴 A executar"
 prioridade: "Alta"
 tags: ["plan", "sprint-4", "rag", "F3", "F4"]
-relacionados: ["[[00-contexto]]", "[[01.02-classificacao-e-relatorio]]"]
-depende_de: ""
+relacionados: ["[[00-contexto]]", "[[01.02-classificacao-e-relatorio]]", "[[plan-01.03-chave-do-env-e-execucao-local]]"]
+depende_de: "plan-01.03-chave-do-env-e-execucao-local"
 destino_sintese: "specs/02.01-pipeline-rag.md + 00-contexto.md"
 ---
 
@@ -92,7 +92,7 @@ operacional do ativo na busca** (não só no prompt), com embeddings e reranker 
    `estado=None` ≡ sem boost; boost só quando a seção casa. **Com modelos** (`pytest -m modelos`): "classe de isolamento" e "grau de
    proteção" trazem chunk com a página esperada no top 4. Pronto: `python -m pytest tests -q` verde (os marcados `modelos` são pulados localmente).
 8. [dirigido] Notebook `sprint4_pln_rag.ipynb` (sem saídas; lógica pura com tag `offline`): **0** título e tabela entregável→seção ·
-   **1** Setup (clone, `pip install -r requirements.txt`, Secrets) · **2** Extração e chunking (estatísticas, comparação `LEGADO` ×
+   **1** Setup (raiz do repositório, chave lida do `.env` da raiz; sem clone, sem `%pip install`, como a seção 1 do notebook da Sprint 3) · **2** Extração e chunking (estatísticas, comparação `LEGADO` ×
    `NOVO`, 3 chunks exibidos com página e seção) · **3** Indexação (modelos, contagem, tempo) · **4** Estado operacional (construído
    dos alertas reais da plan 01.01 para um instante de alerta crítico e um de operação normal) · **5** Retriever com e sem estado
    (a mesma pergunta, top 4 de cada, mostrando página, seção e scores) · **6** Conclusão. Pronto: `nb_check` verde.
@@ -106,7 +106,7 @@ operacional do ativo na busca** (não só no prompt), com embeddings e reranker 
 - [ ] Todo termo de `termos_estado.json` ocorre no texto do PDF (teste).
 - [ ] Presets `LEGADO` e `NOVO` disponíveis lado a lado para a plan 02.03.
 - [ ] Notebook sem saídas passa em `nb_check` e contém as seções 0–6.
-- [ ] **Fase B:** notebook executado no Colab sem erro; seção 5 mostra o mesmo query com/sem estado, com página e seção por resultado;
+- [ ] **Fase B:** notebook executado localmente sem erro; seção 5 mostra o mesmo query com/sem estado, com página e seção por resultado;
       modelos carregados são os de `config.py`.
 - [ ] Ambiente e worktree limpos; testes do escopo verdes; `code-auditoria-padrao` sem violação nova.
 

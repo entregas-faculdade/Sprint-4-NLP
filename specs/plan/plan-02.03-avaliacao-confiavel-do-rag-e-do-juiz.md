@@ -115,7 +115,7 @@ comparando `LEGADO` × `NOVO` sem estado × `NOVO` com estado, com um **juiz val
 - [ ] `LIMIAR_ABSTENCAO` e `PESO_ESTADO` calibrados no `dev`; `teste` rodado uma vez depois.
 - [ ] Resposta factual a pergunta `fora` aparece como `alucinacao_fora_escopo`, não como acerto.
 - [ ] `data/dados_avaliacao.json` removido; nenhum arquivo referencia perguntas de Siemens/ABB.
-- [ ] **Fase B:** notebook executado no Colab sem erro, seções 9–13 com saídas e `data/saida/avaliacao_*.json` presentes; `nb_check --executado` verde.
+- [ ] **Fase B:** notebook executado localmente sem erro, seções 9–13 com saídas e `data/saida/avaliacao_*.json` presentes; `nb_check --executado` verde.
 - [ ] Ambiente e worktree limpos; testes do escopo verdes; `code-auditoria-padrao` sem violação nova.
 
 # 7. Como verificar (uso do revisor)

@@ -94,7 +94,7 @@ página/seção, confiança calculada e avaliação; e documenta os **limites ob
 - [ ] Cada resposta lista fonte por página/seção, confiança calculada e modelo; a avaliação do cenário usa o juiz por afirmação.
 - [ ] `fonte_esperada` conferida no PDF e comparada com as fontes recuperadas em cada cenário.
 - [ ] Seção de limites com ≥ 1 caso real por categoria (a)–(e) e mitigação + risco residual por linha; zero linhas genéricas.
-- [ ] **Fase B:** notebook executado no Colab sem erro, seções 14–18 com saídas e `data/saida/cenarios.json` e `limites.json`; `nb_check --executado` verde.
+- [ ] **Fase B:** notebook executado localmente sem erro, seções 14–18 com saídas e `data/saida/cenarios.json` e `limites.json`; `nb_check --executado` verde.
 - [ ] Ambiente e worktree limpos; testes do escopo verdes; `code-auditoria-padrao` sem violação nova.
 
 # 7. Como verificar (uso do revisor)

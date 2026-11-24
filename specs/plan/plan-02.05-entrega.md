@@ -15,7 +15,7 @@ destino_sintese: "—"
 # 1. Objetivo
 
 O repositório público está **pronto para ser entregue**: os dois notebooks executados e limpos, o **documento final unificado** com
-números extraídos das saídas (não digitados), um README que leva o avaliador do zero ao Colab, e o **roteiro do vídeo** de 3 a 5 minutos,
+números extraídos das saídas (não digitados), um README que leva o avaliador do zero à execução local, e o **roteiro do vídeo** de 3 a 5 minutos,
 com a matriz que mostra onde cada crítica F1–F7 foi tratada.
 
 # 2. Contexto
@@ -68,8 +68,8 @@ com a matriz que mostra onde cada crítica F1–F7 foi tratada.
    `tools/gerar_relatorio_final.py` (marcadores `{{metrica.caminho}}` substituídos a partir de `data/saida/*.json`); número sem fonte não entra.
 3. [dirigido] `docs/matriz-criticas.md`: uma linha por F1–F7 (texto do professor, plan, seção do notebook, arquivo de evidência,
    resultado em uma frase) — só afirmar o que as saídas executadas mostram. Se um critério ficou parcial, **dizer**.
-4. [dirigido] `README.md`: o que é o projeto; estrutura de pastas; como rodar no Colab (links "Abrir no Colab" para os dois notebooks do
-   repositório público, passo a passo de **Secrets** com `OPENROUTER_API_KEY`); como rodar os testes localmente; link do vídeo
+4. [dirigido] `README.md`: o que é o projeto; estrutura de pastas; como rodar localmente (venv, `pip install -r requirements.txt`, `.env` com `OPEN-ROUTER-API-KEY`, `nbconvert --execute` dos dois notebooks do
+   repositório; sem Colab); como rodar os testes localmente; link do vídeo
    (`<!-- VIDEO_URL -->` até o usuário colar); licença e aviso de que o PDF é material da WEG.
 5. [dirigido] `docs/roteiro-video.md`: 3 a 5 minutos, por cenas com tempo: abertura e arquitetura (30 s), alerta fiel e verificador
    (40 s), **cenário elétrico** (50 s), **cenário mecânico** (50 s), **cenário preventivo** (50 s), avaliação e limites (40 s), fechamento (20 s);
@@ -85,7 +85,7 @@ com a matriz que mostra onde cada crítica F1–F7 foi tratada.
 - [ ] `docs/relatorio-final.md` contém as 5 seções exigidas pelo enunciado (templates, critérios de classificação, arquitetura do RAG, métricas, limites).
 - [ ] Todos os números do documento vêm de `data/saida/` (`gerar_relatorio_final.py --check` verde).
 - [ ] `docs/matriz-criticas.md` cobre F1–F7 com evidência; nada afirmado sem saída executada; parciais assumidos.
-- [ ] `README.md` leva ao Colab (links) e explica os Secrets; `docs/roteiro-video.md` soma 3–5 min com os 3 cenários.
+- [ ] `README.md` leva à execução local e explica o `.env`; `docs/roteiro-video.md` soma 3–5 min com os 3 cenários.
 - [ ] Nenhuma chave no repositório ou nas saídas; `.env` fora do Git; `dados_avaliacao.json` ausente.
 - [ ] Ambiente e worktree limpos; `pytest` verde.
 

@@ -89,7 +89,7 @@ resposta, mantém **memória de curto prazo** e recebe o **estado operacional** 
 - [ ] A pergunta de seguimento recupera pelo assunto anterior (teste e demonstração).
 - [ ] O estado operacional entra na recuperação **e** no prompt, marcado como dado confiável.
 - [ ] Nenhum id de modelo, limiar ou frase fixa fora de `config.py`.
-- [ ] **Fase B:** seção 8 executada no Colab sem erro, com os 3 tipos de pergunta e `modelo` registrado em cada resposta.
+- [ ] **Fase B:** seção 8 executada localmente sem erro, com os 3 tipos de pergunta e `modelo` registrado em cada resposta.
 - [ ] Ambiente e worktree limpos; testes do escopo verdes; `code-auditoria-padrao` sem violação nova.
 
 # 7. Como verificar (uso do revisor)

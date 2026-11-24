@@ -14,7 +14,7 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 ██░░░░░░░░ 28% · 2/7 itens ✅
 
 ## Agora
-—
+- 🟡 · plan-01.03 · Ler a chave do OpenRouter do .env da raiz e remover o Colab do notebook
 
 ## Próximas
 - 🔴 · plan-02.01 · R02.1 · Construir RAG com página, seção e estado operacional na busca
@@ -26,7 +26,7 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 ## Por família
 | FF | Família | Itens ✅/total | Progresso | Plans abertas |
 |---|---|---|---|---|
-| 01 | Sprint 3 — Alertas e classificação | 2/2 | █████ | 0 |
+| 01 | Sprint 3 — Alertas e classificação | 2/2 | █████ | 1 |
 | 02 | Sprint 4 — RAG e assistente | 0/5 | ░░░░░ | 5 |
 
 ## Atenção
