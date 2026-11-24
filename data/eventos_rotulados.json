@@ -1,0 +1,542 @@
+[
+  {
+    "id": "E-001",
+    "timestamp": "2026-05-07T09:17:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "OS corretiva: após interrupção, rolamento foi trocado; serviço registrado no turno.",
+    "rotulo": "manutenção corretiva",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-002",
+    "timestamp": "2026-05-09T09:34:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Equipe fez reparo emergencial no cabo do motor e documentou a troca.",
+    "rotulo": "manutenção corretiva",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-003",
+    "timestamp": "2026-05-11T09:51:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Depois do pico de vibração anotado no turno, a oficina removeu o suporte e instalou outro.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-004",
+    "timestamp": "2026-05-13T10:08:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A peça retirada foi substituída e a ordem de serviço fechou no mesmo plantão.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-005",
+    "timestamp": "2026-05-15T10:25:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Chamado da madrugada resultou em ajuste do terminal e troca do componente danificado.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-006",
+    "timestamp": "2026-05-17T10:42:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Após oscilações na corrente, eletricista refez a conexão e assinou a ordem.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-007",
+    "timestamp": "2026-05-19T10:59:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "No retorno da parada, o conjunto recebeu um novo acoplamento conforme ordem aberta.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-008",
+    "timestamp": "2026-05-21T11:16:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Registro de oficina: eixo removido, alinhado e montado novamente para encerrar ocorrência.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-009",
+    "timestamp": "2026-05-23T11:33:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Intervenção não programada liberou o motor após substituição do contato do painel.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-010",
+    "timestamp": "2026-05-25T11:50:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A equipe trocou o cabo do sensor depois de registrar leituras inconsistentes.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-011",
+    "timestamp": "2026-05-27T12:07:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "O motor foi enviado à bancada e voltou com o rolamento substituído.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-012",
+    "timestamp": "2026-05-29T12:24:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Após o ruído acima do habitual, o mecânico apertou a fixação e encerrou o atendimento.",
+    "rotulo": "manutenção corretiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-013",
+    "timestamp": "2026-05-31T12:41:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Plano de inspeção programada incluiu lubrificação antes da próxima parada.",
+    "rotulo": "manutenção preventiva",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-014",
+    "timestamp": "2026-06-02T12:58:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Calendário de revisão previa reaperto dos terminais e coleta de vibração.",
+    "rotulo": "manutenção preventiva",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-015",
+    "timestamp": "2026-06-04T13:15:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Antes do turno seguinte, a equipe verificou vibração do mancal e temperatura, ambas perto dos valores usuais.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-016",
+    "timestamp": "2026-06-06T13:32:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "O roteiro mensal antecipou a troca do filtro e a coleta de medidas, sem parada do motor.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-017",
+    "timestamp": "2026-06-08T13:49:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Na janela agendada, foram conferidas as conexões e aplicada graxa no apoio do eixo.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-018",
+    "timestamp": "2026-06-10T14:06:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A ordem periódica reservou uma parada curta para reaperto e limpeza.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-019",
+    "timestamp": "2026-06-12T14:23:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A inspeção da semana registrou temperatura de 74,8 °C e vibração de 1,48 mm/s; nenhuma peça foi trocada.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-020",
+    "timestamp": "2026-06-14T14:40:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A próxima revisão foi incluída no calendário após leitura visual dos cabos e das proteções.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-021",
+    "timestamp": "2026-06-16T14:57:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Durante a ronda planejada, a equipe anotou vibração de 1,52 mm/s, sem abrir ocorrência.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-022",
+    "timestamp": "2026-06-18T15:14:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A lubrificação foi feita na janela do turno; o registro permaneceu sem desvio.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-023",
+    "timestamp": "2026-06-20T15:31:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Antes de retornar à carga, operador coletou temperatura e rotação previstas na lista mensal.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-024",
+    "timestamp": "2026-06-22T15:48:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Foi criada uma programação de reaperto, limpeza e inspeção para a parada de domingo.",
+    "rotulo": "manutenção preventiva",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-025",
+    "timestamp": "2026-06-24T16:05:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Corrente por fase variou acima da referência; painel registrou alarme no terminal.",
+    "rotulo": "anomalia elétrica",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-026",
+    "timestamp": "2026-06-26T16:22:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Leitura de tensão oscilou; equipe anotou aquecimento no conector elétrico.",
+    "rotulo": "anomalia elétrica",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-027",
+    "timestamp": "2026-08-22T05:13:34.597160+00:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Registro A-4463: corrente da fase chegou a 179,15 A no trecho monitorado.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "derivado_de_alerta"
+  },
+  {
+    "id": "E-028",
+    "timestamp": "2026-08-22T05:14:44.244385+00:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Registro A-4468: corrente da fase chegou a 172,01 A no trecho monitorado.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "derivado_de_alerta"
+  },
+  {
+    "id": "E-029",
+    "timestamp": "2026-08-22T05:17:10.197683+00:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Registro A-4476: corrente da fase chegou a 138,37 A no trecho monitorado.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "derivado_de_alerta"
+  },
+  {
+    "id": "E-030",
+    "timestamp": "2026-07-04T17:30:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "O painel anotou variação desigual entre fases e abriu ocorrência para a equipe elétrica.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-031",
+    "timestamp": "2026-07-06T17:47:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Durante a carga, a proteção do circuito interrompeu o motor após sinal instável no conector.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-032",
+    "timestamp": "2026-07-08T18:04:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A leitura do enrolamento apresentou diferença entre fases, e o operador registrou a medição.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-033",
+    "timestamp": "2026-07-10T18:21:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A equipe encontrou isolação baixa no borne e registrou nova inspeção elétrica.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-034",
+    "timestamp": "2026-07-12T18:38:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Houve uma queda curta de tensão no quadro durante a partida monitorada.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-035",
+    "timestamp": "2026-07-14T18:55:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A indicação de corrente do alimentador subiu e a chave de proteção permaneceu sinalizada.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-036",
+    "timestamp": "2026-07-16T19:12:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "O conector aqueceu durante a operação; o painel guardou o evento para análise da equipe.",
+    "rotulo": "anomalia elétrica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-037",
+    "timestamp": "2026-07-18T19:29:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Vibração no mancal subiu junto de ruído metálico em baixa carga.",
+    "rotulo": "anomalia mecânica",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-038",
+    "timestamp": "2026-07-20T19:46:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Folga no acoplamento apareceu no registro de inspeção; eixo oscilou.",
+    "rotulo": "anomalia mecânica",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-039",
+    "timestamp": "2026-08-22T05:14:56.779635+00:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Registro A-4470: pico de 4,72 mm/s medido no mancal; 4 amostras compõem o episódio.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "derivado_de_alerta"
+  },
+  {
+    "id": "E-040",
+    "timestamp": "2026-08-22T05:15:41.161669+00:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Registro A-4471: pico de 4,87 mm/s medido no mancal; 2 amostras compõem o episódio.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "derivado_de_alerta"
+  },
+  {
+    "id": "E-041",
+    "timestamp": "2026-08-22T05:16:57.399340+00:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Registro A-4474: pico de 2,84 mm/s medido no mancal; 7 amostras compõem o episódio.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "derivado_de_alerta"
+  },
+  {
+    "id": "E-042",
+    "timestamp": "2026-07-28T20:54:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "No ensaio, o eixo apresentou batida intermitente e a carcaça respondeu com ruído.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-043",
+    "timestamp": "2026-07-30T21:11:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "O suporte oscilou em baixa rotação, enquanto o registro do sensor mudou.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-044",
+    "timestamp": "2026-08-01T21:28:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Uma folga perceptível surgiu na união do eixo com o acoplamento.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-045",
+    "timestamp": "2026-08-03T21:45:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A leitura de movimento no mancal ficou irregular entre duas coletas sucessivas.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-046",
+    "timestamp": "2026-08-05T22:02:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Mecânico relatou contato repetido na carcaça durante a carga.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-047",
+    "timestamp": "2026-08-07T22:19:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A rotação perdeu regularidade e o operador anotou pequenos impactos no conjunto.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-048",
+    "timestamp": "2026-08-09T22:36:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Foi percebido ruído grave vindo do apoio, sem alteração observada no quadro.",
+    "rotulo": "anomalia mecânica",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-049",
+    "timestamp": "2026-08-11T22:53:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Operação estável, carga regular e leituras dentro da faixa observada.",
+    "rotulo": "operação normal",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-050",
+    "timestamp": "2026-08-13T23:10:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Turno encerrou sem ocorrência; rotação permaneceu próxima do padrão.",
+    "rotulo": "operação normal",
+    "split": "dev",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-051",
+    "timestamp": "2026-08-15T23:27:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Com corrente em 124,7 A frente ao nominal de 125 A, a produção seguiu sem alarme.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-052",
+    "timestamp": "2026-08-17T23:44:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Acompanhamento do turno não abriu chamados; temperatura ficou em 74,9 °C, perto do nominal de 75 °C.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-053",
+    "timestamp": "2026-08-20T00:01:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "As leituras ficaram agrupadas ao redor dos valores de referência e o motor manteve a carga planejada.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-054",
+    "timestamp": "2026-08-22T00:18:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A vibração oscilou entre 1,49 e 1,51 mm/s, e a equipe registrou o conjunto em rotina.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-055",
+    "timestamp": "2026-08-24T00:35:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Operador encerrou o ciclo; painel sem alertas e corrente de 125,2 A no trecho final.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-056",
+    "timestamp": "2026-08-26T00:52:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Sem registro de parada ou desvio, o motor sustentou a rotação nominal ao longo do turno.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-057",
+    "timestamp": "2026-08-28T01:09:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "No relatório de produção, a carga permaneceu constante e o sensor térmico marcou 75,2 °C.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-058",
+    "timestamp": "2026-08-30T01:26:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "A equipe comparou as coletas e anotou valores semelhantes à referência nominal.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-059",
+    "timestamp": "2026-09-01T01:43:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Painel permaneceu liberado; nenhuma variação relevante apareceu durante a ronda.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  },
+  {
+    "id": "E-060",
+    "timestamp": "2026-09-03T02:00:00",
+    "ativo": "Teste (Sorocaba)",
+    "texto": "Na leitura final, vibração de 1,51 mm/s ficou perto do valor de referência do sensor.",
+    "rotulo": "operação normal",
+    "split": "teste",
+    "origem": "sintetico"
+  }
+]

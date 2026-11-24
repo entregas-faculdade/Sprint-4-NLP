@@ -11,13 +11,12 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 # Panorama
 
 ## Progresso
-░░░░░░░░░░ 0% · 0/7 itens ✅
+█░░░░░░░░░ 14% · 1/7 itens ✅
 
 ## Agora
 —
 
 ## Próximas
-- 🔴 · plan-01.02 · R01.2 · Classificar eventos em 5 categorias e gerar relatório rastreável
 - 🔴 · plan-02.01 · R02.1 · Construir RAG com página, seção e estado operacional na busca
 - 🔴 · plan-02.02 · R02.2 · Construir o assistente de troubleshooting com citação, confiança calculada e abstenção
 - 🔴 · plan-02.03 · R02.3 · Avaliar o RAG com gabarito de página e juiz por afirmação
@@ -27,9 +26,9 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 ## Por família
 | FF | Família | Itens ✅/total | Progresso | Plans abertas |
 |---|---|---|---|---|
-| 01 | Sprint 3 — Alertas e classificação | 0/2 | ░░░░░ | 1 |
+| 01 | Sprint 3 — Alertas e classificação | 1/2 | ██░░░ | 1 |
 | 02 | Sprint 4 — RAG e assistente | 0/5 | ░░░░░ | 5 |
 
 ## Atenção
+- 🟢 plan-01.02 · Classificar eventos em 5 categorias e gerar relatório rastreável — aguardando síntese
 - 📋 1 achado(s) no `00-backlog`
-- ⚠️ 1 problema(s) de família/item — rode `generate_summary.py --check`

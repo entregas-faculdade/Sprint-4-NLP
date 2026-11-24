@@ -279,7 +279,7 @@ Antes de escolher **como** fazer algo, leia **[[00-knowledge]]** — é o rotead
 
 - **`data_variables.json` está inconsistente** (2026-11-23): o nome/unidade de cada variável contradiz a descrição e a magnitude
   dos valores (ex.: "Velocidade - Porta 1 [mm/s]" tem média 82,8 e limiares 75/90/110, descrita como "monitoramento térmico das
-  bobinas do estator"). O mapeamento canônico (`specs/01.01-alertas-deterministicos.md` §2.1) usa descrição + magnitude; **o usuário deve confirmá-lo**.
+  bobinas do estator"). O mapeamento canônico (`specs/01.01-alertas-deterministicos.md` §2.1) usa descrição + magnitude e foi confirmado pelo usuário em 2026-11-24.
 - Só 4 das 6 variáveis têm limiar em `active_assets.json`; as outras 2 não geram alerta.
 - O PDF é um catálogo comercial WEG: não traz procedimento de troubleshooting passo a passo, então parte das perguntas
   práticas **não tem resposta no corpus** — a abstenção correta é parte do resultado, não falha.

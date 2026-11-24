@@ -1,0 +1,548 @@
+{
+  "modelo": "mistralai/mistral-small-3.2-24b-instruct",
+  "suporte_teste": 50,
+  "linha_de_base": {
+    "por_categoria": {
+      "manutenção corretiva": {
+        "precision": 0.5,
+        "recall": 0.1,
+        "f1-score": 0.16666666666666666,
+        "support": 10.0
+      },
+      "manutenção preventiva": {
+        "precision": 1.0,
+        "recall": 0.1,
+        "f1-score": 0.18181818181818182,
+        "support": 10.0
+      },
+      "anomalia elétrica": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10.0
+      },
+      "anomalia mecânica": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10.0
+      },
+      "operação normal": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 10.0
+      }
+    },
+    "macro": {
+      "precision": 0.3,
+      "recall": 0.04,
+      "f1-score": 0.0696969696969697,
+      "support": 50.0
+    },
+    "ponderado": {
+      "precision": 0.3,
+      "recall": 0.04,
+      "f1-score": 0.0696969696969697,
+      "support": 50.0
+    },
+    "rotulos_matriz": [
+      "manutenção corretiva",
+      "manutenção preventiva",
+      "anomalia elétrica",
+      "anomalia mecânica",
+      "operação normal",
+      "indeterminado"
+    ],
+    "matriz_confusao": [
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        9
+      ],
+      [
+        1,
+        1,
+        0,
+        0,
+        0,
+        8
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        10
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        10
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        10
+      ]
+    ],
+    "erros": [
+      {
+        "id": "E-003",
+        "texto": "Depois do pico de vibração anotado no turno, a oficina removeu o suporte e instalou outro.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-004",
+        "texto": "A peça retirada foi substituída e a ordem de serviço fechou no mesmo plantão.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-006",
+        "texto": "Após oscilações na corrente, eletricista refez a conexão e assinou a ordem.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-007",
+        "texto": "No retorno da parada, o conjunto recebeu um novo acoplamento conforme ordem aberta.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-008",
+        "texto": "Registro de oficina: eixo removido, alinhado e montado novamente para encerrar ocorrência.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-009",
+        "texto": "Intervenção não programada liberou o motor após substituição do contato do painel.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-010",
+        "texto": "A equipe trocou o cabo do sensor depois de registrar leituras inconsistentes.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-011",
+        "texto": "O motor foi enviado à bancada e voltou com o rolamento substituído.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-012",
+        "texto": "Após o ruído acima do habitual, o mecânico apertou a fixação e encerrou o atendimento.",
+        "esperado": "manutenção corretiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-015",
+        "texto": "Antes do turno seguinte, a equipe verificou vibração do mancal e temperatura, ambas perto dos valores usuais.",
+        "esperado": "manutenção preventiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-016",
+        "texto": "O roteiro mensal antecipou a troca do filtro e a coleta de medidas, sem parada do motor.",
+        "esperado": "manutenção preventiva",
+        "obtido": "manutenção corretiva"
+      },
+      {
+        "id": "E-017",
+        "texto": "Na janela agendada, foram conferidas as conexões e aplicada graxa no apoio do eixo.",
+        "esperado": "manutenção preventiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-018",
+        "texto": "A ordem periódica reservou uma parada curta para reaperto e limpeza.",
+        "esperado": "manutenção preventiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-019",
+        "texto": "A inspeção da semana registrou temperatura de 74,8 °C e vibração de 1,48 mm/s; nenhuma peça foi trocada.",
+        "esperado": "manutenção preventiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-020",
+        "texto": "A próxima revisão foi incluída no calendário após leitura visual dos cabos e das proteções.",
+        "esperado": "manutenção preventiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-021",
+        "texto": "Durante a ronda planejada, a equipe anotou vibração de 1,52 mm/s, sem abrir ocorrência.",
+        "esperado": "manutenção preventiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-023",
+        "texto": "Antes de retornar à carga, operador coletou temperatura e rotação previstas na lista mensal.",
+        "esperado": "manutenção preventiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-024",
+        "texto": "Foi criada uma programação de reaperto, limpeza e inspeção para a parada de domingo.",
+        "esperado": "manutenção preventiva",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-027",
+        "texto": "Registro A-4463: corrente da fase chegou a 179,15 A no trecho monitorado.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-028",
+        "texto": "Registro A-4468: corrente da fase chegou a 172,01 A no trecho monitorado.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-029",
+        "texto": "Registro A-4476: corrente da fase chegou a 138,37 A no trecho monitorado.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-030",
+        "texto": "O painel anotou variação desigual entre fases e abriu ocorrência para a equipe elétrica.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-031",
+        "texto": "Durante a carga, a proteção do circuito interrompeu o motor após sinal instável no conector.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-032",
+        "texto": "A leitura do enrolamento apresentou diferença entre fases, e o operador registrou a medição.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-033",
+        "texto": "A equipe encontrou isolação baixa no borne e registrou nova inspeção elétrica.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-034",
+        "texto": "Houve uma queda curta de tensão no quadro durante a partida monitorada.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-035",
+        "texto": "A indicação de corrente do alimentador subiu e a chave de proteção permaneceu sinalizada.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-036",
+        "texto": "O conector aqueceu durante a operação; o painel guardou o evento para análise da equipe.",
+        "esperado": "anomalia elétrica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-039",
+        "texto": "Registro A-4470: pico de 4,72 mm/s medido no mancal; 4 amostras compõem o episódio.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-040",
+        "texto": "Registro A-4471: pico de 4,87 mm/s medido no mancal; 2 amostras compõem o episódio.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-041",
+        "texto": "Registro A-4474: pico de 2,84 mm/s medido no mancal; 7 amostras compõem o episódio.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-042",
+        "texto": "No ensaio, o eixo apresentou batida intermitente e a carcaça respondeu com ruído.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-043",
+        "texto": "O suporte oscilou em baixa rotação, enquanto o registro do sensor mudou.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-044",
+        "texto": "Uma folga perceptível surgiu na união do eixo com o acoplamento.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-045",
+        "texto": "A leitura de movimento no mancal ficou irregular entre duas coletas sucessivas.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-046",
+        "texto": "Mecânico relatou contato repetido na carcaça durante a carga.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-047",
+        "texto": "A rotação perdeu regularidade e o operador anotou pequenos impactos no conjunto.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-048",
+        "texto": "Foi percebido ruído grave vindo do apoio, sem alteração observada no quadro.",
+        "esperado": "anomalia mecânica",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-051",
+        "texto": "Com corrente em 124,7 A frente ao nominal de 125 A, a produção seguiu sem alarme.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-052",
+        "texto": "Acompanhamento do turno não abriu chamados; temperatura ficou em 74,9 °C, perto do nominal de 75 °C.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-053",
+        "texto": "As leituras ficaram agrupadas ao redor dos valores de referência e o motor manteve a carga planejada.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-054",
+        "texto": "A vibração oscilou entre 1,49 e 1,51 mm/s, e a equipe registrou o conjunto em rotina.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-055",
+        "texto": "Operador encerrou o ciclo; painel sem alertas e corrente de 125,2 A no trecho final.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-056",
+        "texto": "Sem registro de parada ou desvio, o motor sustentou a rotação nominal ao longo do turno.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-057",
+        "texto": "No relatório de produção, a carga permaneceu constante e o sensor térmico marcou 75,2 °C.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-058",
+        "texto": "A equipe comparou as coletas e anotou valores semelhantes à referência nominal.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-059",
+        "texto": "Painel permaneceu liberado; nenhuma variação relevante apareceu durante a ronda.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      },
+      {
+        "id": "E-060",
+        "texto": "Na leitura final, vibração de 1,51 mm/s ficou perto do valor de referência do sensor.",
+        "esperado": "operação normal",
+        "obtido": "indeterminado"
+      }
+    ]
+  },
+  "zero_shot": {
+    "por_categoria": {
+      "manutenção corretiva": {
+        "precision": 1.0,
+        "recall": 0.7,
+        "f1-score": 0.8235294117647058,
+        "support": 10.0
+      },
+      "manutenção preventiva": {
+        "precision": 1.0,
+        "recall": 0.6,
+        "f1-score": 0.75,
+        "support": 10.0
+      },
+      "anomalia elétrica": {
+        "precision": 0.8333333333333334,
+        "recall": 1.0,
+        "f1-score": 0.9090909090909091,
+        "support": 10.0
+      },
+      "anomalia mecânica": {
+        "precision": 0.5882352941176471,
+        "recall": 1.0,
+        "f1-score": 0.7407407407407407,
+        "support": 10.0
+      },
+      "operação normal": {
+        "precision": 0.875,
+        "recall": 0.7,
+        "f1-score": 0.7777777777777778,
+        "support": 10.0
+      }
+    },
+    "macro": {
+      "precision": 0.8593137254901961,
+      "recall": 0.8,
+      "f1-score": 0.8002277678748266,
+      "support": 50.0
+    },
+    "ponderado": {
+      "precision": 0.8593137254901961,
+      "recall": 0.8,
+      "f1-score": 0.8002277678748267,
+      "support": 50.0
+    },
+    "rotulos_matriz": [
+      "manutenção corretiva",
+      "manutenção preventiva",
+      "anomalia elétrica",
+      "anomalia mecânica",
+      "operação normal",
+      "indeterminado"
+    ],
+    "matriz_confusao": [
+      [
+        7,
+        0,
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        3,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        10,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        7,
+        0
+      ]
+    ],
+    "erros": [
+      {
+        "id": "E-003",
+        "texto": "Depois do pico de vibração anotado no turno, a oficina removeu o suporte e instalou outro.",
+        "esperado": "manutenção corretiva",
+        "obtido": "anomalia mecânica"
+      },
+      {
+        "id": "E-006",
+        "texto": "Após oscilações na corrente, eletricista refez a conexão e assinou a ordem.",
+        "esperado": "manutenção corretiva",
+        "obtido": "anomalia elétrica"
+      },
+      {
+        "id": "E-012",
+        "texto": "Após o ruído acima do habitual, o mecânico apertou a fixação e encerrou o atendimento.",
+        "esperado": "manutenção corretiva",
+        "obtido": "anomalia mecânica"
+      },
+      {
+        "id": "E-015",
+        "texto": "Antes do turno seguinte, a equipe verificou vibração do mancal e temperatura, ambas perto dos valores usuais.",
+        "esperado": "manutenção preventiva",
+        "obtido": "anomalia mecânica"
+      },
+      {
+        "id": "E-019",
+        "texto": "A inspeção da semana registrou temperatura de 74,8 °C e vibração de 1,48 mm/s; nenhuma peça foi trocada.",
+        "esperado": "manutenção preventiva",
+        "obtido": "anomalia mecânica"
+      },
+      {
+        "id": "E-021",
+        "texto": "Durante a ronda planejada, a equipe anotou vibração de 1,52 mm/s, sem abrir ocorrência.",
+        "esperado": "manutenção preventiva",
+        "obtido": "anomalia mecânica"
+      },
+      {
+        "id": "E-022",
+        "texto": "A lubrificação foi feita na janela do turno; o registro permaneceu sem desvio.",
+        "esperado": "manutenção preventiva",
+        "obtido": "operação normal"
+      },
+      {
+        "id": "E-051",
+        "texto": "Com corrente em 124,7 A frente ao nominal de 125 A, a produção seguiu sem alarme.",
+        "esperado": "operação normal",
+        "obtido": "anomalia elétrica"
+      },
+      {
+        "id": "E-054",
+        "texto": "A vibração oscilou entre 1,49 e 1,51 mm/s, e a equipe registrou o conjunto em rotina.",
+        "esperado": "operação normal",
+        "obtido": "anomalia mecânica"
+      },
+      {
+        "id": "E-060",
+        "texto": "Na leitura final, vibração de 1,51 mm/s ficou perto do valor de referência do sensor.",
+        "esperado": "operação normal",
+        "obtido": "anomalia mecânica"
+      }
+    ]
+  }
+}

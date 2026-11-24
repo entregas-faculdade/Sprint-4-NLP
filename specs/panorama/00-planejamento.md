@@ -69,7 +69,7 @@ o **horizonte**: a evolução de longo prazo, em itens por família — a base d
 >   pretendida*. Um achado que o usuário promove a evolução de longo prazo pode virar item.
 
 ## 01 · Sprint 3 — Alertas e classificação
-- 🔷 **R01.1** Alertas determinísticos e fiéis — severidade, templates e verificador sobre os dados reais (F1)
+- ✅ **R01.1** Alertas determinísticos e fiéis — severidade, templates e verificador sobre os dados reais (F1) (✅ 2026-11-24)
 - 🔷 **R01.2** Classificação em 5 categorias e relatório rastreável — 60 eventos rotulados, F1 por classe, ROUGE e checklist (F1, F2)
 
 ## 02 · Sprint 4 — RAG e assistente

@@ -1,0 +1,16 @@
+{
+  "diario": {
+    "Resumo": "Em 22/08/2026, foram registrados 1 alerta leve, 9 moderados e 7 críticos para a velocidade do eixo; 4 leves, 7 moderados e 4 críticos para a vibração no mancal; 3 leves, 3 moderados e 5 críticos para a corrente por fase; e 1 leve, 4 moderados e 6 críticos para a temperatura do enrolamento. Não houve alertas para vibração global nem temperatura interna das bobinas.",
+    "Alertas emitidos": "Entre os alertas mais severos, os picos foram 4,89 mm/s na vibração do mancal, 123,78 °C e 124,38 °C na temperatura do enrolamento, 2.100,03 rpm na velocidade do eixo e 126,83 °C na temperatura do enrolamento.",
+    "Sensores em risco": "Velocidade do eixo, vibração no mancal, corrente elétrica por fase e temperatura do enrolamento tiveram alertas críticos. A severidade geral do ativo foi crítica.",
+    "Tendências": "A velocidade do eixo ficou estável. A vibração no mancal variou +0,23 mm/s (+12,1 %). A vibração global, a corrente por fase, a temperatura do enrolamento e a temperatura interna das bobinas ficaram estáveis.",
+    "Ações padrão": "Para velocidade do eixo, interrompa a operação e solicite inspeção do eixo imediatamente. Para vibração no mancal, interrompa a operação e solicite inspeção do mancal imediatamente. Para corrente por fase, interrompa a operação e solicite inspeção elétrica imediata. Para temperatura do enrolamento, interrompa a operação e solicite inspeção imediata."
+  },
+  "semanal": {
+    "Resumo": "Na semana, foram registrados 1 alerta leve, 9 moderados e 7 críticos para a velocidade do eixo; 4 leves, 7 moderados e 4 críticos para a vibração no mancal; 3 leves, 3 moderados e 5 críticos para a corrente por fase; e 1 leve, 4 moderados e 6 críticos para a temperatura do enrolamento.",
+    "Alertas emitidos": "Entre os alertas mais severos, os picos foram 4,89 mm/s na vibração do mancal, 123,78 °C e 124,38 °C na temperatura do enrolamento, 2.100,03 rpm na velocidade do eixo e 126,83 °C na temperatura do enrolamento.",
+    "Sensores em risco": "Velocidade do eixo, vibração no mancal, corrente elétrica por fase e temperatura do enrolamento tiveram alertas críticos. A severidade geral do ativo foi crítica.",
+    "Tendências": "A velocidade do eixo variou -114,13 rpm (-6,4 %), enquanto a vibração no mancal variou +0,12 mm/s (+6,4 %). A vibração global e a corrente por fase ficaram estáveis. A temperatura do enrolamento variou -8,17 °C (-9,9 %), e a temperatura interna das bobinas variou -9,69 °C (-13,7 %).",
+    "Ações padrão": "Para velocidade do eixo, interrompa a operação e solicite inspeção do eixo imediatamente. Para vibração no mancal, interrompa a operação e solicite inspeção do mancal imediatamente. Para corrente por fase, interrompa a operação e solicite inspeção elétrica imediata. Para temperatura do enrolamento, interrompa a operação e solicite inspeção imediata."
+  }
+}

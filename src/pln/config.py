@@ -16,8 +16,63 @@ DATA_VARIABLES_FILE = DATA_DIR / "data_variables.json"
 SENSORS_FILE = DATA_DIR / "sensores.json"
 ALERT_TESTS_FILE = DATA_DIR / "alertas_teste.json"
 ALERTS_OUTPUT_FILE = OUTPUT_DIR / "alertas.json"
+EVENTS_FILE = DATA_DIR / "eventos_rotulados.json"
+REPORT_REFERENCE_FILE = DATA_DIR / "relatorio_referencia.json"
+CLASSIFICATION_OUTPUT_FILE = OUTPUT_DIR / "classificacao.json"
+DAILY_REPORT_OUTPUT_FILE = OUTPUT_DIR / "relatorio_diario.json"
+WEEKLY_REPORT_OUTPUT_FILE = OUTPUT_DIR / "relatorio_semanal.json"
 LLM_CACHE_FILE = OUTPUT_DIR / "cache_llm.jsonl"
 REQUIREMENTS_FILE = ROOT_DIR / "requirements.txt"
+
+CATEGORIAS_EVENTO = (
+    "manutenção corretiva",
+    "manutenção preventiva",
+    "anomalia elétrica",
+    "anomalia mecânica",
+    "operação normal",
+)
+CRITERIOS_CATEGORIA_EVENTO = {
+    "manutenção corretiva": "Intervenção não planejada para reparar ou substituir um componente após uma ocorrência.",
+    "manutenção preventiva": "Inspeção, limpeza, lubrificação ou ajuste planejado antes de uma falha registrada.",
+    "anomalia elétrica": "Evento observado em corrente, tensão, conexão, isolamento ou proteção elétrica.",
+    "anomalia mecânica": "Evento observado em vibração, ruído, rotação, eixo, acoplamento ou suporte mecânico.",
+    "operação normal": "Registro sem ocorrência ou desvio observado durante a operação do motor.",
+}
+# Lexicon terms were selected from the two dev examples per category only.
+LEXICO_CLASSIFICACAO = {
+    "manutenção corretiva": ("os corretiva", "reparo emergencial", "trocado", "troca"),
+    "manutenção preventiva": ("inspeção programada", "plano de inspeção", "calendário de revisão", "lubrificação"),
+    "anomalia elétrica": ("corrente por fase", "alarme no terminal", "tensão oscilou", "aquecimento no conector"),
+    "anomalia mecânica": ("vibração no mancal", "ruído metálico", "folga no acoplamento", "eixo oscilou"),
+    "operação normal": ("operação estável", "carga regular", "leituras dentro", "sem ocorrência", "próxima do padrão"),
+}
+
+SPLIT_DEV = "dev"
+SPLIT_TESTE = "teste"
+ORIGEM_ALERTA = "derivado_de_alerta"
+ORIGEM_SINTETICA = "sintetico"
+EVENTOS_POR_CATEGORIA = 12
+EVENTOS_DEV_POR_CATEGORIA = 2
+EVENTOS_TESTE_POR_CATEGORIA = 10
+MIN_EVENTOS_DERIVADOS_DE_ALERTA = 6
+PERIODO_DIARIO = "diario"
+PERIODO_SEMANAL = "semanal"
+DIAS_PERIODO_SEMANAL = 7
+MAX_ALERTAS_RELATORIO = 5
+LIMIAR_TENDENCIA_PCT = 5.0
+PRECISAO_RELATORIO = 2
+PRECISAO_TENDENCIA_PCT = 1
+MAX_PALAVRAS_RELATORIO = 30
+CLASSES_SEVERIDADE_RELATORIO = ("leve", "moderado", "critico")
+SEVERIDADE_EXIBICAO = {"leve": "leve", "moderado": "moderado", "critico": "crítico"}
+SEVERIDADE_ADJETIVO_FEMININO = {"leve": "leve", "moderado": "moderada", "critico": "crítica"}
+SECOES_RELATORIO = (
+    "Resumo",
+    "Alertas emitidos",
+    "Sensores em risco",
+    "Tendências",
+    "Ações padrão",
+)
 
 GAP_MAX_MIN = 60
 MIN_LEITURAS_LEVE = 3
