@@ -70,7 +70,7 @@ o **horizonte**: a evolução de longo prazo, em itens por família — a base d
 
 ## 01 · Sprint 3 — Alertas e classificação
 - ✅ **R01.1** Alertas determinísticos e fiéis — severidade, templates e verificador sobre os dados reais (F1) (✅ 2026-11-24)
-- 🔷 **R01.2** Classificação em 5 categorias e relatório rastreável — 60 eventos rotulados, F1 por classe, ROUGE e checklist (F1, F2)
+- ✅ **R01.2** Classificação em 5 categorias e relatório rastreável — 60 eventos rotulados, F1 por classe, ROUGE e checklist (F1, F2) (✅ 2026-11-24)
 
 ## 02 · Sprint 4 — RAG e assistente
 - 🔷 **R02.1** Pipeline RAG com página, seção e estado — chunking por seção, embeddings multilíngues, estado na busca (F3, F4)

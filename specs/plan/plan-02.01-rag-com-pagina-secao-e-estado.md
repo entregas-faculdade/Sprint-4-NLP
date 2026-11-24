@@ -7,8 +7,8 @@ dominio: "Sprint 4 — RAG e assistente"
 status: "🔴 A executar"
 prioridade: "Alta"
 tags: ["plan", "sprint-4", "rag", "F3", "F4"]
-relacionados: ["[[00-contexto]]", "[[plan-01.02-classificacao-e-relatorio-rastreavel]]"]
-depende_de: "plan-01.02-classificacao-e-relatorio-rastreavel"
+relacionados: ["[[00-contexto]]", "[[01.02-classificacao-e-relatorio]]"]
+depende_de: ""
 destino_sintese: "specs/02.01-pipeline-rag.md + 00-contexto.md"
 ---
 

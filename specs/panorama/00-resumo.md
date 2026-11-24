@@ -11,7 +11,7 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 # Panorama
 
 ## Progresso
-█░░░░░░░░░ 14% · 1/7 itens ✅
+██░░░░░░░░ 28% · 2/7 itens ✅
 
 ## Agora
 —
@@ -26,9 +26,8 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 ## Por família
 | FF | Família | Itens ✅/total | Progresso | Plans abertas |
 |---|---|---|---|---|
-| 01 | Sprint 3 — Alertas e classificação | 1/2 | ██░░░ | 1 |
+| 01 | Sprint 3 — Alertas e classificação | 2/2 | █████ | 0 |
 | 02 | Sprint 4 — RAG e assistente | 0/5 | ░░░░░ | 5 |
 
 ## Atenção
-- 🟢 plan-01.02 · Classificar eventos em 5 categorias e gerar relatório rastreável — aguardando síntese
 - 📋 1 achado(s) no `00-backlog`
