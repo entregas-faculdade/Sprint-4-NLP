@@ -75,7 +75,7 @@ o **horizonte**: a evolução de longo prazo, em itens por família — a base d
 ## 02 · Sprint 4 — RAG e assistente
 - ✅ **R02.1** Pipeline RAG com página, seção e estado — chunking por seção, embeddings multilíngues, estado na busca (F3, F4) (✅ 2026-11-25)
 - ✅ **R02.2** Assistente de troubleshooting — persona, citação, confiança calculada, abstenção e memória (✅ 2026-11-25)
-- 🔷 **R02.3** Avaliação confiável do RAG e do juiz — 20 perguntas com gabarito de página, métricas de recuperação, juiz por afirmação (F5, F6)
+- ✅ **R02.3** Avaliação confiável do RAG e do juiz — 20 perguntas com gabarito de página, métricas de recuperação, juiz por afirmação (F5, F6) (✅ 2026-11-25)
 - 🔷 **R02.4** Cenários e limites — elétrica, mecânica e preventiva em separado, limites observados (F7)
 - 🔷 **R02.5** Entrega — documento final, README, roteiro do vídeo e notebooks executados
 

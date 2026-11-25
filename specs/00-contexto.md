@@ -105,7 +105,7 @@ A entrega anterior (nota 85) está avaliada; o feedback dela é a fonte dos requ
 | `classificacao.py` · `relatorio.py` | classificador de eventos, relatório rastreável | 01.02 |
 | `estado.py` · `rag.py` | estado operacional, chunking, índice, retriever (spec `02.01-pipeline-rag`) | 02.01 |
 | `assistente.py` | persona, citação, confiança, abstenção, memória (spec `02.02-assistente-de-troubleshooting`) | 02.02 |
-| `avaliacao.py` | métricas de recuperação, juiz por afirmação | 02.03 |
+| `avaliacao.py` | métricas de recuperação, juiz por afirmação, calibração (spec `02.03-avaliacao-rag`) | 02.03 |
 
 - **Fronteira:** os notebooks (`notebooks/`) só orquestram e exibem; a lógica vive em `src/pln/` e é testada em `tests/`.
 - **Dados:** `data/dados-w22.csv` (43.123 leituras, 6 variáveis, 2026-05-05 a 2026-08-23), `data/active_assets.json`
@@ -145,7 +145,7 @@ A entrega anterior (nota 85) está avaliada; o feedback dela é a fonte dos requ
 | Mexer em classificador de eventos ou relatório | `specs/01.02-classificacao-e-relatorio.md` | [[00-knowledge]] |
 | Mexer em chunking, índice, retriever ou estado operacional | `specs/02.01-pipeline-rag.md` | [[00-knowledge]] |
 | Mexer em prompt, citação, confiança, abstenção ou memória do assistente | `specs/02.02-assistente-de-troubleshooting.md` | [[00-knowledge]] |
-| Mexer em métricas, gabarito ou juiz | `plan/plan-02.03-avaliacao-confiavel-do-rag-e-do-juiz.md` (depois `specs/02.03-*.md`) | [[00-knowledge]] |
+| Mexer em métricas, gabarito ou juiz | `specs/02.03-avaliacao-rag.md` | [[00-knowledge]] |
 | Cenários, limites, documento final, vídeo | `plan/plan-02.04-*.md` e `plan-02.05-*.md` · `docs/feedback-professor.md` | [[00-knowledge]] |
 | Entender o que o professor exigiu | `docs/feedback-professor.md` · `enunciado-4.txt` | — |
 
@@ -285,8 +285,7 @@ Antes de escolher **como** fazer algo, leia **[[00-knowledge]]** — é o rotead
 - O PDF é um catálogo comercial WEG: não traz procedimento de troubleshooting passo a passo, então parte das perguntas
   práticas **não tem resposta no corpus** — a abstenção correta é parte do resultado, não falha.
 - Modelos OpenRouter gratuitos têm limite de taxa e podem sair do ar: por isso cache em `data/saida/cache_llm.jsonl`.
-- Entrega anterior (referência para comparar): faithfulness 4,75/5 e relevancy 3,50/5 por juiz único, sem context precision;
-  7 de 20 perguntas com relevancy ≤ 2 por falha de recuperação (modelos de embedding e reranker em inglês).
+- A avaliação usa um juiz de 12B e tem as 5 perguntas fora do escopo só no `dev`; os limites estão em `specs/02.03-avaliacao-rag.md` §2.7.
 
 ---
 

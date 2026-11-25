@@ -55,9 +55,8 @@ que cresce é índice quebrado.
 
 | # | Plan | Objetivo | Depende de | Status | Destino |
 |---|---|---|---|---|---|
-| 1 | [plan-02.03-avaliacao-confiavel-do-rag-e-do-juiz](plan/plan-02.03-avaliacao-confiavel-do-rag-e-do-juiz.md) | Avaliar o RAG com gabarito de página e juiz por afirmação (F5, F6) | — | 🟢 Aprovada | specs/02.03 + 00-contexto |
-| 2 | [plan-02.04-cenarios-e-limites](plan/plan-02.04-cenarios-e-limites.md) | Demonstrar os três cenários em separado e documentar os limites (F7) | plan-02.03 | 🔴 A executar | specs/02.04 + 00-contexto |
-| 3 | [plan-02.05-entrega](plan/plan-02.05-entrega.md) | Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados | plan-02.04 | 🔴 A executar | — |
+| 1 | [plan-02.04-cenarios-e-limites](plan/plan-02.04-cenarios-e-limites.md) | Demonstrar os três cenários em separado e documentar os limites (F7) | — | 🟡 Em execução | specs/02.04 + 00-contexto |
+| 2 | [plan-02.05-entrega](plan/plan-02.05-entrega.md) | Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados | plan-02.04 | 🔴 A executar | — |
 
 ---
 

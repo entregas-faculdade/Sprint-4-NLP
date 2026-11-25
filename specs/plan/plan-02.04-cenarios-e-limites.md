@@ -4,11 +4,11 @@ familia: "02"
 item: "R02.4"
 titulo: "Demonstrar os três cenários em separado e documentar os limites observados"
 dominio: "Sprint 4 — RAG e assistente"
-status: "🔴 A executar"
+status: "🟡 Em execução"
 prioridade: "Alta"
 tags: ["plan", "sprint-4", "cenarios", "limites", "F7"]
-relacionados: ["[[00-contexto]]", "[[plan-02.03-avaliacao-confiavel-do-rag-e-do-juiz]]"]
-depende_de: "plan-02.03-avaliacao-confiavel-do-rag-e-do-juiz"
+relacionados: ["[[00-contexto]]", "[[02.03-avaliacao-rag]]"]
+depende_de: ""
 destino_sintese: "specs/02.04-cenarios-e-limites.md + 00-contexto.md"
 ---
 
