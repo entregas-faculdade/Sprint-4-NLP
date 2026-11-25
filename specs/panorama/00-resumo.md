@@ -11,13 +11,12 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 # Panorama
 
 ## Progresso
-████░░░░░░ 42% · 3/7 itens ✅
+█████░░░░░ 57% · 4/7 itens ✅
 
 ## Agora
-—
+- 🟡 · plan-02.03 · R02.3 · Avaliar o RAG com gabarito de página e juiz por afirmação
 
 ## Próximas
-- 🔴 · plan-02.03 · R02.3 · Avaliar o RAG com gabarito de página e juiz por afirmação
 - 🔴 · plan-02.04 · R02.4 · Demonstrar os três cenários em separado e documentar os limites observados
 - 🔴 · plan-02.05 · R02.5 · Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados
 
@@ -25,8 +24,7 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 | FF | Família | Itens ✅/total | Progresso | Plans abertas |
 |---|---|---|---|---|
 | 01 | Sprint 3 — Alertas e classificação | 2/2 | █████ | 0 |
-| 02 | Sprint 4 — RAG e assistente | 1/5 | █░░░░ | 4 |
+| 02 | Sprint 4 — RAG e assistente | 2/5 | ██░░░ | 3 |
 
 ## Atenção
-- 🟢 plan-02.02 · Construir o assistente de troubleshooting com citação, confiança calculada e abstenção — aguardando síntese
 - 📋 4 achado(s) no `00-backlog`

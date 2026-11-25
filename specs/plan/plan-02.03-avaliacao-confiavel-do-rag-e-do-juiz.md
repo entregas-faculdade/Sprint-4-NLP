@@ -4,11 +4,11 @@ familia: "02"
 item: "R02.3"
 titulo: "Avaliar o RAG com gabarito de página e juiz por afirmação"
 dominio: "Sprint 4 — RAG e assistente"
-status: "🔴 A executar"
+status: "🟡 Em execução"
 prioridade: "Alta"
 tags: ["plan", "sprint-4", "avaliacao", "F5", "F6"]
-relacionados: ["[[00-contexto]]", "[[plan-02.02-assistente-de-troubleshooting]]"]
-depende_de: "plan-02.02-assistente-de-troubleshooting"
+relacionados: ["[[00-contexto]]", "[[02.02-assistente-de-troubleshooting]]"]
+depende_de: ""
 destino_sintese: "specs/02.03-avaliacao-rag.md + 00-contexto.md"
 ---
 
