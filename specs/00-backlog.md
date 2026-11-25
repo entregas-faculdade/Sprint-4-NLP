@@ -64,6 +64,8 @@ via normal.
 | # | Achado | Origem | Registrado em | Peso |
 |---|---|---|---|---|
 | 1 | `verificar_clareza` (≤ 60 palavras por `\w+`) reprova 1.412 dos 4.477 templates reais (vibração e velocidade, ação padrão longa); o notebook só a aplica aos 9 casos de teste | execução | 2026-11-23 | médio |
+| 2 | `rag.py` (serialização de tabelas): cabeçalhos multinível saem colados e repetidos por célula (`PotênciaNominal kW` na p. 5; 77 chunks da seção 5.2.1 quase só rótulo `Carga radial máxima - 60 Hz - 25 .000 horas - Fr em (kN) …`), o que dilui a busca nessas tabelas | execução | 2026-11-24 | médio |
+| 3 | Notebook da plan 02.01, seção 5: com estado crítico os mesmos 4 chunks voltam na mesma ordem (só os scores mudam) e a seção 10.1 "Resistências de Aquecimento" (aquecedor anticondensação) entra no top 4 para "aquecimento do motor"; o boost de seção por estado ainda não muda a recuperação de forma útil | execução | 2026-11-25 | médio |
 
 ---
 

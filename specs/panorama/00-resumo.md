@@ -17,7 +17,6 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 —
 
 ## Próximas
-- 🔴 · plan-02.01 · R02.1 · Construir RAG com página, seção e estado operacional na busca
 - 🔴 · plan-02.02 · R02.2 · Construir o assistente de troubleshooting com citação, confiança calculada e abstenção
 - 🔴 · plan-02.03 · R02.3 · Avaliar o RAG com gabarito de página e juiz por afirmação
 - 🔴 · plan-02.04 · R02.4 · Demonstrar os três cenários em separado e documentar os limites observados
@@ -26,9 +25,9 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 ## Por família
 | FF | Família | Itens ✅/total | Progresso | Plans abertas |
 |---|---|---|---|---|
-| 01 | Sprint 3 — Alertas e classificação | 2/2 | █████ | 1 |
+| 01 | Sprint 3 — Alertas e classificação | 2/2 | █████ | 0 |
 | 02 | Sprint 4 — RAG e assistente | 0/5 | ░░░░░ | 5 |
 
 ## Atenção
-- 🟢 plan-01.03 · Ler a chave do OpenRouter do .env da raiz e remover o Colab do notebook — aguardando síntese
-- 📋 1 achado(s) no `00-backlog`
+- 🟢 plan-02.01 · Construir RAG com página, seção e estado operacional na busca — aguardando síntese
+- 📋 3 achado(s) no `00-backlog`

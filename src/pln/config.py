@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass
 from pathlib import Path
 from types import MappingProxyType
 from typing import Any
@@ -25,6 +26,79 @@ DAILY_REPORT_OUTPUT_FILE = OUTPUT_DIR / "relatorio_diario.json"
 WEEKLY_REPORT_OUTPUT_FILE = OUTPUT_DIR / "relatorio_semanal.json"
 LLM_CACHE_FILE = OUTPUT_DIR / "cache_llm.jsonl"
 REQUIREMENTS_FILE = ROOT_DIR / "requirements.txt"
+PDF_CATALOGO_FILE = ROOT_DIR / "docs" / "WEG-w22-motor-eletrico-trifasico-brochure.pdf"
+TERMOS_ESTADO_FILE = DATA_DIR / "termos_estado.json"
+
+CHUNK_MAX = 900
+CHUNK_OVERLAP = 100
+CHUNK_MIN = 40
+CHUNK_LEGADO_MAX = 1000
+TABLE_CAPTION_MAX_GAP = 40
+K_BUSCA_LEGADO = 5
+K_BUSCA_NOVO = 20
+K_BUSCA = K_BUSCA_NOVO
+K_FINAL = 4
+K_FINAL_LEGADO = 2
+K_FINAL_NOVO = K_FINAL
+PESO_ESTADO = 0.15
+CHROMA_COLLECTION_LEGADO = "weg_w22_legado"
+CHROMA_COLLECTION_NOVO = "weg_w22_multilingual"
+CHROMA_DISTANCE_KEY = "hnsw:space"
+CHROMA_DISTANCE_COSINE = "cosine"
+PREFIXO_QUERY_NOVO = "query: "
+PREFIXO_PASSAGE_NOVO = "passage: "
+MODELO_EMBEDDING_LEGADO = "all-MiniLM-L6-v2"
+MODELO_EMBEDDING_NOVO = "intfloat/multilingual-e5-base"
+MODELO_RERANKER_LEGADO = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+MODELO_RERANKER_NOVO = "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1"
+
+
+@dataclass(frozen=True)
+class PresetRAG:
+    """All model and retrieval settings for one reproducible RAG preset."""
+
+    nome: str
+    colecao: str
+    modelo_embedding: str
+    modelo_reranker: str
+    chunk_max: int
+    chunk_overlap: int
+    k_busca: int
+    k_final: int
+    prefixo_query: str
+    prefixo_passage: str
+    usa_estado: bool
+    peso_estado: float
+
+
+LEGADO = PresetRAG(
+    nome="LEGADO",
+    colecao=CHROMA_COLLECTION_LEGADO,
+    modelo_embedding=MODELO_EMBEDDING_LEGADO,
+    modelo_reranker=MODELO_RERANKER_LEGADO,
+    chunk_max=CHUNK_LEGADO_MAX,
+    chunk_overlap=0,
+    k_busca=K_BUSCA_LEGADO,
+    k_final=K_FINAL_LEGADO,
+    prefixo_query="",
+    prefixo_passage="",
+    usa_estado=False,
+    peso_estado=0.0,
+)
+NOVO = PresetRAG(
+    nome="NOVO",
+    colecao=CHROMA_COLLECTION_NOVO,
+    modelo_embedding=MODELO_EMBEDDING_NOVO,
+    modelo_reranker=MODELO_RERANKER_NOVO,
+    chunk_max=CHUNK_MAX,
+    chunk_overlap=CHUNK_OVERLAP,
+    k_busca=K_BUSCA_NOVO,
+    k_final=K_FINAL_NOVO,
+    prefixo_query=PREFIXO_QUERY_NOVO,
+    prefixo_passage=PREFIXO_PASSAGE_NOVO,
+    usa_estado=True,
+    peso_estado=PESO_ESTADO,
+)
 
 CATEGORIAS_EVENTO = (
     "manutenção corretiva",

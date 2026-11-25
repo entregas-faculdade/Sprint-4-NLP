@@ -1,10 +1,13 @@
 absl-py==2.3.1
+chromadb==1.5.9
 matplotlib==3.11.2
 nbformat==5.11.1
 numpy==2.5.5; python_version >= "3.12"
 numpy==2.4.6; python_version == "3.11"
 pandas==3.1.1
+PyMuPDF==2.1
 pytest==9.2.0
 requests==2.34.2
 rouge-score==0.1.2
 scikit-learn==1.9.1
+sentence-transformers==6.3.0

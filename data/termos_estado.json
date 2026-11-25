@@ -1,0 +1,66 @@
+{
+  "grandezas": {
+    "temperatura": {
+      "dominio_falha": "térmica",
+      "termos_consulta": [
+        "temperatura",
+        "enrolamento",
+        "classe de isolamento",
+        "elevação de temperatura",
+        "proteção térmica",
+        "ventilação"
+      ],
+      "secoes_alvo": [
+        "Sistema de Ventilação",
+        "Proteção Térmica do Motor",
+        "Influência do Inversor na Elevação de Temperatura do Motor"
+      ]
+    },
+    "corrente": {
+      "dominio_falha": "elétrica",
+      "termos_consulta": [
+        "corrente nominal",
+        "sobrecorrente",
+        "tensão",
+        "frequência",
+        "proteção térmica"
+      ],
+      "secoes_alvo": [
+        "Tensão / Frequência",
+        "Valor da Sobrecorrente Ocasional",
+        "Proteção Térmica do Motor"
+      ]
+    },
+    "vibração": {
+      "dominio_falha": "mecânica",
+      "termos_consulta": [
+        "vibração",
+        "mancal",
+        "rolamento",
+        "balanceamento",
+        "níveis de vibração"
+      ],
+      "secoes_alvo": [
+        "Níveis de Vibração",
+        "Eixo",
+        "Rolamentos",
+        "Características Construtivas"
+      ]
+    },
+    "velocidade": {
+      "dominio_falha": "mecânica",
+      "termos_consulta": [
+        "velocidade",
+        "rotação",
+        "escorregamento",
+        "frequência",
+        "inversor"
+      ],
+      "secoes_alvo": [
+        "Considerações Relativas ao Sistema Isolante do Motor",
+        "Restrições quanto à Circulação de Correntes pelos Mancais",
+        "Dados Mecânicos"
+      ]
+    }
+  }
+}

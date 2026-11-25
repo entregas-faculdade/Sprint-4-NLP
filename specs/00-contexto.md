@@ -68,8 +68,8 @@ A entrega anterior (nota 85) está avaliada; o feedback dela é a fonte dos requ
   só da tabela de ações padrão. Proibido causalidade e previsão não calculadas (F1).
 - **Juiz ≠ gerador.** Modelos de família diferente, ids fixos em `src/pln/config.py`, **sem fallback silencioso**; cada
   resposta registra o modelo que a produziu. Conhecimento externo nunca conta como fiel (F6).
-- **Execução 100 % local, sem Colab** (decisão do dono, 2026-11-24). A chave vive só no `.env` da raiz, ignorado pelo Git. Nunca em
-  código, saída de notebook ou commit — o repositório é **público**. O código ainda não lê o `.env` (ver §8).
+- **Execução 100 % local, sem Colab** (decisão do dono, 2026-11-24). A chave vive só no `.env` da raiz (`OPEN-ROUTER-API-KEY`), ignorado pelo Git, e o
+  código a lê de lá. Nunca em código, saída de notebook ou commit — o repositório é **público**.
 - Universais: `AGENTS.md` e skills `padrao-escrita` + `padrao-python` (função ≤ 40 linhas, ≤ 4 parâmetros, zero hardcoded,
   nenhuma exceção engolida). Constantes e ids de modelo só em `src/pln/config.py`.
 - Notebooks são **entregues já executados** (saídas visíveis, sem erro, sem chave). Antes da execução, ficam **sem saídas**.
@@ -211,7 +211,7 @@ caminho.
 
 - **Trabalho direto na `main`** (decisão do dono: sem `develop` nem `dev/<nome>`); sem PR.
 - **Execução em duas fases.** O executor entrega código, testes e notebook **sem saídas**. O revisor verifica a Fase A (local).
-  O usuário roda o notebook **localmente** (venv limpo, `nbconvert --execute`, chave só no ambiente da sessão, sem `--allow-errors`),
+  O usuário roda o notebook **localmente** (venv limpo com `pip install -r requirements.txt`, `nbconvert --execute`, chave lida do `.env` da raiz, sem `--allow-errors`),
   e o revisor verifica a Fase B (saídas e arquivos de `data/saida/`) antes do veredito. A plan fica `🟠` entre as fases.
 - **Nunca restaurar o notebook com `git checkout`/`git restore` enquanto houver trabalho não commitado nele:** apaga as células do
   executor (ocorreu em 2026-11-24).
@@ -281,9 +281,6 @@ Antes de escolher **como** fazer algo, leia **[[00-knowledge]]** — é o rotead
 - **`data_variables.json` está inconsistente** (2026-11-23): o nome/unidade de cada variável contradiz a descrição e a magnitude
   dos valores (ex.: "Velocidade - Porta 1 [mm/s]" tem média 82,8 e limiares 75/90/110, descrita como "monitoramento térmico das
   bobinas do estator"). O mapeamento canônico (`specs/01.01-alertas-deterministicos.md` §2.1) usa descrição + magnitude e foi confirmado pelo usuário em 2026-11-24.
-- **A chave do OpenRouter ainda não é lida do `.env` pelo código** (2026-11-24): `load_openrouter_api_key()` lê Colab `userdata` e a
-  variável de ambiente `OPENROUTER_API_KEY`, mas o `.env` da raiz usa o nome `OPEN-ROUTER-API-KEY` e não é lido. Hoje o usuário
-  copia a chave para o ambiente da sessão antes de executar. Ajuste decidido pelo dono (execução local, chave do `.env` da raiz).
 - Só 4 das 6 variáveis têm limiar em `active_assets.json`; as outras 2 não geram alerta.
 - O PDF é um catálogo comercial WEG: não traz procedimento de troubleshooting passo a passo, então parte das perguntas
   práticas **não tem resposta no corpus** — a abstenção correta é parte do resultado, não falha.
