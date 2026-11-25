@@ -382,6 +382,22 @@ def test_retriever_expande_consulta_e_aplica_boost_de_secao() -> None:
     assert colecao.indexados[3][0]["pagina"] == 13
 
 
+def test_retriever_preserva_score_bruto_e_score_normalizado() -> None:
+    dependencias = DependenciasRAG(FakeEmbedding(), FakeReranker(), FakeVectorClient())
+    chunks = [
+        Chunk(f"chunk-{indice}", 13, 13, "4.1", "Sistema de Ventilação", f"Passagem {indice}")
+        for indice in range(1, 5)
+    ]
+    retriever = criar_retriever(chunks, NOVO, dependencias)
+
+    resultados = retriever.buscar("Consultar o manual do motor W22")
+
+    assert [item["score_rerank_bruto"] for item in resultados] == [0.9, 0.8, 0.79, 0.1]
+    assert [item["score_rerank"] for item in resultados] == pytest.approx(
+        [1.0, 0.875, 0.8625, 0.0]
+    )
+
+
 def test_importacao_rag_nao_carrega_clientes_de_modelo() -> None:
     assert "chromadb" not in sys.modules
     assert "sentence_transformers" not in sys.modules

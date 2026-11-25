@@ -952,7 +952,8 @@ def _pontuar_candidatos(
     if len(valores) != len(candidatos) or not all(math.isfinite(valor) for valor in valores):
         raise ValueError("O reranker retornou escores inv\u00e1lidos para os candidatos.")
     escores = _normalizar_escores(valores)
-    for candidato, score in zip(candidatos, escores, strict=True):
+    for candidato, score_bruto, score in zip(candidatos, valores, escores, strict=True):
+        candidato["score_rerank_bruto"] = score_bruto
         candidato["score_rerank"] = score
         candidato["score_final"] = score + _boost_secao(
             candidato, contexto.secoes_alvo, contexto.configuracao.preset

@@ -175,6 +175,45 @@ MODELO_GERADOR = "meta-llama/llama-3.3-70b-instruct"
 # Gemma 3 12B cobre mais de 140 idiomas com custo baixo para julgar respostas.
 MODELO_JUIZ = "google/gemma-3-12b-it"
 
+MEMORIA_TURNOS = 3
+LIMIAR_PALAVRAS_CONSULTA = 6
+LIMIAR_ABSTENCAO = -2.9
+MARGEM_ABSTENCAO = 0.1
+NIVEL_CONFIANCA_BAIXA = "Baixa"
+FAIXAS_CONFIANCA = {
+    "Alta": {"score_minimo": 8.0, "chunks_minimos": 3},
+    "Média": {"score_minimo": 0.0, "chunks_minimos": 1},
+}
+FRASE_ABSTENCAO = "Não encontrei informações suficientes no manual do motor WEG W22 para responder a essa pergunta."
+TEXTO_ESTADO_AUSENTE = "Nenhum estado operacional foi informado."
+MARCADOR_ESTADO_OPERACIONAL = "ESTADO OPERACIONAL"
+MARCADOR_CONTEXTO_MANUAL = "CONTEXTO DO MANUAL"
+MARCADOR_PERGUNTA = "PERGUNTA"
+MARCADOR_CONFIANCA = "Confiança:"
+ANAFORES_ASSISTENTE = (
+    "desse", "dessa", "desses", "dessas",
+    "esse", "essa", "esses", "essas",
+    "este", "esta", "estes", "estas", "isto",
+    "deste", "desta", "destes", "destas",
+    "nesse", "nessa", "nesses", "nessas",
+    "neste", "nesta", "nestes", "nestas", "nisto",
+    "aquele", "aquela", "aqueles", "aquelas", "aquilo",
+    "daquele", "daquela", "daqueles", "daquelas",
+    "naquele", "naquela", "naqueles", "naquelas",
+    "isso", "ele", "ela", "eles", "elas",
+)
+PADRAO_CITACAO_ASSISTENTE = r"\[p\.\s*(?P<pagina>\d+),\s*seç\.\s*(?P<secao>[^\]]+)\]"
+PADRAO_LINHA_CONFIANCA = r"(?im)^\s*Confiança:\s*.*$"
+PROMPT_SISTEMA_ASSISTENTE = (
+    "Você é um assistente técnico especialista em motores elétricos WEG W22. "
+    "Responda somente com informações presentes no bloco CONTEXTO DO MANUAL. "
+    "Cite cada afirmação factual usando [p. <página>, seç. <seção>] e use apenas páginas e seções presentes no contexto. "
+    "Não use conhecimento externo e não invente números. "
+    "Trate o bloco ESTADO OPERACIONAL como dado confiável do sistema; não reinterprete nem conteste seus valores ou severidades. "
+    f"Se o contexto do manual não sustentar a resposta, responda exatamente: {FRASE_ABSTENCAO} "
+    "Termine com uma linha Confiança: <Alta|Média|Baixa>."
+)
+
 TERMOS_PROIBIDOS = (
     "devido a",
     "causado por",

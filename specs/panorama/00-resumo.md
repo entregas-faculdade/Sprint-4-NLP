@@ -14,7 +14,7 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 ████░░░░░░ 42% · 3/7 itens ✅
 
 ## Agora
-- 🟡 · plan-02.02 · R02.2 · Construir o assistente de troubleshooting com citação, confiança calculada e abstenção
+—
 
 ## Próximas
 - 🔴 · plan-02.03 · R02.3 · Avaliar o RAG com gabarito de página e juiz por afirmação
@@ -28,4 +28,5 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 | 02 | Sprint 4 — RAG e assistente | 1/5 | █░░░░ | 4 |
 
 ## Atenção
-- 📋 3 achado(s) no `00-backlog`
+- 🟢 plan-02.02 · Construir o assistente de troubleshooting com citação, confiança calculada e abstenção — aguardando síntese
+- 📋 4 achado(s) no `00-backlog`
