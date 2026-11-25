@@ -106,6 +106,7 @@ A entrega anterior (nota 85) está avaliada; o feedback dela é a fonte dos requ
 | `estado.py` · `rag.py` | estado operacional, chunking, índice, retriever (spec `02.01-pipeline-rag`) | 02.01 |
 | `assistente.py` | persona, citação, confiança, abstenção, memória (spec `02.02-assistente-de-troubleshooting`) | 02.02 |
 | `avaliacao.py` | métricas de recuperação, juiz por afirmação, calibração (spec `02.03-avaliacao-rag`) | 02.03 |
+| `cenarios.py` | escolha dos episódios, diálogo dos cenários, tabela de limites (spec `02.04-cenarios-e-limites`) | 02.04 |
 
 - **Fronteira:** os notebooks (`notebooks/`) só orquestram e exibem; a lógica vive em `src/pln/` e é testada em `tests/`.
 - **Dados:** `data/dados-w22.csv` (43.123 leituras, 6 variáveis, 2026-05-05 a 2026-08-23), `data/active_assets.json`
@@ -146,7 +147,8 @@ A entrega anterior (nota 85) está avaliada; o feedback dela é a fonte dos requ
 | Mexer em chunking, índice, retriever ou estado operacional | `specs/02.01-pipeline-rag.md` | [[00-knowledge]] |
 | Mexer em prompt, citação, confiança, abstenção ou memória do assistente | `specs/02.02-assistente-de-troubleshooting.md` | [[00-knowledge]] |
 | Mexer em métricas, gabarito ou juiz | `specs/02.03-avaliacao-rag.md` | [[00-knowledge]] |
-| Cenários, limites, documento final, vídeo | `plan/plan-02.04-*.md` e `plan-02.05-*.md` · `docs/feedback-professor.md` | [[00-knowledge]] |
+| Mexer em cenários de demonstração ou na tabela de limites | `specs/02.04-cenarios-e-limites.md` | [[00-knowledge]] |
+| Documento final, README, vídeo | `plan/plan-02.05-*.md` · `docs/feedback-professor.md` | [[00-knowledge]] |
 | Entender o que o professor exigiu | `docs/feedback-professor.md` · `enunciado-4.txt` | — |
 
 > Cada plan, ao ser sintetizada, troca a sua linha acima pelo caminho da spec fixa criada.
@@ -285,7 +287,7 @@ Antes de escolher **como** fazer algo, leia **[[00-knowledge]]** — é o rotead
 - O PDF é um catálogo comercial WEG: não traz procedimento de troubleshooting passo a passo, então parte das perguntas
   práticas **não tem resposta no corpus** — a abstenção correta é parte do resultado, não falha.
 - Modelos OpenRouter gratuitos têm limite de taxa e podem sair do ar: por isso cache em `data/saida/cache_llm.jsonl`.
-- A avaliação usa um juiz de 12B e tem as 5 perguntas fora do escopo só no `dev`; os limites estão em `specs/02.03-avaliacao-rag.md` §2.7.
+- A avaliação usa um juiz de 12B e tem as 5 perguntas fora do escopo só no `dev`; os limites estão em `specs/02.03-avaliacao-rag.md` §2.7 e `specs/02.04-cenarios-e-limites.md` §2.4.
 
 ---
 

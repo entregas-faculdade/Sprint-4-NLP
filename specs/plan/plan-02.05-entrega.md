@@ -4,11 +4,11 @@ familia: "02"
 item: "R02.5"
 titulo: "Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados"
 dominio: "Sprint 4 — RAG e assistente"
-status: "🔴 A executar"
+status: "🟡 Em execução"
 prioridade: "Alta"
 tags: ["plan", "entrega"]
-relacionados: ["[[00-contexto]]", "[[plan-02.04-cenarios-e-limites]]"]
-depende_de: "plan-02.04-cenarios-e-limites"
+relacionados: ["[[00-contexto]]", "[[02.04-cenarios-e-limites]]"]
+depende_de: ""
 destino_sintese: "—"
 ---
 
