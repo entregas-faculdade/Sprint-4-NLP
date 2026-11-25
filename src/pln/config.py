@@ -40,6 +40,7 @@ K_BUSCA = K_BUSCA_NOVO
 K_FINAL = 4
 K_FINAL_LEGADO = 2
 K_FINAL_NOVO = K_FINAL
+# Mantido em 0,15: no dev o hit@4 é 5/5 com 0, 0,05, 0,15 e 0,3, então não há evidência para mudá-lo.
 PESO_ESTADO = 0.15
 CHROMA_COLLECTION_LEGADO = "weg_w22_legado"
 CHROMA_COLLECTION_NOVO = "weg_w22_multilingual"
@@ -177,7 +178,10 @@ MODELO_JUIZ = "google/gemma-3-12b-it"
 
 MEMORIA_TURNOS = 3
 LIMIAR_PALAVRAS_CONSULTA = 6
-LIMIAR_ABSTENCAO = -2.9
+# Calibrado só no dev (5 perguntas dentro + 5 fora do escopo): o maior score bruto fora do escopo é 0,41 e a
+# pergunta dentro do escopo que fica abaixo do limiar pontua -3,91; 2,0 é o limiar mediano da faixa viável
+# (0,5 a 3,5 na grade), a que mais se afasta das duas fronteiras. O hit@4 do dev é 5/5 para qualquer peso.
+LIMIAR_ABSTENCAO = 2.0
 MARGEM_ABSTENCAO = 0.1
 NIVEL_CONFIANCA_BAIXA = "Baixa"
 FAIXAS_CONFIANCA = {
@@ -212,6 +216,85 @@ PROMPT_SISTEMA_ASSISTENTE = (
     "Trate o bloco ESTADO OPERACIONAL como dado confiável do sistema; não reinterprete nem conteste seus valores ou severidades. "
     f"Se o contexto do manual não sustentar a resposta, responda exatamente: {FRASE_ABSTENCAO} "
     "Termine com uma linha Confiança: <Alta|Média|Baixa>."
+)
+
+AVALIACAO_RAG_FILE = DATA_DIR / "avaliacao_rag.json"
+JUIZ_CALIBRACAO_FILE = DATA_DIR / "juiz_calibracao.json"
+AVALIACAO_RECUPERACAO_OUTPUT_FILE = OUTPUT_DIR / "avaliacao_recuperacao.json"
+AVALIACAO_RESPOSTAS_OUTPUT_FILE = OUTPUT_DIR / "avaliacao_respostas.json"
+JUIZ_CALIBRACAO_OUTPUT_FILE = OUTPUT_DIR / "juiz_calibracao.json"
+ESCOPO_DENTRO = "dentro"
+ESCOPO_FORA = "fora"
+ESPERADO_ABSTENCAO = "abstencao"
+CATEGORIAS_AVALIACAO = ("elétrica", "mecânica", "preventiva", "especificação")
+PERGUNTAS_DENTRO_ESCOPO = 20
+PERGUNTAS_FORA_ESCOPO = 5
+PERGUNTAS_DENTRO_DEV = 5
+KS_AVALIACAO = (1, 4)
+CRITERIO_PAGINA = "pagina"
+CRITERIO_ESTRITO = "estrita"
+# Cenários sintéticos de estado: (prefixo da grandeza sem acento, severidade do primeiro alerta que casa).
+ESTADOS_AVALIACAO = {
+    "temperatura_critico": ("temperatura", "critico"),
+    "corrente_critico": ("corrente", "critico"),
+    "vibracao_critico": ("vibra", "critico"),
+}
+GRADE_LIMIAR_ABSTENCAO = (-4.0, -3.0, -2.0, -1.0, 0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0)
+GRADE_PESO_ESTADO = (0.0, 0.05, 0.15, 0.3)
+
+ROTULO_SUSTENTADA = "SUSTENTADA"
+ROTULO_EXTERNA = "EXTERNA"
+ROTULO_CONTRADIZ = "CONTRADIZ"
+ROTULO_META = "META"
+ROTULOS_AFIRMACAO = (ROTULO_SUSTENTADA, ROTULO_EXTERNA, ROTULO_CONTRADIZ, ROTULO_META)
+COBERTURA_COBRE = "COBRE"
+COBERTURA_PARCIAL = "PARCIAL"
+COBERTURA_NAO_COBRE = "NAO_COBRE"
+PONTOS_COBERTURA = {COBERTURA_COBRE: 1.0, COBERTURA_PARCIAL: 0.5, COBERTURA_NAO_COBRE: 0.0}
+GUARDA_NUMERO = "guarda_numero"
+GUARDA_MARCADOR = "guarda_marcador"
+GUARDA_JUIZ_INVALIDO = "juiz_invalido"
+PADRAO_ROTULO_AFIRMACAO = r"(?<![A-Z_])(SUSTENTADA|EXTERNA|CONTRADIZ|META)(?![A-Z_])"
+PADRAO_ROTULO_COBERTURA = r"(?<![A-Z_])(NAO[ _]COBRE|PARCIAL|COBRE)(?![A-Z_])"
+PADRAO_NUMERO_AFIRMACAO = r"(?<![A-Za-zÀ-ÿ\d])\d+(?:[.,]\d+)*"
+PADRAO_MILHAR = r"\d{1,3}(?:\.\d{3})+"
+PADRAO_COLCHETES = r"\[[^\]]*\]"
+PADRAO_DIVISAO_FRASES = r"(?<=[.!?])\s+(?=[A-ZÀ-Þ0-9])"
+PADRAO_MARCADOR_LISTA = r"^\s*(?:[-*•]|\d+[.)])\s+"
+MARCADORES_CONHECIMENTO_EXTERNO = (
+    "conhecimento geral",
+    "conhecimento externo",
+    "conhecimento previo",
+    "nao consta",
+    "nao esta no contexto",
+    "nao esta no manual",
+    "nao ha informacao",
+    "nao ha mencao",
+    "fora do contexto",
+    "em geral",
+    "de modo geral",
+    "normalmente",
+    "geralmente",
+    "tipicamente",
+    "usualmente",
+    "comumente",
+)
+PROMPT_JUIZ_AFIRMACAO = (
+    "Você é um verificador rigoroso de fidelidade. Receberá um CONTEXTO (trechos de um manual) e uma AFIRMAÇÃO. "
+    "Classifique a afirmação com UM rótulo, considerando SOMENTE o CONTEXTO: "
+    "SUSTENTADA: o contexto afirma ou implica diretamente a afirmação. "
+    "EXTERNA: a afirmação não está no contexto, mesmo que seja verdadeira ou de conhecimento comum; "
+    "inclui função, causa, material, valor ou procedimento que o contexto não traz. "
+    "CONTRADIZ: o contexto afirma algo incompatível com a afirmação. "
+    "META: não é afirmação factual sobre o motor (saudação, aviso, organização da resposta). "
+    "Na dúvida entre SUSTENTADA e EXTERNA, responda EXTERNA. Responda apenas com o rótulo."
+)
+PROMPT_JUIZ_COBERTURA = (
+    "Você avalia se uma RESPOSTA atende à PERGUNTA, comparando-a com a REFERÊNCIA correta. "
+    "COBRE: a resposta traz a informação central da referência. "
+    "PARCIAL: a resposta traz só parte da informação central ou mistura com informação irrelevante. "
+    "NAO_COBRE: a resposta não traz a informação central, ou se recusa a responder. "
+    "Responda apenas com COBRE, PARCIAL ou NAO_COBRE."
 )
 
 TERMOS_PROIBIDOS = (

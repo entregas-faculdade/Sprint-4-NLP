@@ -66,7 +66,8 @@ via normal.
 | 1 | `verificar_clareza` (≤ 60 palavras por `\w+`) reprova 1.412 dos 4.477 templates reais (vibração e velocidade, ação padrão longa); o notebook só a aplica aos 9 casos de teste | execução | 2026-11-23 | médio |
 | 2 | `rag.py` (serialização de tabelas): cabeçalhos multinível saem colados e repetidos por célula (`PotênciaNominal kW` na p. 5; 77 chunks da seção 5.2.1 quase só rótulo `Carga radial máxima - 60 Hz - 25 .000 horas - Fr em (kN) …`), o que dilui a busca nessas tabelas | execução | 2026-11-24 | médio |
 | 3 | Notebook da plan 02.01, seção 5: com estado crítico os mesmos 4 chunks voltam na mesma ordem (só os scores mudam) e a seção 10.1 "Resistências de Aquecimento" (aquecedor anticondensação) entra no top 4 para "aquecimento do motor"; o boost de seção por estado ainda não muda a recuperação de forma útil | execução | 2026-11-25 | médio |
-| 4 | `Retriever` (`score_rerank_bruto`): o escore bruto do reranker não separa bem escopo de fora de escopo — "características do sistema de ventilação" (dentro) pontua -4,24, abaixo de "população atual do Brasil" (fora, -3,03); abstenção por limiar fixo sacrifica perguntas legítimas | execução | 2026-11-25 | médio |
+| 4 | `Retriever` (`score_rerank_bruto`): o escore bruto do reranker não separa bem escopo de fora de escopo — "características do sistema de ventilação" (dentro) pontua -4,24, abaixo de "população atual do Brasil" (fora, -3,03); no gabarito, p01 (dentro, -3,91) e p02 (dentro, 0,27) ficam abaixo de f01 (fora, 0,41); abstenção por limiar fixo sacrifica perguntas legítimas | execução | 2026-11-25 | médio |
+| 5 | `Juiz` (`MODELO_JUIZ` de 12B): rotulou SUSTENTADA "o Pt-100 é um termistor" (o contexto separa Pt-100 de termistores PTC) e as 24 respostas ficaram com faithfulness ≈ 1,0; falso negativo de EXTERNA que a calibração de 16 casos não pegou | execução | 2026-11-25 | médio |
 
 ---
 

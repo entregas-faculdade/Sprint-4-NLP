@@ -1,0 +1,375 @@
+{
+  "modelo_juiz": "google/gemma-3-12b-it",
+  "casos": [
+    {
+      "id": "c01",
+      "split": "dev",
+      "afirmacao": "Os motores W22 têm classe de isolamento F.",
+      "esperado": "SUSTENTADA",
+      "juiz": "SUSTENTADA",
+      "final": "SUSTENTADA",
+      "guarda": null
+    },
+    {
+      "id": "c02",
+      "split": "dev",
+      "afirmacao": "O anel V-ring funciona como uma vedação de lábio que protege o rolamento contra poeira e umidade.",
+      "esperado": "EXTERNA",
+      "juiz": "EXTERNA",
+      "final": "EXTERNA",
+      "guarda": null
+    },
+    {
+      "id": "c03",
+      "split": "dev",
+      "afirmacao": "O motor possui isolamento de classe F, adequado para temperaturas de operação elevadas.",
+      "esperado": "EXTERNA",
+      "juiz": "EXTERNA",
+      "final": "EXTERNA",
+      "guarda": null
+    },
+    {
+      "id": "c04",
+      "split": "dev",
+      "afirmacao": "Os motores W22 são fornecidos com classe de isolamento B e elevação de temperatura da classe F.",
+      "esperado": "CONTRADIZ",
+      "juiz": "CONTRADIZ",
+      "final": "CONTRADIZ",
+      "guarda": null
+    },
+    {
+      "id": "c05",
+      "split": "dev",
+      "afirmacao": "Os bujões de dreno devem ser abertos periodicamente.",
+      "esperado": "SUSTENTADA",
+      "juiz": "SUSTENTADA",
+      "final": "SUSTENTADA",
+      "guarda": null
+    },
+    {
+      "id": "c06",
+      "split": "dev",
+      "afirmacao": "A seguir, apresento as informações encontradas no manual.",
+      "esperado": "META",
+      "juiz": "META",
+      "final": "META",
+      "guarda": null
+    },
+    {
+      "id": "c07",
+      "split": "teste",
+      "afirmacao": "A vida útil dos rolamentos chega a 40.000 horas em qualquer condição de operação.",
+      "esperado": "EXTERNA",
+      "juiz": "EXTERNA",
+      "final": "EXTERNA",
+      "guarda": "guarda_numero"
+    },
+    {
+      "id": "c08",
+      "split": "teste",
+      "afirmacao": "A graxa recomendada para os rolamentos é à base de lítio.",
+      "esperado": "EXTERNA",
+      "juiz": "EXTERNA",
+      "final": "EXTERNA",
+      "guarda": null
+    },
+    {
+      "id": "c09",
+      "split": "teste",
+      "afirmacao": "Em geral, motores elétricos devem ter os rolamentos substituídos a cada cinco anos.",
+      "esperado": "EXTERNA",
+      "juiz": "EXTERNA",
+      "final": "EXTERNA",
+      "guarda": "guarda_marcador"
+    },
+    {
+      "id": "c10",
+      "split": "teste",
+      "afirmacao": "Todas as carcaças dos motores W22 são fornecidas com grau de proteção IP55.",
+      "esperado": "CONTRADIZ",
+      "juiz": "EXTERNA",
+      "final": "EXTERNA",
+      "guarda": null
+    },
+    {
+      "id": "c11",
+      "split": "teste",
+      "afirmacao": "O sensor Pt-100 é instalado na caixa de ligação, e não no mancal.",
+      "esperado": "CONTRADIZ",
+      "juiz": "CONTRADIZ",
+      "final": "CONTRADIZ",
+      "guarda": null
+    },
+    {
+      "id": "c12",
+      "split": "teste",
+      "afirmacao": "Somente as carcaças 225S/M a 355A/B possuem terminais de aterramento.",
+      "esperado": "CONTRADIZ",
+      "juiz": "CONTRADIZ",
+      "final": "CONTRADIZ",
+      "guarda": null
+    },
+    {
+      "id": "c13",
+      "split": "teste",
+      "afirmacao": "A carcaça é produzida em ferro fundido FC-200.",
+      "esperado": "SUSTENTADA",
+      "juiz": "SUSTENTADA",
+      "final": "SUSTENTADA",
+      "guarda": null
+    },
+    {
+      "id": "c14",
+      "split": "teste",
+      "afirmacao": "Os rolamentos têm vida útil L10h de 25.000 horas se as cargas máximas forem respeitadas.",
+      "esperado": "SUSTENTADA",
+      "juiz": "SUSTENTADA",
+      "final": "SUSTENTADA",
+      "guarda": null
+    },
+    {
+      "id": "c15",
+      "split": "teste",
+      "afirmacao": "O sensor Pt-100 permite monitorar continuamente a temperatura de operação do mancal.",
+      "esperado": "SUSTENTADA",
+      "juiz": "SUSTENTADA",
+      "final": "SUSTENTADA",
+      "guarda": null
+    },
+    {
+      "id": "c16",
+      "split": "teste",
+      "afirmacao": "Segue a resposta à sua pergunta.",
+      "esperado": "META",
+      "juiz": "META",
+      "final": "META",
+      "guarda": null
+    }
+  ],
+  "metricas": {
+    "dev": {
+      "juiz_isolado": {
+        "n": 6,
+        "acuracia": 1.0,
+        "revocacao_externa": 1.0,
+        "precisao_externa": 1.0,
+        "matriz_confusao": {
+          "SUSTENTADA": {
+            "SUSTENTADA": 2,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "EXTERNA": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 2,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "CONTRADIZ": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 0,
+            "CONTRADIZ": 1,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "META": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 1,
+            "INVALIDO": 0
+          }
+        }
+      },
+      "juiz_com_guardas": {
+        "n": 6,
+        "acuracia": 1.0,
+        "revocacao_externa": 1.0,
+        "precisao_externa": 1.0,
+        "matriz_confusao": {
+          "SUSTENTADA": {
+            "SUSTENTADA": 2,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "EXTERNA": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 2,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "CONTRADIZ": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 0,
+            "CONTRADIZ": 1,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "META": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 1,
+            "INVALIDO": 0
+          }
+        }
+      }
+    },
+    "teste": {
+      "juiz_isolado": {
+        "n": 10,
+        "acuracia": 0.9,
+        "revocacao_externa": 1.0,
+        "precisao_externa": 0.75,
+        "matriz_confusao": {
+          "SUSTENTADA": {
+            "SUSTENTADA": 3,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "EXTERNA": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 3,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "CONTRADIZ": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 1,
+            "CONTRADIZ": 2,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "META": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 1,
+            "INVALIDO": 0
+          }
+        }
+      },
+      "juiz_com_guardas": {
+        "n": 10,
+        "acuracia": 0.9,
+        "revocacao_externa": 1.0,
+        "precisao_externa": 0.75,
+        "matriz_confusao": {
+          "SUSTENTADA": {
+            "SUSTENTADA": 3,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "EXTERNA": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 3,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "CONTRADIZ": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 1,
+            "CONTRADIZ": 2,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "META": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 1,
+            "INVALIDO": 0
+          }
+        }
+      }
+    },
+    "todos": {
+      "juiz_isolado": {
+        "n": 16,
+        "acuracia": 0.9375,
+        "revocacao_externa": 1.0,
+        "precisao_externa": 0.8333333333333334,
+        "matriz_confusao": {
+          "SUSTENTADA": {
+            "SUSTENTADA": 5,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "EXTERNA": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 5,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "CONTRADIZ": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 1,
+            "CONTRADIZ": 3,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "META": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 2,
+            "INVALIDO": 0
+          }
+        }
+      },
+      "juiz_com_guardas": {
+        "n": 16,
+        "acuracia": 0.9375,
+        "revocacao_externa": 1.0,
+        "precisao_externa": 0.8333333333333334,
+        "matriz_confusao": {
+          "SUSTENTADA": {
+            "SUSTENTADA": 5,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "EXTERNA": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 5,
+            "CONTRADIZ": 0,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "CONTRADIZ": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 1,
+            "CONTRADIZ": 3,
+            "META": 0,
+            "INVALIDO": 0
+          },
+          "META": {
+            "SUSTENTADA": 0,
+            "EXTERNA": 0,
+            "CONTRADIZ": 0,
+            "META": 2,
+            "INVALIDO": 0
+          }
+        }
+      }
+    }
+  },
+  "prompt": "Você é um verificador rigoroso de fidelidade. Receberá um CONTEXTO (trechos de um manual) e uma AFIRMAÇÃO. Classifique a afirmação com UM rótulo, considerando SOMENTE o CONTEXTO: SUSTENTADA: o contexto afirma ou implica diretamente a afirmação. EXTERNA: a afirmação não está no contexto, mesmo que seja verdadeira ou de conhecimento comum; inclui função, causa, material, valor ou procedimento que o contexto não traz. CONTRADIZ: o contexto afirma algo incompatível com a afirmação. META: não é afirmação factual sobre o motor (saudação, aviso, organização da resposta). Na dúvida entre SUSTENTADA e EXTERNA, responda EXTERNA. Responda apenas com o rótulo.",
+  "ajustes_de_prompt_com_dev": 0
+}

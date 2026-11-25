@@ -1,0 +1,2378 @@
+{
+  "modelo_gerador": "meta-llama/llama-3.3-70b-instruct",
+  "modelo_juiz": "google/gemma-3-12b-it",
+  "resumo": {
+    "geral": {
+      "n": 25,
+      "erros": 0,
+      "faithfulness_media": 0.98,
+      "relevancy_media": 0.85,
+      "cosseno_medio": 0.95886348953907,
+      "abstencoes_indevidas": 2,
+      "abstencoes_corretas": 5,
+      "alucinacoes_fora_escopo": 0
+    },
+    "dev": {
+      "n": 10,
+      "erros": 0,
+      "faithfulness_media": 1.0,
+      "relevancy_media": 0.8,
+      "cosseno_medio": 0.9685918870837509,
+      "abstencoes_indevidas": 1,
+      "abstencoes_corretas": 5,
+      "alucinacoes_fora_escopo": 0
+    },
+    "teste": {
+      "n": 15,
+      "erros": 0,
+      "faithfulness_media": 0.9666666666666667,
+      "relevancy_media": 0.8666666666666667,
+      "cosseno_medio": 0.9560839473834467,
+      "abstencoes_indevidas": 1,
+      "abstencoes_corretas": 0,
+      "alucinacoes_fora_escopo": 0
+    },
+    "por_categoria": {
+      "elétrica": {
+        "n": 5,
+        "erros": 0,
+        "faithfulness_media": 1.0,
+        "relevancy_media": 0.9,
+        "cosseno_medio": 0.9623280741733389,
+        "abstencoes_indevidas": 0,
+        "abstencoes_corretas": 0,
+        "alucinacoes_fora_escopo": 0
+      },
+      "mecânica": {
+        "n": 5,
+        "erros": 0,
+        "faithfulness_media": 1.0,
+        "relevancy_media": 1.0,
+        "cosseno_medio": 0.9556012664115038,
+        "abstencoes_indevidas": 0,
+        "abstencoes_corretas": 0,
+        "alucinacoes_fora_escopo": 0
+      },
+      "preventiva": {
+        "n": 5,
+        "erros": 0,
+        "faithfulness_media": 1.0,
+        "relevancy_media": 0.6,
+        "cosseno_medio": 0.9663579785601811,
+        "abstencoes_indevidas": 2,
+        "abstencoes_corretas": 0,
+        "alucinacoes_fora_escopo": 0
+      },
+      "especificação": {
+        "n": 5,
+        "erros": 0,
+        "faithfulness_media": 0.9,
+        "relevancy_media": 0.9,
+        "cosseno_medio": 0.9541644346197,
+        "abstencoes_indevidas": 0,
+        "abstencoes_corretas": 0,
+        "alucinacoes_fora_escopo": 0
+      }
+    }
+  },
+  "registros": [
+    {
+      "id": "e01",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "elétrica",
+      "pergunta": "Qual é a classe de isolamento dos motores W22 e a elevação de temperatura em condições nominais?",
+      "estado": "temperatura_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é a classe de isolamento dos motores W22 e a elevação de temperatura em condições nominais?",
+      "chunks": [
+        {
+          "id": "novo-00187",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 9.2969331741333,
+          "score_final": 1.0,
+          "texto": "[Seção 8 — Tensão / Frequência | p. 19] Pmax = Pnom x Fator de correção\n\nConforme norma ABNT NBR 17904, as combinações das\n\nvariações de tensão e frequência são classificadas como\n\nZona A ou Zona B, conforme figura 28.\n\nZona B (exterior zona A)\n\nFigura 28 - Limites de tensão e frequência para motores\n\nTabela 13 - Fatores de correção considerando a altitude e a\n\ntemperatura ambiente\n\nOs motores W22 são fornecidos com classe de isolamento F\n\ne possuem elevação de temperatura da classe B (80 K) em\n\ncondições nominais de operação (salvo quando indicado\n\ndiferente).\n\nA diferença entre a elevação de temperatura da classe de\n\nisolamento F (105 K) e a elevação da temperatura de projeto\n\n(80 K) significa que, em termos práticos, os motores W22\n\npodem fornecer potências acima dos valores nominais até um\n\nlimite, onde a elevação de temperatura atinge o valor da"
+        },
+        {
+          "id": "novo-00190",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "9",
+          "secao_titulo": "Valor da Sobrecorrente Ocasional",
+          "score_denso": 0.23009902085523037,
+          "score_rerank": 0.805004054930737,
+          "score_rerank_bruto": 6.308753967285156,
+          "score_final": 0.805004054930737,
+          "texto": "[Seção 9 — Valor da Sobrecorrente Ocasional | p. 19] Calculando-se o fator de serviço, temos aproximadamente um\n\nFS de 1,15. Essa reserva de temperatura também permite que\n\nos motores W22 com elevação de temperatura da classe B\n\n(80 K) possam operar continuamente:\n\ng Até 15% acima da sua potência nominal, considerando-se\n\numa temperatura ambiente de 40 °C e uma altitude de\n\ninstalação de até 1000 m.a.n.m (metros acima do nível do\n\nmar).\n\nConforme norma ABNT NBR 17094, os motores com\n\npotência nominal até 315 kW e tensão nominal inferior ou\n\nigual a 1 kV devem ser capazes de suportar uma corrente\n\nigual a 1,5 vez a corrente nominal durante 2 minutos, no\n\nmínimo.\n\ng Até 55 °C de temperatura ambiente, mantendo-se a\n\npotência nominal.\n\ng Até 3000 m.a.n.m, mantendo-se a potência nominal."
+        },
+        {
+          "id": "novo-00191",
+          "pagina": 20,
+          "pagina_fim": 20,
+          "secao": "11.1",
+          "secao_titulo": "Proteções Dependentes da Temperatura de Funcionamento",
+          "score_denso": 0.9459142372443805,
+          "score_rerank": 0.7450229743105987,
+          "score_rerank_bruto": 5.389585018157959,
+          "score_final": 0.7450229743105987,
+          "texto": "[Seção 11.1 — Proteções Dependentes da Temperatura de Funcionamento | p. 20] Os motores utilizados em regime contínuo devem ser\n\nprotegidos contra sobrecargas por um dispositivo integrado\n\nno motor, ou por meio de um dispositivo de proteção\n\nindependente, geralmente um relé térmico com corrente\n\nnominal ou de ajuste igual ou inferior ao valor obtido através\n\nda equação abaixo, conforme tabela 15.\n\nOs intervalos de lubrificação sofrerão alterações em\n\ncondições de operação diferentes de 40 °C de temperatura\n\nambiente máxima e altitudes de instalação acima de 1.000\n\nmetros do nível do mar. Para mais informações, contate a\n\nWEG.\n\nTodos os motores W22 são fornecidos com o exclusivo sistema\n\nde isolamento WISE®, composto por fios esmaltados, atendendo\n\nà classe de temperatura de 200 °C e impregnados com resina\n\nisenta de solventes. O sistema de isolamento WISE® permite"
+        },
+        {
+          "id": "novo-00202",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "score_denso": 0.7911687964448378,
+          "score_rerank": 0.625696069475652,
+          "score_rerank_bruto": 3.5609819889068604,
+          "score_final": 0.625696069475652,
+          "texto": "[Seção 12.1 — Considerações Relativas ao Sistema Isolante do Motor | p. 21] O motor de indução pode apresentar uma elevação de\n\ntemperatura maior, quando alimentado por inversor de\n\nfrequência, do que quando alimentado com tensão senoidal.\n\nEssa sobrelevação de temperatura é decorrente da\n\ncombinação de dois fatores: o aumento de perdas ocorrido\n\nno motor, em função das componentes harmônicas da tensão\n\nPWM fornecida pelo inversor, e a redução da eficácia do\n\nsistema de resfriamento, quando da operação do motor\n\nautoventilado em baixas frequências. Basicamente existem as\n\nseguintes soluções para evitar o sobreaquecimento do motor:\n\ng Redução do torque nominal (sobredimensionamento do\n\nmotor autoventilado).\n\nO estator dos motores W22 é fornecido com isolação térmica\n\nda classe F e está apto tanto para ligação direta à rede quanto"
+        }
+      ],
+      "resposta": "A classe de isolamento dos motores W22 é F, e a elevação de temperatura em condições nominais é de 80 K [p. 19, seç. 8]. \nConfiança: Alta",
+      "confianca": "Alta",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "chunk_id": "novo-00187"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "A classe de isolamento dos motores W22 é F, e a elevação de temperatura em condições nominais é de 80 K.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9911308019444534
+    },
+    {
+      "id": "e02",
+      "escopo": "dentro",
+      "split": "dev",
+      "categoria": "elétrica",
+      "pergunta": "Que corrente o motor W22 deve suportar durante 2 minutos segundo a norma ABNT NBR 17094?",
+      "estado": "corrente_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Que corrente o motor W22 deve suportar durante 2 minutos segundo a norma ABNT NBR 17094?",
+      "chunks": [
+        {
+          "id": "novo-00190",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "9",
+          "secao_titulo": "Valor da Sobrecorrente Ocasional",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 10.711155891418457,
+          "score_final": 1.15,
+          "texto": "[Seção 9 — Valor da Sobrecorrente Ocasional | p. 19] Calculando-se o fator de serviço, temos aproximadamente um\n\nFS de 1,15. Essa reserva de temperatura também permite que\n\nos motores W22 com elevação de temperatura da classe B\n\n(80 K) possam operar continuamente:\n\ng Até 15% acima da sua potência nominal, considerando-se\n\numa temperatura ambiente de 40 °C e uma altitude de\n\ninstalação de até 1000 m.a.n.m (metros acima do nível do\n\nmar).\n\nConforme norma ABNT NBR 17094, os motores com\n\npotência nominal até 315 kW e tensão nominal inferior ou\n\nigual a 1 kV devem ser capazes de suportar uma corrente\n\nigual a 1,5 vez a corrente nominal durante 2 minutos, no\n\nmínimo.\n\ng Até 55 °C de temperatura ambiente, mantendo-se a\n\npotência nominal.\n\ng Até 3000 m.a.n.m, mantendo-se a potência nominal."
+        },
+        {
+          "id": "novo-00223",
+          "pagina": 23,
+          "pagina_fim": 24,
+          "secao": "13",
+          "secao_titulo": "Tolerâncias para Dados Elétricos",
+          "score_denso": 0.27022322026390877,
+          "score_rerank": 0.5403706049893775,
+          "score_rerank_bruto": 1.9056202173233032,
+          "score_final": 0.5403706049893775,
+          "texto": "[Seção 13 — Tolerâncias para Dados Elétricos | p. 23-24] Segundo a norma ABNT NBR 17094, são permitidas as\n\nseguintes tolerâncias elétricas:\n\nFigura 33 - Kit de ventilação forçada utilizado na linha W22\n\nCom a inclusão do kit de ventilação forçada, o comprimento\n\ntotal do motor é alterado conforme exibido na tabela 18.\n\nTabela 18 - Dimensões do comprimento do motor com kit de\n\nventilação forçada\n\nGrupo: Características Mecânicas; Atributo: Marcações na placa de identificação; Carcaça 63: CE / Inmetro / Procel\n\nGrupo: Características Mecânicas; Atributo: Forma construtiva; Carcaça 63: B3D\n\nGrupo: Características Mecânicas; Atributo: Material da carcaça; Carcaça 63: Ferro Fundido FC-200\n\nGrupo: Características Mecânicas; Atributo: Grau de proteção; Carcaça 63: IP55; Carcaça 160: IPW55"
+        },
+        {
+          "id": "novo-00187",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "score_denso": 0.5814864697823422,
+          "score_rerank": 0.3865072575289028,
+          "score_rerank_bruto": -1.042078971862793,
+          "score_final": 0.5365072575289028,
+          "texto": "[Seção 8 — Tensão / Frequência | p. 19] Pmax = Pnom x Fator de correção\n\nConforme norma ABNT NBR 17904, as combinações das\n\nvariações de tensão e frequência são classificadas como\n\nZona A ou Zona B, conforme figura 28.\n\nZona B (exterior zona A)\n\nFigura 28 - Limites de tensão e frequência para motores\n\nTabela 13 - Fatores de correção considerando a altitude e a\n\ntemperatura ambiente\n\nOs motores W22 são fornecidos com classe de isolamento F\n\ne possuem elevação de temperatura da classe B (80 K) em\n\ncondições nominais de operação (salvo quando indicado\n\ndiferente).\n\nA diferença entre a elevação de temperatura da classe de\n\nisolamento F (105 K) e a elevação da temperatura de projeto\n\n(80 K) significa que, em termos práticos, os motores W22\n\npodem fornecer potências acima dos valores nominais até um\n\nlimite, onde a elevação de temperatura atinge o valor da"
+        },
+        {
+          "id": "novo-00188",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "score_denso": 0.42328284180924813,
+          "score_rerank": 0.3453656959662231,
+          "score_rerank_bruto": -1.8302650451660156,
+          "score_final": 0.49536569596622304,
+          "texto": "[Seção 8 — Tensão / Frequência | p. 19] acima dos valores nominais até um\n\nlimite, onde a elevação de temperatura atinge o valor da\n\nelevação de temperatura da classe de isolamento.\n\nA relação entre a elevação de temperatura e o fator de serviço\n\né dada pela equação abaixo:\n\nΔT FINAL @ (F.S.)2 x ΔT INICIAL\n\nConforme a norma ABNT NBR 17094, o motor deve ser\n\ncapaz de desempenhar sua função principal (fornecer torque)\n\ncontinuamente na Zona A, mas pode não atender\n\ncompletamente às suas características de desempenho\n\ndevido à variação da tensão e frequência de alimentação,\n\npodendo inclusive apresentar elevação de temperatura\n\nsuperior à nominal.\n\nO motor também deve ser capaz de desempenhar sua\n\nfunção principal (fornecer torque) na zona B, mas pode\n\napresentar desvios superiores àqueles da zona A, no que se\n\nrefere às características de desempenho, quando operado na"
+        }
+      ],
+      "resposta": "Segundo a norma ABNT NBR 17094, os motores com potência nominal até 315 kW e tensão nominal inferior ou igual a 1 kV devem ser capazes de suportar uma corrente igual a 1,5 vez a corrente nominal durante 2 minutos, no mínimo [p. 19, seç. 9]. \nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 19,
+          "secao": "9",
+          "secao_titulo": "Valor da Sobrecorrente Ocasional",
+          "chunk_id": "novo-00190"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "Segundo a norma ABNT NBR 17094, os motores com potência nominal até 315 kW e tensão nominal inferior ou igual a 1 kV devem ser capazes de suportar uma corrente igual a 1,5 vez a corrente nominal durante 2 minutos, no mínimo.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9763396686452105
+    },
+    {
+      "id": "e03",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "elétrica",
+      "pergunta": "Como a norma classifica as variações combinadas de tensão e frequência de alimentação do motor?",
+      "estado": "corrente_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Como a norma classifica as variações combinadas de tensão e frequência de alimentação do motor?",
+      "chunks": [
+        {
+          "id": "novo-00187",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "score_denso": 0.880398849014515,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 6.642175197601318,
+          "score_final": 1.15,
+          "texto": "[Seção 8 — Tensão / Frequência | p. 19] Pmax = Pnom x Fator de correção\n\nConforme norma ABNT NBR 17904, as combinações das\n\nvariações de tensão e frequência são classificadas como\n\nZona A ou Zona B, conforme figura 28.\n\nZona B (exterior zona A)\n\nFigura 28 - Limites de tensão e frequência para motores\n\nTabela 13 - Fatores de correção considerando a altitude e a\n\ntemperatura ambiente\n\nOs motores W22 são fornecidos com classe de isolamento F\n\ne possuem elevação de temperatura da classe B (80 K) em\n\ncondições nominais de operação (salvo quando indicado\n\ndiferente).\n\nA diferença entre a elevação de temperatura da classe de\n\nisolamento F (105 K) e a elevação da temperatura de projeto\n\n(80 K) significa que, em termos práticos, os motores W22\n\npodem fornecer potências acima dos valores nominais até um\n\nlimite, onde a elevação de temperatura atinge o valor da"
+        },
+        {
+          "id": "novo-00188",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "score_denso": 1.0,
+          "score_rerank": 0.6018793171930296,
+          "score_rerank_bruto": 0.6233811974525452,
+          "score_final": 0.7518793171930296,
+          "texto": "[Seção 8 — Tensão / Frequência | p. 19] acima dos valores nominais até um\n\nlimite, onde a elevação de temperatura atinge o valor da\n\nelevação de temperatura da classe de isolamento.\n\nA relação entre a elevação de temperatura e o fator de serviço\n\né dada pela equação abaixo:\n\nΔT FINAL @ (F.S.)2 x ΔT INICIAL\n\nConforme a norma ABNT NBR 17094, o motor deve ser\n\ncapaz de desempenhar sua função principal (fornecer torque)\n\ncontinuamente na Zona A, mas pode não atender\n\ncompletamente às suas características de desempenho\n\ndevido à variação da tensão e frequência de alimentação,\n\npodendo inclusive apresentar elevação de temperatura\n\nsuperior à nominal.\n\nO motor também deve ser capaz de desempenhar sua\n\nfunção principal (fornecer torque) na zona B, mas pode\n\napresentar desvios superiores àqueles da zona A, no que se\n\nrefere às características de desempenho, quando operado na"
+        },
+        {
+          "id": "novo-00199",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "11",
+          "secao_titulo": "Proteção Térmica do Motor",
+          "score_denso": 0.35268601041819003,
+          "score_rerank": 0.3034243771434667,
+          "score_rerank_bruto": -3.888664722442627,
+          "score_final": 0.45342437714346673,
+          "texto": "[Seção 11 — Proteção Térmica do Motor | p. 21] tipos de protetores térmicos, tais como\n\no Pt-1000, KTY e os termopares. Para mais informações,\n\ncontate o escritório WEG mais próximo.\n\n2 - O comprimento do cabo alimentador entre inversor e motor, para\n\nas condições apresentadas na Tabela 16, deve ser menor ou igual\n\na 100 metros. Caso seja necessário cabo de alimentação com\n\ncomprimento maior que 300 metros, a WEG deverá ser\n\npreviamente consultada.\n\n3 - Motores de aplicação geral com tensão nominal maior do que\n\n460 V, que no momento da compra não tiveram indicação da\n\noperação com inversor de frequência, são aptos a suportar os\n\nesforços elétricos definidos na tabela acima para tensão nominal\n\naté 575 V. Caso tais condições não sejam integralmente\n\natendidas, filtros devem ser instalados na saída do inversor.\n\n4 - Motores de aplicação geral do tipo dupla tensão (p. ex., 380/660"
+        },
+        {
+          "id": "novo-00200",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "11",
+          "secao_titulo": "Proteção Térmica do Motor",
+          "score_denso": 0.06665952621746374,
+          "score_rerank": 0.23260084530490094,
+          "score_rerank_bruto": -4.959375858306885,
+          "score_final": 0.3826008453049009,
+          "texto": "[Seção 11 — Proteção Térmica do Motor | p. 21] na saída do inversor.\n\n4 - Motores de aplicação geral do tipo dupla tensão (p. ex., 380/660\n\nV e 400/690 V), que no momento da compra não tiveram\n\nindicação da operação com inversor de frequência, estão aptos à\n\noperação com inversor na tensão mais alta apenas se os limites\n\ndefinidos na tabela acima para tensão nominal até 460 V forem\n\nplenamente satisfeitos na aplicação. Caso contrário, filtros de\n\nsaída devem ser usados.\n\nTamanho de carcaça: 63 a 200L; Tensão nominal (60 Hz): 220/380 V\n\nTamanho de carcaça: 225S/M a 355M/L; Tensão nominal (60 Hz): 220/380/440 V\n\nTamanho de carcaça: 355A/B; Tensão nominal (60 Hz): 440 V"
+        }
+      ],
+      "resposta": "A norma ABNT NBR 17904 classifica as combinações das variações de tensão e frequência como Zona A ou Zona B, conforme figura 28 [p. 19, seç. 8]. \nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "chunk_id": "novo-00187"
+        },
+        {
+          "pagina": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "chunk_id": "novo-00188"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "A norma ABNT NBR 17904 classifica as combinações das variações de tensão e frequência como Zona A ou Zona B, conforme figura 28.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9716904500493742
+    },
+    {
+      "id": "e04",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "elétrica",
+      "pergunta": "Por que o motor pode aquecer mais quando é alimentado por inversor de frequência?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Por que o motor pode aquecer mais quando é alimentado por inversor de frequência?",
+      "chunks": [
+        {
+          "id": "novo-00202",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 7.07739782333374,
+          "score_final": 1.0,
+          "texto": "[Seção 12.1 — Considerações Relativas ao Sistema Isolante do Motor | p. 21] O motor de indução pode apresentar uma elevação de\n\ntemperatura maior, quando alimentado por inversor de\n\nfrequência, do que quando alimentado com tensão senoidal.\n\nEssa sobrelevação de temperatura é decorrente da\n\ncombinação de dois fatores: o aumento de perdas ocorrido\n\nno motor, em função das componentes harmônicas da tensão\n\nPWM fornecida pelo inversor, e a redução da eficácia do\n\nsistema de resfriamento, quando da operação do motor\n\nautoventilado em baixas frequências. Basicamente existem as\n\nseguintes soluções para evitar o sobreaquecimento do motor:\n\ng Redução do torque nominal (sobredimensionamento do\n\nmotor autoventilado).\n\nO estator dos motores W22 é fornecido com isolação térmica\n\nda classe F e está apto tanto para ligação direta à rede quanto"
+        },
+        {
+          "id": "novo-00207",
+          "pagina": 22,
+          "pagina_fim": 22,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "score_denso": 0.4644382670919399,
+          "score_rerank": 0.4438536178435483,
+          "score_rerank_bruto": -0.8967087268829346,
+          "score_final": 0.4438536178435483,
+          "texto": "[Seção 12.1 — Considerações Relativas ao Sistema Isolante do Motor | p. 22] o motor é alimentado por qualquer inversor\n\nde frequência comercial operando com qualquer tipo de\n\ncontrole que não seja a Solução Fluxo Ótimo disponível nos\n\ninversores WEG.\n\nPara elevação de temperatura 105 K\n\nPara elevação de temperatura 85 K\n\nFigura 32 - Curvas de derating para condição de fluxo ótimo\n\n[TR] - Torque fator derating (p.u.)\n\nW22 Super Premium (ΔT = 80 K), W22 IR3 Premium (ΔT= 80 e 105 K ) e\n\nW22 IR2 (ΔT = 105 K)\n\nW22 IR2 ( ΔT = 80 K)\n\nFigura 31 - Curvas de derating para condição de fluxo constante\n\nOperação com Fluxo Ótimo\n\nO estudo da composição das perdas nos motores elétricos e\n\nda sua relação com a frequência, o fluxo, a corrente e a\n\nvariação de velocidade permitiu a determinação de um valor\n\nótimo de fluxo magnético para cada rotação. A incorporação"
+        },
+        {
+          "id": "novo-00205",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "score_denso": 0.29170449402394705,
+          "score_rerank": 0.3986514336598705,
+          "score_rerank_bruto": -1.5448241233825684,
+          "score_final": 0.3986514336598705,
+          "texto": "[Seção 12.1 — Considerações Relativas ao Sistema Isolante do Motor | p. 21] Estas curvas apenas definem\n\nlimitações de torque para motores acionados por inversores de\n\nfrequência, mas não estabelecem fatores de folga térmica.\n\n3 - A regulação/precisão de velocidade dependerá do tipo de\n\ncontrole do inversor e seu correto ajuste.\n\n4 - A redução de torque é uma solução requerida quando o motor\n\naciona carga de torque constante. Para cargas de torque\n\nquadrático normalmente não é necessário aplicar qualquer fator\n\nde derating.\n\n5 - Sob solicitação, a partir da carcaça 90, motores podem ser\n\nfornecidos com sistema de ventilação independente. Nesse caso,\n\no motor estará apto a fornecer torque nominal constante da\n\n*Definição conforme a norma NEMA MG1 - Part 30.\n\n**Tensão de pico no caso de pulsos unipolares. Tensão pico-a-pico no caso\n\nde pulsos bipolares."
+        },
+        {
+          "id": "novo-00204",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "score_denso": 0.5798525469527888,
+          "score_rerank": 0.38063070777983077,
+          "score_rerank_bruto": -1.8032078742980957,
+          "score_final": 0.38063070777983077,
+          "texto": "[Seção 12.1 — Considerações Relativas ao Sistema Isolante do Motor | p. 21] serem acionados por inversor de frequência,\n\nconsiderando os critérios indicados na Tabela 16.\n\nPara manter a temperatura dos motores de indução WEG\n\ndentro de níveis aceitáveis, quando da operação com\n\ninversores de frequência, devem ser obedecidos os limites de\n\ncarga apresentados nas figuras 31 (para operação na\n\ncondição de fluxo constante) ou 32 (para operação na\n\ncondição de fluxo ótimo).\n\nNotas:\n\n1 - Motores para aplicações em áreas explosivas devem ser\n\navaliados caso a caso e a WEG deve ser consultada.\n\n2 - As curvas de derating apresentadas a seguir estão relacionadas\n\ncom a elevação de temperatura no enrolamento dos motores e\n\nnão com a sua classe térmica. Estas curvas apenas definem\n\nlimitações de torque para motores acionados por inversores de"
+        }
+      ],
+      "resposta": "O motor pode apresentar uma elevação de temperatura maior quando alimentado por inversor de frequência devido à combinação de dois fatores: o aumento de perdas ocorrido no motor, em função das componentes harmônicas da tensão PWM fornecida pelo inversor, e a redução da eficácia do sistema de resfriamento, quando da operação do motor autoventilado em baixas frequências [p. 21, seç. 12.1]. \nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "chunk_id": "novo-00202"
+        },
+        {
+          "pagina": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "chunk_id": "novo-00205"
+        },
+        {
+          "pagina": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "chunk_id": "novo-00204"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "O motor pode apresentar uma elevação de temperatura maior quando alimentado por inversor de frequência devido à combinação de dois fatores: o aumento de perdas ocorrido no motor, em função das componentes harmônicas da tensão PWM fornecida pelo inversor, e a redução da eficácia do sistema de resfriamento, quando da operação do motor autoventilado em baixas frequências.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.970728996611285
+    },
+    {
+      "id": "e05",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "elétrica",
+      "pergunta": "Como funciona o sensor Pt-100 usado na proteção térmica do motor?",
+      "estado": "temperatura_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Como funciona o sensor Pt-100 usado na proteção térmica do motor?",
+      "chunks": [
+        {
+          "id": "novo-00193",
+          "pagina": 20,
+          "pagina_fim": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 4.71954345703125,
+          "score_final": 1.0,
+          "texto": "[Seção 10.1 — Resistências de Aquecimento | p. 20] A utilização da resistência de aquecimento é recomendada\n\nem duas situações:\n\nEssa proteção adicional interna pode ser obtida por meio de\n\numa resistência calibrada (Pt-100), termistores (PTC) ou\n\nprotetores térmicos tipo bimetálico.\n\ngMotores instalados em ambientes com umidade relativa do\n\nar até 95%, nos quais o motor poderá ficar desligado por\n\nperíodos superiores a 24 horas;\n\nPt-100\n\nOs Pt-100 (figura 29) são sensores de temperatura com\n\nprincípio de funcionamento baseado na propriedade de\n\nalguns materiais que variam sua resistência elétrica\n\nlinearmente com a variação da temperatura.\n\nFigura 29 - Pt-100\n\ngMotores instalados em ambientes com umidade relativa do\n\nar superior a 95%, independente do regime de\n\nfuncionamento. Ressaltamos que nessa situação também\n\nse aplica nas partes internas do motor uma pintura epóxi"
+        },
+        {
+          "id": "novo-00198",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "11",
+          "secao_titulo": "Proteção Térmica do Motor",
+          "score_denso": 0.49123454433628133,
+          "score_rerank": 0.59547020691057,
+          "score_rerank_bruto": -0.3138875961303711,
+          "score_final": 0.74547020691057,
+          "texto": "[Seção 11 — Proteção Térmica do Motor | p. 21] caso, são\n\nnecessários dois conjuntos de termistores conectados em\n\nsérie por fase.\n\nTermostato\n\nOs protetores térmicos do tipo bimetálico são protetores\n\ntérmicos com contatos de prata, tipo NF (normalmente\n\nfechados), que abrem quando ocorre determinada elevação\n\nde temperatura. Quando a temperatura de atuação do\n\nbimetálico baixar, este volta a sua forma original, permitindo\n\no fechamento dos contatos novamente e o consequente\n\nreligamento do motor.\n\nOs protetores térmicos do tipo bimetálico são ligados em\n\nsérie com a bobina do motor, servindo assim para\n\ndesligamento do motor. Um segundo conjunto pode ser\n\nutilizado para o alarme, mas neste caso o mesmo deverá ser\n\nconectado a um circuito específico de alarme.\n\nExistem ainda outros tipos de protetores térmicos, tais como\n\no Pt-1000, KTY e os termopares. Para mais informações,"
+        },
+        {
+          "id": "novo-00092",
+          "pagina": 16,
+          "pagina_fim": 16,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 0.04384636593073321,
+          "score_rerank": 0.7372156893884197,
+          "score_rerank_bruto": 1.4498047828674316,
+          "score_final": 0.7372156893884197,
+          "texto": "[Seção 5.2.1 — Esforços | p. 16] 11 - Intervalos de lubrificação para rolamentos de rolos\n\n5.2.2 Monitoramento dos Rolamentos\n\nOpcionalmente, sensores de temperatura podem ser\n\ninstalados para controlar as temperaturas de operação nos\n\nmancais. O mais comum é a instalação de um sensor Pt-100\n\nno mancal, que permite o monitoramento contínuo de sua\n\ntemperatura de operação. Este monitoramento é importante,\n\npois a temperatura influencia diretamente a vida útil da graxa\n\ne do rolamento.\n\nMediante consulta\n\n4\n\n5,4\n\n4,7\n\n6\n\n6,1\n\n5,4\n\n8\n\n7,6\n\n6,9\n\nTabela 9 - Esforços axiais máximos para rolamentos de esferas\n\n(esforço radial zero)"
+        },
+        {
+          "id": "novo-00195",
+          "pagina": 20,
+          "pagina_fim": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "score_denso": 0.6493690483764926,
+          "score_rerank": 0.6250498854207752,
+          "score_rerank_bruto": 0.054162606596946716,
+          "score_final": 0.6250498854207752,
+          "texto": "[Seção 10.1 — Resistências de Aquecimento | p. 20] assim um acompanhamento contínuo do\n\nprocesso de aquecimento do motor através do display do\n\ncontrolador, assegurando um alto grau de precisão e\n\nsensibilidade de resposta. Um mesmo sensor pode servir\n\ntanto para ativação de alarme (operação acima da\n\ntemperatura normal de trabalho) como para desligamento\n\n(geralmente ajustado para a temperatura máxima da classe\n\nde isolamento).\n\nPTC\n\nTabela 14 - Potência e quantidade de resistência de aquecimento\n\n(Valores considerando tensão nominal da resistência em\n\n220V).\n\nO PTC é um termistor, cuja resistência aumenta bruscamente\n\nem um valor bem definido de temperatura. Essa variação\n\nbrusca da resistência interrompe a corrente no PTC,\n\nacionando um relé de saída, que desliga o circuito principal.\n\nFator de serviço: 1,0 até 1,15; Ajuste da corrente do relé: In x F.S."
+        }
+      ],
+      "resposta": "O sensor Pt-100 é um termistor que funciona com base na propriedade de alguns materiais que variam sua resistência elétrica linearmente com a variação da temperatura [p. 20, seç. 10.1]. Isso permite um acompanhamento contínuo do processo de aquecimento do motor, assegurando um alto grau de precisão e sensibilidade de resposta. O Pt-100 pode ser usado tanto para ativação de alarme (operação acima da temperatura normal de trabalho) como para desligamento (geralmente ajustado para a temperatura máxima da classe de isolamento) [p. 20, seç. 10.1]. Além disso, o Pt-100 pode ser instalado no mancal para controlar as temperaturas de operação nos mancais, permitindo o monitoramento contínuo de sua temperatura de operação [p. 16, seç. 5.2.1].\nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "chunk_id": "novo-00193"
+        },
+        {
+          "pagina": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "chunk_id": "novo-00195"
+        },
+        {
+          "pagina": 16,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "chunk_id": "novo-00092"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 4,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "O sensor Pt-100 é um termistor que funciona com base na propriedade de alguns materiais que variam sua resistência elétrica linearmente com a variação da temperatura.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "Isso permite um acompanhamento contínuo do processo de aquecimento do motor, assegurando um alto grau de precisão e sensibilidade de resposta.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "O Pt-100 pode ser usado tanto para ativação de alarme (operação acima da temperatura normal de trabalho) como para desligamento (geralmente ajustado para a temperatura máxima da classe de isolamento).",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "Além disso, o Pt-100 pode ser instalado no mancal para controlar as temperaturas de operação nos mancais, permitindo o monitoramento contínuo de sua temperatura de operação.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "PARCIAL",
+      "pontos": 0.5,
+      "juiz_invalido": false,
+      "cosseno": 0.9017504536163714
+    },
+    {
+      "id": "m01",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "mecânica",
+      "pergunta": "De que material é feita a carcaça dos motores W22?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "De que material é feita a carcaça dos motores W22?",
+      "chunks": [
+        {
+          "id": "novo-00022",
+          "pagina": 9,
+          "pagina_fim": 9,
+          "secao": "3.1",
+          "secao_titulo": "Carcaça",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 10.823604583740234,
+          "score_final": 1.0,
+          "texto": "[Seção 3.1 — Carcaça | p. 9] A carcaça dos motores W22 (Figura 3) é produzida em ferro\n\nfundido FC-200 e foi concebida de forma a otimizar a troca\n\ntérmica e fornecer resistência mecânica suficiente para\n\natender às aplicações mais críticas. Seu projeto evita o\n\nacúmulo de líquidos e detritos sobre o motor.\n\nTabela 1 - Olhais\n\nFigura 3 - Carcaça W22\n\nOs pés inteiriços e maciços asseguram uma melhor rigidez\n\nmecânica (Figura 4) e facilitam o alinhamento e a instalação.\n\nFigura 5 - Motor com quatro furos roscados para fixação dos olhais"
+        },
+        {
+          "id": "novo-00027",
+          "pagina": 10,
+          "pagina_fim": 10,
+          "secao": "3.5",
+          "secao_titulo": "Caixa de Ligação",
+          "score_denso": 0.6197168784681938,
+          "score_rerank": 0.9195177618834299,
+          "score_rerank_bruto": 9.588866233825684,
+          "score_final": 0.9195177618834299,
+          "texto": "[Seção 3.5 — Caixa de Ligação | p. 10] Nas carcaças 63 a 200, a caixa de ligação está centralizada\n\ne para alterar a forma construtiva (posição da caixa de\n\nligação), o motor deverá ser desmontando.\n\nPara fazer essa alteração, procure um de nossos\n\nassistentes técnicos.\n\nA caixa de ligação dos motores W22 é feita em ferro\n\nfundido FC-200, mesmo material da carcaça e tampas.\n\nPossui abertura em corte diagonal, expondo melhor os\n\ncabos e facilitando o acesso às conexões.\n\nEm todos os tamanhos de carcaça é possível girar a caixa\n\nde ligação em intervalos de 90°. Os motores das carcaças\n\n315L, 355M/L e 355A/B são fornecidos com caixa de ligação\n\ncom base removível de ferro fundido. Como característica\n\nopcional, a base removível pode ser fornecida sem furação.\n\nOs motores são fornecidos com tampões roscados de\n\nplástico na entrada dos cabos para proteção contra entrada"
+        },
+        {
+          "id": "novo-00055",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "score_denso": 0.3374065779888298,
+          "score_rerank": 0.874341505951657,
+          "score_rerank_bruto": 8.895783424377441,
+          "score_final": 0.874341505951657,
+          "texto": "[Seção 5.1 — Eixo | p. 14] cargas radiais mínimas\n\ne máximas admissíveis para rolamentos de rolos são exibidas\n\nna tabela 8.\n\nComo padrão, os eixos dos motores W22 nas carcaças\n\n63 a 315S/M são fabricados em aço AISI 1040/45 e em\n\naço AISI 4140 nas carcaças 355M/L e 355A/B.\n\nQuando fornecido com rolamento de rolos, o material do\n\neixo será obrigatoriamente o AISI 4140.\n\nComo o motor da carcaça 355M/L é fornecido com eixo\n\nem aço AISI 4140, os motores W22 também podem ser\n\nmontados com rolamentos de rolos, o que permite que\n\nos mesmos possam operar com carga radial mais elevada,\n\npor exemplo, receber a montagem de polia e correia.\n\nMais informações sobre as máximas cargas radiais e\n\naxiais admissíveis na ponta de eixo podem ser obtidas\n\nnas tabelas 7, 8 e 9.\n\nObservação:\n\nPara trocar os rolamentos de esferas por rolamentos de rolos,"
+        },
+        {
+          "id": "novo-00039",
+          "pagina": 13,
+          "pagina_fim": 13,
+          "secao": "4.1",
+          "secao_titulo": "Sistema de Ventilação",
+          "score_denso": 0.082456897714702,
+          "score_rerank": 0.5306433014925943,
+          "score_rerank_bruto": 3.622851610183716,
+          "score_final": 0.5306433014925943,
+          "texto": "[Seção 4.1 — Sistema de Ventilação | p. 13] Os motores W22, em sua configuração padrão, são\n\ntotalmente fechados com ventilação externa (TFVE) IC 411,\n\nde acordo com a norma ABNT NBR 5110 (figura 21). As\n\nversões não ventiladas (TENV), air over (TEAO) e com\n\nventilação forçada (TEFV) IC 416 estão disponíveis sob\n\nconsulta. Mais informações sobre a opção IC 416 podem\n\nser encontradas na seção 12 - Operação com Inversor\n\nde Frequência.\n\nOs ventiladores são bidirecionais e de polipropileno para\n\ntodos os tamanhos de carcaça, de 2 a 12 polos, exceto para\n\na carcaça 355A/B em 2 polos, que é fornecida em alumínio.\n\nTabela 2 - Nível de pressão sonora para motores 50 Hz\n\nFigura 21 - Ventilador\n\nO sistema de ventilação (ventilador e tampas traseira e\n\ndefletora) foi concebido para minimizar o ruído e aumentar\n\na eficiência térmica (figura 22)."
+        }
+      ],
+      "resposta": "A carcaça dos motores W22 é produzida em ferro fundido FC-200 [p. 9, seç. 3.1]. \nConfiança: Alta",
+      "confianca": "Alta",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 9,
+          "secao": "3.1",
+          "secao_titulo": "Carcaça",
+          "chunk_id": "novo-00022"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "A carcaça dos motores W22 é produzida em ferro fundido FC-200.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9789201356423854
+    },
+    {
+      "id": "m02",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "mecânica",
+      "pergunta": "Qual é a vida útil L10h dos rolamentos dos motores W22?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é a vida útil L10h dos rolamentos dos motores W22?",
+      "chunks": [
+        {
+          "id": "novo-00054",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "score_denso": 0.5699024684275122,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 8.266744613647461,
+          "score_final": 1.0,
+          "texto": "[Seção 5.1 — Eixo | p. 14] Os rolamentos têm vida útil L10h de 25.000 horas, desde\n\nque sejam respeitadas as cargas radiais ou axiais máximas\n\ndescritas nas tabelas 7, 8 e 9. Quando acoplados diretamente\n\nà carga (ausência de esforços radiais e axiais), os rolamentos\n\ntêm vida útil L10h de, no mínimo, 40.000 horas.\n\nNa configuração padrão, com rolamentos de esferas, a partir\n\nda carcaça 160, o mancal dianteiro é travado axialmente.\n\nPara a compensação de deslocamentos axiais, os motores\n\nsão equipados com arruelas onduladas nas carcaças 63 a\n\n200 e com molas de pré-carga nas carcaças 225 a 355.\n\nQuando fornecido com rolamentos de rolos, o mancal traseiro\n\né fixo e os deslocamentos axiais são compensados pela folga\n\naxial do rolamento de rolo dianteiro. As cargas radiais mínimas\n\ne máximas admissíveis para rolamentos de rolos são exibidas\n\nna tabela 8."
+        },
+        {
+          "id": "novo-00061",
+          "pagina": 15,
+          "pagina_fim": 15,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 0.7116379445989682,
+          "score_rerank": 0.6341985342662685,
+          "score_rerank_bruto": 2.523578643798828,
+          "score_final": 0.6341985342662685,
+          "texto": "[Seção 5.2.1 — Esforços | p. 15] Carga Radial - Rolamentos de Esferas\n\nrecomendada na placa de identificação do motor pode\n\nresultar em uma elevação adicional de temperatura no mancal.\n\nNotas:\n\n1 - Vida útil L10 significa que, no mínimo 90% dos rolamentos\n\nsubmetidos às cargas máximas indicadas irão alcançar o\n\nnúmero de horas informado. Os valores de carga radial máxima\n\nconsideram uma carga axial nula. Os valores de carga axial\n\nmáxima consideram uma carga radial nula. Para a vida útil de\n\nrolamentos em aplicações com combinações de carga axial e\n\nradial, contate a WEG.\n\n2 - O valor da força radial Fr normalmente é obtido a partir de\n\ninformações recomendadas em catálogos de fabricantes de\n\ncorreias/polias. Na falta de uma estimativa do fabricante de\n\ncorreias, a força Fr, na condição de operação, poderá ser\n\ncalculada em função da potência transmitida, das características"
+        },
+        {
+          "id": "novo-00056",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "score_denso": 1.0,
+          "score_rerank": 0.5153662768685505,
+          "score_rerank_bruto": 0.6578852534294128,
+          "score_final": 0.5153662768685505,
+          "texto": "[Seção 5.1 — Eixo | p. 14] tabelas 7, 8 e 9.\n\nObservação:\n\nPara trocar os rolamentos de esferas por rolamentos de rolos,\n\né necessário trocar os anéis de fixação (internos e externos)\n\ndo rolamento traseiro, já que nesta condição, o rolamento\n\ntraseiro passa a ser o fixo.\n\nA vida útil do rolamento depende do tipo e do tamanho do\n\nrolamento, das cargas mecânicas radiais e axiais a que é\n\nsubmetido, das condições de operação (ambiente,\n\ntemperatura), da rotação e da vida da graxa. Dessa forma, a\n\nvida útil do rolamento está estritamente relacionada com sua\n\ncorreta utilização, manutenção e lubrificação. Ao respeitar a\n\nquantidade de graxa e os intervalos de lubrificação\n\npermite-se que os rolamentos atinjam a vida útil descrita\n\nacima.\n\nOs motores W22 são fornecidos como padrão com pino\n\ngraxeiro nas tampas dianteira e traseira para lubrificação dos"
+        },
+        {
+          "id": "novo-00210",
+          "pagina": 22,
+          "pagina_fim": 22,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "score_denso": 0.37935037049409703,
+          "score_rerank": 0.4899700385066259,
+          "score_rerank_bruto": 0.25915855169296265,
+          "score_final": 0.4899700385066259,
+          "texto": "[Seção 12.1 — Considerações Relativas ao Sistema Isolante do Motor | p. 22] 17 (não excedendo 2 minutos de duração),\n\nexceto quando o máximo valor de velocidade segura de\n\noperação é o mesmo da velocidade síncrona em 60 Hz.\n\nNesses casos, favor consultar a WEG.\n\n4 - Para operação acima da velocidade de placa pode ser\n\nnecessário balanceamento especial.\n\n5 - A vida dos rolamentos será afetada pelo tempo de operação\n\nem velocidades variadas.\n\n6 - Para velocidades e potências nominais não cobertos pela\n\nTabela 17, consulte a WEG.\n\ne frequência comercial operando com qualquer tipo de ontrole que não seja a Solução Fluxo Ótimo disponível nos versores WEG.: W22 Super; e frequência comercial operando com qualquer tipo de ontrole que não seja a Solução Fluxo Ótimo disponível nos versores WEG.: Premium (ΔT = 105 K)"
+        }
+      ],
+      "resposta": "A vida útil L10h dos rolamentos dos motores W22 é de 25.000 horas, desde que sejam respeitadas as cargas radiais ou axiais máximas descritas nas tabelas 7, 8 e 9 [p. 14, seç. 5.1]. No entanto, quando acoplados diretamente à carga (ausência de esforços radiais e axiais), os rolamentos têm vida útil L10h de, no mínimo, 40.000 horas [p. 14, seç. 5.1]. \nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 14,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "chunk_id": "novo-00054"
+        },
+        {
+          "pagina": 14,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "chunk_id": "novo-00056"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 2,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "A vida útil L10h dos rolamentos dos motores W22 é de 25.000 horas, desde que sejam respeitadas as cargas radiais ou axiais máximas descritas nas tabelas 7, 8 e 9.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "No entanto, quando acoplados diretamente à carga (ausência de esforços radiais e axiais), os rolamentos têm vida útil L10h de, no mínimo, 40.000 horas.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9418135247829303
+    },
+    {
+      "id": "m03",
+      "escopo": "dentro",
+      "split": "dev",
+      "categoria": "mecânica",
+      "pergunta": "Qual grau de vibração os motores W22 atendem na configuração padrão?",
+      "estado": "vibracao_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual grau de vibração os motores W22 atendem na configuração padrão?",
+      "chunks": [
+        {
+          "id": "novo-00052",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 10.754823684692383,
+          "score_final": 1.15,
+          "texto": "[Seção 5.2 — Rolamentos | p. 14] na norma\n\nIEC 60034-14 para as carcaças IEC 56 a 400 para os graus\n\nde vibração A e B.\n\nOs motores W22 são balanceados dinamicamente com meia\n\nchaveta e, em sua configuração padrão, atendem aos níveis\n\nde vibração do grau A - balanceamento normal (sem\n\nrequisitos especiais de vibração) descritos na norma\n\nIEC 60034-14. Opcionalmente, os motores também podem\n\nser fornecidos com balanceamento reduzido (B).\n\nOs limites de velocidade de vibração RMS em mm/s, medidos\n\nem condição de suspensão livre (base elástica) para os graus\n\nA e B são exibidos na tabela 5.\n\nTabela 5 - Níveis de velocidade de vibração"
+        },
+        {
+          "id": "novo-00042",
+          "pagina": 13,
+          "pagina_fim": 13,
+          "secao": "4.3",
+          "secao_titulo": "Níveis de Vibração",
+          "score_denso": 0.5646364638277994,
+          "score_rerank": 0.829249216271717,
+          "score_rerank_bruto": 8.152106285095215,
+          "score_final": 0.979249216271717,
+          "texto": "[Seção 4.3 — Níveis de Vibração | p. 13] Os motores W22 atendem aos níveis de potência sonora da\n\nnorma ABNT NBR 7565. As tabelas 2 e 3 exibem os níveis\n\nde pressão sonora na escala dB(A) obtidos experimentalmente\n\npara os motores W22, em 50 Hz e 60 Hz.\n\nA vibração de uma máquina elétrica está intimamente\n\nrelacionada com a sua montagem na aplicação. Por essa\n\nrazão, geralmente é recomendável efetuar as medições\n\ndas vibrações nas condições de instalação e funcionamento\n\ndo motor. Contudo, para permitir a avaliação da vibração\n\nIEC 60 Hz: Carcaça; IEC 60 Hz: Nível de pressão sonora - dB(A)\n\nIEC 60 Hz: 2 Polos; IEC 60 Hz: 4 Polos; IEC 60 Hz: 6 Polos; IEC 60 Hz: 8 Polos\n\nIEC 60 Hz: 63; IEC 60 Hz: 56; IEC 60 Hz: 48; IEC 60 Hz: 47; IEC 60 Hz: -\n\nIEC 60 Hz: 71; IEC 60 Hz: 60; IEC 60 Hz: 47; IEC 60 Hz: 47; IEC 60 Hz: 45"
+        },
+        {
+          "id": "novo-00053",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "4.4",
+          "secao_titulo": "Resistência ao Impacto",
+          "score_denso": 0.14663449545778207,
+          "score_rerank": 0.7706818802071023,
+          "score_rerank_bruto": 7.2593770027160645,
+          "score_final": 0.7706818802071023,
+          "texto": "[Seção 4.4 — Resistência ao Impacto | p. 14] Figura 23 - Detalhe do rolamento\n\nOs motores W22, em sua configuração padrão (defletora de\n\nferro fundido), atendem ao índice de impacto IK08 - energia\n\nde impacto de 5J, de acordo com a EN 62262 - Degrees of\n\nprotection provided by enclosures for electrical equipment\n\nagainst external mechanical impacts (IK code), o que garante\n\nelevada rigidez mecânica em aplicações mais severas."
+        },
+        {
+          "id": "novo-00051",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "score_denso": 0.7736136370851796,
+          "score_rerank": 0.6091190772721738,
+          "score_rerank_bruto": 4.796710014343262,
+          "score_final": 0.7591190772721739,
+          "texto": "[Seção 5.2 — Rolamentos | p. 14] Os motores W22 são fornecidos como padrão com\n\nrolamentos de esferas. Opcionalmente, quando as cargas\n\nradiais são elevadas, os motores podem ser fornecidos com\n\nrolamentos de rolos da série NU a partir da carcaça 160.\n\ngerada apenas pela máquina elétrica girante e assim permitir\n\na reprodutividade dos ensaios e a obtenção de medidas\n\ncomparáveis, é necessário efetuar tais medições com a\n\nmáquina desacoplada, mediante condições controladas de\n\nensaio. As condições de ensaio e limites de vibração aqui\n\ndescritos são aqueles encontrados na ABNT NBR 11390.\n\nA severidade de vibração é o máximo valor de vibração\n\nencontrado dentre todos os pontos e direções de medição\n\nrecomendados. A tabela 5 indica os valores admissíveis da\n\nseveridade de vibração recomendados na norma\n\nIEC 60034-14 para as carcaças IEC 56 a 400 para os graus\n\nde vibração A e B."
+        }
+      ],
+      "resposta": "Os motores W22 atendem ao grau A de vibração na configuração padrão, que é o balanceamento normal (sem requisitos especiais de vibração) descritos na norma IEC 60034-14 [p. 14, seç. 5.2]. \nConfiança: Alta",
+      "confianca": "Alta",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "chunk_id": "novo-00052"
+        },
+        {
+          "pagina": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "chunk_id": "novo-00051"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "Os motores W22 atendem ao grau A de vibração na configuração padrão, que é o balanceamento normal (sem requisitos especiais de vibração) descritos na norma IEC 60034-14.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9664139963784579
+    },
+    {
+      "id": "m04",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "mecânica",
+      "pergunta": "Onde são posicionados os acelerômetros para medir a vibração dos motores W22?",
+      "estado": "vibracao_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Onde são posicionados os acelerômetros para medir a vibração dos motores W22?",
+      "chunks": [
+        {
+          "id": "novo-00023",
+          "pagina": 9,
+          "pagina_fim": 9,
+          "secao": "3.3",
+          "secao_titulo": "Pontos para Medição de Vibração",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 9.2112455368042,
+          "score_final": 1.0,
+          "texto": "[Seção 3.3 — Pontos para Medição de Vibração | p. 9] Figura 4 - Pés inteiriços e resistentes\n\nCom o objetivo de facilitar as atividades de manutenção,\n\nespecificamente as medições de vibração, os motores\n\ndas carcaças 160 a 355 receberam áreas planas em suas\n\nextremidades, visando fornecer locais específicos para\n\no posicionamento de acelerômetros (Figura 6).\n\nEssas áreas estão disponíveis tanto na direção vertical como\n\nna horizontal. Além dessas áreas na região da carcaça, a linha\n\nW22 também conta com superfícies planas na região das\n\ntampas, facilitando o posicionamento do acelerômetro.\n\nY\n\nY\n\nX\n\nX\n\nZ\n\nFigura 6 - Superfícies planas para medição da vibração na parte\n\ndianteira e traseira da carcaça"
+        },
+        {
+          "id": "novo-00051",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "score_denso": 0.8246879467557275,
+          "score_rerank": 0.5469792548271533,
+          "score_rerank_bruto": 0.7036988139152527,
+          "score_final": 0.6969792548271533,
+          "texto": "[Seção 5.2 — Rolamentos | p. 14] Os motores W22 são fornecidos como padrão com\n\nrolamentos de esferas. Opcionalmente, quando as cargas\n\nradiais são elevadas, os motores podem ser fornecidos com\n\nrolamentos de rolos da série NU a partir da carcaça 160.\n\ngerada apenas pela máquina elétrica girante e assim permitir\n\na reprodutividade dos ensaios e a obtenção de medidas\n\ncomparáveis, é necessário efetuar tais medições com a\n\nmáquina desacoplada, mediante condições controladas de\n\nensaio. As condições de ensaio e limites de vibração aqui\n\ndescritos são aqueles encontrados na ABNT NBR 11390.\n\nA severidade de vibração é o máximo valor de vibração\n\nencontrado dentre todos os pontos e direções de medição\n\nrecomendados. A tabela 5 indica os valores admissíveis da\n\nseveridade de vibração recomendados na norma\n\nIEC 60034-14 para as carcaças IEC 56 a 400 para os graus\n\nde vibração A e B."
+        },
+        {
+          "id": "novo-00042",
+          "pagina": 13,
+          "pagina_fim": 13,
+          "secao": "4.3",
+          "secao_titulo": "Níveis de Vibração",
+          "score_denso": 0.570289167337426,
+          "score_rerank": 0.5248489726122005,
+          "score_rerank_bruto": 0.28810104727745056,
+          "score_final": 0.6748489726122006,
+          "texto": "[Seção 4.3 — Níveis de Vibração | p. 13] Os motores W22 atendem aos níveis de potência sonora da\n\nnorma ABNT NBR 7565. As tabelas 2 e 3 exibem os níveis\n\nde pressão sonora na escala dB(A) obtidos experimentalmente\n\npara os motores W22, em 50 Hz e 60 Hz.\n\nA vibração de uma máquina elétrica está intimamente\n\nrelacionada com a sua montagem na aplicação. Por essa\n\nrazão, geralmente é recomendável efetuar as medições\n\ndas vibrações nas condições de instalação e funcionamento\n\ndo motor. Contudo, para permitir a avaliação da vibração\n\nIEC 60 Hz: Carcaça; IEC 60 Hz: Nível de pressão sonora - dB(A)\n\nIEC 60 Hz: 2 Polos; IEC 60 Hz: 4 Polos; IEC 60 Hz: 6 Polos; IEC 60 Hz: 8 Polos\n\nIEC 60 Hz: 63; IEC 60 Hz: 56; IEC 60 Hz: 48; IEC 60 Hz: 47; IEC 60 Hz: -\n\nIEC 60 Hz: 71; IEC 60 Hz: 60; IEC 60 Hz: 47; IEC 60 Hz: 47; IEC 60 Hz: 45"
+        },
+        {
+          "id": "novo-00052",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "score_denso": 0.8566633429041675,
+          "score_rerank": 0.5231256773746925,
+          "score_rerank_bruto": 0.2557382583618164,
+          "score_final": 0.6731256773746925,
+          "texto": "[Seção 5.2 — Rolamentos | p. 14] na norma\n\nIEC 60034-14 para as carcaças IEC 56 a 400 para os graus\n\nde vibração A e B.\n\nOs motores W22 são balanceados dinamicamente com meia\n\nchaveta e, em sua configuração padrão, atendem aos níveis\n\nde vibração do grau A - balanceamento normal (sem\n\nrequisitos especiais de vibração) descritos na norma\n\nIEC 60034-14. Opcionalmente, os motores também podem\n\nser fornecidos com balanceamento reduzido (B).\n\nOs limites de velocidade de vibração RMS em mm/s, medidos\n\nem condição de suspensão livre (base elástica) para os graus\n\nA e B são exibidos na tabela 5.\n\nTabela 5 - Níveis de velocidade de vibração"
+        }
+      ],
+      "resposta": "Os acelerômetros para medir a vibração dos motores W22 são posicionados em áreas planas específicas nas extremidades da carcaça, tanto na direção vertical como na horizontal, e também em superfícies planas na região das tampas [p. 9, seç. 3.3]. Essas áreas estão disponíveis para facilitar as medições de vibração e fornecer locais específicos para o posicionamento de acelerômetros [p. 9, seç. 3.3].\nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 9,
+          "secao": "3.3",
+          "secao_titulo": "Pontos para Medição de Vibração",
+          "chunk_id": "novo-00023"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 2,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "Os acelerômetros para medir a vibração dos motores W22 são posicionados em áreas planas específicas nas extremidades da carcaça, tanto na direção vertical como na horizontal, e também em superfícies planas na região das tampas.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "Essas áreas estão disponíveis para facilitar as medições de vibração e fornecer locais específicos para o posicionamento de acelerômetros.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9156627532865614
+    },
+    {
+      "id": "m05",
+      "escopo": "dentro",
+      "split": "dev",
+      "categoria": "mecânica",
+      "pergunta": "Como a vedação WSeal impede a entrada de poeira e água no mancal?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Como a vedação WSeal impede a entrada de poeira e água no mancal?",
+      "chunks": [
+        {
+          "id": "novo-00179",
+          "pagina": 18,
+          "pagina_fim": 18,
+          "secao": "7.2",
+          "secao_titulo": "Vedação",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 3.7339284420013428,
+          "score_final": 1.0,
+          "texto": "[Seção 7.2 — Vedação | p. 18] Nas carcaças 63 a 200L, a vedação utilizada no eixo dos\n\nmotores é o V’Ring. Para as carcaças 225S/M a 355A/B, a\n\nvedação utilizada é a exclusiva WSeal®, que é composta por\n\num anel V’Ring com duplo lábio e uma calota metálica\n\nmontada sobre esse anel (ver figura 26). Esta configuração\n\nfunciona como um labirinto, fazendo com que a poeira e a\n\nágua presentes no ambiente não consigam penetrar na parte\n\ninterna do mancal.\n\nFigura 26 - Vedação WSeal"
+        },
+        {
+          "id": "novo-00178",
+          "pagina": 18,
+          "pagina_fim": 18,
+          "secao": "7",
+          "secao_titulo": "Grau de proteção / Vedação / Pintura",
+          "score_denso": 0.6444632582891303,
+          "score_rerank": 0.6634377852638079,
+          "score_rerank_bruto": -0.46041247248649597,
+          "score_final": 0.6634377852638079,
+          "texto": "[Seção 7 — Grau de proteção / Vedação / Pintura | p. 18] contra o contato ou aproximação\n\ncom partes vivas ou móveis dentro do invólucro. O ingresso\n\nde poeira não é totalmente evitado, mas a poeira não entra\n\nem quantidade suficiente para interferir na operação\n\nsatisfatória da máquina.\n\nb) O segundo numeral característico 5: informa que a máquina\n\nestá protegida contra jatos de água. A água projetada de\n\nqualquer direção por um bico contra a máquina, de qualquer\n\ndireção, não tem efeito prejudicial em sua operação.\n\nc) A letra W significa que o motor está apto a operar sob\n\nintempéries."
+        },
+        {
+          "id": "novo-00216",
+          "pagina": 23,
+          "pagina_fim": 23,
+          "secao": "12.3",
+          "secao_titulo": "Restrições quanto à Circulação de Correntes pelos Mancais",
+          "score_denso": 0.1633973771964684,
+          "score_rerank": 0.4322600837811703,
+          "score_rerank_bruto": -3.3414194583892822,
+          "score_final": 0.4322600837811703,
+          "texto": "[Seção 12.3 — Restrições quanto à Circulação de Correntes pelos Mancais | p. 23] são do tipo 1024 pulsos.\n\nOpcionalmente podem ser fornecidos modelos de encoders com\n\n2048 pulsos.\n\nA partir da carcaça 315S/M medidas devem tomadas para\n\nimpedir a passagem de corrente pelos mancais, porém tais\n\nproteções também estão disponíveis à algumas carcaças\n\nmenores. A proteção pode ser feita por meio do uso\n\ncombinado de um rolamento especial isolado ou uma tampa\n\ncom o cubo do rolamento isolado no lado traseiro (não\n\nacionante) e uma escova de aterramento/curtocircuitamento\n\ndo eixo com a carcaça instalada no lado dianteiro (ponta\n\nacionante). Os motores W22 são normalmente fornecidos\n\ncom mancais protegidos conforme tais recomendações,\n\nquando o acionamento por inversor de frequência é\n\nmencionado no momento da compra.\n\nPara motores que tenham mancais originalmente"
+        },
+        {
+          "id": "novo-00170",
+          "pagina": 17,
+          "pagina_fim": 18,
+          "secao": "6",
+          "secao_titulo": "Forma Construtiva",
+          "score_denso": 0.12972251498868292,
+          "score_rerank": 0.3219474698011955,
+          "score_rerank_bruto": -4.7161688804626465,
+          "score_final": 0.3219474698011955,
+          "texto": "[Seção 6 — Forma Construtiva | p. 17-18] ou com o flange C conforme as dimensões da norma NEMA MG1 Parte 4 para as carcaças 63 a 355M/L.\n\n2 - Para motores verticais com ponta de eixo para baixo, recomenda-se o uso de chapéu para prevenir a entrada de pequenos objetos\n\natravés da defletora/ventilador. O aumento do comprimento total do motor por causa da montagem do chapéu pode ser observado na\n\nseção de dimensões mecânicas.\n\n3 - Para motores verticais com ponta de eixo para cima e que operam em ambientes com a presença de líquidos, recomenda-se o uso de\n\num slinger de borracha para prevenir a entrada de líquidos no interior do motor através do eixo.\n\nCaracterísticas dos Planos de pintura da WEG: Planos de pintura; Correspondência com as normas ISO 12944: Durabilidade estimada (anos); Correspondência com as normas ISO 12944: Classificação da corrosividade do ambiente ISO 12944-2"
+        }
+      ],
+      "resposta": "A vedação WSeal impede a entrada de poeira e água no mancal funcionando como um labirinto, fazendo com que a poeira e a água presentes no ambiente não consigam penetrar na parte interna do mancal [p. 18, seç. 7.2]. \nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 18,
+          "secao": "7.2",
+          "secao_titulo": "Vedação",
+          "chunk_id": "novo-00179"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "A vedação WSeal impede a entrada de poeira e água no mancal funcionando como um labirinto, fazendo com que a poeira e a água presentes no ambiente não consigam penetrar na parte interna do mancal.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.975195921967184
+    },
+    {
+      "id": "p01",
+      "escopo": "dentro",
+      "split": "dev",
+      "categoria": "preventiva",
+      "pergunta": "Que efeito a lubrificação em excesso pode ter no mancal?",
+      "estado": "temperatura_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Que efeito a lubrificação em excesso pode ter no mancal?",
+      "chunks": [
+        {
+          "id": "novo-00092",
+          "pagina": 16,
+          "pagina_fim": 16,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 0.8867417125287984,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": -3.9074904918670654,
+          "score_final": 1.0,
+          "texto": "[Seção 5.2.1 — Esforços | p. 16] 11 - Intervalos de lubrificação para rolamentos de rolos\n\n5.2.2 Monitoramento dos Rolamentos\n\nOpcionalmente, sensores de temperatura podem ser\n\ninstalados para controlar as temperaturas de operação nos\n\nmancais. O mais comum é a instalação de um sensor Pt-100\n\nno mancal, que permite o monitoramento contínuo de sua\n\ntemperatura de operação. Este monitoramento é importante,\n\npois a temperatura influencia diretamente a vida útil da graxa\n\ne do rolamento.\n\nMediante consulta\n\n4\n\n5,4\n\n4,7\n\n6\n\n6,1\n\n5,4\n\n8\n\n7,6\n\n6,9\n\nTabela 9 - Esforços axiais máximos para rolamentos de esferas\n\n(esforço radial zero)"
+        },
+        {
+          "id": "novo-00061",
+          "pagina": 15,
+          "pagina_fim": 15,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 0.2807845653269786,
+          "score_rerank": 0.6917107784005057,
+          "score_rerank_bruto": -5.664581775665283,
+          "score_final": 0.6917107784005057,
+          "texto": "[Seção 5.2.1 — Esforços | p. 15] Carga Radial - Rolamentos de Esferas\n\nrecomendada na placa de identificação do motor pode\n\nresultar em uma elevação adicional de temperatura no mancal.\n\nNotas:\n\n1 - Vida útil L10 significa que, no mínimo 90% dos rolamentos\n\nsubmetidos às cargas máximas indicadas irão alcançar o\n\nnúmero de horas informado. Os valores de carga radial máxima\n\nconsideram uma carga axial nula. Os valores de carga axial\n\nmáxima consideram uma carga radial nula. Para a vida útil de\n\nrolamentos em aplicações com combinações de carga axial e\n\nradial, contate a WEG.\n\n2 - O valor da força radial Fr normalmente é obtido a partir de\n\ninformações recomendadas em catálogos de fabricantes de\n\ncorreias/polias. Na falta de uma estimativa do fabricante de\n\ncorreias, a força Fr, na condição de operação, poderá ser\n\ncalculada em função da potência transmitida, das características"
+        },
+        {
+          "id": "novo-00191",
+          "pagina": 20,
+          "pagina_fim": 20,
+          "secao": "11.1",
+          "secao_titulo": "Proteções Dependentes da Temperatura de Funcionamento",
+          "score_denso": 0.5421633039065787,
+          "score_rerank": 0.6591061690556603,
+          "score_rerank_bruto": -5.850411415100098,
+          "score_final": 0.6591061690556603,
+          "texto": "[Seção 11.1 — Proteções Dependentes da Temperatura de Funcionamento | p. 20] Os motores utilizados em regime contínuo devem ser\n\nprotegidos contra sobrecargas por um dispositivo integrado\n\nno motor, ou por meio de um dispositivo de proteção\n\nindependente, geralmente um relé térmico com corrente\n\nnominal ou de ajuste igual ou inferior ao valor obtido através\n\nda equação abaixo, conforme tabela 15.\n\nOs intervalos de lubrificação sofrerão alterações em\n\ncondições de operação diferentes de 40 °C de temperatura\n\nambiente máxima e altitudes de instalação acima de 1.000\n\nmetros do nível do mar. Para mais informações, contate a\n\nWEG.\n\nTodos os motores W22 são fornecidos com o exclusivo sistema\n\nde isolamento WISE®, composto por fios esmaltados, atendendo\n\nà classe de temperatura de 200 °C e impregnados com resina\n\nisenta de solventes. O sistema de isolamento WISE® permite"
+        },
+        {
+          "id": "novo-00064",
+          "pagina": 15,
+          "pagina_fim": 15,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 0.15754423386979177,
+          "score_rerank": 0.5740600039497363,
+          "score_rerank_bruto": -6.3351311683654785,
+          "score_final": 0.5740600039497363,
+          "texto": "[Seção 5.2.1 — Esforços | p. 15] reduzida quando o motor\n\nfor acionado por inversor de frequência em rotações acima da nominal. A\n\nrotação é um dos critérios utilizados na definição da vida útil do rolamento.\n\n4 - Motores com formas construtivas modificadas\n\nMotores na forma construtiva horizontal, mas que trabalharão na posição\n\nvertical, devem ter seu intervalo de lubrificação reduzido pela metade.\n\n5 - Valores para esforços radiais\n\nOs valores indicados nas tabelas 7 e 8 para os esforços radiais consideram\n\nos pontos de aplicação do esforço no meio do comprimento da ponta de"
+        }
+      ],
+      "resposta": "Não encontrei informações suficientes no manual do motor WEG W22 para responder a essa pergunta.\nConfiança: Baixa",
+      "confianca": "Baixa",
+      "abstencao": true,
+      "fontes": [],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "abstencao_indevida": true,
+      "cobertura": "NAO_COBRE",
+      "pontos": 0.0,
+      "cosseno": null
+    },
+    {
+      "id": "p02",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "preventiva",
+      "pergunta": "Qual é a recomendação para os bujões de dreno dos motores W22?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é a recomendação para os bujões de dreno dos motores W22?",
+      "chunks": [
+        {
+          "id": "novo-00216",
+          "pagina": 23,
+          "pagina_fim": 23,
+          "secao": "12.3",
+          "secao_titulo": "Restrições quanto à Circulação de Correntes pelos Mancais",
+          "score_denso": 0.6259524298709984,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 0.2709367871284485,
+          "score_final": 1.0,
+          "texto": "[Seção 12.3 — Restrições quanto à Circulação de Correntes pelos Mancais | p. 23] são do tipo 1024 pulsos.\n\nOpcionalmente podem ser fornecidos modelos de encoders com\n\n2048 pulsos.\n\nA partir da carcaça 315S/M medidas devem tomadas para\n\nimpedir a passagem de corrente pelos mancais, porém tais\n\nproteções também estão disponíveis à algumas carcaças\n\nmenores. A proteção pode ser feita por meio do uso\n\ncombinado de um rolamento especial isolado ou uma tampa\n\ncom o cubo do rolamento isolado no lado traseiro (não\n\nacionante) e uma escova de aterramento/curtocircuitamento\n\ndo eixo com a carcaça instalada no lado dianteiro (ponta\n\nacionante). Os motores W22 são normalmente fornecidos\n\ncom mancais protegidos conforme tais recomendações,\n\nquando o acionamento por inversor de frequência é\n\nmencionado no momento da compra.\n\nPara motores que tenham mancais originalmente"
+        },
+        {
+          "id": "novo-00215",
+          "pagina": 23,
+          "pagina_fim": 23,
+          "secao": "12.3",
+          "secao_titulo": "Restrições quanto à Circulação de Correntes pelos Mancais",
+          "score_denso": 0.0,
+          "score_rerank": 0.9592289921423579,
+          "score_rerank_bruto": -0.027972780168056488,
+          "score_final": 0.9592289921423579,
+          "texto": "[Seção 12.3 — Restrições quanto à Circulação de Correntes pelos Mancais | p. 23] Os motores da linha W22 podem ser fornecidos com\n\nencoders para um controle de velocidade em malha fechada.\n\nOs encoders podem ser fornecidos em motores com\n\nventilação forçada ou em motores autoventilados. Quando\n\nfornecidos em motores autoventilados, os motores não\n\npodem ter dupla ponta de eixo e nem chapéu.\n\nOs seguintes modelos de encoder estão disponíveis para\n\nfornecimento nas carcaças 90 a 355:\n\ng Dynapar - série B58N - 1024ppr (hollow shaft) - Carcaças 90 a 355\n\ng Line & Linde - XH861 - 1024ppr (hollow shaft) - Carcaças 160 a 355\n\ng Hengstler - RI58 - 1024ppr (hollow shaft) *\n\ng Hubner Berlin - HOG 10 - 1024ppr (hollow shaft) *\n\n*Sob consulta.\n\nNota: Os encoders acima indicados são do tipo 1024 pulsos.\n\nOpcionalmente podem ser fornecidos modelos de encoders com\n\n2048 pulsos."
+        },
+        {
+          "id": "novo-00051",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "score_denso": 0.3914022303142636,
+          "score_rerank": 0.9560229976338465,
+          "score_rerank_bruto": -0.05147728696465492,
+          "score_final": 0.9560229976338465,
+          "texto": "[Seção 5.2 — Rolamentos | p. 14] Os motores W22 são fornecidos como padrão com\n\nrolamentos de esferas. Opcionalmente, quando as cargas\n\nradiais são elevadas, os motores podem ser fornecidos com\n\nrolamentos de rolos da série NU a partir da carcaça 160.\n\ngerada apenas pela máquina elétrica girante e assim permitir\n\na reprodutividade dos ensaios e a obtenção de medidas\n\ncomparáveis, é necessário efetuar tais medições com a\n\nmáquina desacoplada, mediante condições controladas de\n\nensaio. As condições de ensaio e limites de vibração aqui\n\ndescritos são aqueles encontrados na ABNT NBR 11390.\n\nA severidade de vibração é o máximo valor de vibração\n\nencontrado dentre todos os pontos e direções de medição\n\nrecomendados. A tabela 5 indica os valores admissíveis da\n\nseveridade de vibração recomendados na norma\n\nIEC 60034-14 para as carcaças IEC 56 a 400 para os graus\n\nde vibração A e B."
+        },
+        {
+          "id": "novo-00039",
+          "pagina": 13,
+          "pagina_fim": 13,
+          "secao": "4.1",
+          "secao_titulo": "Sistema de Ventilação",
+          "score_denso": 0.4896680757310159,
+          "score_rerank": 0.9542549154500853,
+          "score_rerank_bruto": -0.06443984806537628,
+          "score_final": 0.9542549154500853,
+          "texto": "[Seção 4.1 — Sistema de Ventilação | p. 13] Os motores W22, em sua configuração padrão, são\n\ntotalmente fechados com ventilação externa (TFVE) IC 411,\n\nde acordo com a norma ABNT NBR 5110 (figura 21). As\n\nversões não ventiladas (TENV), air over (TEAO) e com\n\nventilação forçada (TEFV) IC 416 estão disponíveis sob\n\nconsulta. Mais informações sobre a opção IC 416 podem\n\nser encontradas na seção 12 - Operação com Inversor\n\nde Frequência.\n\nOs ventiladores são bidirecionais e de polipropileno para\n\ntodos os tamanhos de carcaça, de 2 a 12 polos, exceto para\n\na carcaça 355A/B em 2 polos, que é fornecida em alumínio.\n\nTabela 2 - Nível de pressão sonora para motores 50 Hz\n\nFigura 21 - Ventilador\n\nO sistema de ventilação (ventilador e tampas traseira e\n\ndefletora) foi concebido para minimizar o ruído e aumentar\n\na eficiência térmica (figura 22)."
+        }
+      ],
+      "resposta": "Não encontrei informações suficientes no manual do motor WEG W22 para responder a essa pergunta.\nConfiança: Baixa",
+      "confianca": "Baixa",
+      "abstencao": true,
+      "fontes": [],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "abstencao_indevida": true,
+      "cobertura": "NAO_COBRE",
+      "pontos": 0.0,
+      "cosseno": null
+    },
+    {
+      "id": "p03",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "preventiva",
+      "pergunta": "Em quais situações se recomenda usar a resistência de aquecimento?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Em quais situações se recomenda usar a resistência de aquecimento?",
+      "chunks": [
+        {
+          "id": "novo-00193",
+          "pagina": 20,
+          "pagina_fim": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 10.490663528442383,
+          "score_final": 1.0,
+          "texto": "[Seção 10.1 — Resistências de Aquecimento | p. 20] A utilização da resistência de aquecimento é recomendada\n\nem duas situações:\n\nEssa proteção adicional interna pode ser obtida por meio de\n\numa resistência calibrada (Pt-100), termistores (PTC) ou\n\nprotetores térmicos tipo bimetálico.\n\ngMotores instalados em ambientes com umidade relativa do\n\nar até 95%, nos quais o motor poderá ficar desligado por\n\nperíodos superiores a 24 horas;\n\nPt-100\n\nOs Pt-100 (figura 29) são sensores de temperatura com\n\nprincípio de funcionamento baseado na propriedade de\n\nalguns materiais que variam sua resistência elétrica\n\nlinearmente com a variação da temperatura.\n\nFigura 29 - Pt-100\n\ngMotores instalados em ambientes com umidade relativa do\n\nar superior a 95%, independente do regime de\n\nfuncionamento. Ressaltamos que nessa situação também\n\nse aplica nas partes internas do motor uma pintura epóxi"
+        },
+        {
+          "id": "novo-00194",
+          "pagina": 20,
+          "pagina_fim": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "score_denso": 0.5644440306420662,
+          "score_rerank": 0.43849942208057513,
+          "score_rerank_bruto": -0.03826965019106865,
+          "score_final": 0.43849942208057513,
+          "texto": "[Seção 10.1 — Resistências de Aquecimento | p. 20] Ressaltamos que nessa situação também\n\nse aplica nas partes internas do motor uma pintura epóxi\n\nconhecida como pintura tropicalizada. Mais informações\n\nsobre a pintura tropicalizada podem ser encontradas no\n\ntópico Pintura (seção 7.3).\n\nA tensão de alimentação das resistências de aquecimento\n\ndeverá ser especificada pelo cliente, que pode ser fornecida\n\npara as tensões de 110-127 V, 220-240 V, 380-480 V e 110-\n\n127/220-240 V (dupla tensão) para todos os tamanhos de\n\ncarcaça. A potência e quantidade de resistências de\n\naquecimento dependem do tamanho do motor e deverão\n\nestar em acordo com a tabela abaixo.\n\nO Pt-100 é uma resistência calibrada de platina que aumenta\n\nsua resistência linearmente com aumento da temperatura,\n\npossibilitando assim um acompanhamento contínuo do\n\nprocesso de aquecimento do motor através do display do"
+        },
+        {
+          "id": "novo-00195",
+          "pagina": 20,
+          "pagina_fim": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "score_denso": 0.47477512427002677,
+          "score_rerank": 0.38143049494389997,
+          "score_rerank_bruto": -1.1083930730819702,
+          "score_final": 0.38143049494389997,
+          "texto": "[Seção 10.1 — Resistências de Aquecimento | p. 20] assim um acompanhamento contínuo do\n\nprocesso de aquecimento do motor através do display do\n\ncontrolador, assegurando um alto grau de precisão e\n\nsensibilidade de resposta. Um mesmo sensor pode servir\n\ntanto para ativação de alarme (operação acima da\n\ntemperatura normal de trabalho) como para desligamento\n\n(geralmente ajustado para a temperatura máxima da classe\n\nde isolamento).\n\nPTC\n\nTabela 14 - Potência e quantidade de resistência de aquecimento\n\n(Valores considerando tensão nominal da resistência em\n\n220V).\n\nO PTC é um termistor, cuja resistência aumenta bruscamente\n\nem um valor bem definido de temperatura. Essa variação\n\nbrusca da resistência interrompe a corrente no PTC,\n\nacionando um relé de saída, que desliga o circuito principal.\n\nFator de serviço: 1,0 até 1,15; Ajuste da corrente do relé: In x F.S."
+        },
+        {
+          "id": "novo-00181",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "10",
+          "secao_titulo": "Ambiente x Isolamento",
+          "score_denso": 0.4296023876397229,
+          "score_rerank": 0.31874634484316655,
+          "score_rerank_bruto": -2.2838099002838135,
+          "score_final": 0.31874634484316655,
+          "texto": "[Seção 10 — Ambiente x Isolamento | p. 19] Deve-se observar a potência nominal indicada nas tabelas\n\nelétricas, exceto quando especificado de maneira diferente à\n\noperação em regime contínuo S1, conforme ABNT 17094 em\n\nambientes:\n\ngCom temperatura variando entre -30 °C a +40 °C.\n\ngEm altitudes de até 1000 metros acima do nível do mar.\n\nAltos índices de umidade podem levar a um desgaste\n\nprematuro do sistema de isolação, que é o principal\n\nresponsável pela vida útil do motor. Ambientes com até 95%\n\nde umidade relativa não requerem proteções adicionais além\n\nda resistência de aquecimento para evitar a condensação de\n\nágua no interior do motor. No entanto, para ambientes com\n\nníveis de umidade superiores a 95%, recomenda-se aplicar\n\nnas partes internas do motor uma pintura epóxi, conhecida\n\ncomo pintura tropicalizada.\n\nPara temperaturas e altitudes diferentes das indicadas"
+        }
+      ],
+      "resposta": "A resistência de aquecimento é recomendada em duas situações: \n1) Motores instalados em ambientes com umidade relativa do ar até 95%, nos quais o motor poderá ficar desligado por períodos superiores a 24 horas [p. 20, seç. 10.1]; \n2) Motores instalados em ambientes com umidade relativa do ar superior a 95%, independente do regime de funcionamento [p. 20, seç. 10.1].\nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "chunk_id": "novo-00193"
+        },
+        {
+          "pagina": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "chunk_id": "novo-00194"
+        },
+        {
+          "pagina": 20,
+          "secao": "10.1",
+          "secao_titulo": "Resistências de Aquecimento",
+          "chunk_id": "novo-00195"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 3,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "A resistência de aquecimento é recomendada em duas situações:",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "Motores instalados em ambientes com umidade relativa do ar até 95%, nos quais o motor poderá ficar desligado por períodos superiores a 24 horas;",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "Motores instalados em ambientes com umidade relativa do ar superior a 95%, independente do regime de funcionamento.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9760544676065613
+    },
+    {
+      "id": "p04",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "preventiva",
+      "pergunta": "Como deve ser ajustado o intervalo de lubrificação de um motor horizontal que vai trabalhar na posição vertical?",
+      "estado": "vibracao_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Como deve ser ajustado o intervalo de lubrificação de um motor horizontal que vai trabalhar na posição vertical?",
+      "chunks": [
+        {
+          "id": "novo-00064",
+          "pagina": 15,
+          "pagina_fim": 15,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 3.6699717044830322,
+          "score_final": 1.0,
+          "texto": "[Seção 5.2.1 — Esforços | p. 15] reduzida quando o motor\n\nfor acionado por inversor de frequência em rotações acima da nominal. A\n\nrotação é um dos critérios utilizados na definição da vida útil do rolamento.\n\n4 - Motores com formas construtivas modificadas\n\nMotores na forma construtiva horizontal, mas que trabalharão na posição\n\nvertical, devem ter seu intervalo de lubrificação reduzido pela metade.\n\n5 - Valores para esforços radiais\n\nOs valores indicados nas tabelas 7 e 8 para os esforços radiais consideram\n\nos pontos de aplicação do esforço no meio do comprimento da ponta de"
+        },
+        {
+          "id": "novo-00056",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "score_denso": 0.0,
+          "score_rerank": 0.22213193921030566,
+          "score_rerank_bruto": -5.3616042137146,
+          "score_final": 0.37213193921030563,
+          "texto": "[Seção 5.1 — Eixo | p. 14] tabelas 7, 8 e 9.\n\nObservação:\n\nPara trocar os rolamentos de esferas por rolamentos de rolos,\n\né necessário trocar os anéis de fixação (internos e externos)\n\ndo rolamento traseiro, já que nesta condição, o rolamento\n\ntraseiro passa a ser o fixo.\n\nA vida útil do rolamento depende do tipo e do tamanho do\n\nrolamento, das cargas mecânicas radiais e axiais a que é\n\nsubmetido, das condições de operação (ambiente,\n\ntemperatura), da rotação e da vida da graxa. Dessa forma, a\n\nvida útil do rolamento está estritamente relacionada com sua\n\ncorreta utilização, manutenção e lubrificação. Ao respeitar a\n\nquantidade de graxa e os intervalos de lubrificação\n\npermite-se que os rolamentos atinjam a vida útil descrita\n\nacima.\n\nOs motores W22 são fornecidos como padrão com pino\n\ngraxeiro nas tampas dianteira e traseira para lubrificação dos"
+        },
+        {
+          "id": "novo-00155",
+          "pagina": 16,
+          "pagina_fim": 16,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 0.23227216990953892,
+          "score_rerank": 0.37104229546919254,
+          "score_rerank_bruto": -3.6326539516448975,
+          "score_final": 0.37104229546919254,
+          "texto": "[Seção 5.2.1 — Esforços | p. 16] Fa em (kN) Horizontal: 5,4; Carga axial máxima - 60 Hz - 25.000 horas - Fa em (kN) Horizontal: 4,7\n\nCarga axial máxima - 60 Hz - 25.000 horas - Fa em (kN) Polos: 6; Carga axial máxima - 60 Hz - 25.000 horas - Fa em (kN) Horizontal: 6,1; Carga axial máxima - 60 Hz - 25.000 horas - Fa em (kN) Horizontal: 5,4\n\nCarga axial máxima - 60 Hz - 25.000 horas - Fa em (kN) Polos: 8; Carga axial máxima - 60 Hz - 25.000 horas - Fa em (kN) Horizontal: 7,6; Carga axial máxima - 60 Hz - 25.000 horas - Fa em (kN) Horizontal: 6,9\n\nIntervalos de relubrificação (horas) Carcaça: 160; Intervalos de relubrificação (horas) Polos: 2; Intervalos de relubrificação (horas) Rolamento: 6309; Intervalos de relubrificação (horas) 50 Hz: 25.000; Intervalos de relubrificação (horas) 60 Hz: 25.000"
+        },
+        {
+          "id": "novo-00057",
+          "pagina": 14,
+          "pagina_fim": 15,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "score_denso": 0.17632009192636633,
+          "score_rerank": 0.18847158492785693,
+          "score_rerank_bruto": -5.7524237632751465,
+          "score_final": 0.3384715849278569,
+          "texto": "[Seção 5.1 — Eixo | p. 14-15] fornecidos como padrão com pino\n\ngraxeiro nas tampas dianteira e traseira para lubrificação dos\n\nrolamentos das carcaças 225S/M e acima. A quantidade de\n\ngraxa e o intervalo de lubrificação estão impressas na placa de\n\nidentificação e são exibidas nas tabelas 10 e 11.\n\nDevemos ressaltar que a lubrificação em excesso, ou seja, a\n\naplicação de uma quantidade de graxa superior à\n\nOs eixos são equipados com furo de centro e chaveta e\n\npossuem dimensões conforme exibido na seção 17.\n\neixo L/2 ou na extremidade da ponta de eixo L.\n\nFr\n\nFa\n\nL\n\nFigura 24 - Força radial e axial sobre eixo do motor"
+        }
+      ],
+      "resposta": "De acordo com o manual do motor WEG W22[p.15, seç. 5.2.1], para motores na forma construtiva horizontal que trabalharão na posição vertical, o intervalo de lubrificação deve ser reduzido pela metade.\nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 15,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "chunk_id": "novo-00064"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "De acordo com o manual do motor WEG W22, para motores na forma construtiva horizontal que trabalharão na posição vertical, o intervalo de lubrificação deve ser reduzido pela metade.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.948590969694505
+    },
+    {
+      "id": "p05",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "preventiva",
+      "pergunta": "Como monitorar a temperatura de operação dos rolamentos?",
+      "estado": "temperatura_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Como monitorar a temperatura de operação dos rolamentos?",
+      "chunks": [
+        {
+          "id": "novo-00092",
+          "pagina": 16,
+          "pagina_fim": 16,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 7.653075695037842,
+          "score_final": 1.0,
+          "texto": "[Seção 5.2.1 — Esforços | p. 16] 11 - Intervalos de lubrificação para rolamentos de rolos\n\n5.2.2 Monitoramento dos Rolamentos\n\nOpcionalmente, sensores de temperatura podem ser\n\ninstalados para controlar as temperaturas de operação nos\n\nmancais. O mais comum é a instalação de um sensor Pt-100\n\nno mancal, que permite o monitoramento contínuo de sua\n\ntemperatura de operação. Este monitoramento é importante,\n\npois a temperatura influencia diretamente a vida útil da graxa\n\ne do rolamento.\n\nMediante consulta\n\n4\n\n5,4\n\n4,7\n\n6\n\n6,1\n\n5,4\n\n8\n\n7,6\n\n6,9\n\nTabela 9 - Esforços axiais máximos para rolamentos de esferas\n\n(esforço radial zero)"
+        },
+        {
+          "id": "novo-00061",
+          "pagina": 15,
+          "pagina_fim": 15,
+          "secao": "5.2.1",
+          "secao_titulo": "Esforços",
+          "score_denso": 0.24574931626754215,
+          "score_rerank": 0.36851651389474094,
+          "score_rerank_bruto": -2.7628839015960693,
+          "score_final": 0.36851651389474094,
+          "texto": "[Seção 5.2.1 — Esforços | p. 15] Carga Radial - Rolamentos de Esferas\n\nrecomendada na placa de identificação do motor pode\n\nresultar em uma elevação adicional de temperatura no mancal.\n\nNotas:\n\n1 - Vida útil L10 significa que, no mínimo 90% dos rolamentos\n\nsubmetidos às cargas máximas indicadas irão alcançar o\n\nnúmero de horas informado. Os valores de carga radial máxima\n\nconsideram uma carga axial nula. Os valores de carga axial\n\nmáxima consideram uma carga radial nula. Para a vida útil de\n\nrolamentos em aplicações com combinações de carga axial e\n\nradial, contate a WEG.\n\n2 - O valor da força radial Fr normalmente é obtido a partir de\n\ninformações recomendadas em catálogos de fabricantes de\n\ncorreias/polias. Na falta de uma estimativa do fabricante de\n\ncorreias, a força Fr, na condição de operação, poderá ser\n\ncalculada em função da potência transmitida, das características"
+        },
+        {
+          "id": "novo-00204",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "score_denso": 0.06392297308995776,
+          "score_rerank": 0.35673081328917006,
+          "score_rerank_bruto": -2.957282304763794,
+          "score_final": 0.35673081328917006,
+          "texto": "[Seção 12.1 — Considerações Relativas ao Sistema Isolante do Motor | p. 21] serem acionados por inversor de frequência,\n\nconsiderando os critérios indicados na Tabela 16.\n\nPara manter a temperatura dos motores de indução WEG\n\ndentro de níveis aceitáveis, quando da operação com\n\ninversores de frequência, devem ser obedecidos os limites de\n\ncarga apresentados nas figuras 31 (para operação na\n\ncondição de fluxo constante) ou 32 (para operação na\n\ncondição de fluxo ótimo).\n\nNotas:\n\n1 - Motores para aplicações em áreas explosivas devem ser\n\navaliados caso a caso e a WEG deve ser consultada.\n\n2 - As curvas de derating apresentadas a seguir estão relacionadas\n\ncom a elevação de temperatura no enrolamento dos motores e\n\nnão com a sua classe térmica. Estas curvas apenas definem\n\nlimitações de torque para motores acionados por inversores de"
+        },
+        {
+          "id": "novo-00298",
+          "pagina": 32,
+          "pagina_fim": 32,
+          "secao": "15",
+          "secao_titulo": "Opcionais",
+          "score_denso": 0.10695723826593262,
+          "score_rerank": 0.3551724167836878,
+          "score_rerank_bruto": -2.98298716545105,
+          "score_final": 0.3551724167836878,
+          "texto": "[Seção 15 — Opcionais | p. 32] V; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Resistência de Aquecimento; Atributo: 220-240 V; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Resistência de Aquecimento; Atributo: 110-127 / 220-240 V; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Resistência de Aquecimento; Atributo: 380-480 V; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Proteção térmica no enrolamento; Atributo: Protetor térmico bimetálico (130°C / 155°C) - Alarme; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O"
+        }
+      ],
+      "resposta": "O monitoramento da temperatura de operação dos rolamentos pode ser feito mediante a instalação de sensores de temperatura, como um sensor Pt-100 no mancal, que permite o monitoramento contínuo de sua temperatura de operação [p. 16, seç. 5.2.2]. \nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [],
+      "citacao_invalida": true,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "O monitoramento da temperatura de operação dos rolamentos pode ser feito mediante a instalação de sensores de temperatura, como um sensor Pt-100 no mancal, que permite o monitoramento contínuo de sua temperatura de operação.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9744284983794769
+    },
+    {
+      "id": "s01",
+      "escopo": "dentro",
+      "split": "dev",
+      "categoria": "especificação",
+      "pergunta": "Qual é o grau de proteção dos motores W22?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é o grau de proteção dos motores W22?",
+      "chunks": [
+        {
+          "id": "novo-00177",
+          "pagina": 18,
+          "pagina_fim": 18,
+          "secao": "7",
+          "secao_titulo": "Grau de proteção / Vedação / Pintura",
+          "score_denso": 0.9344278919774057,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 10.514250755310059,
+          "score_final": 1.0,
+          "texto": "[Seção 7 — Grau de proteção / Vedação / Pintura | p. 18] 7.1\n\nGrau de proteção\n\nOs motores W22 são fornecidos com grau de proteção\n\nconforme especificado na norma ABNT NBR IEC 60034-5.\n\nAs carcaças 63 a 132M/L são fornecidas com o grau de\n\nproteção IP55 e as carcaças 160M a 355A/B com o grau de\n\nproteção IPW55, onde:\n\nFigura 27 - Plano de pintura\n\nNas carcaças 63 a 132M/L, os motores W22 são fornecidos,\n\ncomo padrão, com o plano de pintura 207 A (código interno\n\nWEG). E, para as carcaças 160M a 355A/B, os motores W22\n\nsão fornecidos com o plano de pintura 203 A.\n\nOs planos de pintura conferem proteção adicional em\n\nambientes agressivos, abrigados ou desabrigados conforme\n\nquadro a seguir.\n\na) O primeiro numeral característico 5: informa que o\n\ninvólucro fornece proteção contra o contato ou aproximação\n\ncom partes vivas ou móveis dentro do invólucro. O ingresso"
+        },
+        {
+          "id": "novo-00053",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "4.4",
+          "secao_titulo": "Resistência ao Impacto",
+          "score_denso": 0.552468165515656,
+          "score_rerank": 0.8814564428214327,
+          "score_rerank_bruto": 8.338409423828125,
+          "score_final": 0.8814564428214327,
+          "texto": "[Seção 4.4 — Resistência ao Impacto | p. 14] Figura 23 - Detalhe do rolamento\n\nOs motores W22, em sua configuração padrão (defletora de\n\nferro fundido), atendem ao índice de impacto IK08 - energia\n\nde impacto de 5J, de acordo com a EN 62262 - Degrees of\n\nprotection provided by enclosures for electrical equipment\n\nagainst external mechanical impacts (IK code), o que garante\n\nelevada rigidez mecânica em aplicações mais severas."
+        },
+        {
+          "id": "novo-00052",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "score_denso": 0.31504730805504566,
+          "score_rerank": 0.6771256348367334,
+          "score_rerank_bruto": 4.587961673736572,
+          "score_final": 0.6771256348367334,
+          "texto": "[Seção 5.2 — Rolamentos | p. 14] na norma\n\nIEC 60034-14 para as carcaças IEC 56 a 400 para os graus\n\nde vibração A e B.\n\nOs motores W22 são balanceados dinamicamente com meia\n\nchaveta e, em sua configuração padrão, atendem aos níveis\n\nde vibração do grau A - balanceamento normal (sem\n\nrequisitos especiais de vibração) descritos na norma\n\nIEC 60034-14. Opcionalmente, os motores também podem\n\nser fornecidos com balanceamento reduzido (B).\n\nOs limites de velocidade de vibração RMS em mm/s, medidos\n\nem condição de suspensão livre (base elástica) para os graus\n\nA e B são exibidos na tabela 5.\n\nTabela 5 - Níveis de velocidade de vibração"
+        },
+        {
+          "id": "novo-00216",
+          "pagina": 23,
+          "pagina_fim": 23,
+          "secao": "12.3",
+          "secao_titulo": "Restrições quanto à Circulação de Correntes pelos Mancais",
+          "score_denso": 0.5931845301476877,
+          "score_rerank": 0.5982553841083563,
+          "score_rerank_bruto": 3.140315294265747,
+          "score_final": 0.5982553841083563,
+          "texto": "[Seção 12.3 — Restrições quanto à Circulação de Correntes pelos Mancais | p. 23] são do tipo 1024 pulsos.\n\nOpcionalmente podem ser fornecidos modelos de encoders com\n\n2048 pulsos.\n\nA partir da carcaça 315S/M medidas devem tomadas para\n\nimpedir a passagem de corrente pelos mancais, porém tais\n\nproteções também estão disponíveis à algumas carcaças\n\nmenores. A proteção pode ser feita por meio do uso\n\ncombinado de um rolamento especial isolado ou uma tampa\n\ncom o cubo do rolamento isolado no lado traseiro (não\n\nacionante) e uma escova de aterramento/curtocircuitamento\n\ndo eixo com a carcaça instalada no lado dianteiro (ponta\n\nacionante). Os motores W22 são normalmente fornecidos\n\ncom mancais protegidos conforme tais recomendações,\n\nquando o acionamento por inversor de frequência é\n\nmencionado no momento da compra.\n\nPara motores que tenham mancais originalmente"
+        }
+      ],
+      "resposta": "O grau de proteção dos motores W22 varia de acordo com o tamanho da carcaça. As carcaças 63 a 132M/L têm grau de proteção IP55, enquanto as carcaças 160M a 355A/B têm grau de proteção IPW55 [p. 18, seç. 7]. \nConfiança: Alta",
+      "confianca": "Alta",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 18,
+          "secao": "7",
+          "secao_titulo": "Grau de proteção / Vedação / Pintura",
+          "chunk_id": "novo-00177"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 2,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "O grau de proteção dos motores W22 varia de acordo com o tamanho da carcaça.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "As carcaças 63 a 132M/L têm grau de proteção IP55, enquanto as carcaças 160M a 355A/B têm grau de proteção IPW55.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9564179613441508
+    },
+    {
+      "id": "s02",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "especificação",
+      "pergunta": "Qual é o fator de serviço do motor W22 Super Premium?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é o fator de serviço do motor W22 Super Premium?",
+      "chunks": [
+        {
+          "id": "novo-00013",
+          "pagina": 8,
+          "pagina_fim": 8,
+          "secao": "1",
+          "secao_titulo": "Versões Disponíveis",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 10.532511711120605,
+          "score_final": 1.0,
+          "texto": "[Seção 1 — Versões Disponíveis | p. 8] O motor W22 Super Premium apresenta rendimentos\n\nsuperiores aos padrões do mercado e tem como principais\n\nbenefícios o rápido retorno do investimento e o Plano de\n\nTroca WEG, que consiste em receber motores antigos como\n\nparte do pagamento dos motores novos.\n\nA linha W22 está disponível nas versões IR3 Premium e\n\nSuper Premium, atendendo e superando os níveis de\n\nrendimento definidos na Portaria Interministerial n.º 1,\n\nde 29 de junho de 2017. Na Figura 1, é possível comparar\n\no rendimento da linha W22 com os valores mínimos\n\nestabelecidos pela lei.\n\n2 Polos\n\nO motor W22 Super Premium tem ainda, como diferencial,\n\no fator de serviço 1,25 até a carcaça 315S/M, ou seja,\n\numa reserva de 25% de potência.\n\n100\n\n96\n\n92\n\n88\n\n84\n\n80\n\n76\n\n72\n\nRendimento (%)\n\n68\n\n64\n\n60\n\n0,16\n\n0,25\n\n0,33\n\n0,5\n\n0,75\n\n1\n\n1,5\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7,5\n\n10\n\n12,5\n\n15\n\n20\n\n25\n\n30"
+        },
+        {
+          "id": "novo-00371",
+          "pagina": 34,
+          "pagina_fim": 35,
+          "secao": "16",
+          "secao_titulo": "Dados Elétricos",
+          "score_denso": 0.2867965580528513,
+          "score_rerank": 0.7375279768495738,
+          "score_rerank_bruto": 5.888218402862549,
+          "score_final": 0.7375279768495738,
+          "texto": "[Seção 16 — Dados Elétricos | p. 34-35] 75: 0,82; % de Carga Fator de Potência 100: 0,86; Tensão (V): 440; Corrente Nominal In (A): 521\n\nGrupo: Polos; otência HP: 500; Carcaça: 355M/L; Conjugado Nominal (kgfm): 201; Corrente com Rotor Bloqueado Ip/In: 7,6; Conjugado de Partida Cp/Cn: 2,7; Conjugado Máximo Cmáx/Cn: 2,4; Momento de Inércia J (kgm2): 11,09668; Tempo máximo com rotor bloqueado (s) Quente: 18; Tempo máximo com rotor bloqueado (s) Frio: 40; Massa (kg): 1916; Nível médio de pressão sonora dB(A): 78; Fator de Serviço: 1,15; RPM: 1790; % de Carga Rendimento 50: 96,3; % de Carga Rendimento 75: 96,6; % de Carga Rendimento 100: 96,7; % de Carga Fator de Potência 50: 0,74; % de Carga Fator de Potência 75: 0,83; % de Carga Fator de Potência 100: 0,86; Tensão (V): 440; Corrente Nominal In (A): 584\n\nW22 Super Premium"
+        },
+        {
+          "id": "novo-00190",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "9",
+          "secao_titulo": "Valor da Sobrecorrente Ocasional",
+          "score_denso": 0.3947622258739626,
+          "score_rerank": 0.7057950685612527,
+          "score_rerank_bruto": 5.326722621917725,
+          "score_final": 0.7057950685612527,
+          "texto": "[Seção 9 — Valor da Sobrecorrente Ocasional | p. 19] Calculando-se o fator de serviço, temos aproximadamente um\n\nFS de 1,15. Essa reserva de temperatura também permite que\n\nos motores W22 com elevação de temperatura da classe B\n\n(80 K) possam operar continuamente:\n\ng Até 15% acima da sua potência nominal, considerando-se\n\numa temperatura ambiente de 40 °C e uma altitude de\n\ninstalação de até 1000 m.a.n.m (metros acima do nível do\n\nmar).\n\nConforme norma ABNT NBR 17094, os motores com\n\npotência nominal até 315 kW e tensão nominal inferior ou\n\nigual a 1 kV devem ser capazes de suportar uma corrente\n\nigual a 1,5 vez a corrente nominal durante 2 minutos, no\n\nmínimo.\n\ng Até 55 °C de temperatura ambiente, mantendo-se a\n\npotência nominal.\n\ng Até 3000 m.a.n.m, mantendo-se a potência nominal."
+        },
+        {
+          "id": "novo-00565",
+          "pagina": 37,
+          "pagina_fim": 38,
+          "secao": "16",
+          "secao_titulo": "Dados Elétricos",
+          "score_denso": 0.16944366244825182,
+          "score_rerank": 0.640200460748089,
+          "score_rerank_bruto": 4.16606330871582,
+          "score_final": 0.640200460748089,
+          "texto": "[Seção 16 — Dados Elétricos | p. 37-38] 75: 0,81; % de Carga Fator de Potência 100: 0,85; Tensão (V): 440; Corrente Nominal In (A): 212\n\nGrupo: Opcionais; Potência kW: 150; Potência HP: 200; Carcaça: 280S/M; Conjugado Nominal (kgfm): 81,8; Corrente com Rotor Bloqueado Ip/In: 8,5; Conjugado de Partida Cp/Cn: 3,2; Conjugado Máximo Cmáx/Cn: 3,3; Momento de Inércia J (kgm2): 2,85389; Tempo máximo com rotor bloqueado (s) Quente: 15; Tempo máximo com rotor bloqueado (s) Frio: 33; Massa (kg): 828; Nível médio de pressão sonora dB(A): 73; Fator de Serviço: 1,25; RPM: 1787; % de Carga Rendimento 50: 95,2; % de Carga Rendimento 75: 95,7; % de Carga Rendimento 100: 96,2; % de Carga Fator de Potência 50: 0,73; % de Carga Fator de Potência 75: 0,81; % de Carga Fator de Potência 100: 0,85; Tensão (V): 440; Corrente Nominal In (A): 241\n\nW22 IR3 Premium\n\nVI Polos"
+        }
+      ],
+      "resposta": "O fator de serviço do motor W22 Super Premium é 1,25 até a carcaça 315S/M [p. 8, seç. 1]. No entanto, em outra seção, é mencionado que o fator de serviço é aproximadamente 1,15 [p. 19, seç. 9]. Além disso, em [p. 37, seç. 16], é apresentado um exemplo de motor W22 IR3 Premium com fator de serviço 1,25, mas não se refere especificamente ao W22 Super Premium. Já em [p. 34, seç. 16], o fator de serviço para um exemplo de motor W22 Super Premium é 1,15.\nConfiança: Alta",
+      "confianca": "Alta",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 8,
+          "secao": "1",
+          "secao_titulo": "Versões Disponíveis",
+          "chunk_id": "novo-00013"
+        },
+        {
+          "pagina": 19,
+          "secao": "9",
+          "secao_titulo": "Valor da Sobrecorrente Ocasional",
+          "chunk_id": "novo-00190"
+        },
+        {
+          "pagina": 37,
+          "secao": "16",
+          "secao_titulo": "Dados Elétricos",
+          "chunk_id": "novo-00565"
+        },
+        {
+          "pagina": 34,
+          "secao": "16",
+          "secao_titulo": "Dados Elétricos",
+          "chunk_id": "novo-00371"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 0.5,
+      "contagem": {
+        "SUSTENTADA": 2,
+        "EXTERNA": 2,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "O fator de serviço do motor W22 Super Premium é 1,25 até a carcaça 315S/M.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "No entanto, em outra seção, é mencionado que o fator de serviço é aproximadamente 1,15.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "Além disso, em, é apresentado um exemplo de motor W22 IR3 Premium com fator de serviço 1,25, mas não se refere especificamente ao W22 Super Premium.",
+          "rotulo_juiz": "EXTERNA",
+          "rotulo": "EXTERNA",
+          "guarda": null
+        },
+        {
+          "afirmacao": "Já em, o fator de serviço para um exemplo de motor W22 Super Premium é 1,15.",
+          "rotulo_juiz": "EXTERNA",
+          "rotulo": "EXTERNA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "PARCIAL",
+      "pontos": 0.5,
+      "juiz_invalido": false,
+      "cosseno": 0.8727653008548049
+    },
+    {
+      "id": "s03",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "especificação",
+      "pergunta": "Qual é a forma construtiva padrão dos motores W22?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é a forma construtiva padrão dos motores W22?",
+      "chunks": [
+        {
+          "id": "novo-00169",
+          "pagina": 17,
+          "pagina_fim": 17,
+          "secao": "6",
+          "secao_titulo": "Forma Construtiva",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 10.505170822143555,
+          "score_final": 1.0,
+          "texto": "[Seção 6 — Forma Construtiva | p. 17] Os motores são fornecidos, como padrão, na forma\n\nconstrutiva B3D (figura 25), com o lado acionado à direita,\n\nolhando para a caixa de ligação.\n\nA denominação da forma construtiva para os motores W22\n\nsegue a norma ABNT NBR IEC 60034-7, Código I Tabelas 1\n\n(motores montados na posição horizontal) e 2 (motores\n\nmontados posição na vertical). Após o código acrescenta-se\n\numa letra para definir a posição da caixa de ligação, conforme\n\ndesignação WEG (posição do lado acionado, olhando para a\n\ncaixa de ligação).\n\nFigura 25 - Forma construtiva B3D\n\nTabela 12 - Formas construtivas\n\nNotas:\n\n1 - As formas construtivas IM B34 e IM B14 podem ser fornecidas com o flange C-DIN, conforme norma DIN EN 50347, mas limitado até a carcaça\n\n132, ou com o flange C conforme as dimensões da norma NEMA MG1 Parte 4 para as carcaças 63 a 355M/L."
+        },
+        {
+          "id": "novo-00055",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "score_denso": 0.18647798792409154,
+          "score_rerank": 0.7278359371124488,
+          "score_rerank_bruto": 6.526014804840088,
+          "score_final": 0.7278359371124488,
+          "texto": "[Seção 5.1 — Eixo | p. 14] cargas radiais mínimas\n\ne máximas admissíveis para rolamentos de rolos são exibidas\n\nna tabela 8.\n\nComo padrão, os eixos dos motores W22 nas carcaças\n\n63 a 315S/M são fabricados em aço AISI 1040/45 e em\n\naço AISI 4140 nas carcaças 355M/L e 355A/B.\n\nQuando fornecido com rolamento de rolos, o material do\n\neixo será obrigatoriamente o AISI 4140.\n\nComo o motor da carcaça 355M/L é fornecido com eixo\n\nem aço AISI 4140, os motores W22 também podem ser\n\nmontados com rolamentos de rolos, o que permite que\n\nos mesmos possam operar com carga radial mais elevada,\n\npor exemplo, receber a montagem de polia e correia.\n\nMais informações sobre as máximas cargas radiais e\n\naxiais admissíveis na ponta de eixo podem ser obtidas\n\nnas tabelas 7, 8 e 9.\n\nObservação:\n\nPara trocar os rolamentos de esferas por rolamentos de rolos,"
+        },
+        {
+          "id": "novo-00039",
+          "pagina": 13,
+          "pagina_fim": 13,
+          "secao": "4.1",
+          "secao_titulo": "Sistema de Ventilação",
+          "score_denso": 0.47649641991038183,
+          "score_rerank": 0.6519221139817869,
+          "score_rerank_bruto": 5.416121959686279,
+          "score_final": 0.6519221139817869,
+          "texto": "[Seção 4.1 — Sistema de Ventilação | p. 13] Os motores W22, em sua configuração padrão, são\n\ntotalmente fechados com ventilação externa (TFVE) IC 411,\n\nde acordo com a norma ABNT NBR 5110 (figura 21). As\n\nversões não ventiladas (TENV), air over (TEAO) e com\n\nventilação forçada (TEFV) IC 416 estão disponíveis sob\n\nconsulta. Mais informações sobre a opção IC 416 podem\n\nser encontradas na seção 12 - Operação com Inversor\n\nde Frequência.\n\nOs ventiladores são bidirecionais e de polipropileno para\n\ntodos os tamanhos de carcaça, de 2 a 12 polos, exceto para\n\na carcaça 355A/B em 2 polos, que é fornecida em alumínio.\n\nTabela 2 - Nível de pressão sonora para motores 50 Hz\n\nFigura 21 - Ventilador\n\nO sistema de ventilação (ventilador e tampas traseira e\n\ndefletora) foi concebido para minimizar o ruído e aumentar\n\na eficiência térmica (figura 22)."
+        },
+        {
+          "id": "novo-00053",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "4.4",
+          "secao_titulo": "Resistência ao Impacto",
+          "score_denso": 0.12613681233744123,
+          "score_rerank": 0.6146858184301386,
+          "score_rerank_bruto": 4.871711254119873,
+          "score_final": 0.6146858184301386,
+          "texto": "[Seção 4.4 — Resistência ao Impacto | p. 14] Figura 23 - Detalhe do rolamento\n\nOs motores W22, em sua configuração padrão (defletora de\n\nferro fundido), atendem ao índice de impacto IK08 - energia\n\nde impacto de 5J, de acordo com a EN 62262 - Degrees of\n\nprotection provided by enclosures for electrical equipment\n\nagainst external mechanical impacts (IK code), o que garante\n\nelevada rigidez mecânica em aplicações mais severas."
+        }
+      ],
+      "resposta": "A forma construtiva padrão dos motores W22 é B3D, com o lado acionado à direita, olhando para a caixa de ligação [p. 17, seç. 6]. \nConfiança: Alta",
+      "confianca": "Alta",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 17,
+          "secao": "6",
+          "secao_titulo": "Forma Construtiva",
+          "chunk_id": "novo-00169"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "A forma construtiva padrão dos motores W22 é B3D, com o lado acionado à direita, olhando para a caixa de ligação.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9861290053683599
+    },
+    {
+      "id": "s04",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "especificação",
+      "pergunta": "Em quais condições de temperatura ambiente e altitude vale a potência nominal das tabelas elétricas?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Em quais condições de temperatura ambiente e altitude vale a potência nominal das tabelas elétricas?",
+      "chunks": [
+        {
+          "id": "novo-00181",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "10",
+          "secao_titulo": "Ambiente x Isolamento",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 5.64181661605835,
+          "score_final": 1.0,
+          "texto": "[Seção 10 — Ambiente x Isolamento | p. 19] Deve-se observar a potência nominal indicada nas tabelas\n\nelétricas, exceto quando especificado de maneira diferente à\n\noperação em regime contínuo S1, conforme ABNT 17094 em\n\nambientes:\n\ngCom temperatura variando entre -30 °C a +40 °C.\n\ngEm altitudes de até 1000 metros acima do nível do mar.\n\nAltos índices de umidade podem levar a um desgaste\n\nprematuro do sistema de isolação, que é o principal\n\nresponsável pela vida útil do motor. Ambientes com até 95%\n\nde umidade relativa não requerem proteções adicionais além\n\nda resistência de aquecimento para evitar a condensação de\n\nágua no interior do motor. No entanto, para ambientes com\n\nníveis de umidade superiores a 95%, recomenda-se aplicar\n\nnas partes internas do motor uma pintura epóxi, conhecida\n\ncomo pintura tropicalizada.\n\nPara temperaturas e altitudes diferentes das indicadas"
+        },
+        {
+          "id": "novo-00182",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "10",
+          "secao_titulo": "Ambiente x Isolamento",
+          "score_denso": 0.7745739700501149,
+          "score_rerank": 0.5816248557708027,
+          "score_rerank_bruto": -0.8441482186317444,
+          "score_final": 0.5816248557708027,
+          "texto": "[Seção 10 — Ambiente x Isolamento | p. 19] conhecida\n\ncomo pintura tropicalizada.\n\nPara temperaturas e altitudes diferentes das indicadas\n\nanteriormente, deve-se utilizar a tabela 15 para encontrar o\n\nfator de correção que deverá ser utilizado para definir a\n\npotência útil disponível (Pmax).\n\nT ( °C): 10; Altitude (m) 4000: 0,97; Altitude (m) 4500: 0,92; Altitude (m) 5000: 0,88\n\nT ( °C): 15; Altitude (m) 3500: 0,98; Altitude (m) 4000: 0,94; Altitude (m) 4500: 0,90; Altitude (m) 5000: 0,86\n\nT ( °C): 20; Altitude (m) 3000: 1,00; Altitude (m) 3500: 0,95; Altitude (m) 4000: 0,91; Altitude (m) 4500: 0,87; Altitude (m) 5000: 0,83\n\nT ( °C): 25; Altitude (m) 2500: 1,00; Altitude (m) 3000: 0,95; Altitude (m) 3500: 0,93; Altitude (m) 4000: 0,89; Altitude (m) 4500: 0,85; Altitude (m) 5000: 0,81"
+        },
+        {
+          "id": "novo-00190",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "9",
+          "secao_titulo": "Valor da Sobrecorrente Ocasional",
+          "score_denso": 0.6549705071791557,
+          "score_rerank": 0.46648527614172175,
+          "score_rerank_bruto": -2.6291282176971436,
+          "score_final": 0.46648527614172175,
+          "texto": "[Seção 9 — Valor da Sobrecorrente Ocasional | p. 19] Calculando-se o fator de serviço, temos aproximadamente um\n\nFS de 1,15. Essa reserva de temperatura também permite que\n\nos motores W22 com elevação de temperatura da classe B\n\n(80 K) possam operar continuamente:\n\ng Até 15% acima da sua potência nominal, considerando-se\n\numa temperatura ambiente de 40 °C e uma altitude de\n\ninstalação de até 1000 m.a.n.m (metros acima do nível do\n\nmar).\n\nConforme norma ABNT NBR 17094, os motores com\n\npotência nominal até 315 kW e tensão nominal inferior ou\n\nigual a 1 kV devem ser capazes de suportar uma corrente\n\nigual a 1,5 vez a corrente nominal durante 2 minutos, no\n\nmínimo.\n\ng Até 55 °C de temperatura ambiente, mantendo-se a\n\npotência nominal.\n\ng Até 3000 m.a.n.m, mantendo-se a potência nominal."
+        },
+        {
+          "id": "novo-00187",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "8",
+          "secao_titulo": "Tensão / Frequência",
+          "score_denso": 0.22740438835865218,
+          "score_rerank": 0.4594071609040964,
+          "score_rerank_bruto": -2.738858461380005,
+          "score_final": 0.4594071609040964,
+          "texto": "[Seção 8 — Tensão / Frequência | p. 19] Pmax = Pnom x Fator de correção\n\nConforme norma ABNT NBR 17904, as combinações das\n\nvariações de tensão e frequência são classificadas como\n\nZona A ou Zona B, conforme figura 28.\n\nZona B (exterior zona A)\n\nFigura 28 - Limites de tensão e frequência para motores\n\nTabela 13 - Fatores de correção considerando a altitude e a\n\ntemperatura ambiente\n\nOs motores W22 são fornecidos com classe de isolamento F\n\ne possuem elevação de temperatura da classe B (80 K) em\n\ncondições nominais de operação (salvo quando indicado\n\ndiferente).\n\nA diferença entre a elevação de temperatura da classe de\n\nisolamento F (105 K) e a elevação da temperatura de projeto\n\n(80 K) significa que, em termos práticos, os motores W22\n\npodem fornecer potências acima dos valores nominais até um\n\nlimite, onde a elevação de temperatura atinge o valor da"
+        }
+      ],
+      "resposta": "A potência nominal das tabelas elétricas vale em condições de temperatura ambiente variando entre -30 °C a +40 °C e em altitudes de até 1000 metros acima do nível do mar [p. 19, seç. 10]. \nConfiança: Média",
+      "confianca": "Média",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 19,
+          "secao": "10",
+          "secao_titulo": "Ambiente x Isolamento",
+          "chunk_id": "novo-00181"
+        },
+        {
+          "pagina": 19,
+          "secao": "10",
+          "secao_titulo": "Ambiente x Isolamento",
+          "chunk_id": "novo-00182"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "A potência nominal das tabelas elétricas vale em condições de temperatura ambiente variando entre -30 °C a +40 °C e em altitudes de até 1000 metros acima do nível do mar.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9564558836489118
+    },
+    {
+      "id": "s05",
+      "escopo": "dentro",
+      "split": "teste",
+      "categoria": "especificação",
+      "pergunta": "Qual plano de pintura é padrão para as carcaças 160M a 355A/B?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual plano de pintura é padrão para as carcaças 160M a 355A/B?",
+      "chunks": [
+        {
+          "id": "novo-00177",
+          "pagina": 18,
+          "pagina_fim": 18,
+          "secao": "7",
+          "secao_titulo": "Grau de proteção / Vedação / Pintura",
+          "score_denso": 0.907427514926414,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 9.375615119934082,
+          "score_final": 1.0,
+          "texto": "[Seção 7 — Grau de proteção / Vedação / Pintura | p. 18] 7.1\n\nGrau de proteção\n\nOs motores W22 são fornecidos com grau de proteção\n\nconforme especificado na norma ABNT NBR IEC 60034-5.\n\nAs carcaças 63 a 132M/L são fornecidas com o grau de\n\nproteção IP55 e as carcaças 160M a 355A/B com o grau de\n\nproteção IPW55, onde:\n\nFigura 27 - Plano de pintura\n\nNas carcaças 63 a 132M/L, os motores W22 são fornecidos,\n\ncomo padrão, com o plano de pintura 207 A (código interno\n\nWEG). E, para as carcaças 160M a 355A/B, os motores W22\n\nsão fornecidos com o plano de pintura 203 A.\n\nOs planos de pintura conferem proteção adicional em\n\nambientes agressivos, abrigados ou desabrigados conforme\n\nquadro a seguir.\n\na) O primeiro numeral característico 5: informa que o\n\ninvólucro fornece proteção contra o contato ou aproximação\n\ncom partes vivas ou móveis dentro do invólucro. O ingresso"
+        },
+        {
+          "id": "novo-00254",
+          "pagina": 27,
+          "pagina_fim": 28,
+          "secao": "15",
+          "secao_titulo": "Opcionais",
+          "score_denso": 1.0,
+          "score_rerank": 0.70247962974178,
+          "score_rerank_bruto": 4.688137531280518,
+          "score_final": 0.70247962974178,
+          "texto": "[Seção 15 — Opcionais | p. 27-28] O\n\nGrupo: Plano de Pintura; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Plano de Pintura; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Plano de Pintura; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Plano de Pintura; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Plano de Pintura; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Aterramento; Atributo: Aterramento único; Carcaça 80: P; Carcaça 90: P; Carcaça 100: P; Carcaça 112: P; Carcaça 132: P; Carcaça 160: P\n\nGrupo: Aterramento; Atributo: Duplo aterramento (1 no interior da caixa de ligação + 1 na carcaça); Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O"
+        },
+        {
+          "id": "novo-00267",
+          "pagina": 28,
+          "pagina_fim": 29,
+          "secao": "15",
+          "secao_titulo": "Opcionais",
+          "score_denso": 0.027998479324557568,
+          "score_rerank": 0.5848351746398506,
+          "score_rerank_bruto": 2.8346316814422607,
+          "score_final": 0.5848351746398506,
+          "texto": "[Seção 15 — Opcionais | p. 28-29] Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Aterramento; 180: P; 200: P; 225: ND; 250: ND; 280: ND; 315: ND; 355M/L: ND; 355A/B: ND\n\nGrupo: Aterramento; 180: O; 200: O; 225: P; 250: P; 280: P; 315: P; 355M/L: P; 355A/B: P\n\nGrupo: Aterramento; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Aterramento; 180: O; 200: O; 225: ND; 250: ND; 280: ND; 315: ND; 355M/L: ND; 355A/B: ND\n\nGrupo: Ventilador; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: ND\n\nGrupo: Ventilador; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: ND; 355A/B: ND\n\nGrupo: Ventilador; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: P\n\nGrupo: Ventilador; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: P; 355A/B: P"
+        },
+        {
+          "id": "novo-00637",
+          "pagina": 42,
+          "pagina_fim": 43,
+          "secao": "17",
+          "secao_titulo": "Dados Mecânicos",
+          "score_denso": 0.6413065774682942,
+          "score_rerank": 0.5580703800173246,
+          "score_rerank_bruto": 2.4129483699798584,
+          "score_final": 0.5580703800173246,
+          "texto": "[Seção 17 — Dados Mecânicos | p. 42-43] Carcaças 63 a 132M/L\n\nMotores nas carcaças 63 a\n\n90 não possuem olhal de\n\niçamento.\n\nCarcaças 160M a 200L\n\nCarcaças 225S/M a 355M/L\n\nMotores na carcaça 355M/L,\n\n2, 4 e 6 polos (500 cv ou\n\nacima) e 8 polos (350 cv ou\n\nacima) são equipados com\n\ndefletor de ar para o mancal\n\ndianteiro. Nestes casos, a\n\ndimensão P1 é de 705 mm.\n\nCarcaça 355A/B\n\nMotores nas carcaças 355A/B são equipados com defletor de ar para o mancal dianteiro. Nestes casos, a dimensão P1 é de 705 mm.\n\n1) Dimensão para 2 polos.\n\n2) Todas as dimensões estão em mm.\n\n3) Dimensão HD para motores com caixa no topo."
+        }
+      ],
+      "resposta": "O plano de pintura padrão para as carcaças 160M a 355A/B é o plano de pintura 203 A [p. 18, seç. 7]. \nConfiança: Alta",
+      "confianca": "Alta",
+      "abstencao": false,
+      "fontes": [
+        {
+          "pagina": 18,
+          "secao": "7",
+          "secao_titulo": "Grau de proteção / Vedação / Pintura",
+          "chunk_id": "novo-00177"
+        }
+      ],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "contagem": {
+        "SUSTENTADA": 1,
+        "EXTERNA": 0,
+        "CONTRADIZ": 0,
+        "META": 0
+      },
+      "afirmacoes": [
+        {
+          "afirmacao": "O plano de pintura padrão para as carcaças 160M a 355A/B é o plano de pintura 203 A.",
+          "rotulo_juiz": "SUSTENTADA",
+          "rotulo": "SUSTENTADA",
+          "guarda": null
+        }
+      ],
+      "abstencao_indevida": false,
+      "cobertura": "COBRE",
+      "pontos": 1.0,
+      "juiz_invalido": false,
+      "cosseno": 0.9990540218822728
+    },
+    {
+      "id": "f01",
+      "escopo": "fora",
+      "split": "dev",
+      "categoria": "",
+      "pergunta": "Qual é o preço atual de um motor W22 de 10 cv?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é o preço atual de um motor W22 de 10 cv?",
+      "chunks": [
+        {
+          "id": "novo-00014",
+          "pagina": 8,
+          "pagina_fim": 8,
+          "secao": "1",
+          "secao_titulo": "Versões Disponíveis",
+          "score_denso": 0.4457482918227904,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 0.41046154499053955,
+          "score_final": 1.0,
+          "texto": "[Seção 1 — Versões Disponíveis | p. 8] (%)\n\n68\n\n64\n\n60\n\n0,16\n\n0,25\n\n0,33\n\n0,5\n\n0,75\n\n1\n\n1,5\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7,5\n\n10\n\n12,5\n\n15\n\n20\n\n25\n\n30\n\n40\n\n50\n\n60\n\n75\n\n100\n\n125\n\n150\n\n175\n\n200\n\n250\n\n300\n\n350\n\n400\n\n450\n\n500\n\nPotência (cv)\n\nOutra característica do projeto elétrico da linha W22 é que\n\nele foi concebido para fornecer um rendimento praticamente\n\nconstante na faixa de 75% a 100% da carga nominal. Dessa\n\nforma, mesmo que o motor não opere em carga nominal, seu\n\nrendimento não sofre alterações consideráveis (ver Figura 2), o\n\nque garante elevados níveis de eficiência energética e\n\nmenores custos de operação.\n\n4 Polos\n\n100\n\n96\n\n92\n\n88\n\n84\n\n80\n\n76\n\n72\n\nRendimento (%)\n\n68\n\n64\n\n60\n\n0,16\n\n0,25\n\n0,33\n\n0,5\n\n0,75\n\n1\n\n1,5\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7,5\n\n10\n\n12,5\n\n15\n\n20\n\n25\n\n30\n\n40\n\n50\n\n60\n\n75\n\n100\n\n125\n\n150\n\n175\n\n200\n\n250\n\n300\n\n350\n\n400\n\n450\n\n500\n\nPotência (cv)"
+        },
+        {
+          "id": "novo-00002",
+          "pagina": 3,
+          "pagina_fim": 3,
+          "secao": "0",
+          "secao_titulo": "Conteúdo sem seção numerada",
+          "score_denso": 0.4887436632135772,
+          "score_rerank": 0.8328401938183433,
+          "score_rerank_bruto": -1.2171839475631714,
+          "score_final": 0.8328401938183433,
+          "texto": "[Seção 0 — Conteúdo sem seção numerada | p. 3] eficaz para reduzir seus custos com energia\n\nelétrica e suas emissões de carbono.\n\nA WEG é a primeira empresa a disponibilizar tais níveis de\n\nrendimento no mercado brasileiro para motores de indução,\n\ne a empresa que possui a mais ampla gama de motores IE4\n\ndo mundo.\n\nA linha W22 IR3 Premium atende aos níveis de rendimento\n\nespecificados na Portaria Interministerial n.º 1, de 29 de\n\njunho de 2017, que determina o nível mínimo de rendimento\n\nem IR3 (faixa de potência de 0,16 a 500 cv, de 2 a 8 polos),\n\nválido para todos os motores comercializados. Também\n\natendem a norma ABNT NBR 17094 e as legislações\n\nanteriores.\n\nLinha W22, motores que proporcionam maior\n\nrendimento e economia do mercado.\n\nJá a linha W22 Super Premium e a linha W22 Ultra Premium\n\nsuperam os níveis definidos pela legislação brasileira. O nível"
+        },
+        {
+          "id": "novo-00013",
+          "pagina": 8,
+          "pagina_fim": 8,
+          "secao": "1",
+          "secao_titulo": "Versões Disponíveis",
+          "score_denso": 1.0,
+          "score_rerank": 0.8308549562581115,
+          "score_rerank_bruto": -1.2365143299102783,
+          "score_final": 0.8308549562581115,
+          "texto": "[Seção 1 — Versões Disponíveis | p. 8] O motor W22 Super Premium apresenta rendimentos\n\nsuperiores aos padrões do mercado e tem como principais\n\nbenefícios o rápido retorno do investimento e o Plano de\n\nTroca WEG, que consiste em receber motores antigos como\n\nparte do pagamento dos motores novos.\n\nA linha W22 está disponível nas versões IR3 Premium e\n\nSuper Premium, atendendo e superando os níveis de\n\nrendimento definidos na Portaria Interministerial n.º 1,\n\nde 29 de junho de 2017. Na Figura 1, é possível comparar\n\no rendimento da linha W22 com os valores mínimos\n\nestabelecidos pela lei.\n\n2 Polos\n\nO motor W22 Super Premium tem ainda, como diferencial,\n\no fator de serviço 1,25 até a carcaça 315S/M, ou seja,\n\numa reserva de 25% de potência.\n\n100\n\n96\n\n92\n\n88\n\n84\n\n80\n\n76\n\n72\n\nRendimento (%)\n\n68\n\n64\n\n60\n\n0,16\n\n0,25\n\n0,33\n\n0,5\n\n0,75\n\n1\n\n1,5\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7,5\n\n10\n\n12,5\n\n15\n\n20\n\n25\n\n30"
+        },
+        {
+          "id": "novo-00190",
+          "pagina": 19,
+          "pagina_fim": 19,
+          "secao": "9",
+          "secao_titulo": "Valor da Sobrecorrente Ocasional",
+          "score_denso": 0.28750055102490635,
+          "score_rerank": 0.7642606455862038,
+          "score_rerank_bruto": -1.8849472999572754,
+          "score_final": 0.7642606455862038,
+          "texto": "[Seção 9 — Valor da Sobrecorrente Ocasional | p. 19] Calculando-se o fator de serviço, temos aproximadamente um\n\nFS de 1,15. Essa reserva de temperatura também permite que\n\nos motores W22 com elevação de temperatura da classe B\n\n(80 K) possam operar continuamente:\n\ng Até 15% acima da sua potência nominal, considerando-se\n\numa temperatura ambiente de 40 °C e uma altitude de\n\ninstalação de até 1000 m.a.n.m (metros acima do nível do\n\nmar).\n\nConforme norma ABNT NBR 17094, os motores com\n\npotência nominal até 315 kW e tensão nominal inferior ou\n\nigual a 1 kV devem ser capazes de suportar uma corrente\n\nigual a 1,5 vez a corrente nominal durante 2 minutos, no\n\nmínimo.\n\ng Até 55 °C de temperatura ambiente, mantendo-se a\n\npotência nominal.\n\ng Até 3000 m.a.n.m, mantendo-se a potência nominal."
+        }
+      ],
+      "resposta": "Não encontrei informações suficientes no manual do motor WEG W22 para responder a essa pergunta.\nConfiança: Baixa",
+      "confianca": "Baixa",
+      "abstencao": true,
+      "fontes": [],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "abstencao_correta": true,
+      "alucinacao_fora_escopo": false
+    },
+    {
+      "id": "f02",
+      "escopo": "fora",
+      "split": "dev",
+      "categoria": "",
+      "pergunta": "Qual é o procedimento passo a passo para rebobinar o estator de um motor W22?",
+      "estado": "temperatura_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é o procedimento passo a passo para rebobinar o estator de um motor W22?",
+      "chunks": [
+        {
+          "id": "novo-00039",
+          "pagina": 13,
+          "pagina_fim": 13,
+          "secao": "4.1",
+          "secao_titulo": "Sistema de Ventilação",
+          "score_denso": 0.20239940498626352,
+          "score_rerank": 0.9896661428862127,
+          "score_rerank_bruto": -2.697782278060913,
+          "score_final": 1.1396661428862127,
+          "texto": "[Seção 4.1 — Sistema de Ventilação | p. 13] Os motores W22, em sua configuração padrão, são\n\ntotalmente fechados com ventilação externa (TFVE) IC 411,\n\nde acordo com a norma ABNT NBR 5110 (figura 21). As\n\nversões não ventiladas (TENV), air over (TEAO) e com\n\nventilação forçada (TEFV) IC 416 estão disponíveis sob\n\nconsulta. Mais informações sobre a opção IC 416 podem\n\nser encontradas na seção 12 - Operação com Inversor\n\nde Frequência.\n\nOs ventiladores são bidirecionais e de polipropileno para\n\ntodos os tamanhos de carcaça, de 2 a 12 polos, exceto para\n\na carcaça 355A/B em 2 polos, que é fornecida em alumínio.\n\nTabela 2 - Nível de pressão sonora para motores 50 Hz\n\nFigura 21 - Ventilador\n\nO sistema de ventilação (ventilador e tampas traseira e\n\ndefletora) foi concebido para minimizar o ruído e aumentar\n\na eficiência térmica (figura 22)."
+        },
+        {
+          "id": "novo-00027",
+          "pagina": 10,
+          "pagina_fim": 10,
+          "secao": "3.5",
+          "secao_titulo": "Caixa de Ligação",
+          "score_denso": 0.12497505658878949,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": -2.63388991355896,
+          "score_final": 1.0,
+          "texto": "[Seção 3.5 — Caixa de Ligação | p. 10] Nas carcaças 63 a 200, a caixa de ligação está centralizada\n\ne para alterar a forma construtiva (posição da caixa de\n\nligação), o motor deverá ser desmontando.\n\nPara fazer essa alteração, procure um de nossos\n\nassistentes técnicos.\n\nA caixa de ligação dos motores W22 é feita em ferro\n\nfundido FC-200, mesmo material da carcaça e tampas.\n\nPossui abertura em corte diagonal, expondo melhor os\n\ncabos e facilitando o acesso às conexões.\n\nEm todos os tamanhos de carcaça é possível girar a caixa\n\nde ligação em intervalos de 90°. Os motores das carcaças\n\n315L, 355M/L e 355A/B são fornecidos com caixa de ligação\n\ncom base removível de ferro fundido. Como característica\n\nopcional, a base removível pode ser fornecida sem furação.\n\nOs motores são fornecidos com tampões roscados de\n\nplástico na entrada dos cabos para proteção contra entrada"
+        },
+        {
+          "id": "novo-00202",
+          "pagina": 21,
+          "pagina_fim": 21,
+          "secao": "12.1",
+          "secao_titulo": "Considerações Relativas ao Sistema Isolante do Motor",
+          "score_denso": 1.0,
+          "score_rerank": 0.9490302195061578,
+          "score_rerank_bruto": -2.9490268230438232,
+          "score_final": 0.9490302195061578,
+          "texto": "[Seção 12.1 — Considerações Relativas ao Sistema Isolante do Motor | p. 21] O motor de indução pode apresentar uma elevação de\n\ntemperatura maior, quando alimentado por inversor de\n\nfrequência, do que quando alimentado com tensão senoidal.\n\nEssa sobrelevação de temperatura é decorrente da\n\ncombinação de dois fatores: o aumento de perdas ocorrido\n\nno motor, em função das componentes harmônicas da tensão\n\nPWM fornecida pelo inversor, e a redução da eficácia do\n\nsistema de resfriamento, quando da operação do motor\n\nautoventilado em baixas frequências. Basicamente existem as\n\nseguintes soluções para evitar o sobreaquecimento do motor:\n\ng Redução do torque nominal (sobredimensionamento do\n\nmotor autoventilado).\n\nO estator dos motores W22 é fornecido com isolação térmica\n\nda classe F e está apto tanto para ligação direta à rede quanto"
+        },
+        {
+          "id": "novo-00051",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "score_denso": 0.07944804010295836,
+          "score_rerank": 0.9215628840601958,
+          "score_rerank_bruto": -3.118852376937866,
+          "score_final": 0.9215628840601958,
+          "texto": "[Seção 5.2 — Rolamentos | p. 14] Os motores W22 são fornecidos como padrão com\n\nrolamentos de esferas. Opcionalmente, quando as cargas\n\nradiais são elevadas, os motores podem ser fornecidos com\n\nrolamentos de rolos da série NU a partir da carcaça 160.\n\ngerada apenas pela máquina elétrica girante e assim permitir\n\na reprodutividade dos ensaios e a obtenção de medidas\n\ncomparáveis, é necessário efetuar tais medições com a\n\nmáquina desacoplada, mediante condições controladas de\n\nensaio. As condições de ensaio e limites de vibração aqui\n\ndescritos são aqueles encontrados na ABNT NBR 11390.\n\nA severidade de vibração é o máximo valor de vibração\n\nencontrado dentre todos os pontos e direções de medição\n\nrecomendados. A tabela 5 indica os valores admissíveis da\n\nseveridade de vibração recomendados na norma\n\nIEC 60034-14 para as carcaças IEC 56 a 400 para os graus\n\nde vibração A e B."
+        }
+      ],
+      "resposta": "Não encontrei informações suficientes no manual do motor WEG W22 para responder a essa pergunta.\nConfiança: Baixa",
+      "confianca": "Baixa",
+      "abstencao": true,
+      "fontes": [],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "abstencao_correta": true,
+      "alucinacao_fora_escopo": false
+    },
+    {
+      "id": "f03",
+      "escopo": "fora",
+      "split": "dev",
+      "categoria": "",
+      "pergunta": "Qual é o prazo de entrega de um motor W22 pedido hoje?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é o prazo de entrega de um motor W22 pedido hoje?",
+      "chunks": [
+        {
+          "id": "novo-00013",
+          "pagina": 8,
+          "pagina_fim": 8,
+          "secao": "1",
+          "secao_titulo": "Versões Disponíveis",
+          "score_denso": 1.0,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": -1.1995444297790527,
+          "score_final": 1.0,
+          "texto": "[Seção 1 — Versões Disponíveis | p. 8] O motor W22 Super Premium apresenta rendimentos\n\nsuperiores aos padrões do mercado e tem como principais\n\nbenefícios o rápido retorno do investimento e o Plano de\n\nTroca WEG, que consiste em receber motores antigos como\n\nparte do pagamento dos motores novos.\n\nA linha W22 está disponível nas versões IR3 Premium e\n\nSuper Premium, atendendo e superando os níveis de\n\nrendimento definidos na Portaria Interministerial n.º 1,\n\nde 29 de junho de 2017. Na Figura 1, é possível comparar\n\no rendimento da linha W22 com os valores mínimos\n\nestabelecidos pela lei.\n\n2 Polos\n\nO motor W22 Super Premium tem ainda, como diferencial,\n\no fator de serviço 1,25 até a carcaça 315S/M, ou seja,\n\numa reserva de 25% de potência.\n\n100\n\n96\n\n92\n\n88\n\n84\n\n80\n\n76\n\n72\n\nRendimento (%)\n\n68\n\n64\n\n60\n\n0,16\n\n0,25\n\n0,33\n\n0,5\n\n0,75\n\n1\n\n1,5\n\n2\n\n3\n\n4\n\n5\n\n6\n\n7,5\n\n10\n\n12,5\n\n15\n\n20\n\n25\n\n30"
+        },
+        {
+          "id": "novo-00003",
+          "pagina": 3,
+          "pagina_fim": 4,
+          "secao": "0",
+          "secao_titulo": "Conteúdo sem seção numerada",
+          "score_denso": 0.2691242929066259,
+          "score_rerank": 0.961030272015779,
+          "score_rerank_bruto": -1.506452202796936,
+          "score_final": 0.961030272015779,
+          "texto": "[Seção 0 — Conteúdo sem seção numerada | p. 3-4] e a linha W22 Ultra Premium\n\nsuperam os níveis definidos pela legislação brasileira. O nível\n\nde rendimento Ultra Premium é o maior rendimento em vigor\n\nno mercado mundial e os motores W22 Ultra Premium foram\n\ndesenvolvidos com a tecnologia de ímãs permanentes, o que\n\nlhes confere ainda mais eficiência.\n\nRegistro Portaria Nº 290, de 7 de julho de 2021 N° de Polos: Registro; Registro Portaria Nº 290, de 7 de julho de 2021 II: 005527/2013; Registro Portaria Nº 290, de 7 de julho de 2021 I VII: 005526/2013; Registro Portaria Nº 290, de 7 de julho de 2021 VII I: 005531/2013; Registro Portaria Nº 290, de 7 de julho de 2021 VIII: 004849/2019\n\nLEI DE EFICIÊNCIA ENERGÉTICA\n\nPortaria Interministerial Nº 1, de 29 de junho de 2017."
+        },
+        {
+          "id": "novo-00001",
+          "pagina": 1,
+          "pagina_fim": 3,
+          "secao": "0",
+          "secao_titulo": "Conteúdo sem seção numerada",
+          "score_denso": 0.5220026572935599,
+          "score_rerank": 0.7693384396699703,
+          "score_rerank_bruto": -3.016129493713379,
+          "score_final": 0.7693384396699703,
+          "texto": "[Seção 0 — Conteúdo sem seção numerada | p. 1-3] Motores\n\nAutomação\n\nEnergia\n\nTransmissão &\n\nDistribuição\n\nTintas\n\nW22\n\nMotor Elétrico Trifásico\n\nCatálogo Técnico Mercado Brasil\n\nDriving efﬁciency and sustainability\n\nW22\n\nMuito mais eficiência, qualidade\n\ne economia para a sua indústria.\n\nCarcaças 63 a 132\n\nCarcaças 160 a 200\n\nCarcaças 225 a 355\n\nEficiência e Confiabilidade para a Indústria\n\nNeste catálogo técnico são apresentadas as versões de\n\nmotores elétricos de indução IR3 Premium e Super Premium.\n\nA linha W22 da WEG está disponível em três versões,\n\nW22 IR3 Premium, W22 Super Premium (motor elétrico\n\nde indução) e W22 Ultra Premium (motor elétrico de ímãs\n\npermanentes).\n\nEstes motores têm perdas entre 10% e 40% menores que\n\nos anteriormente disponíveis no mercado. É uma maneira\n\nextremamente eficaz para reduzir seus custos com energia\n\nelétrica e suas emissões de carbono."
+        },
+        {
+          "id": "novo-00002",
+          "pagina": 3,
+          "pagina_fim": 3,
+          "secao": "0",
+          "secao_titulo": "Conteúdo sem seção numerada",
+          "score_denso": 0.16438782266342578,
+          "score_rerank": 0.7500084311105011,
+          "score_rerank_bruto": -3.1683638095855713,
+          "score_final": 0.7500084311105011,
+          "texto": "[Seção 0 — Conteúdo sem seção numerada | p. 3] eficaz para reduzir seus custos com energia\n\nelétrica e suas emissões de carbono.\n\nA WEG é a primeira empresa a disponibilizar tais níveis de\n\nrendimento no mercado brasileiro para motores de indução,\n\ne a empresa que possui a mais ampla gama de motores IE4\n\ndo mundo.\n\nA linha W22 IR3 Premium atende aos níveis de rendimento\n\nespecificados na Portaria Interministerial n.º 1, de 29 de\n\njunho de 2017, que determina o nível mínimo de rendimento\n\nem IR3 (faixa de potência de 0,16 a 500 cv, de 2 a 8 polos),\n\nválido para todos os motores comercializados. Também\n\natendem a norma ABNT NBR 17094 e as legislações\n\nanteriores.\n\nLinha W22, motores que proporcionam maior\n\nrendimento e economia do mercado.\n\nJá a linha W22 Super Premium e a linha W22 Ultra Premium\n\nsuperam os níveis definidos pela legislação brasileira. O nível"
+        }
+      ],
+      "resposta": "Não encontrei informações suficientes no manual do motor WEG W22 para responder a essa pergunta.\nConfiança: Baixa",
+      "confianca": "Baixa",
+      "abstencao": true,
+      "fontes": [],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "abstencao_correta": true,
+      "alucinacao_fora_escopo": false
+    },
+    {
+      "id": "f04",
+      "escopo": "fora",
+      "split": "dev",
+      "categoria": "",
+      "pergunta": "Qual é a resistência ôhmica do enrolamento do estator a 20 °C?",
+      "estado": "corrente_critico",
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é a resistência ôhmica do enrolamento do estator a 20 °C?",
+      "chunks": [
+        {
+          "id": "novo-00298",
+          "pagina": 32,
+          "pagina_fim": 32,
+          "secao": "15",
+          "secao_titulo": "Opcionais",
+          "score_denso": 0.7728241914316021,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": -1.9029388427734375,
+          "score_final": 1.0,
+          "texto": "[Seção 15 — Opcionais | p. 32] V; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Resistência de Aquecimento; Atributo: 220-240 V; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Resistência de Aquecimento; Atributo: 110-127 / 220-240 V; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Resistência de Aquecimento; Atributo: 380-480 V; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Proteção térmica no enrolamento; Atributo: Protetor térmico bimetálico (130°C / 155°C) - Alarme; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O"
+        },
+        {
+          "id": "novo-00300",
+          "pagina": 32,
+          "pagina_fim": 32,
+          "secao": "15",
+          "secao_titulo": "Opcionais",
+          "score_denso": 0.36963486327598294,
+          "score_rerank": 0.9534248600908585,
+          "score_rerank_bruto": -2.2377231121063232,
+          "score_final": 0.9534248600908585,
+          "texto": "[Seção 15 — Opcionais | p. 32] Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Proteção térmica no enrolamento; Atributo: Termistor PTC (130°C / 155 °C / 180 °C) - Desligamento; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Proteção térmica no enrolamento; Atributo: KTY 84-130 - Desligamento; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Proteção do mancal; Atributo: Protetor Térmico Bimetálico (termostato) Dianteiro; Carcaça 80: ND; Carcaça 90: E; Carcaça 100: E; Carcaça 112: E; Carcaça 132: E; Carcaça 160: O\n\nGrupo: Proteção do mancal; Atributo: Termistor Dianteiro; Carcaça 80: ND; Carcaça 90: E; Carcaça 100: E; Carcaça 112: E; Carcaça 132: E; Carcaça 160: O"
+        },
+        {
+          "id": "novo-00299",
+          "pagina": 32,
+          "pagina_fim": 32,
+          "secao": "15",
+          "secao_titulo": "Opcionais",
+          "score_denso": 0.9502975387879115,
+          "score_rerank": 0.898843743702082,
+          "score_rerank_bruto": -2.6300547122955322,
+          "score_final": 0.898843743702082,
+          "texto": "[Seção 15 — Opcionais | p. 32] Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Proteção térmica no enrolamento; Atributo: Protetor térmico bimetálico (130°C / 155 °C / 180 °C) - Desligamento; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Proteção térmica no enrolamento; Atributo: PT100 (2 fios/ 3 fios) (1 ou 2 por fase) - Alarme / Desligamento; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O\n\nGrupo: Proteção térmica no enrolamento; Atributo: Termistor PTC (130°C / 155°C) - Alarme; Carcaça 80: O; Carcaça 90: O; Carcaça 100: O; Carcaça 112: O; Carcaça 132: O; Carcaça 160: O"
+        },
+        {
+          "id": "novo-00306",
+          "pagina": 33,
+          "pagina_fim": 33,
+          "secao": "15",
+          "secao_titulo": "Opcionais",
+          "score_denso": 1.0,
+          "score_rerank": 0.7214210013701351,
+          "score_rerank_bruto": -3.9053776264190674,
+          "score_final": 0.7214210013701351,
+          "texto": "[Seção 15 — Opcionais | p. 33] Classe de Isolamento; 180: E; 200: E; 225: E; 250: E; 280: E; 315: E; 355M/L: E; 355A/B: E\n\nGrupo: Resistência de Aquecimento; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Resistência de Aquecimento; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Resistência de Aquecimento; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Resistência de Aquecimento; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Proteção térmica no enrolamento; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Proteção térmica no enrolamento; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O\n\nGrupo: Proteção térmica no enrolamento; 180: O; 200: O; 225: O; 250: O; 280: O; 315: O; 355M/L: O; 355A/B: O"
+        }
+      ],
+      "resposta": "Não encontrei informações suficientes no manual do motor WEG W22 para responder a essa pergunta.\nConfiança: Baixa",
+      "confianca": "Baixa",
+      "abstencao": true,
+      "fontes": [],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "abstencao_correta": true,
+      "alucinacao_fora_escopo": false
+    },
+    {
+      "id": "f05",
+      "escopo": "fora",
+      "split": "dev",
+      "categoria": "",
+      "pergunta": "Qual é o diagrama de partida estrela-triângulo recomendado para o motor W22?",
+      "estado": null,
+      "modelo": "meta-llama/llama-3.3-70b-instruct",
+      "consulta": "Qual é o diagrama de partida estrela-triângulo recomendado para o motor W22?",
+      "chunks": [
+        {
+          "id": "novo-00055",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.1",
+          "secao_titulo": "Eixo",
+          "score_denso": 0.5579232595189804,
+          "score_rerank": 1.0,
+          "score_rerank_bruto": 0.0938783586025238,
+          "score_final": 1.0,
+          "texto": "[Seção 5.1 — Eixo | p. 14] cargas radiais mínimas\n\ne máximas admissíveis para rolamentos de rolos são exibidas\n\nna tabela 8.\n\nComo padrão, os eixos dos motores W22 nas carcaças\n\n63 a 315S/M são fabricados em aço AISI 1040/45 e em\n\naço AISI 4140 nas carcaças 355M/L e 355A/B.\n\nQuando fornecido com rolamento de rolos, o material do\n\neixo será obrigatoriamente o AISI 4140.\n\nComo o motor da carcaça 355M/L é fornecido com eixo\n\nem aço AISI 4140, os motores W22 também podem ser\n\nmontados com rolamentos de rolos, o que permite que\n\nos mesmos possam operar com carga radial mais elevada,\n\npor exemplo, receber a montagem de polia e correia.\n\nMais informações sobre as máximas cargas radiais e\n\naxiais admissíveis na ponta de eixo podem ser obtidas\n\nnas tabelas 7, 8 e 9.\n\nObservação:\n\nPara trocar os rolamentos de esferas por rolamentos de rolos,"
+        },
+        {
+          "id": "novo-00180",
+          "pagina": 18,
+          "pagina_fim": 18,
+          "secao": "7.3.1",
+          "secao_titulo": "Equivalências dos Planos de Pintura WEG X ISO 12944",
+          "score_denso": 1.0,
+          "score_rerank": 0.9233504955907728,
+          "score_rerank_bruto": -0.5717818737030029,
+          "score_final": 0.9233504955907728,
+          "texto": "[Seção 7.3.1 — Equivalências dos Planos de Pintura WEG X ISO 12944 | p. 18] 12944\n\nOpcionalmente, os motores W22 podem ser fornecidos\n\ncom outras vedações, como por exemplo: retentores com\n\nmola, labirinto taconite e a exclusiva vedação W3Seal®,\n\nentre outras."
+        },
+        {
+          "id": "novo-00051",
+          "pagina": 14,
+          "pagina_fim": 14,
+          "secao": "5.2",
+          "secao_titulo": "Rolamentos",
+          "score_denso": 0.20357597589143472,
+          "score_rerank": 0.8920532056393121,
+          "score_rerank_bruto": -0.8435822129249573,
+          "score_final": 0.8920532056393121,
+          "texto": "[Seção 5.2 — Rolamentos | p. 14] Os motores W22 são fornecidos como padrão com\n\nrolamentos de esferas. Opcionalmente, quando as cargas\n\nradiais são elevadas, os motores podem ser fornecidos com\n\nrolamentos de rolos da série NU a partir da carcaça 160.\n\ngerada apenas pela máquina elétrica girante e assim permitir\n\na reprodutividade dos ensaios e a obtenção de medidas\n\ncomparáveis, é necessário efetuar tais medições com a\n\nmáquina desacoplada, mediante condições controladas de\n\nensaio. As condições de ensaio e limites de vibração aqui\n\ndescritos são aqueles encontrados na ABNT NBR 11390.\n\nA severidade de vibração é o máximo valor de vibração\n\nencontrado dentre todos os pontos e direções de medição\n\nrecomendados. A tabela 5 indica os valores admissíveis da\n\nseveridade de vibração recomendados na norma\n\nIEC 60034-14 para as carcaças IEC 56 a 400 para os graus\n\nde vibração A e B."
+        },
+        {
+          "id": "novo-00177",
+          "pagina": 18,
+          "pagina_fim": 18,
+          "secao": "7",
+          "secao_titulo": "Grau de proteção / Vedação / Pintura",
+          "score_denso": 0.346439059970696,
+          "score_rerank": 0.8571146693192001,
+          "score_rerank_bruto": -1.1470048427581787,
+          "score_final": 0.8571146693192001,
+          "texto": "[Seção 7 — Grau de proteção / Vedação / Pintura | p. 18] 7.1\n\nGrau de proteção\n\nOs motores W22 são fornecidos com grau de proteção\n\nconforme especificado na norma ABNT NBR IEC 60034-5.\n\nAs carcaças 63 a 132M/L são fornecidas com o grau de\n\nproteção IP55 e as carcaças 160M a 355A/B com o grau de\n\nproteção IPW55, onde:\n\nFigura 27 - Plano de pintura\n\nNas carcaças 63 a 132M/L, os motores W22 são fornecidos,\n\ncomo padrão, com o plano de pintura 207 A (código interno\n\nWEG). E, para as carcaças 160M a 355A/B, os motores W22\n\nsão fornecidos com o plano de pintura 203 A.\n\nOs planos de pintura conferem proteção adicional em\n\nambientes agressivos, abrigados ou desabrigados conforme\n\nquadro a seguir.\n\na) O primeiro numeral característico 5: informa que o\n\ninvólucro fornece proteção contra o contato ou aproximação\n\ncom partes vivas ou móveis dentro do invólucro. O ingresso"
+        }
+      ],
+      "resposta": "Não encontrei informações suficientes no manual do motor WEG W22 para responder a essa pergunta.\nConfiança: Baixa",
+      "confianca": "Baixa",
+      "abstencao": true,
+      "fontes": [],
+      "citacao_invalida": false,
+      "modelo_juiz": "google/gemma-3-12b-it",
+      "faithfulness": 1.0,
+      "abstencao_correta": true,
+      "alucinacao_fora_escopo": false
+    }
+  ]
+}

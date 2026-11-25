@@ -1,0 +1,116 @@
+{
+  "casos": [
+    {
+      "id": "c01",
+      "split": "dev",
+      "contexto": "[p. 19, seç. 10] Os motores W22 são fornecidos com classe de isolamento F e possuem elevação de temperatura da classe B (80 K) em condições nominais de operação (salvo quando indicado diferente).",
+      "afirmacao": "Os motores W22 têm classe de isolamento F.",
+      "rotulo_esperado": "SUSTENTADA"
+    },
+    {
+      "id": "c02",
+      "split": "dev",
+      "contexto": "[p. 14, seç. 5.2] Os motores W22 são fornecidos como padrão com rolamentos de esferas. Opcionalmente, quando as cargas radiais são elevadas, os motores podem ser fornecidos com rolamentos de rolos da série NU a partir da carcaça 160.",
+      "afirmacao": "O anel V-ring funciona como uma vedação de lábio que protege o rolamento contra poeira e umidade.",
+      "rotulo_esperado": "EXTERNA"
+    },
+    {
+      "id": "c03",
+      "split": "dev",
+      "contexto": "[p. 18, seç. 7.1] Os motores W22 são fornecidos com grau de proteção conforme especificado na norma ABNT NBR IEC 60034-5. As carcaças 63 a 132M/L são fornecidas com o grau de proteção IP55 e as carcaças 160M a 355A/B com o grau de proteção IPW55.",
+      "afirmacao": "O motor possui isolamento de classe F, adequado para temperaturas de operação elevadas.",
+      "rotulo_esperado": "EXTERNA"
+    },
+    {
+      "id": "c04",
+      "split": "dev",
+      "contexto": "[p. 19, seç. 10] Os motores W22 são fornecidos com classe de isolamento F e possuem elevação de temperatura da classe B (80 K) em condições nominais de operação (salvo quando indicado diferente).",
+      "afirmacao": "Os motores W22 são fornecidos com classe de isolamento B e elevação de temperatura da classe F.",
+      "rotulo_esperado": "CONTRADIZ"
+    },
+    {
+      "id": "c05",
+      "split": "dev",
+      "contexto": "[p. 11, seç. 3.9] As tampas possuem furos para drenagem da água condensada do interior da carcaça. Esses bujões saem de fábrica na posição fechado e devem ser abertos periodicamente para permitir saída da água condensada.",
+      "afirmacao": "Os bujões de dreno devem ser abertos periodicamente.",
+      "rotulo_esperado": "SUSTENTADA"
+    },
+    {
+      "id": "c06",
+      "split": "dev",
+      "contexto": "[p. 9, seç. 3.1] A carcaça dos motores W22 é produzida em ferro fundido FC-200 e foi concebida de forma a otimizar a troca térmica.",
+      "afirmacao": "A seguir, apresento as informações encontradas no manual.",
+      "rotulo_esperado": "META"
+    },
+    {
+      "id": "c07",
+      "split": "teste",
+      "contexto": "[p. 14, seç. 5.2] Os rolamentos têm vida útil L10h de 25.000 horas, desde que sejam respeitadas as cargas radiais ou axiais máximas.",
+      "afirmacao": "A vida útil dos rolamentos chega a 40.000 horas em qualquer condição de operação.",
+      "rotulo_esperado": "EXTERNA"
+    },
+    {
+      "id": "c08",
+      "split": "teste",
+      "contexto": "[p. 14, seç. 5.2] Os motores W22 são fornecidos como padrão com pino graxeiro nas tampas dianteira e traseira para lubrificação dos rolamentos das carcaças 225S/M e acima. A quantidade de graxa e o intervalo de lubrificação estão impressas na placa de identificação.",
+      "afirmacao": "A graxa recomendada para os rolamentos é à base de lítio.",
+      "rotulo_esperado": "EXTERNA"
+    },
+    {
+      "id": "c09",
+      "split": "teste",
+      "contexto": "[p. 14, seç. 5.2] Os rolamentos têm vida útil L10h de 25.000 horas, desde que sejam respeitadas as cargas radiais ou axiais máximas.",
+      "afirmacao": "Em geral, motores elétricos devem ter os rolamentos substituídos a cada cinco anos.",
+      "rotulo_esperado": "EXTERNA"
+    },
+    {
+      "id": "c10",
+      "split": "teste",
+      "contexto": "[p. 18, seç. 7.1] As carcaças 63 a 132M/L são fornecidas com o grau de proteção IP55 e as carcaças 160M a 355A/B com o grau de proteção IPW55.",
+      "afirmacao": "Todas as carcaças dos motores W22 são fornecidas com grau de proteção IP55.",
+      "rotulo_esperado": "CONTRADIZ"
+    },
+    {
+      "id": "c11",
+      "split": "teste",
+      "contexto": "[p. 16, seç. 5.2.2] Opcionalmente, sensores de temperatura podem ser instalados para controlar as temperaturas de operação nos mancais. O mais comum é a instalação de um sensor Pt-100 no mancal, que permite o monitoramento contínuo de sua temperatura de operação.",
+      "afirmacao": "O sensor Pt-100 é instalado na caixa de ligação, e não no mancal.",
+      "rotulo_esperado": "CONTRADIZ"
+    },
+    {
+      "id": "c12",
+      "split": "teste",
+      "contexto": "[p. 10, seç. 3.4] Todas as carcaças da linha W22, da 63 até a 355A/B, são fornecidas com terminais de aterramento posicionados na caixa de ligação. As carcaças 225S/M a 355A/B possuem, além do aterramento citado acima, outro aterramento na carcaça.",
+      "afirmacao": "Somente as carcaças 225S/M a 355A/B possuem terminais de aterramento.",
+      "rotulo_esperado": "CONTRADIZ"
+    },
+    {
+      "id": "c13",
+      "split": "teste",
+      "contexto": "[p. 9, seç. 3.1] A carcaça dos motores W22 é produzida em ferro fundido FC-200 e foi concebida de forma a otimizar a troca térmica e fornecer resistência mecânica suficiente.",
+      "afirmacao": "A carcaça é produzida em ferro fundido FC-200.",
+      "rotulo_esperado": "SUSTENTADA"
+    },
+    {
+      "id": "c14",
+      "split": "teste",
+      "contexto": "[p. 14, seç. 5.2] Os rolamentos têm vida útil L10h de 25.000 horas, desde que sejam respeitadas as cargas radiais ou axiais máximas.",
+      "afirmacao": "Os rolamentos têm vida útil L10h de 25.000 horas se as cargas máximas forem respeitadas.",
+      "rotulo_esperado": "SUSTENTADA"
+    },
+    {
+      "id": "c15",
+      "split": "teste",
+      "contexto": "[p. 16, seç. 5.2.2] O mais comum é a instalação de um sensor Pt-100 no mancal, que permite o monitoramento contínuo de sua temperatura de operação.",
+      "afirmacao": "O sensor Pt-100 permite monitorar continuamente a temperatura de operação do mancal.",
+      "rotulo_esperado": "SUSTENTADA"
+    },
+    {
+      "id": "c16",
+      "split": "teste",
+      "contexto": "[p. 9, seç. 3.1] A carcaça dos motores W22 é produzida em ferro fundido FC-200.",
+      "afirmacao": "Segue a resposta à sua pergunta.",
+      "rotulo_esperado": "META"
+    }
+  ]
+}

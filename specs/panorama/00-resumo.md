@@ -14,7 +14,7 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 █████░░░░░ 57% · 4/7 itens ✅
 
 ## Agora
-- 🟡 · plan-02.03 · R02.3 · Avaliar o RAG com gabarito de página e juiz por afirmação
+—
 
 ## Próximas
 - 🔴 · plan-02.04 · R02.4 · Demonstrar os três cenários em separado e documentar os limites observados
@@ -27,4 +27,5 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 | 02 | Sprint 4 — RAG e assistente | 2/5 | ██░░░ | 3 |
 
 ## Atenção
-- 📋 4 achado(s) no `00-backlog`
+- 🟢 plan-02.03 · Avaliar o RAG com gabarito de página e juiz por afirmação — aguardando síntese
+- 📋 5 achado(s) no `00-backlog`
