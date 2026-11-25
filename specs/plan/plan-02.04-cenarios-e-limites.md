@@ -4,7 +4,7 @@ familia: "02"
 item: "R02.4"
 titulo: "Demonstrar os três cenários em separado e documentar os limites observados"
 dominio: "Sprint 4 — RAG e assistente"
-status: "🟡 Em execução"
+status: "🟢 Aprovada"
 prioridade: "Alta"
 tags: ["plan", "sprint-4", "cenarios", "limites", "F7"]
 relacionados: ["[[00-contexto]]", "[[02.03-avaliacao-rag]]"]
@@ -120,8 +120,74 @@ tabela de limites com mitigações. Em `00-contexto.md`, trocar a linha da §4 e
 
 <!-- Preenchido pelo EXECUTOR. Append-only: cada rodada acrescenta um bloco novo; nada é removido. -->
 
+## Resumo da execução — 2026-11-25
+
+**Resultado:** Concluído com pendências (Fase A concluída; a Fase B é a execução local do notebook, do usuário)
+
+**O que foi feito**
+- `src/pln/cenarios.py` (novo): carga validada de `data/cenarios.json`; três regras de escolha de episódio (`maior_severidade`, `menor_valor`, `janela_calma`) sobre os alertas reais, com desempate pelo mais recente; execução por cenário (assistente novo por cenário, estado do alerta real, avaliação por `avaliar_resposta`, conferência de `fonte_esperada` por página/seção/âncora); `consolidar_cenarios`; `formatar_cenario`/`linhas_turnos`; `coletar_fatos_dados`; `montar_limites` + `validar_limites` (recusa id/afirmação que a execução não produziu e linha sem evidência).
+- `data/cenarios.json` (novo): 3 cenários + 1 adversarial, episódio escolhido pela regra e registrado (A-4468 corrente 172,01 A; A-4471 vibração 4,87 mm/s; instante calmo 2026-08-23T09:46:39Z com 34 leituras candidatas; adversarial A-1800, velocidade 1850,47 rpm sozinha no estado), 3 turnos por cenário com `fonte_esperada` e referência curta, e os 10 modelos de limite (texto de limite, mitigação e risco residual).
+- `tests/test_cenarios.py` (novo, 47 testes); `notebooks/sprint4_pln_rag.ipynb`: seções 14–18 sem saídas (a 14 é `offline`), tabela do índice e nota final atualizadas.
+- `src/pln/config.py`: só constantes novas (caminhos de saída, tipos de regra/turno, categorias e origens de evidência).
+
+**Arquivos alterados**
+| Arquivo | Natureza | O que mudou |
+|---|---|---|
+| `src/pln/cenarios.py` | criado | escolha de episódio, execução, exibição, limites |
+| `data/cenarios.json` | criado | cenários, episódios registrados, perguntas, modelos de limite |
+| `tests/test_cenarios.py` | criado | 47 testes |
+| `notebooks/sprint4_pln_rag.ipynb` | alterado | +12 células (seções 14–18), índice e nota final |
+| `src/pln/config.py` | alterado | +19 linhas de constantes |
+
+**Verificações executadas**
+- `python -m pytest tests/test_cenarios.py -q` (com `PyMuPDF==2.1` fixado via PYTHONPATH) → 47 passed.
+- `python tools/nb_check.py notebooks/sprint4_pln_rag.ipynb` (idem) → "Notebook válido".
+- `validate.py` do `padrao-python` em `cenarios.py` e `test_cenarios.py` → 0 achados; em `config.py` → 1 achado já existente (URL do OpenRouter, linha 168).
+- Sonda de recuperação com o retriever real (modelos locais, sem LLM) sobre as perguntas: todas as 1ª/2ª perguntas respondem acima do limiar (menor escore 3,46) com a página esperada entre os 4 chunks, e as 3ª perguntas abstêm (escores −1,9 a −4,2). Sonda descartável, fora do repositório.
+
+**Estado inicial do worktree:** `git status --short` vazio (branch `main`, conforme `00-contexto` §5).
+
+**Ambiente após a verificação:** sondas e pytest encerrados; instalei `PyMuPDF==2.1` em pasta do scratchpad (fora do repositório) só para rodar os testes com o pin; nada criado no repositório além do escopo.
+
+**Critérios de aceite**
+- [x] Três seções separadas, estado de alerta real — notebook §15–17; ids em `data/cenarios.json` e no `formatar_cenario`.
+- [x] Escolha determinística e registrada — `test_episodio_registrado_e_o_que_a_regra_devolve_nos_dados_reais`.
+- [x] 3 turnos, 2º com memória, 3º com abstenção — `test_segundo_turno_usa_a_memoria...`, `test_terceiro_turno_abstem...`.
+- [x] Fonte, confiança, modelo e juiz por afirmação por resposta — registro de `avaliar_resposta` + `formatar_cenario`.
+- [x] `fonte_esperada` conferida no PDF — `test_fonte_esperada_ocorre_na_pagina_indicada_do_pdf_real`; comparação com as recuperadas no registro (`hit_pagina/secao/ancora`).
+- [x] Limites com as 5 categorias, mitigação e risco por linha, sem linha genérica — testes de `montar_limites`/`validar_limites`. A parte "caso real" só se materializa na Fase B.
+- [ ] Fase B (notebook executado, `cenarios.json`/`limites.json`, `nb_check --executado`) — pendente: depende da execução local com a chave.
+- [x] Testes do escopo verdes; auditoria sem violação nova.
+
+**Decisões e suposições**
+- Toquei `config.py` (fora da lista §3.1) só para constantes, pois a regra do projeto manda constantes em `config.py`.
+- Regra adversarial ganhou o parâmetro `isolado` (alerta sozinho no estado), pois sem ele o estado do menor valor misturava três alertas críticos.
+- Cenário 3 cai em "operação normal" (a leitura mais recente do CSV é calma), não "só leve".
+- Perguntas escolhidas pela sonda de recuperação (a 1ª versão do seguimento elétrico abstinha por diluição da consulta composta); o 2º turno preventivo usa a seção 5.2.2 e o chunk correspondente vem rotulado 5.2.1: `hit_secao` pode sair falso com `hit_pagina` verdadeiro.
+- O juiz só vê os chunks, não o estado: afirmações vindas do estado podem sair `EXTERNA`; registrado como risco no limite `alucinacao_afirmacoes`.
+- Os hooks avisam "identificadores em português (ADR-023)"; segui o código vizinho do repositório, todo em português.
+
+**Achados fora do escopo (não corrigidos)**
+- `src/pln/config.py:168` — URL do OpenRouter literal (achado do validador, preexistente).
+- Sem o `PyMuPDF` do pin, `extrair_paginas` falha neste ambiente (`use_layout`); afeta testes antigos e a célula 4 do `nb_check`.
+
+**Pendências / riscos**
+- Fase B. O gerador pode divergir do esperado (por exemplo, não abster no 3º turno se o escore mudar), o que a tabela de limites registra como observado.
+
 ---
 
 # 10. Veredito
 
 <!-- Preenchido pelo REVISOR. Append-only: um bloco por rodada, com o que foi verificado e como. -->
+
+## Veredito — 2026-11-25 — 🟢 Aprovado
+
+**Verificado (venv Python 3.11, PyMuPDF 2.1, `MPLBACKEND=Agg`, nível escopado):**
+- `git status`/`diff --stat`: só os arquivos de §3.1, mais `src/pln/config.py` (constantes, justificado no resumo) e `data/saida/cache_llm.jsonl`; nenhum arquivo de `rag.py`, `assistente.py`, `avaliacao.py`, `alertas.py` tocado; nenhuma chave nas saídas; nenhum comentário citando plan.
+- `python -m pytest tests/test_cenarios.py -q` → **47 passed**. `nb_check` → válido. `padrao-python/validate.py` em `cenarios.py` e `test_cenarios.py` → 0 achados.
+- `fonte_esperada` conferida direto no PDF (leitura independente, normalizada): as 6 âncoras ocorrem nas páginas indicadas (19, 20, 14, 14, 14, 16); os 5 `termo_ausente` fora do escopo e os 2 adversariais não ocorrem no PDF.
+- Fase B (execução local, `nbconvert --execute`, sem `--allow-errors`, código 0): seções 14–18 com saídas e sem erro; `nb_check --executado` sobre cópia → válido; `data/saida/cenarios.json` e `limites.json` gerados e idênticos entre as duas execuções. Três cenários com alerta real (A-4468 corrente 172,01 A; A-4471 vibração 4,87 mm/s; instante calmo de 23/08 com 34 candidatos), 3 turnos, seguimento com consulta composta, 3º turno abstém nos três; modelo gerador/juiz únicos. Limites: 10 linhas, ≥ 1 caso real por categoria; duas frases conferidas na execução (`eletrica-t2` "…não há informações suficientes no manual para determinar…" rotulada EXTERNA; `c10` esperado CONTRADIZ, final EXTERNA).
+- Ambiente: processos do nbconvert encerrados; a regeneração do notebook alterou só o ruído numérico (`score_denso`) de `avaliacao_recuperacao.json` e `avaliacao_respostas.json` (fora do escopo desta plan) — restaurei esses dois ao `HEAD` com `git checkout --` (artefato da minha própria execução); cópia temporária do notebook removida.
+
+**Registrado no backlog (não reprova):** em `mecanica-t2` o gerador respondeu a frase de abstenção com o escore bruto (3,39) acima do limiar e a página esperada recuperada; `PyMuPDF` fora do pin quebra testes de extração; URL do OpenRouter literal em `config.py:168`.
+

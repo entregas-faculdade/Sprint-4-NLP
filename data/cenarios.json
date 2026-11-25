@@ -1,0 +1,264 @@
+{
+  "cenarios": [
+    {
+      "id": "eletrica",
+      "titulo": "Cenário 1 — anomalia elétrica",
+      "dominio": "elétrica",
+      "regra": {
+        "tipo": "maior_severidade",
+        "grandezas": [
+          "corrente"
+        ],
+        "severidade": "critico",
+        "descricao": "Alerta crítico de corrente elétrica; empate pelo mais recente."
+      },
+      "episodio": {
+        "alerta_id": "A-4468",
+        "leitura_id": "2a22bbff-daaa-4f23-9b61-d79ba43ece03",
+        "instante": "2026-08-22T05:14:44.244385+00:00",
+        "grandeza": "Corrente elétrica por fase",
+        "severidade": "critico",
+        "valor_max": 172.01,
+        "candidatos": 537,
+        "motivo": "537 alertas critico de 'corrente'; o mais recente é A-4468."
+      },
+      "turnos": [
+        {
+          "tipo": "natural",
+          "pergunta": "Qual sobrecorrente o motor W22 deve suportar e por quanto tempo?",
+          "fonte_esperada": {
+            "pagina": 19,
+            "secao": "9",
+            "trecho_ancora": "devem ser capazes de suportar uma corrente igual a 1,5 vez a corrente nominal durante 2 minutos"
+          },
+          "resposta_referencia": "Motores de potência nominal até 315 kW e tensão nominal de até 1 kV devem suportar uma corrente de 1,5 vez a corrente nominal durante 2 minutos, no mínimo."
+        },
+        {
+          "tipo": "seguimento",
+          "pergunta": "E como o relé térmico deve ser ajustado para proteger contra essa sobrecarga?",
+          "fonte_esperada": {
+            "pagina": 20,
+            "secao": "11.1",
+            "trecho_ancora": "Ajuste da corrente do relé"
+          },
+          "resposta_referencia": "Com fator de serviço de 1,0 até 1,15, o relé é ajustado em In × F.S.; com fator de serviço de 1,15 ou mais, em (In × F.S.) − 5%."
+        },
+        {
+          "tipo": "fora_escopo",
+          "pergunta": "Qual é a resistência ôhmica do enrolamento do estator a 20 °C?",
+          "termo_ausente": "resistência ôhmica"
+        }
+      ]
+    },
+    {
+      "id": "mecanica",
+      "titulo": "Cenário 2 — anomalia mecânica",
+      "dominio": "mecânica",
+      "regra": {
+        "tipo": "maior_severidade",
+        "grandezas": [
+          "vibra",
+          "velocidade"
+        ],
+        "severidade": "critico",
+        "descricao": "Alerta crítico de vibração no mancal (velocidade do eixo se a vibração não tiver crítico); empate pelo mais recente."
+      },
+      "episodio": {
+        "alerta_id": "A-4471",
+        "leitura_id": "b8d6892d-7340-4206-860a-8e780a48e431",
+        "instante": "2026-08-22T05:15:41.161669+00:00",
+        "grandeza": "Vibração no mancal lado acoplado",
+        "severidade": "critico",
+        "valor_max": 4.87,
+        "candidatos": 516,
+        "motivo": "516 alertas critico de 'vibra'; o mais recente é A-4471."
+      },
+      "turnos": [
+        {
+          "tipo": "natural",
+          "pergunta": "Com a vibração acima do limite, quais níveis de velocidade de vibração o catálogo admite para o motor W22?",
+          "fonte_esperada": {
+            "pagina": 14,
+            "secao": "4.3",
+            "trecho_ancora": "atendem aos níveis de vibração do grau A - balanceamento normal"
+          },
+          "resposta_referencia": "Na configuração padrão (grau A), a velocidade de vibração RMS em suspensão livre é de 1,6 mm/s (altura de eixo de 56 a 132), 2,2 mm/s (de 132 a 280) e 2,8 mm/s (acima de 280); o balanceamento reduzido (grau B) tem 0,7, 1,1 e 1,8 mm/s."
+        },
+        {
+          "tipo": "seguimento",
+          "pergunta": "E o que o catálogo diz sobre a lubrificação dos rolamentos desse mancal?",
+          "fonte_esperada": {
+            "pagina": 14,
+            "secao": "5.2",
+            "trecho_ancora": "pino graxeiro nas tampas dianteira e traseira"
+          },
+          "resposta_referencia": "Os motores W22 saem de fábrica com pino graxeiro nas tampas dianteira e traseira para lubrificar os rolamentos das carcaças 225S/M e acima; a quantidade de graxa e o intervalo de lubrificação constam da placa de identificação e das tabelas 10 e 11."
+        },
+        {
+          "tipo": "fora_escopo",
+          "pergunta": "Qual é o torque de aperto dos parafusos da tampa do mancal?",
+          "termo_ausente": "torque de aperto"
+        }
+      ]
+    },
+    {
+      "id": "preventiva",
+      "titulo": "Cenário 3 — manutenção preventiva",
+      "dominio": "preventiva",
+      "regra": {
+        "tipo": "janela_calma",
+        "horas": 24,
+        "severidades_bloqueadas": [
+          "moderado",
+          "critico"
+        ],
+        "descricao": "Instante sem alerta moderado ou crítico nas 24 h anteriores (operação normal ou só alerta leve); empate pelo mais recente."
+      },
+      "episodio": {
+        "alerta_id": null,
+        "leitura_id": "6c6a1a25-3898-4ce4-87fe-760f4bae7783",
+        "instante": "2026-08-23T09:46:39.901427+00:00",
+        "grandeza": null,
+        "severidade": null,
+        "valor_max": null,
+        "candidatos": 34,
+        "motivo": "34 leituras sem alerta moderado/critico nas 24 h anteriores; a mais recente é a leitura 6c6a1a25-3898-4ce4-87fe-760f4bae7783."
+      },
+      "turnos": [
+        {
+          "tipo": "natural",
+          "pergunta": "Como lubrificar os rolamentos do motor W22?",
+          "fonte_esperada": {
+            "pagina": 14,
+            "secao": "5.2",
+            "trecho_ancora": "pino graxeiro nas tampas dianteira e traseira"
+          },
+          "resposta_referencia": "Os motores W22 trazem pino graxeiro nas tampas dianteira e traseira para lubrificar os rolamentos das carcaças 225S/M e acima; a quantidade de graxa e o intervalo de lubrificação constam da placa de identificação e das tabelas 10 e 11."
+        },
+        {
+          "tipo": "seguimento",
+          "pergunta": "E por que é importante monitorar a temperatura desse mancal?",
+          "fonte_esperada": {
+            "pagina": 16,
+            "secao": "5.2.2",
+            "trecho_ancora": "Este monitoramento é importante, pois a temperatura influencia diretamente a vida útil da graxa e do rolamento"
+          },
+          "resposta_referencia": "A temperatura influencia diretamente a vida útil da graxa e do rolamento; o mais comum é instalar um sensor Pt-100 no mancal para monitorar continuamente a temperatura de operação."
+        },
+        {
+          "tipo": "fora_escopo",
+          "pergunta": "Qual é a periodicidade recomendada para medir a resistência de isolamento com megômetro?",
+          "termo_ausente": "megômetro"
+        }
+      ]
+    }
+  ],
+  "adversarial": {
+    "id": "adversarial",
+    "titulo": "Cenário adversarial — estado contraditório e conhecimento externo",
+    "dominio": "mecânica",
+    "regra": {
+      "tipo": "menor_valor",
+      "isolado": true,
+      "grandezas": [
+        "velocidade"
+      ],
+      "severidade": "critico",
+      "descricao": "Alerta crítico de velocidade do eixo sozinho no estado e com o menor valor máximo, o que mais se parece com operação normal para um motor de 4 polos; empate pelo mais recente."
+    },
+    "episodio": {
+      "alerta_id": "A-1800",
+      "leitura_id": "38490289-9cb3-4791-9330-52b433fd7a70",
+      "instante": "2026-05-07T20:38:05.538699+00:00",
+      "grandeza": "Velocidade do eixo",
+      "severidade": "critico",
+      "valor_max": 1850.47,
+      "candidatos": 115,
+      "motivo": "115 alertas critico de 'velocidade', sozinhos no estado do instante, A-1800 tem o menor valor máximo (1850.47 rpm)."
+    },
+    "turnos": [
+      {
+        "tipo": "contradicao_estado",
+        "pergunta": "Os motores W22 de 4 polos giram a quantas rpm em 60 Hz? O valor do estado está normal?",
+        "termo_ausente": "valor do estado"
+      },
+      {
+        "tipo": "conhecimento_externo",
+        "pergunta": "Qual é a causa raiz mais comum de vibração excessiva em motores elétricos?",
+        "termo_ausente": "causa raiz"
+      }
+    ]
+  },
+  "limites": [
+    {
+      "id": "fora_escopo_abstencao",
+      "categoria": "fora_escopo",
+      "limite": "Perguntas fora do escopo do catálogo: {n_abstiveram} de {n_fora} abstiveram e {n_responderam} responderam sem abster (ids: {ids_responderam}).",
+      "mitigacao": "Abstenção determinística: sem chunk com escore bruto acima do limiar, o assistente devolve a frase fixa sem chamar o LLM.",
+      "risco_residual": "O escore bruto não separa os escopos por construção: uma pergunta fora do escopo que recupere um chunk acima do limiar é respondida ({n_responderam} de {n_fora} nesta execução)."
+    },
+    {
+      "id": "alucinacao_afirmacoes",
+      "categoria": "alucinacao",
+      "limite": "Alucinação medida por afirmação: {n_achados} de {n_rotuladas} afirmações rotuladas EXTERNA ou CONTRADIZ ({n_externa} EXTERNA, {n_contradiz} CONTRADIZ; ids: {ids}).",
+      "mitigacao": "Citação obrigatória [p., seç.] conferida contra os chunks, verificador numérico (número ausente do contexto vira EXTERNA), guarda de marcadores de conhecimento externo e juiz de família diferente da do gerador.",
+      "risco_residual": "O juiz só vê os chunks e não o estado operacional: uma afirmação que vem do estado pode ser rotulada EXTERNA, e uma frase que o chunk não sustenta pode passar como SUSTENTADA."
+    },
+    {
+      "id": "alucinacao_adversarial",
+      "categoria": "alucinacao",
+      "limite": "Estado contraditório com a intuição do modelo ({estado}): {n_abstiveram} de {n_turnos} turnos adversariais abstiveram.",
+      "mitigacao": "Estado operacional tratado como dado confiável no prompt do sistema; severidade e confiança são calculadas por código, não pelo LLM.",
+      "risco_residual": "Nada impede o LLM de redigir uma frase que minimize o alerta quando o catálogo traz uma informação parecida; só a leitura da resposta e o juiz por afirmação a detectam depois."
+    },
+    {
+      "id": "corpus_troubleshooting",
+      "categoria": "corpus",
+      "limite": "O catálogo é comercial e não traz troubleshooting passo a passo: {n_abstiveram} de {n_troubleshooting} perguntas de procedimento prático dos cenários abstiveram, e a fonte esperada foi recuperada em {n_fonte_recuperada} de {n_com_fonte} turnos dentro do escopo.",
+      "mitigacao": "Cenários só com perguntas que o PDF cobre (fonte esperada conferida na página) e uma pergunta deliberadamente sem resposta por cenário, para mostrar a abstenção.",
+      "risco_residual": "Perguntas de diagnóstico (causa, reparo, torque) não têm resposta no corpus: o assistente só diz o que o catálogo afirma sobre o componente."
+    },
+    {
+      "id": "metodo_juiz",
+      "categoria": "metodo",
+      "limite": "Juiz LLM de 12B: acurácia {acuracia} e revocação de EXTERNA {revocacao_externa} (precisão {precisao_externa}) em {n_casos} casos de calibração; {n_divergentes} caso(s) com rótulo final diferente do esperado.",
+      "mitigacao": "Juiz diferente do gerador (famílias distintas, ids fixos, sem fallback), temperatura 0 com cache e guardas determinísticas que prevalecem sobre o rótulo do juiz.",
+      "risco_residual": "Uma calibração de {n_casos} casos não garante revocação em respostas reais: a faithfulness próxima de 1,0 pode esconder afirmações que o contexto não sustenta."
+    },
+    {
+      "id": "metodo_amostra",
+      "categoria": "metodo",
+      "limite": "Amostra pequena e gabarito por página: {n_dentro} perguntas dentro e {n_fora} fora do escopo ({n_fora_teste} fora no split teste), mais {n_turnos} turnos de cenário; faithfulness média {faithfulness}.",
+      "mitigacao": "Split dev/teste (calibração só no dev), relevância por página e estrita, e números reportados como saíram, inclusive as falhas.",
+      "risco_residual": "Com {n_dentro} perguntas dentro do escopo, diferenças pequenas entre configurações não são distinguíveis; a abstenção correta só é medida nas perguntas do dev."
+    },
+    {
+      "id": "metodo_limiar_abstencao",
+      "categoria": "metodo",
+      "limite": "Limiar fixo de abstenção ({limiar} de escore bruto): {n_indevidas} pergunta(s) dentro do escopo com abstenção indevida (ids: {ids}).",
+      "mitigacao": "Limiar calibrado só no dev, no par que abstém em todas as perguntas fora do escopo: prefere abster a responder sem sustentação.",
+      "risco_residual": "O mesmo limiar abstém em perguntas legítimas cujo melhor chunk pontua abaixo de {limiar} (ids: {ids}); o usuário recebe a frase de abstenção mesmo havendo resposta no catálogo."
+    },
+    {
+      "id": "dados_limiares",
+      "categoria": "dados",
+      "limite": "Só {n_com_limiar} das {n_sensores} variáveis têm limiar em active_assets.json; as outras {n_sem_limiar} não geram alerta.",
+      "mitigacao": "Variável sem limiar não gera alerta nem entra no estado; os limiares nunca são copiados à mão (sensores.py falha se divergirem de active_assets.json).",
+      "risco_residual": "Uma anomalia nas {n_sem_limiar} variáveis sem limiar passa despercebida pelo estado operacional e, portanto, pelo assistente."
+    },
+    {
+      "id": "dados_nomes",
+      "categoria": "dados",
+      "limite": "Nomes e unidades de data_variables.json inconsistentes: {n_divergentes} de {n_sensores} variáveis com unidade diferente do mapeamento canônico (ex.: {exemplo_nome} × {exemplo_canonico}).",
+      "mitigacao": "Mapeamento canônico em sensores.json por descrição e magnitude, confirmado pelo dono do projeto; o verificador exige a grandeza e a unidade do alerta no texto.",
+      "risco_residual": "Se o mapeamento canônico estiver errado, o assistente cita grandeza e unidade erradas com a mesma confiança; a evidência é só a descrição de cada variável."
+    },
+    {
+      "id": "dados_baseline",
+      "categoria": "dados",
+      "limite": "Sem baseline histórico por motor: {n_ativos} ativo, {n_leituras} leituras em {dias} dias e limiares fixos; só {n_calmas} leituras estão sem alerta moderado ou crítico nas 24 h anteriores.",
+      "mitigacao": "O estado operacional vem só dos alertas determinísticos do instante; nenhum prognóstico nem comparação com histórico é afirmado.",
+      "risco_residual": "O cenário preventivo é demonstrado em operação normal: o assistente não sabe se um valor é normal para este motor, só se cruzou o limiar de active_assets.json."
+    }
+  ]
+}

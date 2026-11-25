@@ -1,0 +1,312 @@
+{
+  "modelo_gerador": "meta-llama/llama-3.3-70b-instruct",
+  "modelo_juiz": "google/gemma-3-12b-it",
+  "linhas": [
+    {
+      "id": "fora_escopo_abstencao",
+      "categoria": "fora_escopo",
+      "limite": "Perguntas fora do escopo do catálogo: 9 de 10 abstiveram e 1 responderam sem abster (ids: adversarial-t1).",
+      "mitigacao": "Abstenção determinística: sem chunk com escore bruto acima do limiar, o assistente devolve a frase fixa sem chamar o LLM.",
+      "risco_residual": "O escore bruto não separa os escopos por construção: uma pergunta fora do escopo que recupere um chunk acima do limiar é respondida (1 de 10 nesta execução).",
+      "evidencias": [
+        {
+          "origem": "avaliacao_respostas",
+          "id": "f01",
+          "detalhe": "abstenção; escore bruto 0,41; confiança Baixa",
+          "afirmacao": null
+        },
+        {
+          "origem": "avaliacao_respostas",
+          "id": "f02",
+          "detalhe": "abstenção; escore bruto -2,70; confiança Baixa",
+          "afirmacao": null
+        },
+        {
+          "origem": "avaliacao_respostas",
+          "id": "f03",
+          "detalhe": "abstenção; escore bruto -1,20; confiança Baixa",
+          "afirmacao": null
+        },
+        {
+          "origem": "avaliacao_respostas",
+          "id": "f04",
+          "detalhe": "abstenção; escore bruto -1,90; confiança Baixa",
+          "afirmacao": null
+        },
+        {
+          "origem": "avaliacao_respostas",
+          "id": "f05",
+          "detalhe": "abstenção; escore bruto 0,09; confiança Baixa",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "eletrica-t3",
+          "detalhe": "abstenção; escore bruto -1,90; confiança Baixa",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "mecanica-t3",
+          "detalhe": "abstenção; escore bruto -3,32; confiança Baixa",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "preventiva-t3",
+          "detalhe": "abstenção; escore bruto -4,20; confiança Baixa",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "adversarial-t1",
+          "detalhe": "respondeu sem abster; escore bruto 3,88; confiança Média",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "adversarial-t2",
+          "detalhe": "abstenção; escore bruto -5,64; confiança Baixa",
+          "afirmacao": null
+        }
+      ]
+    },
+    {
+      "id": "alucinacao_afirmacoes",
+      "categoria": "alucinacao",
+      "limite": "Alucinação medida por afirmação: 6 de 42 afirmações rotuladas EXTERNA ou CONTRADIZ (6 EXTERNA, 0 CONTRADIZ; ids: adversarial-t1, eletrica-t2, s02).",
+      "mitigacao": "Citação obrigatória [p., seç.] conferida contra os chunks, verificador numérico (número ausente do contexto vira EXTERNA), guarda de marcadores de conhecimento externo e juiz de família diferente da do gerador.",
+      "risco_residual": "O juiz só vê os chunks e não o estado operacional: uma afirmação que vem do estado pode ser rotulada EXTERNA, e uma frase que o chunk não sustenta pode passar como SUSTENTADA.",
+      "evidencias": [
+        {
+          "origem": "avaliacao_respostas",
+          "id": "s02",
+          "detalhe": "EXTERNA (juiz)",
+          "afirmacao": "Além disso, em, é apresentado um exemplo de motor W22 IR3 Premium com fator de serviço 1,25, mas não se refere especificamente ao W22 Super Premium."
+        },
+        {
+          "origem": "avaliacao_respostas",
+          "id": "s02",
+          "detalhe": "EXTERNA (juiz)",
+          "afirmacao": "Já em, o fator de serviço para um exemplo de motor W22 Super Premium é 1,15."
+        },
+        {
+          "origem": "cenarios",
+          "id": "eletrica-t2",
+          "detalhe": "EXTERNA (juiz)",
+          "afirmacao": "No entanto, não há informações suficientes no manual para determinar exatamente como ajustar o relé térmico para proteger contra a sobrecarga específica mencionada no estado operacional."
+        },
+        {
+          "origem": "cenarios",
+          "id": "adversarial-t1",
+          "detalhe": "EXTERNA (juiz)",
+          "afirmacao": "Os motores W22 de 4 polos giram a 1800rpm em 60 Hz."
+        },
+        {
+          "origem": "cenarios",
+          "id": "adversarial-t1",
+          "detalhe": "EXTERNA (guarda_numero)",
+          "afirmacao": "No entanto, o valor máximo de velocidade do eixo no estado operacional é de 1850,47 rpm, o que está acima do valor nominal para 4 polos em 60 Hz."
+        },
+        {
+          "origem": "cenarios",
+          "id": "adversarial-t1",
+          "detalhe": "EXTERNA (juiz)",
+          "afirmacao": "Além disso, o alerta A-1800 indica uma severidade crítica para a velocidade do eixo, o que sugere que o valor atual está fora do limite de operação segura."
+        }
+      ]
+    },
+    {
+      "id": "alucinacao_adversarial",
+      "categoria": "alucinacao",
+      "limite": "Estado contraditório com a intuição do modelo (Teste (Sorocaba): severidade geral critico. Alerta A-1800: Velocidade do eixo, severidade critico, valor máximo 1850.47 rpm, início 2026-05-07T20:38:05+00:00.): 1 de 2 turnos adversariais abstiveram.",
+      "mitigacao": "Estado operacional tratado como dado confiável no prompt do sistema; severidade e confiança são calculadas por código, não pelo LLM.",
+      "risco_residual": "Nada impede o LLM de redigir uma frase que minimize o alerta quando o catálogo traz uma informação parecida; só a leitura da resposta e o juiz por afirmação a detectam depois.",
+      "evidencias": [
+        {
+          "origem": "cenarios",
+          "id": "adversarial-t1",
+          "detalhe": "contradicao_estado: respondeu sem abster; faithfulness 0,000",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "adversarial-t2",
+          "detalhe": "conhecimento_externo: abstenção; faithfulness 1,000",
+          "afirmacao": null
+        }
+      ]
+    },
+    {
+      "id": "corpus_troubleshooting",
+      "categoria": "corpus",
+      "limite": "O catálogo é comercial e não traz troubleshooting passo a passo: 3 de 3 perguntas de procedimento prático dos cenários abstiveram, e a fonte esperada foi recuperada em 6 de 6 turnos dentro do escopo.",
+      "mitigacao": "Cenários só com perguntas que o PDF cobre (fonte esperada conferida na página) e uma pergunta deliberadamente sem resposta por cenário, para mostrar a abstenção.",
+      "risco_residual": "Perguntas de diagnóstico (causa, reparo, torque) não têm resposta no corpus: o assistente só diz o que o catálogo afirma sobre o componente.",
+      "evidencias": [
+        {
+          "origem": "cenarios",
+          "id": "eletrica-t3",
+          "detalhe": "Qual é a resistência ôhmica do enrolamento do estator a 20 °C? → abstenção",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "mecanica-t3",
+          "detalhe": "Qual é o torque de aperto dos parafusos da tampa do mancal? → abstenção",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "preventiva-t3",
+          "detalhe": "Qual é a periodicidade recomendada para medir a resistência de isolamento com megômetro? → abstenção",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "eletrica-t1",
+          "detalhe": "fonte esperada recuperada: True",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "eletrica-t2",
+          "detalhe": "fonte esperada recuperada: True",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "mecanica-t1",
+          "detalhe": "fonte esperada recuperada: True",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "mecanica-t2",
+          "detalhe": "fonte esperada recuperada: True",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "preventiva-t1",
+          "detalhe": "fonte esperada recuperada: True",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "preventiva-t2",
+          "detalhe": "fonte esperada recuperada: True",
+          "afirmacao": null
+        }
+      ]
+    },
+    {
+      "id": "metodo_juiz",
+      "categoria": "metodo",
+      "limite": "Juiz LLM de 12B: acurácia 0,938 e revocação de EXTERNA 1,000 (precisão 0,833) em 16 casos de calibração; 1 caso(s) com rótulo final diferente do esperado.",
+      "mitigacao": "Juiz diferente do gerador (famílias distintas, ids fixos, sem fallback), temperatura 0 com cache e guardas determinísticas que prevalecem sobre o rótulo do juiz.",
+      "risco_residual": "Uma calibração de 16 casos não garante revocação em respostas reais: a faithfulness próxima de 1,0 pode esconder afirmações que o contexto não sustenta.",
+      "evidencias": [
+        {
+          "origem": "juiz_calibracao",
+          "id": null,
+          "detalhe": "16 casos; acurácia 0,938",
+          "afirmacao": null
+        },
+        {
+          "origem": "juiz_calibracao",
+          "id": "c10",
+          "detalhe": "esperado CONTRADIZ, final EXTERNA",
+          "afirmacao": "Todas as carcaças dos motores W22 são fornecidas com grau de proteção IP55."
+        }
+      ]
+    },
+    {
+      "id": "metodo_amostra",
+      "categoria": "metodo",
+      "limite": "Amostra pequena e gabarito por página: 20 perguntas dentro e 5 fora do escopo (0 fora no split teste), mais 11 turnos de cenário; faithfulness média 0,980.",
+      "mitigacao": "Split dev/teste (calibração só no dev), relevância por página e estrita, e números reportados como saíram, inclusive as falhas.",
+      "risco_residual": "Com 20 perguntas dentro do escopo, diferenças pequenas entre configurações não são distinguíveis; a abstenção correta só é medida nas perguntas do dev.",
+      "evidencias": [
+        {
+          "origem": "avaliacao_respostas",
+          "id": null,
+          "detalhe": "25 respostas avaliadas; faithfulness média 0,980",
+          "afirmacao": null
+        }
+      ]
+    },
+    {
+      "id": "metodo_limiar_abstencao",
+      "categoria": "metodo",
+      "limite": "Limiar fixo de abstenção (2,000 de escore bruto): 3 pergunta(s) dentro do escopo com abstenção indevida (ids: p01, p02, mecanica-t2).",
+      "mitigacao": "Limiar calibrado só no dev, no par que abstém em todas as perguntas fora do escopo: prefere abster a responder sem sustentação.",
+      "risco_residual": "O mesmo limiar abstém em perguntas legítimas cujo melhor chunk pontua abaixo de 2,000 (ids: p01, p02, mecanica-t2); o usuário recebe a frase de abstenção mesmo havendo resposta no catálogo.",
+      "evidencias": [
+        {
+          "origem": "avaliacao_respostas",
+          "id": "p01",
+          "detalhe": "abstenção indevida; escore bruto -3,91; limiar 2,000",
+          "afirmacao": null
+        },
+        {
+          "origem": "avaliacao_respostas",
+          "id": "p02",
+          "detalhe": "abstenção indevida; escore bruto 0,27; limiar 2,000",
+          "afirmacao": null
+        },
+        {
+          "origem": "cenarios",
+          "id": "mecanica-t2",
+          "detalhe": "abstenção indevida; escore bruto 3,39; limiar 2,000",
+          "afirmacao": null
+        }
+      ]
+    },
+    {
+      "id": "dados_limiares",
+      "categoria": "dados",
+      "limite": "Só 4 das 6 variáveis têm limiar em active_assets.json; as outras 2 não geram alerta.",
+      "mitigacao": "Variável sem limiar não gera alerta nem entra no estado; os limiares nunca são copiados à mão (sensores.py falha se divergirem de active_assets.json).",
+      "risco_residual": "Uma anomalia nas 2 variáveis sem limiar passa despercebida pelo estado operacional e, portanto, pelo assistente.",
+      "evidencias": [
+        {
+          "origem": "dados",
+          "id": null,
+          "detalhe": "4 de 6 variáveis têm limiar em active_assets.json",
+          "afirmacao": null
+        }
+      ]
+    },
+    {
+      "id": "dados_nomes",
+      "categoria": "dados",
+      "limite": "Nomes e unidades de data_variables.json inconsistentes: 6 de 6 variáveis com unidade diferente do mapeamento canônico (ex.: Velocidade - Porta 2 [mm/s] × Velocidade do eixo (rpm)).",
+      "mitigacao": "Mapeamento canônico em sensores.json por descrição e magnitude, confirmado pelo dono do projeto; o verificador exige a grandeza e a unidade do alerta no texto.",
+      "risco_residual": "Se o mapeamento canônico estiver errado, o assistente cita grandeza e unidade erradas com a mesma confiança; a evidência é só a descrição de cada variável.",
+      "evidencias": [
+        {
+          "origem": "dados",
+          "id": null,
+          "detalhe": "Velocidade - Porta 2 [mm/s] em data_variables.json × Velocidade do eixo (rpm) no mapeamento canônico",
+          "afirmacao": null
+        }
+      ]
+    },
+    {
+      "id": "dados_baseline",
+      "categoria": "dados",
+      "limite": "Sem baseline histórico por motor: 1 ativo, 43123 leituras em 110 dias e limiares fixos; só 34 leituras estão sem alerta moderado ou crítico nas 24 h anteriores.",
+      "mitigacao": "O estado operacional vem só dos alertas determinísticos do instante; nenhum prognóstico nem comparação com histórico é afirmado.",
+      "risco_residual": "O cenário preventivo é demonstrado em operação normal: o assistente não sabe se um valor é normal para este motor, só se cruzou o limiar de active_assets.json.",
+      "evidencias": [
+        {
+          "origem": "dados",
+          "id": null,
+          "detalhe": "1 ativo, 43123 leituras em 110 dias; 34 leituras calmas nas 24 h anteriores",
+          "afirmacao": null
+        }
+      ]
+    }
+  ]
+}

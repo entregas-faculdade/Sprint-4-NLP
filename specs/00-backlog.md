@@ -69,6 +69,9 @@ via normal.
 | 4 | `Retriever` (`score_rerank_bruto`): o escore bruto do reranker não separa bem escopo de fora de escopo — "características do sistema de ventilação" (dentro) pontua -4,24, abaixo de "população atual do Brasil" (fora, -3,03); no gabarito, p01 (dentro, -3,91) e p02 (dentro, 0,27) ficam abaixo de f01 (fora, 0,41); abstenção por limiar fixo sacrifica perguntas legítimas | execução | 2026-11-25 | médio |
 | 5 | `Juiz` (`MODELO_JUIZ` de 12B): rotulou SUSTENTADA "o Pt-100 é um termistor" (o contexto separa Pt-100 de termistores PTC) e as 24 respostas ficaram com faithfulness ≈ 1,0; falso negativo de EXTERNA que a calibração de 16 casos não pegou | execução | 2026-11-25 | médio |
 
+| 6 | `Assistente`: o gerador respondeu a frase de abstenção mesmo com escore bruto 3,39 (acima do limiar 2,0) e a página esperada recuperada (`mecanica-t2`, seguimento sobre lubrificação); a abstenção indevida não vem só do limiar | execução | 2026-11-25 | médio |
+| 7 | `config.py:168`: URL do OpenRouter literal (achado do validador `padrao-python`) | execução | 2026-11-25 | baixo |
+
 ---
 
 # 3. Promover um item
