@@ -4,11 +4,11 @@ familia: "02"
 item: "R02.2"
 titulo: "Construir o assistente de troubleshooting com citação, confiança calculada e abstenção"
 dominio: "Sprint 4 — RAG e assistente"
-status: "🔴 A executar"
+status: "🟡 Em execução"
 prioridade: "Alta"
 tags: ["plan", "sprint-4", "assistente", "F3", "F4", "F6"]
-relacionados: ["[[00-contexto]]", "[[plan-02.01-rag-com-pagina-secao-e-estado]]"]
-depende_de: "plan-02.01-rag-com-pagina-secao-e-estado"
+relacionados: ["[[00-contexto]]", "[[02.01-pipeline-rag]]"]
+depende_de: ""
 destino_sintese: "specs/02.02-assistente-de-troubleshooting.md + 00-contexto.md"
 ---
 
@@ -24,7 +24,7 @@ resposta, mantém **memória de curto prazo** e recebe o **estado operacional** 
   dele, declarou "Alto (95 %)" sem lastro e **contradisse o estado** (afirmou que 47 °C "não é crítico"). O juiz não penalizou
   conhecimento externo (F6 é atacado na plan 02.03; aqui se **previne** na geração).
 - Princípio do dono: fatos por código, LLM só redige. Aqui: fontes, página, seção, confiança e abstenção são **calculadas**.
-- Usa `Retriever` e `EstadoOperacional` (plan 02.01) e `llm.py` (plan 01.01; `MODELO_GERADOR`).
+- Usa `Retriever` e `EstadoOperacional` (spec `02.01-pipeline-rag`) e `llm.py` (plan 01.01; `MODELO_GERADOR`).
 
 # 3. Escopo
 

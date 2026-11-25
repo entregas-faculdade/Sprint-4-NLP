@@ -11,13 +11,12 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 # Panorama
 
 ## Progresso
-██░░░░░░░░ 28% · 2/7 itens ✅
+████░░░░░░ 42% · 3/7 itens ✅
 
 ## Agora
-—
+- 🟡 · plan-02.02 · R02.2 · Construir o assistente de troubleshooting com citação, confiança calculada e abstenção
 
 ## Próximas
-- 🔴 · plan-02.02 · R02.2 · Construir o assistente de troubleshooting com citação, confiança calculada e abstenção
 - 🔴 · plan-02.03 · R02.3 · Avaliar o RAG com gabarito de página e juiz por afirmação
 - 🔴 · plan-02.04 · R02.4 · Demonstrar os três cenários em separado e documentar os limites observados
 - 🔴 · plan-02.05 · R02.5 · Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados
@@ -26,8 +25,7 @@ tags: ["processo", "panorama", "resumo", "sdd"]
 | FF | Família | Itens ✅/total | Progresso | Plans abertas |
 |---|---|---|---|---|
 | 01 | Sprint 3 — Alertas e classificação | 2/2 | █████ | 0 |
-| 02 | Sprint 4 — RAG e assistente | 0/5 | ░░░░░ | 5 |
+| 02 | Sprint 4 — RAG e assistente | 1/5 | █░░░░ | 4 |
 
 ## Atenção
-- 🟢 plan-02.01 · Construir RAG com página, seção e estado operacional na busca — aguardando síntese
 - 📋 3 achado(s) no `00-backlog`
