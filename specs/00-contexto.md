@@ -148,7 +148,7 @@ A entrega anterior (nota 85) está avaliada; o feedback dela é a fonte dos requ
 | Mexer em prompt, citação, confiança, abstenção ou memória do assistente | `specs/02.02-assistente-de-troubleshooting.md` | [[00-knowledge]] |
 | Mexer em métricas, gabarito ou juiz | `specs/02.03-avaliacao-rag.md` | [[00-knowledge]] |
 | Mexer em cenários de demonstração ou na tabela de limites | `specs/02.04-cenarios-e-limites.md` | [[00-knowledge]] |
-| Documento final, README, vídeo | `plan/plan-02.05-*.md` · `docs/feedback-professor.md` | [[00-knowledge]] |
+| Documento final, README, matriz, roteiro do vídeo | `docs/relatorio-final.md` (números por marcador; `python tools/gerar_relatorio_final.py --check`) · `docs/matriz-criticas.md` · `docs/roteiro-video.md` · `README.md` | [[00-knowledge]] |
 | Entender o que o professor exigiu | `docs/feedback-professor.md` · `enunciado-4.txt` | — |
 
 > Cada plan, ao ser sintetizada, troca a sua linha acima pelo caminho da spec fixa criada.
@@ -287,6 +287,7 @@ Antes de escolher **como** fazer algo, leia **[[00-knowledge]]** — é o rotead
 - O PDF é um catálogo comercial WEG: não traz procedimento de troubleshooting passo a passo, então parte das perguntas
   práticas **não tem resposta no corpus** — a abstenção correta é parte do resultado, não falha.
 - Modelos OpenRouter gratuitos têm limite de taxa e podem sair do ar: por isso cache em `data/saida/cache_llm.jsonl`.
+- **Entrega** (2026-11-25): documento final, matriz, README e roteiro prontos e conferidos contra `data/saida/`. Pendências do dono: gravar e publicar o vídeo ("não listado") e colar o link no `README.md`; escolher a licença do código (não há `LICENSE`); rotacionar a chave OpenRouter que circulou. `.env.example` ainda lista `GROQ-API-KEY` (não usada).
 - A avaliação usa um juiz de 12B e tem as 5 perguntas fora do escopo só no `dev`; os limites estão em `specs/02.03-avaliacao-rag.md` §2.7 e `specs/02.04-cenarios-e-limites.md` §2.4.
 
 ---
