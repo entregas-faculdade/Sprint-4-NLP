@@ -55,7 +55,7 @@ que cresce é índice quebrado.
 
 | # | Plan | Objetivo | Depende de | Status | Destino |
 |---|---|---|---|---|---|
-| 1 | [plan-02.05-entrega](plan/plan-02.05-entrega.md) | Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados | — | 🟡 Em execução | — |
+| 1 | [plan-02.05-entrega](plan/plan-02.05-entrega.md) | Preparar a entrega: documento final, README, roteiro do vídeo e notebooks executados | — | 🟢 Aprovada | — |
 
 ---
 
