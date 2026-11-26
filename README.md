@@ -1,5 +1,13 @@
 # Assistente de troubleshooting para motores elétricos (PLN) — Sprints 3 e 4
 
+Integrantes Big 5:
+
+Lucca Phelipe Masini RM 564121
+Luiz Henrique Poss RM562177
+Igor Paixão Sarak RM 563726
+Bernardo Braga Perobeli RM 562468
+Felipe Stefani Honorato RM 563380
+
 Entrega do Challenge FIAP × Forzy (Processamento de Linguagem Natural) sobre um digital twin do motor elétrico WEG W22. O projeto:
 
 1. transforma leituras de sensores em **alertas** e **relatórios** em português, sem afirmar nada além dos dados;
@@ -11,14 +19,16 @@ A regra de fundo: todo fato (valor, limiar, página, seção) nasce de código; 
 
 ## Entregáveis
 
+Tudo o que é avaliado está na pasta [`entrega/`](entrega/): os dois notebooks **já executados** (com as saídas de cada célula), o documento final, a matriz das críticas e o roteiro do vídeo. As saídas gravadas em arquivo pelos notebooks ficam em [`data/saida/`](data/saida/) e o restante do repositório (`src/`, `data/`, `tests/`, `tools/`, `specs/`) dá suporte à execução.
+
 | Item | Onde |
 |---|---|
-| Notebook da Sprint 3 (alertas, classificação e relatório) | [`notebooks/sprint3_pln_alertas.ipynb`](notebooks/sprint3_pln_alertas.ipynb) |
-| Notebook da Sprint 4 (RAG, assistente, avaliação e cenários) | [`notebooks/sprint4_pln_rag.ipynb`](notebooks/sprint4_pln_rag.ipynb) |
+| Notebook da Sprint 3 (alertas, classificação e relatório) | [`entrega/sprint3_pln_alertas.ipynb`](entrega/sprint3_pln_alertas.ipynb) |
+| Notebook da Sprint 4 (RAG, assistente, avaliação e cenários) | [`entrega/sprint4_pln_rag.ipynb`](entrega/sprint4_pln_rag.ipynb) |
 | Conjuntos de teste com referências | [`data/alertas_teste.json`](data/alertas_teste.json), [`data/eventos_rotulados.json`](data/eventos_rotulados.json), [`data/relatorio_referencia.json`](data/relatorio_referencia.json), [`data/avaliacao_rag.json`](data/avaliacao_rag.json), [`data/juiz_calibracao.json`](data/juiz_calibracao.json) |
-| Documento final unificado | [`docs/relatorio-final.md`](docs/relatorio-final.md) |
-| Matriz das críticas do professor (F1–F7) | [`docs/matriz-criticas.md`](docs/matriz-criticas.md) |
-| Roteiro do vídeo | [`docs/roteiro-video.md`](docs/roteiro-video.md) |
+| Documento final unificado | [`entrega/relatorio-final.md`](entrega/relatorio-final.md) |
+| Matriz das críticas do professor (F1–F7) | [`entrega/matriz-criticas.md`](entrega/matriz-criticas.md) |
+| Roteiro do vídeo | [`entrega/roteiro-video.md`](entrega/roteiro-video.md) |
 | Vídeo (3 a 5 min, "não listado" no YouTube) | <!-- VIDEO_URL --> _link a ser colado aqui_ |
 | Saídas das execuções | [`data/saida/`](data/saida/) |
 
@@ -26,11 +36,11 @@ A regra de fundo: todo fato (valor, limiar, página, seção) nasce de código; 
 
 ```
 src/pln/        lógica: sensores, alertas, llm, classificacao, relatorio, estado, rag, assistente, avaliacao, cenarios, config
-notebooks/      os dois notebooks (só orquestram e exibem; a lógica está em src/pln/)
+entrega/        ENTREGA: os dois notebooks executados, documento final, matriz e roteiro (os notebooks só orquestram e exibem; a lógica está em src/pln/)
 tests/          testes (pytest)
 tools/          nb_check.py (confere notebook) e gerar_relatorio_final.py (preenche os números do documento final)
 data/           dados de origem, conjuntos de teste e, em data/saida/, as saídas das execuções
-docs/           catálogo W22 (PDF), documento final, matriz, roteiro e feedback do professor
+docs/           catálogo W22 (PDF, base do RAG) e feedback do professor
 specs/          especificações do projeto
 ```
 
@@ -52,16 +62,16 @@ nome da variável e o caminho do arquivo. A primeira execução baixa os modelos
 Execute os notebooks **na ordem** (o da Sprint 4 usa os alertas exportados pelo da Sprint 3), sem `--allow-errors`:
 
 ```bash
-jupyter nbconvert --to notebook --execute --inplace notebooks/sprint3_pln_alertas.ipynb
-jupyter nbconvert --to notebook --execute --inplace notebooks/sprint4_pln_rag.ipynb \
+jupyter nbconvert --to notebook --execute --inplace entrega/sprint3_pln_alertas.ipynb
+jupyter nbconvert --to notebook --execute --inplace entrega/sprint4_pln_rag.ipynb \
   --ExecutePreprocessor.startup_timeout=300 --ExecutePreprocessor.iopub_timeout=120
 ```
 
 As chamadas ao LLM ficam em cache (`data/saida/cache_llm.jsonl`), então repetir a execução é barato e as saídas saem iguais. Para conferir o resultado:
 
 ```bash
-python tools/nb_check.py notebooks/sprint3_pln_alertas.ipynb --executado
-python tools/nb_check.py notebooks/sprint4_pln_rag.ipynb --executado
+python tools/nb_check.py entrega/sprint3_pln_alertas.ipynb --executado
+python tools/nb_check.py entrega/sprint4_pln_rag.ipynb --executado
 python tools/gerar_relatorio_final.py --check
 ```
 
@@ -76,7 +86,7 @@ parte dos testes de extração falha); os marcados `modelos` são pulados quando
 
 ## Documento final e números
 
-Os números de `docs/relatorio-final.md` não são digitados: vêm de `data/saida/*.json` por `python tools/gerar_relatorio_final.py`, e o
+Os números de `entrega/relatorio-final.md` não são digitados: vêm de `data/saida/*.json` por `python tools/gerar_relatorio_final.py`, e o
 `--check` falha se o documento divergir das saídas.
 
 ## Licença e avisos

@@ -24,7 +24,7 @@ Total: **4 min 40 s**, dentro da faixa de 3 a 5 minutos. Sobram 20 s de folga at
 ## Cenas
 
 ### 1. Abertura e arquitetura (30 s)
-- **Tela:** `docs/relatorio-final.md`, diagrama da seção 1.
+- **Tela:** `entrega/relatorio-final.md`, diagrama da seção 1.
 - **Dizer:** "Este é o assistente de troubleshooting do motor WEG W22. Os dados viram alertas; os alertas viram o estado operacional; o estado entra na
   busca sobre o catálogo; o assistente responde citando página e seção. Todo fato nasce de código e o LLM só redige, sempre sob verificador."
 
@@ -49,12 +49,12 @@ Total: **4 min 40 s**, dentro da faixa de 3 a 5 minutos. Sobram 20 s de folga at
   histórico por motor, o assistente só diz o que o catálogo afirma."
 
 ### 6. Avaliação e limites (40 s)
-- **Tela:** seções 10 a 13 (recuperação, juiz por afirmação) e seção 18 (tabela de limites); ou o `docs/relatorio-final.md`, seções 7 e 9.
+- **Tela:** seções 10 a 13 (recuperação, juiz por afirmação) e seção 18 (tabela de limites); ou o `entrega/relatorio-final.md`, seções 7 e 9.
 - **Dizer:** "Medimos recuperação por página e estrita, faithfulness por afirmação, com juiz de família diferente do gerador, calibrado. O estado operacional
   entra na busca, mas não melhorou a recuperação; dizemos isso. Limites: catálogo sem troubleshooting, juiz de 12B, limiar fixo de abstenção."
 
 ### 7. Fechamento (20 s)
-- **Tela:** `docs/matriz-criticas.md`.
+- **Tela:** `entrega/matriz-criticas.md`.
 - **Dizer:** "A matriz mostra onde cada crítica do professor foi tratada, inclusive a parcial. Repositório e documento final estão no link."
 
 ## Depois de gravar

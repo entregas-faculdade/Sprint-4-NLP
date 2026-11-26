@@ -1,10 +1,10 @@
-"""Preenche os números de docs/relatorio-final.md a partir de data/saida/*.json e do notebook da Sprint 3.
+"""Preenche os números de entrega/relatorio-final.md a partir de data/saida/*.json e do notebook da Sprint 3.
 
 Como se roda: python tools/gerar_relatorio_final.py          # reescreve os valores dos marcadores
               python tools/gerar_relatorio_final.py --check  # falha se algum marcador não resolve ou diverge
 
 Marcador: <!--{caminho|formato}-->valor<!--/-->. O caminho começa pelo nome do arquivo de saída (sem .json) ou
-por `nb3` (valores lidos das saídas executadas de notebooks/sprint3_pln_alertas.ipynb) e segue por chaves
+por `nb3` (valores lidos das saídas executadas de entrega/sprint3_pln_alertas.ipynb) e segue por chaves
 separadas por ponto. Um segmento aceita seletor de lista, `chave[campo=valor,campo=valor]`, e a chave `#`
 devolve o tamanho. Formatos: d (inteiro), f1/f2/f3 (decimais), p0/p1 (fração em porcentagem), s (texto).
 """
@@ -21,8 +21,8 @@ from typing import Any
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT_DIR / "data" / "saida"
-REPORT_PATH = ROOT_DIR / "docs" / "relatorio-final.md"
-ALERTS_NOTEBOOK = ROOT_DIR / "notebooks" / "sprint3_pln_alertas.ipynb"
+REPORT_PATH = ROOT_DIR / "entrega" / "relatorio-final.md"
+ALERTS_NOTEBOOK = ROOT_DIR / "entrega" / "sprint3_pln_alertas.ipynb"
 
 MARKER = re.compile(r"<!--\{(?P<path>[^}|]+)\|(?P<fmt>[a-z0-9]+)\}-->(?P<value>.*?)<!--/-->", re.S)
 SEGMENT = re.compile(r"^(?P<key>[^\[\]]*)(?:\[(?P<selector>[^\]]+)\])?$")

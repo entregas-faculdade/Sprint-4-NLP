@@ -1,8 +1,8 @@
 # Matriz de críticas: onde cada requisito F1–F7 foi tratado
 
-Fonte dos requisitos: transcrição fiel do feedback da entrega anterior (nota 85), em [`feedback-professor.md`](feedback-professor.md).
+Fonte dos requisitos: transcrição fiel do feedback da entrega anterior (nota 85), em [`feedback-professor.md`](../docs/feedback-professor.md).
 Cada linha afirma só o que as saídas executadas mostram; o que ficou parcial está dito como parcial. Os números entre marcadores invisíveis são
-preenchidos de `data/saida/` por `python tools/gerar_relatorio_final.py --documento docs/matriz-criticas.md`.
+preenchidos de `data/saida/` por `python tools/gerar_relatorio_final.py --documento entrega/matriz-criticas.md`.
 
 | ID | Crítica do professor | Tratamento (spec) | Seção do notebook | Evidência | Resultado | Situação |
 |---|---|---|---|---|---|---|
